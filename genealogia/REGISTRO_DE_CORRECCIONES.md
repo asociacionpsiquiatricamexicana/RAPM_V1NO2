@@ -623,3 +623,58 @@ palabra por palabra, reuniendo las palabras partidas: 557 discrepancias,
 todas de la familia de artefactos de extracción ya declarada (interletraje de
 cubierta, versalitas, llamadas de nota, folios del Contenido). Ninguna toca
 el contenido.
+
+---
+
+## Tanda: homogeneización editorial y nomenclatura (28 de agosto de 2026)
+
+### Reconciliación previa
+- Se rehízo la tanda desde el respaldo anterior a ella, esta vez **sin borrar**
+  los rótulos intermedios idiosincráticos de cada testimonio de la Segunda
+  Parte. Solo se renombraron los extremos (primero → «Antecedentes», último →
+  «Cierre»): 28 rótulos. Los 89 rótulos intermedios se conservan, conforme a la
+  instrucción expresa de no homogeneizarlos.
+
+### Nomenclatura de la obra
+- «volumen»/«Volumen» → «libro»/«Libro» en 112 lugares del cuerpo, títulos,
+  índice y portadillas. Quedan intactos, por ser hechos bibliográficos ajenos o
+  sentido de magnitud: la numeración de tomos y números de la publicación
+  periódica del gremio, una dirección electrónica y «de menor volumen».
+- Ficha de catalogación: «Primera edición digital» → «Primera Edición»;
+  «sexagésimo aniversario» → «Sexagésimo Aniversario» (nombres propios).
+- «D. R. ©» → «Derechos Reservados ©» en los dos asientos de la página legal.
+- «Medina-Rodríguez» → «Medina Rodríguez» en 60 lugares del cuerpo; el guion se
+  conserva en los asientos bibliográficos, donde es la forma citable.
+- «mesa directiva»/«mesas directivas» → «Mesa Directiva»/«Mesas Directivas» en
+  cuatro lugares del cuerpo. La única ocurrencia restante está dentro de una
+  cita textual de testimonio y no se toca.
+
+### Primera Parte
+- Retirados los numerales romanos que encabezaban seis subtítulos.
+- Cuatro subtítulos «Balance del periodo» → «Conclusiones», para que todos los
+  capítulos cierren con el mismo rótulo.
+
+### Segunda Parte
+- Cada uno de los catorce testimonios abre ahora con una ficha en línea:
+  persona, expresidencia, año del testimonio y el DOI del libro —uno solo para
+  toda la obra, por no tratarse de una publicación periódica.
+
+### Apéndice del glosario
+- Entradas ordenadas alfabéticamente dentro de cada subsección.
+- Encabezados de subsección y términos definidos compuestos como nombres
+  propios: «Términos Técnicos», «Historia Oral», «Patología Dual», etcétera.
+
+### Aparato de notas
+- Cuatro rótulos de nota al pie unificados a «Nota.»: un solo tipo de nota en
+  todo el libro.
+
+### Composición
+- Dos portadillas nuevas: «Prefacio» y «Cierre».
+- Dos listados extensos del directorio institucional pasan a dos columnas.
+
+### Instrumental de verificación
+- Corregido un defecto del comparador de integridad: reunía las palabras
+  partidas por guion de línea insertando un guion literal, lo que las contaba
+  como discrepancia. Ahora reúne la palabra. Las discrepancias señaladas bajaron
+  de 1715 a 576, y las que quedan son de extracción (versalitas, direcciones
+  electrónicas, folios del índice), no de contenido.
