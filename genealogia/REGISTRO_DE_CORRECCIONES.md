@@ -871,3 +871,40 @@ el contenido.
   Honorario, Socio Fundador, Socio en Adiestramiento, Socio Afiliado.
 - «Sexagésimo Aniversario» capitalizado en las trece menciones de prosa que
   seguían en minúscula.
+
+---
+
+## Tanda: saneamiento de los preliminares, pág. iii-xvi (28 de agosto de 2026, séptima entrega)
+
+### Bug real del paginador, encontrado al revisar la pág. iv
+- La pasada de «reparto de corte» (añadida para eliminar páginas-residuo de
+  dos líneas) reunía el bloque partido en la página siguiente pero dejaba el
+  rótulo o el ornamento que lo anunciaba huérfano al pie de la página
+  anterior. Así, «Quienes hacen este libro» y su primer rótulo quedaban
+  solos en la pág. xv y la semblanza saltaba a la xvi. Corregido: el rótulo
+  (o el punto ornamental) viaja siempre con el bloque que anuncia. Barrido de
+  control: 0 páginas terminan en encabezado huérfano en todo el libro.
+
+### Directorio institucional
+- Revertida la columnación por bloque de las Coordinaciones de Capítulo: al
+  aplicarse región por región, entrelazaba las columnas de un modo confuso.
+  Ahora todo el Directorio corre a una sola columna, uniforme con los
+  Comités y el resto de la sección.
+
+### Página legal
+- Domicilio, teléfono, correo y sitio institucional (antes cuatro líneas
+  sueltas) se compactaron en un solo campo; el detalle completo permanece en
+  «Contacto y presencia digital».
+- Cardinal de páginas de la ficha de catalogación corregido a 303 (quedaba
+  en 289, de una tanda anterior).
+
+### Contacto y semblanzas
+- Domicilio de «Contacto y presencia digital» sin dos puntos en la prosa.
+- Fechas del Directorio, de la nota de verificación de Contacto y de la
+  semblanza del editor escritas con letra.
+- Semblanza del compilador sin dos puntos tras «Como Compilador de este
+  libro».
+
+Verificado: 0 páginas casi vacías, 0 páginas terminadas en encabezado
+huérfano, comparador de integridad sin discrepancias nuevas, ambos
+flipbooks resincronizados.
