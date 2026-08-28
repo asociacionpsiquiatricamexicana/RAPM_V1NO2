@@ -1054,9 +1054,56 @@ flipbooks resincronizados.
 ### Pendiente
 - Reconstruir el paginador del flipbook (en pausa, decisión del
   compilador).
-- Por confirmar: ubicación exacta del pasaje de Camarena en el capítulo
-  III («cap3 3,1 Cancún se rompe»), el encabezado de ficha de testimonio
-  («BIENIO… ENTREVISTA PRESENCIAL…») que debe recortarse moviendo el dato
-  de la entrevista a notas o fichas, y si cada ficha de Mesa Directiva
-  debe llevar además su propio rótulo H3 (confirmado que sí se quiere;
-  falta implementarlo).
+- El pasaje de Camarena en el capítulo III (caja «Resumen y Puntos Clave»
+  que menciona el Congreso de Cancún) se revisó a fondo, con imagen
+  renderizada del PDF: compone completo, sin roturas. No es un defecto.
+- Por confirmar: el encabezado de ficha de testimonio («BIENIO… ENTREVISTA
+  PRESENCIAL…») que debe recortarse moviendo el dato de la entrevista a
+  notas o fichas, y si cada ficha de Mesa Directiva debe llevar además su
+  propio rótulo H3 (confirmado que sí se quiere; falta implementarlo).
+
+## Tanda: apellido de Alejandro Córdova Córdova y comillas de las voces (28 de agosto de 2026, undécima entrega)
+
+### «Alejandro Córdova» → «Alejandro Córdova Córdova» (confirmado por el compilador)
+- El socio fundador que diseñó el primer emblema de la Asociación aparecía
+  con un solo apellido «Córdova» en el capítulo I y en el Apéndice VI, y
+  con el apellido doblado «Córdova Córdova» en el testimonio de Martha
+  Patricia Ontiveros Uribe (tres apariciones). El compilador confirmó que
+  el apellido doble es el correcto; las dos apariciones con un solo
+  apellido se corrigieron para decir «Alejandro Córdova Córdova».
+
+### Comillas latinas «» restituidas en 118 citas de Voz de la Segunda Parte
+- Barrido programático de los 267 bloques de cita («epi») del libro:
+  en las treinta fichas de Mesa Directiva, las citas reales llevan «»
+  y las notas de ausencia de testimonio («No se conserva registro
+  testimonial…») correctamente no llevan — ese patrón ya estaba bien.
+  Pero las 117 citas de Voz dentro de los catorce testimonios de la
+  Segunda Parte, y una cita de Martha Patricia Ontiveros Uribe reproducida
+  en el Apéndice XIV, no llevaban comillas en absoluto — inconsistencia
+  real que el compilador ya había señalado («algunas con comillas
+  latinas, otras no»). Se restituyeron las «» de apertura y cierre en las
+  118, con la misma convención que ya usan las fichas; el texto de cada
+  cita permanece intacto, capa cero respetada — es aparato tipográfico,
+  no contenido, y la propia norma vigente exige comillas «» con
+  atribución en las citas de testimonio.
+
+### Verificación
+- `libro.py` compone limpio: 297 páginas, ninguna caja desborda.
+  Comparador de integridad: mismas 492 diferencias cosméticas ya
+  documentadas, ninguna nueva. Revisión visual del testimonio de
+  Alejandro Díaz Martínez: la cita de «Antecedentes» ahora abre con «
+  como el resto del aparato. Ambos flipbooks resincronizados.
+
+### Barrido adicional sin hallazgos (verificado, no son defectos)
+- Cero desbalances de paréntesis, comillas «» o corchetes en los 1870
+  bloques del libro.
+- Cero dobles espacios o puntuación duplicada real (el único candidato,
+  la URL de CIEP con doble punto antes de «.pdf», se verificó en vivo:
+  esa URL responde 200; la versión con un solo punto da 404 — no se
+  toca).
+- Los treinta bienios de Mesas Directivas son perfectamente continuos,
+  1966 a 2027, sin huecos ni traslapes.
+- «Gremio» en minúscula solo aparece dentro de citas textuales de
+  testimonio (seis veces) — capa cero, correcto.
+- «Medina-Rodríguez» con guion solo aparece en la bibliografía (siete
+  veces), tal como quedó establecido.
