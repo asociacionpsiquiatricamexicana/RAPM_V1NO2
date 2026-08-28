@@ -363,3 +363,40 @@ ser cita testimonial, título o nombre de fuente citada, o estar ya conformes:
   declarados de la extracción (versalitas, interletraje de cubierta y
   portada, capitulares, envoltura de URL, y los folios del Contenido, que la
   comparación no incluye en lo esperado) — ninguna toca el contenido.
+
+### Auditoría posterior: una inconsistencia entre lotes, y una estructura duplicada sin sincronizar
+
+Una revisión adicional, tras aplicar las 105 correcciones, buscó dos cosas que la
+clasificación por lotes no puede detectar por sí sola: ocurrencias del barrido
+original que quedaron fuera de la lista de candidatos, y encabezados
+estructuralmente idénticos que hubieran recibido veredictos distintos por
+haber caído en lotes distintos.
+
+- **Cobertura completa:** las 35 ocurrencias de los mismos términos que el
+  barrido original no incluyó como candidatas están, sin excepción, dentro de
+  bloques `epi`/`ent` (epígrafes y entradillas) de la sección «Los que
+  presidieron» — voz literal de los testigos, protegida por mandato desde el
+  origen. No hay hueco de cobertura.
+- **Inconsistencia real, corregida:** los cuatro encabezados «Mesas Directivas
+  del [n.º] periodo» (bloques 188, 315, 513, 711) son estructuralmente
+  idénticos entre sí. Tres se capitalizaron correctamente; el cuarto (bloque
+  315) fue clasificado como «proteger» con el argumento explícito de que era
+  «consistente en minúscula con los otros tres encabezados idénticos» —
+  argumento que dejó de ser cierto en cuanto los otros tres se corrigieron en
+  lotes distintos y en paralelo, sin visibilidad entre sí. Corregido a «Mesas
+  Directivas del segundo periodo, 1980-2000», y verificado que no queda
+  ningún grupo de encabezados idénticos con formas de capitalización
+  distintas en todo el volumen.
+- **Estructura duplicada sin sincronizar, corregida:** el Contenido no deriva
+  sus renglones del texto de cada encabezado en tiempo de composición, sino
+  de una lista de rótulos (`toc`) que se guarda por separado. La corrección
+  de denominaciones tocó el texto de los bloques pero no esta segunda copia:
+  cinco entradas del Contenido («Mesas directivas del primer/segundo/tercer/
+  cuarto periodo» y «Apéndice V. Mesas directivas») seguían en minúscula
+  aunque sus encabezados correspondientes ya decían «Mesas Directivas». Se
+  sincronizaron las cinco.
+- Verificación final: las 105 correcciones y las 6 de esta segunda pasada
+  aparecen en el texto extraído del PDF recompuesto; cero grupos de
+  encabezados idénticos con capitalización distinta; conteo de páginas,
+  marcadores y comparación palabra por palabra sin cambios respecto a la
+  pasada anterior.
