@@ -947,3 +947,64 @@ flipbooks resincronizados.
   con letras espaciadas, folios del índice automático) y a los bloques de
   Resumen y Puntos Clave desplazados a su posición de despliegue, ninguna
   es contenido perdido o alterado. Ambos flipbooks resincronizados.
+
+---
+
+## Tanda: orden del aparato, capitulares residuales y notas homónimas (28 de agosto de 2026, novena entrega)
+
+### Diagnóstico: el flipbook interactivo pagina distinto que el PDF
+- Confirmado navegando el flipbook Standalone con Playwright: reporta 278
+  páginas contra las 303-304 reales del PDF (`libro.py`, auditado con
+  `cmp.py`, cero páginas casi vacías, ninguna caja desborda). El flipbook
+  trae su propio paginador en JavaScript, independiente del de `libro.py`:
+  comparte los datos y el CSS de bloque, pero no el algoritmo de reparto.
+  Verificado en la página 82 del flipbook: un párrafo de tres líneas arriba
+  y el resto de la página en blanco hasta el folio, mientras el mismo
+  contenido en el PDF compone limpio y completo. La mayoría de los
+  «se rompe / se borra / página en blanco» reportados en esta tanda
+  (pp. 82, 115, 116, 118, 185, Relación enlazada, Criterios de
+  transcripción) son síntomas de este mismo paginador, no pérdida de
+  contenido en los datos. Pendiente: hacer que el flipbook use los cortes
+  de página ya calculados por `libro.py` en vez de recalcularlos en el
+  navegador.
+
+### Orden del aparato: Referencias antes de Notas, en los cuatro capítulos
+- Los capítulos I-IV traían «Notas» antes de «Referencias» al cierre de
+  cada uno (y, en el capítulo III, antes también de «Fuentes primarias del
+  capítulo»). Por indicación del compilador, se invirtió: Referencias (y
+  Fuentes primarias donde aplica) preceden ahora a Notas en los cuatro
+  capítulos. Solo se reordenaron los bloques; ningún contenido de nota ni
+  de referencia se alteró.
+
+### Letras capitulares residuales
+- 38 primeras letras de párrafo mayor (`"cap": true`) quedaban marcadas
+  como capitular en los datos aunque el renderizador ya las trataba como
+  texto corrido desde una tanda anterior. Por indicación del compilador
+  («hay muchas capitulares, quítalas»), se eliminó la marca de los 38
+  bloques y se fusionó la letra de vuelta al texto corrido, sin cambiar ni
+  una palabra.
+
+### «Nota de edición.» homologada a «Nota.»
+- 14 notas de los testimonios (segunda parte) llevaban el rótulo «Nota de
+  edición.» compuesto como texto en cursiva dentro del propio párrafo, en
+  vez del mecanismo estándar de rótulo que ya usan las otras 21 notas de
+  esa misma sección («Nota.»). Por indicación del compilador («no habría
+  diferentes tipos de nota, solo "Nota"»), las 14 pasan al mismo mecanismo
+  de rótulo con «Nota.»; el texto de cada nota permanece intacto, solo se
+  retiró el rótulo duplicado que encabezaba el párrafo.
+
+### Verificación
+- Comparador de integridad sin discrepancias nuevas: mismas 583 diferencias
+  cosméticas ya documentadas. Ambos flipbooks resincronizados.
+
+### Pendiente de esta tanda
+- Reconstruir el paginador del flipbook a partir de los cortes de
+  `libro.py`, para eliminar de raíz los reportes de páginas rotas o en
+  blanco al leer el flipbook.
+- Por confirmar con el compilador: identidad de «Lauro» (voz no
+  justificada), ubicación exacta del pasaje de Camarena en el capítulo
+  III, los rótulos «Ley» del capítulo IV señalados como rotos, el alcance
+  esperado de conclusiones/referencias/fichas en las secciones de Mesas
+  Directivas, y el encabezado de ficha de testimonio («BIENIO… ENTREVISTA
+  PRESENCIAL…») que, según el compilador, debe recortarse y mover el dato
+  de la entrevista a notas o fichas.
