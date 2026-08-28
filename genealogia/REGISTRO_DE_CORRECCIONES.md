@@ -501,3 +501,33 @@ naturaleza). Revisión visual de las páginas señaladas: ficha de Narváez
 abriendo página, «Ficha» con sus campos en línea, «Nota.» con su filete,
 Prefacio sin capitular, semblanzas del editor y del compilador en una sola
 página con su divisor.
+
+---
+
+## Cornisas por expresidente y sincronización de los flipbooks · 28 de agosto de 2026
+
+- **Cornisas de la segunda parte.** «Los que presidieron» ocupa unas sesenta
+  páginas y todas llevaban la misma cornisa. Cada uno de los catorce
+  testimonios declara ahora la suya con el nombre de su autor («RAYMUNDO
+  MACÍAS AVILÉS», …), tomado de las anclas de navegación que la propia
+  fuente ya traía; 493 bloques reasignados, la portadilla y el tramo de la
+  memoria conservan la cornisa de la parte.
+- **Cabecera de sección con su primera ficha.** El salto de página por ficha
+  dejaba sola a la cabecera «Mesas Directivas del [n.º] periodo»; la primera
+  ficha de cada periodo comparte ahora página con su cabecera y las
+  siguientes abren página propia. La extensión queda en **294 páginas** y
+  los dos cardinales impresos se derivaron de nuevo.
+- **Flipbooks sincronizados.** Los dos lectores HTML del repositorio se
+  habían quedado en la tanda inicial y contradecían al PDF (sin
+  denominaciones, sin «Congreso Mundial», extensión vieja). El empaquetado
+  (`Standalone`) recibe el JSON corregido recomprimido en su manifiesto; el
+  plano recibe el JSON en línea y además el módulo de estilo vigente (sin
+  capitulares, fichas en dos niveles, cubierta nueva). Ambos se validaron
+  abriéndolos con el navegador: el plano hojea y muestra «Mesas Directivas»
+  y «294 páginas»; el empaquetado conserva exactamente el comportamiento de
+  arranque que ya tenía.
+
+Verificación: 294 páginas, ninguna caja desborda, comparación palabra por
+palabra sin discrepancias nuevas (512 artefactos declarados de extracción),
+cabecera de sección acompañada y cornisas testimoniales presentes en el
+texto extraído.
