@@ -355,11 +355,12 @@ function sliceBlock(b, from, to) {
     const words = (p.x || '').split(/(\s+)/);
     let kept = '';
     for (const w of words) {
+      if (w === '') continue;
       if (/^\s+$/.test(w)) { if (kept) kept += ' '; continue; }
       const idx = n++;
       if (idx >= (from || 0) && idx < (to == null ? Infinity : to)) kept += (kept && !/\s$/.test(kept) ? ' ' : '') + w;
     }
-    if (kept.trim()) parts.push({ ...p, x: kept });
+    if (kept.trim()) parts.push({ ...p, x: (/^\s/.test(p.x || '') ? ' ' : '') + kept });
   }
   return { ...b, parts, w: [from || 0, to == null ? n : to] };
 }

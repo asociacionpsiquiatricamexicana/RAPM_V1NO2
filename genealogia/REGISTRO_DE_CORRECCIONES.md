@@ -206,3 +206,87 @@ mismo contenido, no la fuente de composición. El PDF que aquí se entrega es, p
 reconstrucción fiel del **contenido** corregido, compuesta a la misma caja (15,5 × 23 cm) y con
 tipografía real, pero no puede certificarse contra la norma tipográfica completa del proyecto
 (escalerillas, viudas, filetes, etc.), que exige compilar desde las fuentes LaTeX originales.
+
+---
+
+## Recomposición del PDF del volumen · 28 de agosto de 2026
+
+El PDF anterior era un facsímil de las 268 «pantallas» que compone el lector
+flipbook: heredaba sus cortes de página y no era un libro. Este se compone desde
+el contenido (los 1937 bloques y sus secciones) con el módulo de estilo del
+propio proyecto, a la caja del volumen, y da **283 páginas**.
+
+### Geometría y escala, medidas y no transcritas
+
+Página 15,5 × 23 cm (439,37 × 651,97 pt) y mancha de 314,57 pt, con márgenes de
+56,7 pt de cabeza, 62,4 pt a los lados y 82,2 pt de pie: las cifras salen del
+propio módulo de estilo del lector, no de una transcripción. Los cuerpos
+medidos sobre el PDF terminado corresponden al catálogo de §3 de la norma:
+10,9 pt de lectura seguida (54 % de los caracteres), 8,6 pt de aparato, 9,0 pt
+de consulta, 6,8 pt de cornisa, 9,5 pt de folio, 19 pt de apertura mayor, 7,6 pt
+de nota. Los cuerpos que quedan fuera del catálogo caen todos en páginas a
+sangre —cubierta, portada interior, portadillas, contracubierta—, que la norma
+exime por tener composición propia, y en las llamadas de nota voladas.
+
+### Composición
+
+- **Paginación por flujo natural**, con la caja llena: llenado mediano del 97 %.
+- **Aperturas mayores en página propia**; el rótulo que precede al título
+  («Testimonio») abre la página con él y no se separa.
+- **Ningún encabezado queda solo al pie**: rótulos, ladillos y fichas se empujan
+  a la página siguiente antes que quedar huérfanos.
+- **Sin viudas**: al partir un bloque entre dos páginas se retrocede por palabras
+  hasta que el resto tenga al menos dos líneas.
+- **Ocho páginas a sangre** (cinco portadillas de parte y tres láminas) más
+  cubierta y contracubierta, con la tinta hasta el corte.
+- **Cornisa** con su filete, y **folio** entre dos filetes ornamentales.
+- **Contenido derivado**, no transcrito: se recalcula sobre la paginación
+  resultante hasta que deja de moverse (dos pases).
+
+### Defectos corregidos en esta tanda
+
+1. **Fusión de palabras al cortar página.** El troceador por palabras
+   (`sliceBlock`) perdía el espacio inicial de un fragmento cuando la página
+   cortaba justo ahí: producía «in memoriamde los apéndices». La causa es que la
+   variable que acumula el texto arranca vacía en cada fragmento y descarta su
+   espacio de cabeza. Corregido en la raíz —se conserva el espacio inicial y se
+   descartan las cadenas vacías que deja el `split`— y aplicado también a los dos
+   flipbooks del repositorio, que arrastraban el mismo defecto.
+2. **Páginas en blanco.** Los bloques que no pintan nada (anclas del índice,
+   cierres de ficha, marcas de corte) podían quedarse solos en una página y
+   producían hojas vacías con cornisa y folio. Diez de ellas. Ahora una página sin
+   ningún bloque visible se funde con la siguiente.
+3. **Párrafo al cuerpo de lectura dentro de una relación de fuentes.** Cinco
+   párrafos embutidos entre entradas de aparato se componían a 10,9 pt mientras
+   las entradas que los rodean van a 8,6: en la página se leían como un cuerpo
+   extraño y quedaban pegados a la entrada siguiente. Se homogeneizan al cuerpo
+   de consulta, sin sangría de primera línea, y con el aire que la entrada
+   siguiente necesita. La regla exige adyacencia real con una entrada de aparato:
+   no se aplica por vivir en una sección que tenga muchas, para no encoger la
+   prosa explicativa de los apéndices.
+4. **Metadatos ausentes.** El PDF anterior no declaraba autoría, idioma ni
+   materia. Ahora lleva título, compilador y editor, editorial, idioma es-MX,
+   licencia, DOI y palabras clave, en XMP y en el diccionario del documento.
+5. **Sin índice de navegación.** Ahora lleva marcadores en dos niveles (nueve
+   raíces y treinta y siete hijos) y etiquetas de página, de modo que el visor
+   muestra el folio del volumen —romano en los preliminares, arábigo en el
+   cuerpo— y no el ordinal de la hoja.
+
+### Comprobaciones
+
+- **Integridad del texto:** de 1236 bloques de texto con más de 60 caracteres,
+  1235 se localizan íntegros en el PDF; el restante también está completo y solo
+  falla la sonda automática por caer sobre un corte de página.
+- Los guiones que el extractor devuelve como U+FFFE (67) no son un defecto del
+  archivo: PDFium marca así los guiones que caen a final de línea.
+- La separación de palabras que el extractor introduce en cornisas y rótulos
+  («PRES IDIERON») es artefacto de la extracción sobre texto con interletraje
+  abierta, no del texto compuesto; el cuerpo del libro no la tiene.
+
+### Anomalía declarada, no corregida
+
+`Apéndice XIII · Relación de fuentes` titula una de sus secciones «Recursos
+institucionales en línea de otras corporaciones». La norma pide «gremio» y nunca
+«corporación», pero aquí la palabra designa a terceros —asociaciones
+psiquiátricas de otros países— y no a la Asociación. Se presume decisión
+deliberada y se consulta, conforme a la regla quinta del taller: no se toca.
