@@ -678,3 +678,61 @@ el contenido.
   como discrepancia. Ahora reúne la palabra. Las discrepancias señaladas bajaron
   de 1715 a 576, y las que quedan son de extracción (versalitas, direcciones
   electrónicas, folios del índice), no de contenido.
+
+---
+
+## Tanda: estructura, orden y disciplina visual (28 de agosto de 2026, segunda entrega)
+
+### Disciplina de una sola raya
+- La raya decorativa queda reservada a dos lugares: bajo la cornisa y sobre el
+  folio. Se retiraron los filetes sueltos tras los títulos, bajo las fichas y
+  sobre los grupos de notas; el separador de sección conserva solo su punto.
+
+### Jerarquías
+- Los títulos con ordinal («Capítulo I», «Apéndice IV») componen ahora el
+  ordinal como antetítulo pequeño y sin punto, y el título real queda solo en
+  su jerarquía, igual que el antetítulo «Testimonio» de las piezas.
+- Las dos clases de cita en bloque (voz transcrita y nota de encuadre)
+  comparten la misma sangría, como un mismo escalón respecto del cuerpo.
+- Rótulos fusionados divididos en título + línea menor en cursiva («Primer
+  Periodo» + descripción con años en letra) en el órgano de difusión, la
+  cronología general y las fuentes no consultadas.
+
+### Orden
+- Segunda Parte reordenada por bienio de la expresidencia: la pieza de
+  Alejandro Díaz Martínez (1986-1987) deja el final —donde la puso su fecha de
+  recepción— y ocupa su lugar en la serie. El índice sigue el nuevo orden.
+- Las galerías de Mesas Directivas se verificaron: ya seguían el orden
+  cronológico.
+
+### Testimonios
+- La ficha y el rótulo «Bienio…» que abrían cada pieza por separado, con
+  cifras a dos tamaños, se fusionaron en una sola ficha: persona,
+  expresidencia, modalidad y fecha de la sesión, y el DOI único del libro.
+- Nombre de Eduardo Ángel Madrigal de León corregido en su ficha (la fusión
+  «ÁngelMadrigal» procedía de un salto de línea rígido).
+- Ficha de Mesa Directiva de Antonio Ruiz Taviel de Andrade homogeneizada
+  (sobraban las fechas vitales entre paréntesis).
+
+### Apéndices
+- Nuevo Apéndice I, «Línea del Tiempo»: un párrafo de prosa corrida por
+  periodo, con conectores y cifras en letra, construido solo con hechos ya
+  documentados en el libro. Los demás apéndices se desplazan.
+- «In memoriam» pasa al final de la serie (Apéndice XV), inmediatamente antes
+  del cierre y los agradecimientos; sus entradas, ya ordenadas por año de
+  fallecimiento, ganan aire entre sí.
+- Renumeración integral: títulos, cornisas, índice y las cien referencias
+  cruzadas por ordinal, reescritas en una sola pasada y verificadas contra la
+  numeración nueva (ninguna referencia huérfana).
+
+### Aparato
+- Las direcciones electrónicas se componen como texto, sin función de enlace:
+  la referencia debe leerse igual en pantalla y fuera de ella.
+- Cornisas de Mesas Directivas y del Sexagésimo Aniversario con mayúscula de
+  nombre propio.
+
+### Paginador
+- Nueva pasada de «reparto de corte»: la página que recibía solo dos líneas
+  residuales de una nota partida antes de un salto duro reúne ahora el bloque
+  entero, o recoloca el corte sin dejar cabezas ni colas de una línea. El
+  barrido de páginas casi vacías cierra en cero.
