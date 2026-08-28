@@ -837,3 +837,21 @@ el contenido.
 - Ambos flipbooks (standalone y plano) resincronizados con el contenido y el
   módulo de estilo vigentes; leyenda de cabecera «Primera Edición»; prueba de
   carga en Chromium sin errores de ejecución.
+
+---
+
+## Tanda: flujo del método y saneamiento final (28 de agosto de 2026, quinta entrega)
+
+- Nota metodológica: caja «Flujo del método» con seis etapas (delimitación,
+  recuperación documental, corpus de Historia Oral, cotejo y triangulación,
+  clasificación del dato, redacción e interpretación), texto de entrada y de
+  salida, cita del modelo de declaración PRISMA 2020 en formato APA y una
+  nota al pie del tipo único del libro.
+- Índice general: reapuntada la fila de Eduardo Ángel Madrigal de León (su
+  folio quedó rezagado tras el reordenamiento por bienio) y verificada la
+  monotonía de folios de todo el índice.
+- Restaurado el verbo historiar donde el barrido de «Historia» con mayúscula
+  lo había alcanzado («la institución que historia», «de suerte que historia
+  una institución»); «órganos de gestión» en la nota del encargo.
+- Auditoría de marcadores de nota: todos los superíndices son numerales
+  arábigos; cero páginas casi vacías; ambos flipbooks resincronizados.
