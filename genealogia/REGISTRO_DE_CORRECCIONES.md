@@ -1107,3 +1107,45 @@ flipbooks resincronizados.
   testimonio (seis veces) — capa cero, correcto.
 - «Medina-Rodríguez» con guion solo aparece en la bibliografía (siete
   veces), tal como quedó establecido.
+
+## Tanda: fichas de Mesa Directiva a H1, ficha de testimonio simplificada (28 de agosto de 2026, duodécima entrega)
+
+### Verificación con imagen de tres puntos pendientes — sin defecto real
+- «Encargo» (Prefacio del autor): renderizado, la «A» inicial es tamaño
+  normal, sin capitular deformando el texto.
+- Ficha de Raymundo Macías Avilés en el Apéndice VI (Mesas Directivas):
+  misma sangría y formato que las diez fichas vecinas.
+- Tamaño y fuente de las citas de Voz: los 149 bloques de cita de
+  testimonios y fichas no traen ninguna anulación de tamaño — a nivel de
+  dato son perfectamente uniformes.
+- Los tres coincidían con el patrón ya diagnosticado: eran síntomas del
+  paginador propio del flipbook, no defectos del PDF.
+- Confirmado también: los rótulos que sobreviven en los testimonios
+  («Testimonio», «Antecedentes», «Cierre») son idénticos y están en el
+  mismo orden en los catorce, sin excepción.
+
+### Cada Mesa Directiva pasa a H1
+- Por indicación del compilador, las treinta fichas de Mesa Directiva
+  (cada una ya abría su propia página, igual que un capítulo o un
+  testimonio) suben de tamaño tipográfico al mismo nivel que esos
+  títulos (H1): 19 puntos en vez de 15, con la misma familia, versalitas
+  y alineación a la izquierda. No entran al índice de Contenido —el
+  compilador pidió el nivel de rótulo, no una entrada de índice— y su
+  comportamiento de paginación (una página propia) no cambió, solo su
+  tamaño de letra.
+
+### Encabezado de ficha de testimonio simplificado
+- La línea «Persona · Expresidencia · [modo y fecha de entrevista] · DOI»
+  incluía el modo y la fecha de la entrevista, que el compilador señaló
+  que no debía ir ahí. Se verificó que las catorce notas de cierre de
+  cada testimonio ya documentan modo y fecha de entrevista de forma
+  completa, así que no se perdía nada al retirarlo del encabezado. Las
+  catorce fichas quedan en «Persona: [nombre] · Expresidencia: [bienio] ·
+  DOI del libro: [doi]».
+
+### Verificación
+- `libro.py` compone limpio: 299 páginas, ninguna caja desborda.
+  Comparador de integridad: 493 diferencias, misma familia cosmética de
+  siempre, ninguna nueva. Revisión visual de la ficha de Raymundo Macías
+  Avilés: título en tamaño H1, igual que un título de testimonio. Ambos
+  flipbooks resincronizados.
