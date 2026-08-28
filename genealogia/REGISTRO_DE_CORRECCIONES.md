@@ -445,3 +445,59 @@ cambios; la comparación palabra por palabra pasa de 535 a 538 discrepancias,
 y las tres nuevas son exactamente los tres ordinales de parte que las
 portadillas ahora imprimen y que el texto esperado de los bloques no
 contiene.
+
+---
+
+## Repaginación por líneas y estructura de fichas · 28 de agosto de 2026
+
+El compilador revisó el PDF página por página y señaló una serie de defectos
+(nota partida en iii-iv, «Kosenko» solo al pie del folio 9, «el Consejo es,»
+como renglón suelto en el 16, la ficha de Calderón Narváez fusionada en el
+13, media línea «FICHA» huérfana, capitulares con hueco). Todos comparten dos
+causas raíz, y se corrigieron en la raíz:
+
+1. **Cortes de página por palabras, no por líneas.** El paginador retrocedía
+   de tres en tres palabras para evitar viudas, y ese retroceso dejaba
+   renglones-muñón al pie («…porque el Consejo es,»). Ahora todo corte cae en
+   frontera natural de línea (la búsqueda maximiza palabras dentro del alto
+   disponible, y el alto solo crece por líneas enteras), y ningún fragmento
+   queda en una sola línea, ni huérfana al pie ni viuda en cabeza: si un
+   bloque no puede dejar dos líneas dignas a cada lado, pasa entero a la
+   página siguiente. La cadena de rótulos que precede a un bloque empujado
+   («Ficha» + su campo) viaja completa con él.
+2. **Fichas de Mesa Directiva en flujo continuo.** Cada una de las treinta
+   fichas abre ahora su propia página, con formato único en las treinta: el
+   bienio como antesala (versalitas grises espaciadas), el nombre como título
+   (versalitas vino, cuerpo 15) y filete corto. La secuencia interior ya era
+   uniforme en la fuente (Semblanza · Gestión · Voz · Fuentes); el desorden
+   percibido era la fusión de páginas, no los datos.
+
+Además, por indicación expresa del compilador:
+
+- **Capitulares retiradas.** Las 38 letras capitulares dejaban un hueco entre
+  la inicial y el resto de la palabra («E l término»); la letra vuelve al
+  flujo normal del párrafo.
+- **«Ficha de la sección» pasa a «Ficha»**, y sus tres campos (Fuentes
+  primarias, Sin consultar al cierre, Límites declarados) dejan el rótulo
+  versal en bloque y entran como lead en cursiva dentro del propio párrafo:
+  se conserva íntegro el contenido y el sentido de cada campo con la mitad
+  del ruido tipográfico.
+- **Interlineado del aparato unificado**: las referencias pasan de 1,32 a
+  1,35, el mismo ritmo que las notas.
+
+### Extensión resultante
+
+La apertura de página por ficha lleva el volumen de 283 a **298 páginas**
+(21 romanas, 275 arábigas, más forros). Los dos cardinales impresos que
+declaran la extensión (portada interior y ficha de catalogación) se
+derivaron de nuevo: dicen 298.
+
+### Verificación
+
+Ninguna caja desborda; marcadores y folios regenerados; búsqueda automática
+de renglones-muñón al pie sobre las 298 páginas: cero reales (los candidatos
+restantes son voladitas de nota y colas de URL, que terminan línea por
+naturaleza). Revisión visual de las páginas señaladas: ficha de Narváez
+abriendo página, «Ficha» con sus campos en línea, «Nota.» con su filete,
+Prefacio sin capitular, semblanzas del editor y del compilador en una sola
+página con su divisor.
