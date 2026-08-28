@@ -290,3 +290,76 @@ institucionales en línea de otras corporaciones». La norma pide «gremio» y n
 «corporación», pero aquí la palabra designa a terceros —asociaciones
 psiquiátricas de otros países— y no a la Asociación. Se presume decisión
 deliberada y se consulta, conforme a la regla quinta del taller: no se toca.
+
+---
+
+## Denominaciones institucionales · 28 de agosto de 2026
+
+El compilador fijó siete reglas de denominación (Comité Ejecutivo es la mesa
+del bienio en curso, Mesas Directivas es el conjunto histórico completo; la
+razón social lleva «, A.C.»; Comité Ejecutivo, Mesas Directivas, Reunión
+Regional, Congreso Regional y Congreso Nacional se capitalizan como nombre
+propio cuando nombran una instancia oficial y concreta; «otras asociaciones»
+y no «corporaciones») bajo un mandato explícito: **«respeta las citas de los
+testimonios, lo demás corrige»**. La capa cero de citas testimoniales y de
+aparato bibliográfico gobierna sobre estas reglas, no al revés.
+
+### Método
+
+Un primer barrido léxico localizó **273 ocurrencias** en el cuerpo del texto y
+**82 entradas** de la relación bibliográfica candidatas a alguna de las siete
+reglas. Cada ocurrencia se clasificó una por una —no por expresión regular
+global— con dos pases independientes (clasificación y verificación
+adversarial), instruidos para proteger siempre que hubiera duda real: cita
+textual de un testimonio, nombre propio, o —en bibliografía— cualquier
+mención dentro de un título, nombre de revista, editorial o URL, que se cita
+tal como se publicó y nunca se retoca.
+
+Un primer intento de corrección automática por sustitución simple se
+descartó antes de aplicarse: alteraba por igual toda ocurrencia de una misma
+cadena dentro de un bloque, sin distinguir el campo de autoría (corregible)
+del título o nombre de revista citados (capa cero) cuando ambos comparten el
+mismo bloque bibliográfico —exactamente el error que la regla quinta del
+taller prohíbe.
+
+### Resultado
+
+**105 correcciones** en 98 bloques (77 en 70 bloques del cuerpo del texto, 28
+en 28 entradas bibliográficas); **250 ocurrencias protegidas** sin tocar por
+ser cita testimonial, título o nombre de fuente citada, o estar ya conformes:
+
+- **Mesas/Mesa Directiva(s)** (26): capitalizada cuando nombra una mesa
+  histórica concreta o el conjunto completo; no se sustituyó nunca por
+  «Comité Ejecutivo» ni viceversa, conforme a la regla primera.
+- **Congreso Nacional** (15) y **Congreso Regional** (14): capitalizados
+  solo ante una instancia numerada o fechada y concreta («el quinto congreso
+  nacional en Guanajuato» → «Congreso Nacional»); protegidos los usos
+  genéricos en plural indefinido («los congresos nacionales» como serie
+  histórica) y las menciones ya capitalizadas.
+- **Comité Ejecutivo** (11): capitalizado como órgano de gobierno del bienio.
+- **Asociación Psiquiátrica Mexicana, A.C.** (8 en el cuerpo, 28 en
+  bibliografía): se añadió «, A.C.» a las menciones en prosa de la razón
+  social y al campo de autor de las entradas bibliográficas cuando la
+  Asociación figura como autora corporativa; se protegieron las citas
+  parentéticas APA, las entradas breves en formato «Autor (Año), Título» del
+  aparato de notas, y toda ocurrencia dentro de un título, nombre de revista
+  o URL —en algunos casos la misma entrada bibliográfica repite el nombre
+  dos veces, una en el campo de autor y otra dentro del título citado; solo
+  la primera se tocó.
+- **Reunión Regional** (2): capitalizada ante una instancia concreta.
+- **corporaciones → asociaciones** (1): resuelve la anomalía declarada en la
+  tanda anterior («Recursos institucionales en línea de otras
+  corporaciones»); el compilador fijó la regla explícitamente en esta
+  sesión, así que deja de ser una decisión pendiente.
+
+### Verificación
+
+- Las 105 correcciones, buscadas literalmente en el texto que devuelve
+  PDFium sobre el PDF recompuesto: las 105 aparecen.
+- El PDF se recompuso íntegro (283 páginas, ninguna caja desborda, folios
+  romanos/arábigos y marcadores sin cambios) y su texto extraído se comparó
+  palabra por palabra contra el texto esperado de los 1937 bloques de la
+  fuente: de 535 discrepancias, las 535 se explican por artefactos ya
+  declarados de la extracción (versalitas, interletraje de cubierta y
+  portada, capitulares, envoltura de URL, y los folios del Contenido, que la
+  comparación no incluye en lo esperado) — ninguna toca el contenido.
