@@ -558,3 +558,9 @@ vacías y un formato de cita discordante.
 
 Verificación: 294 páginas, ninguna caja desborda, comparación palabra por
 palabra estable (512 artefactos declarados), cero páginas casi vacías.
+
+Adenda de la misma tanda: los bloques 525 y 538 llevaban «, A.C.» en la
+forma corta de nota («Asociación Psiquiátrica Mexicana, A.C. (2013),
+Testimonios.») por una decisión de lote sin visibilidad sobre las 21 notas
+idénticas que la clasificación protegió sin él; se unificaron con sus
+vecinas. Flipbooks re-sincronizados.
