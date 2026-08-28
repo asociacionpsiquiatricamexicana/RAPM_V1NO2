@@ -736,3 +736,57 @@ el contenido.
   residuales de una nota partida antes de un salto duro reúne ahora el bloque
   entero, o recoloca el corte sin dejar cabezas ni colas de una línea. El
   barrido de páginas casi vacías cierra en cero.
+
+---
+
+## Tanda: léxico, nomenclatura y cifras en letra (28 de agosto de 2026, tercera entrega)
+
+### Nomenclatura institucional (dictada por el compilador)
+- «Perspectivas» sustituye a «Los que presidieron» como título de la Segunda
+  Parte, en portadilla, índice y cornisas.
+- «Episodios» sustituye a «periodos» en los rótulos estructurales de la
+  Primera Parte (galerías de Mesas Directivas y Línea del Tiempo).
+- Nombramientos de la Mesa Directiva como nombres propios: Presidente,
+  Presidente Electo, Secretario General, Tesorero, Vocal, Vicepresidente,
+  Coordinador de Capítulo. El Comité Ejecutivo queda definido como Presidente,
+  Presidente Electo, Secretario General y Tesorero.
+- Secciones y Coordinaciones como nombres propios; Secciones Académicas,
+  Asamblea General, Gremio y Testimonio con mayúscula en la prosa del
+  compilador; «Sábados con la APM» definidos como Cursos de Educación Continua
+  para Socios Activos.
+- «Miembro» referido a la APM pasa a «socio»; el glosario precisa Socio
+  Activo (al corriente de su anualidad) y Socio en Adiestramiento (forma
+  preliminar del Socio Activo).
+- La APM no gobierna: «gobierno interno» pasa a «gestión interna»; el Comité
+  Ejecutivo es órgano de gestión del bienio.
+- «Congreso Nacional», «Congreso Regional» y «Reunión Nacional» capitalizados
+  en la prosa; corregida la frecuencia del Congreso Nacional (costumbre de
+  cada bienio, no anual).
+
+### Cifras en letra
+- Toda cifra de año, fecha completa y rango de bienio de la prosa corrida se
+  escribe con letra: 296 pasajes convertidos («el jueves treinta y uno de
+  marzo de mil novecientos sesenta y seis», «el bienio de dos mil cuatro a dos
+  mil cinco»). Quedan en número: citas parentéticas APA, fechas vitales entre
+  paréntesis, asientos bibliográficos, fichas, títulos con rango, cronologías
+  y listados de los apéndices de datos, y el DOI.
+
+### Curaduría de estilo
+- Sin gerundios en la prosa del compilador (los lemas citados los conservan);
+  sin superlativos ni calificativos; «impulsar» sustituido por motivar,
+  incentivar o promover; «buscó darles» reformulado como deliberación;
+  «ese círculo» precisado como «dicho grupo de trabajo»; partícula «de la»
+  en minúscula a mitad de frase (de la Fuente, de la Peña).
+- Epígrafes de capítulo atribuidos sin paréntesis y con el año en letra.
+- Rótulos con dos puntos divididos en título + línea menor; «Territorio»
+  explicitado como «El Territorio Mexicano».
+
+### Estructura
+- Cajas «Resumen y puntos clave» (tres a cinco asientos) al abrir cada
+  capítulo de la Primera Parte.
+- Tercera Parte con doble autoría declarada (editor y compilador), apertura
+  «Coda» y cierre «Conclusiones finales»; dedicatoria con los años en letra.
+- Agradecimientos a doble voz con firma conjunta.
+- Siglas del glosario en lista alfabética a dos columnas, sigla en negrita.
+- Los asientos del aparato con dirección electrónica recuperan la
+  justificación (la alternancia con bandera producía un ritmo irregular).
