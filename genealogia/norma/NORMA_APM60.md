@@ -124,7 +124,7 @@ Cuatro escalones de régimen:
 | 8,6 y 8,0 pt | aparato: referencias, relaciones, notas de sección, Contenido |
 | 6,6 pt | nota de estilo y rótulo menor |
 
-Y once papeles nominados, que no son tolerancia sino oficio declarado:
+Y trece papeles nominados, que no son tolerancia sino oficio declarado:
 
 | Medido | Papel |
 |---|---|

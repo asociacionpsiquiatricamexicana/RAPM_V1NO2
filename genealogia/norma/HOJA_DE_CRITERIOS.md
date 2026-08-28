@@ -77,10 +77,11 @@ corresponden a su fecha. Lo que desde entonces cambió, con su instrumento:
 - Volumen de **283 páginas**; el entregable vigente y sus sumas las declara `build.py` en cada
   corrida y las sella en `bloques/`.
 - Criterio 10, superado: los umbrales que absolvían pasaron a **cero con excepciones nominadas**
-  (§2 de la norma). La línea floja de badness 5260 se corrigió y hoy se exige cero.
+  (§2 de la norma). La línea floja de badness 5260 no se corrigió: queda nominada como excepción
+  vigente, con su razón y su sección declaradas en la norma (`libro.tex:128`).
 - Criterio 16, conforme: cero etiquetas duplicadas.
 - Criterio 12, reformulado en §3 de la norma: la escala se declara **en la medida del PDF**
-  (10,9 lectura; 9,0 consulta; 8,0/8,6 aparato; 6,6 nota) con veintiún papeles nominados, y el
+  (10,9 lectura; 9,0 consulta; 8,0/8,6 aparato; 6,6 nota) con trece papeles nominados, y el
   eje noveno la coteja entera.
 - Criterio 6, ampliado: `auditoria.FILETES` (ocho pares) y `FILETES_A_SANGRE` para las páginas
   de composición propia.
