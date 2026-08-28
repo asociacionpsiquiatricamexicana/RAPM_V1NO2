@@ -855,3 +855,19 @@ el contenido.
   una institución»); «órganos de gestión» en la nota del encargo.
 - Auditoría de marcadores de nota: todos los superíndices son numerales
   arábigos; cero páginas casi vacías; ambos flipbooks resincronizados.
+
+---
+
+## Tanda: fusiones de fecha y categorías de socio (28 de agosto de 2026, sexta entrega)
+
+- Reparadas diez fusiones producidas por el conversor de fechas cuando la
+  fecha carecía de año («julioy», «octubreal», «septiembrede»): el mes
+  recupera su espacio. Barrido de control en cero.
+- Días en numeral restantes en prosa pasados a letra (el sismo del
+  diecinueve de septiembre; los días de consulta en la Nota metodológica);
+  las citas parentéticas del aparato y las fichas de datos conservan el
+  numeral por convención declarada.
+- Categorías de socio como nombres propios en la prosa: Socio Activo, Socio
+  Honorario, Socio Fundador, Socio en Adiestramiento, Socio Afiliado.
+- «Sexagésimo Aniversario» capitalizado en las trece menciones de prosa que
+  seguían en minúscula.
