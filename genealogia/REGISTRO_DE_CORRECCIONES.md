@@ -790,3 +790,50 @@ el contenido.
 - Siglas del glosario en lista alfabética a dos columnas, sigla en negrita.
 - Los asientos del aparato con dirección electrónica recuperan la
   justificación (la alternancia con bandera producía un ritmo irregular).
+
+---
+
+## Tanda: identidad editorial y contracubierta (28 de agosto de 2026, cuarta entrega)
+
+### Página legal
+- El criterio editorial queda así consignado: el libro es una publicación
+  propia y única de la Asociación, por parte de su presidencia y de su Comité
+  Ejecutivo, no una publicación periódica ni suplemento, volumen o número de
+  la Revista. Cuenta con el e-ISSN de la Revista (cuyo uso para material
+  digital del mismo titular permite el Instituto Nacional del Derecho de
+  Autor con la debida distinción), con el DOI y con la Reserva de Derechos en
+  trámite. Fecha del criterio con letra; sin dos puntos.
+- «Derechos Reservados», «Presente Edición», «Padrón de Socios Activos» y
+  «Datos Personales» como nombres propios; «obra» pasa a «libro» cuando se
+  refiere a este libro (se conservan las obras ajenas y el verbo obrar).
+
+### Contracubierta
+- Declaración epistemológica dictada por el compilador: el libro nace de una
+  pregunta empírica (¿qué pasó?), explica cuando el hecho lo permite e
+  interpreta cuando el registro calla, con los métodos científicos propios de
+  la Historia (historiográfico, hermenéutico y fenomenológico); la Historia no
+  se inventa ni simplemente se cuenta, se investiga, se cura y se interpreta;
+  el resultado es Historia, no una confección conveniente. «Quince apéndices»
+  y nueva mención de la línea del tiempo.
+
+### Roles y semblanzas
+- El compilador figura como «Historiador Compilador» en portada y semblanza;
+  semblanza reescrita con sus títulos (Médico Cirujano, Especialista en
+  Psiquiatría, Alta Especialidad en Neuropsiquiatría, Maestro en Filosofía de
+  las Ciencias) y su Nombramiento (Editor Adjunto de la Revista; Mesa
+  Directiva del bienio, Comité Científico y Comité Editorial).
+
+### Léxico afinado
+- «Es pertinente» en lugar de «conviene»; «al relato de» en lugar de «a la
+  crónica de»; el tipo de fuente «testimonio único / testimonios de terceros»
+  vuelve a minúscula (solo la pieza de un expresidente es Testimonio);
+  interpretación en lugar de explicación causal donde el registro no la
+  sostiene; «Sección Académica de Urgencias Psiquiátricas» y demás Secciones y
+  Coordinaciones como propios; Historia con mayúscula en la prosa.
+- Reparada una numeración de la Revista dañada por la sustitución
+  volumen→libro (bloque de la página legal).
+
+### Flipbooks
+- Ambos flipbooks (standalone y plano) resincronizados con el contenido y el
+  módulo de estilo vigentes; leyenda de cabecera «Primera Edición»; prueba de
+  carga en Chromium sin errores de ejecución.
