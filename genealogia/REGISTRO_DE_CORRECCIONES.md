@@ -908,3 +908,42 @@ el contenido.
 Verificado: 0 páginas casi vacías, 0 páginas terminadas en encabezado
 huérfano, comparador de integridad sin discrepancias nuevas, ambos
 flipbooks resincronizados.
+
+---
+
+## Tanda: desambiguación de citas homónimas, APA 7 (28 de agosto de 2026, octava entrega)
+
+### Colisión real de cita, con lector afectado
+- Dos decretos distintos de la Cámara de Diputados del H. Congreso de la
+  Unión, ambos fechados el 15 de enero de 2026 (uno reforma la Ley General
+  para la Igualdad entre Mujeres y Hombres, la de Acceso de las Mujeres a
+  una Vida Libre de Violencia y la Ley General de Salud «y otras»; el otro
+  reforma solo la Ley General de Salud), compartían año en el aparato de
+  referencias sin la letra de desambiguación que exige APA 7 cuando dos
+  obras del mismo autor caen en el mismo año. La única cita parentética en
+  el cuerpo que remite a «(Cámara de Diputados del H. Congreso de la Unión,
+  2026)» —sobre la reforma del artículo 73 en materia de igualdad
+  sustantiva y vida libre de violencia— resultaba indistinguible entre
+  ambos asientos con solo el año.
+- Corregido: por orden alfabético de título (ambos empiezan «Decreto por el
+  que se reforman, adicionan y derogan diversas disposiciones de la Ley
+  General...»; «de Igualdad...» precede a «de Salud...»), el decreto de
+  igualdad y violencia queda 2026a y el de la Ley General de Salud a solas
+  2026b, en los dos asientos de referencia (capítulo IV y Apéndice XIII) y
+  en la única cita parentética del cuerpo, que por su contenido —la reforma
+  de igualdad sustantiva— corresponde inequívocamente a 2026a.
+- No se tocó ningún título, revista ni URL de bibliografía (capa cero): la
+  letra se añade solo al año, que es aparato de cita, no contenido
+  bibliográfico.
+- Revisadas también, sin necesidad de corrección: dos entradas de Ontiveros
+  Uribe fechadas «2026» que ya distinguen mes y día completos en el propio
+  asiento; dos entradas de Chávez León «2026» sin cita parentética a año
+  desnudo que las haga ambiguas; y dos entradas del Congreso de la Ciudad
+  de México (2018) que no tienen ninguna cita en el cuerpo que dependa de
+  distinguirlas.
+- Comparador de integridad (`cmp.py`) sin discrepancias nuevas: las 583
+  diferencias del barrido pertenecen a las tres categorías cosméticas ya
+  documentadas (URLs partidas por el extractor de texto del PDF, versalitas
+  con letras espaciadas, folios del índice automático) y a los bloques de
+  Resumen y Puntos Clave desplazados a su posición de despliegue, ninguna
+  es contenido perdido o alterado. Ambos flipbooks resincronizados.
