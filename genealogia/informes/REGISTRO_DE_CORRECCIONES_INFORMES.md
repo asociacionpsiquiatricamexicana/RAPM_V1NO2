@@ -81,22 +81,25 @@ anuncia ciento sesenta entradas únicas y numera hasta FICHA 160.
 
 ---
 
-## 3. Discrepancia que obliga a rectificar el volumen
+## 3. La extensión del volumen: tres cifras y cuál vale
 
-El informe fija la extensión de la obra:
+El flipbook llevaba «páginas» sin cifra en la portada y en la ficha de catalogación. Sobre ese
+hueco se manejaron tres números:
 
-> …es decir, las doscientas ochenta y tres páginas del volumen (folios 1-262).
+| Cifra | Procedencia | Qué mide |
+|---|---|---|
+| 268 | medición mía sobre la composición del flipbook | pantallas que compone el lector digital |
+| 283 | el informe del barrido léxico | páginas físicas del volumen |
+| **262** | **la portada y la ficha del volumen publicado** | **folios numerados, 1-262** |
 
-El flipbook publicado en este mismo repositorio llevaba «páginas» sin cifra en la portada y en
-la ficha de catalogación. En ausencia de otra fuente se había rellenado con **268**, medida
-sobre la composición del propio flipbook. El informe del compilador es mejor autoridad que esa
-medición: la obra canónica se compone con XeLaTeX sobre la clase memoir, y es esa composición
-la que el asiento describe.
+Manda el volumen: su propia portada imprime «Ciudad de México, 2026; 262 páginas» y su ficha de
+catalogación, «Asociación Psiquiátrica Mexicana, A.C., 2026. 262 páginas». Es además la práctica
+catalográfica corriente, que consigna la extensión por el último folio numerado. **Ambos lugares
+quedan en 262 páginas.**
 
-Ambos lugares quedan corregidos a **283 páginas**. Si la cifra definitiva fuera otra, procede
-sustituirla en los bloques 1 y 32 del volumen.
-
----
+Las tres cifras no se contradicen: miden cosas distintas. El informe dice «las doscientas ochenta
+y tres páginas del volumen (folios 1-262)», y ahí conviven las dos medidas sin conflicto. Se deja
+constancia porque un lector que compare el informe con el colofón puede tropezar.
 
 ## 4. Lo que no fue posible hacer
 

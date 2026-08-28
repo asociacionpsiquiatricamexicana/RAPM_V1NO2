@@ -128,6 +128,7 @@ Dos puntos exigen decisión del autor y se dejaron intactos:
    atribuye al **Grupo Latinoamericano de Estudios Transculturales**. Ambas menciones no pueden sostenerse
    tal como están redactadas. Es dato duro y no se enmienda sin fuente.
 
-2. **Extensión del volumen.** Los bloques 1 y 32 llevaban la palabra «páginas» sin cifra. Se rellenó con
-   **268**, medida sobre la composición del propio flipbook (15,5 × 23 cm, la misma caja que declara el
-   colofón). Si el PDF definitivo tuviera otra extensión, procede sustituir la cifra en esos dos lugares.
+2. **Extensión del volumen.** Los bloques 1 y 32 llevaban la palabra «páginas» sin cifra. Quedan en
+   **262 páginas**, que es la cifra que imprimen la portada y la ficha de catalogación del volumen
+   publicado. Véase `informes/REGISTRO_DE_CORRECCIONES_INFORMES.md`, sección 3, sobre las tres
+   cifras que se manejaron y por qué manda esta.
