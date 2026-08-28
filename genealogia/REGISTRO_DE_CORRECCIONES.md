@@ -400,3 +400,48 @@ haber caído en lotes distintos.
   encabezados idénticos con capitalización distinta; conteo de páginas,
   marcadores y comparación palabra por palabra sin cambios respecto a la
   pasada anterior.
+
+---
+
+## Cubierta, contracubierta y portadillas · 28 de agosto de 2026
+
+Por indicación del compilador se reconstruyeron las páginas de composición
+propia, respetando el contenido y con libertad de diagramación:
+
+- **Cubierta.** El nombre de la Asociación se imprimía dos veces a pesos que
+  competían entre sí (como institución en cabeza y dentro del propio título).
+  Ahora el título va en dos cuerpos —«Genealogía» lleva la página y la razón
+  social queda como objeto del estudio, dentro del título— y la institución
+  cierra la cubierta como sello editorial al pie, sobre su filete. Doble
+  filete perimetral, de uso clásico en volúmenes históricos. Se conservan
+  divisa de aniversario, subtítulo, créditos con su rótulo y la mención del
+  XXX Congreso Nacional.
+- **Contracubierta.** Mismo doble filete; al texto de presentación se añade
+  un párrafo que enuncia el orden del volumen en sus tres partes (historia,
+  testimonios, conclusión con sus catorce apéndices), derivado de lo que las
+  propias portadillas declaran. El título parte en dos renglones equilibrados
+  en vez de dejar «A.C.» viudo.
+- **Portadillas de parte.** Las tres partes del volumen ahora declaran su
+  ordinal («Primera parte», «Segunda parte», «Tercera parte») sobre el
+  título, con filete corto; «Umbral» y «Apéndices» no lo llevan por no ser
+  partes numeradas. El Contenido ya las rotulaba así; la página impresa no lo
+  decía.
+- **Reparto equilibrado de líneas** (`text-wrap: balance`) en las páginas de
+  composición centrada, que dejaban palabras viudas al partir un renglón
+  forzado por el ancho («…durante sesenta / años»).
+
+### Congreso Mundial como nombre propio (10)
+
+El compilador añadió «Congreso Mundial» a los nombres propios
+institucionales. Se capitalizaron las diez menciones en prosa del autor que
+nombran una instancia concreta (el de 1971, el de Hamburgo de 1999, el VI de
+Patología Dual y sus referencias anafóricas), incluida la sección «Congreso
+Mundial de 1971 y ética psiquiátrica». Quedan intactas, por capa cero, las
+menciones dentro de testimonios (epígrafes y entradillas) y de la relación
+bibliográfica.
+
+Verificación: 283 páginas, ninguna caja desborda, folios y marcadores sin
+cambios; la comparación palabra por palabra pasa de 535 a 538 discrepancias,
+y las tres nuevas son exactamente los tres ordinales de parte que las
+portadillas ahora imprimen y que el texto esperado de los bloques no
+contiene.
