@@ -132,3 +132,77 @@ Dos puntos exigen decisión del autor y se dejaron intactos:
    **262 páginas**, que es la cifra que imprimen la portada y la ficha de catalogación del volumen
    publicado. Véase `informes/REGISTRO_DE_CORRECCIONES_INFORMES.md`, sección 3, sobre las tres
    cifras que se manejaron y por qué manda esta.
+
+---
+
+## Segunda pasada (revisión exhaustiva)
+
+Tras entrega de los PDF, se hizo una revisión exhaustiva adicional de los tres entregables. Se
+encontraron y corrigieron **tres defectos reales**, ninguno de los cuales estaba en la corrección
+léxico-estilística original:
+
+### 1. Recorte de texto en el margen derecho (PDF del volumen, 12 páginas)
+
+El motor de composición de la aplicación ajusta algunas páginas con un envoltorio
+`width: 102%; transform: scale(0.978); transform-origin: left top;` (un truco de encaje: compone
+el texto en una caja ligeramente más ancha y luego la reduce visualmente). Mi conversión de ese
+envoltorio a `zoom` —necesaria porque el motor de impresión de Chromium pinta `transform` pero no
+lo aplica a la maquetación— dejó intacto el `width: 102%` que lo acompañaba, y esa combinación
+recortaba entre una y tres letras al final de muchas líneas justificadas en 12 páginas. Corregido
+consumiendo ambos valores en la misma sustitución. Verificado contra el original: cobertura de
+texto restaurada al 100 %.
+
+### 2. Espacio perdido tras marca de nota al pie (PDF del volumen, 5 lugares)
+
+Defecto preexistente del propio motor de paginación de la aplicación (no introducido por esta
+corrección): cuando un párrafo con una marca de nota al pie se corta exactamente ahí entre dos
+páginas, el algoritmo de recorte de la aplicación pierde el espacio que sigue a la marca,
+produciendo «legal.⁴Las colecciones» en vez de «legal.⁴ Las colecciones». Ocurre en 5 de los 268
+lugares de corte de página. Corregido a la salida (sin tocar el motor de paginación de la
+aplicación) restituyendo el espacio faltante tras `</sup>` cuando falta.
+
+### 3. Repetición torpe introducida por mi propia corrección anterior (bloque 789)
+
+Al corregir la coordinación «julio y 4 de agosto» → «sesiones de julio y del 4 de agosto» apliqué
+el mismo cambio de texto a los tres bloques que lo contenían sin revisar el contexto de cada uno.
+En el bloque 789 (rótulo de sesión testimonial), el texto ya decía «Videoconferencia en dos
+sesiones.» inmediatamente antes, de modo que el cambio produjo «…en dos sesiones. Sesiones de
+julio…», una repetición torpe de la palabra. Corregido a «Videoconferencia en dos sesiones: julio
+y 4 de agosto de 2026.», que usa dos puntos para introducir las fechas ya anunciadas.
+
+### Verificación adicional sin hallazgos
+
+Segunda pasada de expresiones regulares (dequeísmo y queísmo ampliados, esdrújulas sin tilde,
+comillas rectas, rayas, puntos dobles, palabras repetidas, mayúsculas tras dos puntos, decimales
+sin corregir, espacios dobles, leísmo/laísmo/loísmo, «en base a», «bajo el punto de vista»,
+preposiciones y artículos duplicados) sobre las ~53 000 palabras del volumen: sin hallazgos
+adicionales más allá de los ya descritos. Los candidatos que el barrido produjo resultaron ser, en
+todos los casos, falsos positivos: «periodo» sin tilde (grafía llana aceptada por la RAE, usada de
+forma consistente), «antes que» comparativo (no es queísmo), «asumir» en su acepción correcta de
+tomar un cargo (no es el anglicismo por «suponer»), «vía de» como sustantivo (no es «a través de»),
+y el espaciado triple de los divisores ornamentales «·» de portada y dedicatoria (diseño
+deliberado, no error). Se releyeron además, uno por uno, los 81 cambios de la primera pasada:
+solo el del bloque 789 resultó defectuoso.
+
+### Extensión del volumen: rectificación final
+
+Documentación adicional del proyecto editorial (`CONTENIDO_DE_LAS_PARTES.txt` y
+`HOJA_DE_CRITERIOS.md`, ambos fechados el 26-27 de agosto de 2026) confirma con dos fuentes
+independientes que la extensión correcta y vigente del volumen es **283 páginas** — la misma cifra
+que ya declaraba el informe del barrido léxico y que esta corrección había sustituido erróneamente
+por 262 (tomada de una única extracción de texto que resultó no ser la vigente). **Rectificado a
+283 páginas** en portada y ficha de catalogación, revirtiendo el cambio anterior a 262.
+
+### Lo que esta segunda pasada no pudo hacer
+
+La documentación adicional describe una obra canónica compuesta con XeLaTeX sobre la clase
+`memoir`, con un sistema de auditoría propio (`norma.py`, `build.py`, `diagnostico.py`,
+`sabotaje.py`) que impone un control tipográfico exhaustivo: jerarquía de cuerpos exacta, escala
+legal de dieciséis tamaños nominados, filetes catalogados, cero líneas flojas, cero viudas,
+capa de texto legible en rótulos espaciados, etc. Ese sistema, sus fuentes `.tex` y sus scripts de
+verificación no forman parte de lo que esta sesión tiene disponible: solo se dispone del paquete
+HTML autónomo del lector digital (flipbook), que es una reproducción posterior y aproximada del
+mismo contenido, no la fuente de composición. El PDF que aquí se entrega es, por tanto, una
+reconstrucción fiel del **contenido** corregido, compuesta a la misma caja (15,5 × 23 cm) y con
+tipografía real, pero no puede certificarse contra la norma tipográfica completa del proyecto
+(escalerillas, viudas, filetes, etc.), que exige compilar desde las fuentes LaTeX originales.
