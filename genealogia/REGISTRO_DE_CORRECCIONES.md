@@ -531,3 +531,30 @@ Verificación: 294 páginas, ninguna caja desborda, comparación palabra por
 palabra sin discrepancias nuevas (512 artefactos declarados de extracción),
 cabecera de sección acompañada y cornisas testimoniales presentes en el
 texto extraído.
+
+---
+
+## Reequilibrio de páginas cortas y una cita unificada · 28 de agosto de 2026
+
+El compilador señaló heterogeneidad visual: páginas de continuación casi
+vacías y un formato de cita discordante.
+
+- **Reequilibrio.** Tres páginas quedaban casi vacías (una o dos notas de una
+  ficha que rebasa por poco su página, huérfanas ante el salto de la ficha
+  siguiente; la peor, el folio 73, con un solo renglón de fuentes). El
+  paginador ahora reequilibra: cuando una página de continuación queda por
+  debajo de un cuarto de caja, traslada bloques enteros desde la página
+  anterior —nunca fragmentos partidos, nunca a través de un corte
+  estructural (pb, portadilla, apertura de ficha), y sin dejar rótulos
+  sueltos al pie—. Treinta bloques movidos; cero páginas casi vacías en el
+  barrido de las 294.
+- **Cita unificada.** La única nota del aparato en formato APA («Asociación
+  Psiquiátrica Mexicana, A.C. (2026). Esquela…», bloque 354) pasa a la forma
+  corta de nota que usan sus 21 vecinas («Asociación Psiquiátrica Mexicana
+  (2026), Esquela…»), forma que la clasificación de denominaciones había
+  protegido deliberadamente como convención de cita. Venía así de la fuente;
+  era la única discordante.
+- Flipbooks re-sincronizados con el contenido final.
+
+Verificación: 294 páginas, ninguna caja desborda, comparación palabra por
+palabra estable (512 artefactos declarados), cero páginas casi vacías.
