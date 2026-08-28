@@ -997,14 +997,66 @@ flipbooks resincronizados.
 - Comparador de integridad sin discrepancias nuevas: mismas 583 diferencias
   cosméticas ya documentadas. Ambos flipbooks resincronizados.
 
-### Pendiente de esta tanda
-- Reconstruir el paginador del flipbook a partir de los cortes de
-  `libro.py`, para eliminar de raíz los reportes de páginas rotas o en
-  blanco al leer el flipbook.
-- Por confirmar con el compilador: identidad de «Lauro» (voz no
-  justificada), ubicación exacta del pasaje de Camarena en el capítulo
-  III, los rótulos «Ley» del capítulo IV señalados como rotos, el alcance
-  esperado de conclusiones/referencias/fichas en las secciones de Mesas
-  Directivas, y el encabezado de ficha de testimonio («BIENIO… ENTREVISTA
-  PRESENCIAL…») que, según el compilador, debe recortarse y mover el dato
-  de la entrevista a notas o fichas.
+### Decisión del compilador: PDF como entregable principal
+- El flipbook Standalone pagina con un motor propio (bundle minificado de
+  ~1900 líneas, mide el DOM real en el navegador) que diverge del de
+  `libro.py`: reportaba 278 páginas contra las 297-304 reales del PDF, con
+  páginas casi en blanco y texto cortado (confirmado en las páginas 82,
+  115, 116, 118, 185 y 258 del flipbook). El compilador decidió: el PDF
+  queda como entregable principal por ahora; el flipbook se deja en pausa,
+  sin perseguir cada síntoma individual, hasta que se decida reconstruir
+  su paginador. Verificado en el PDF: Deudas pendientes, Agradecimientos y
+  Colofón están completos y bien compuestos — los reportes sobre esas
+  secciones eran síntomas del flipbook, no defectos reales.
+
+## Tanda: rótulos idiosincráticos retirados, dato de Lauro Castanedo corregido (28 de agosto de 2026, décima entrega)
+
+### Rótulos intermedios idiosincráticos retirados (reversión deliberada de una regla anterior)
+- Por indicación expresa del compilador, se revierte la regla fijada antes
+  en esta misma sesión («no se homogeneizan las etiquetas intermedias
+  idiosincráticas»): se retiran 109 rótulos intermedios — 20 secciones
+  temáticas de los cuatro capítulos (p. ej. «Escisión», «El Territorio
+  Mexicano», «Cancún», «Ley», «Casa») y 89 rótulos idiosincráticos de los
+  testimonios (p. ej. «Guadalajara», «Medianoche», «Zacatecas», «Voto»).
+  Se conservan en los capítulos solo «Conclusiones», «Referencias»,
+  «Notas» y «Fuentes primarias…»; en los testimonios solo el antetítulo
+  «Testimonio», «Antecedentes» y «Cierre». El texto de cuerpo, epígrafes y
+  notas no se tocó: solo se eliminó el bloque de rótulo, y la prosa
+  contigua ahora corre seguida.
+- El TOC (47 entradas, cada una apuntando a un bloque por índice numérico)
+  y las anclas de folio se remapearon para seguir apuntando a los mismos
+  bloques tras el corrimiento de índices por las 109 eliminaciones;
+  verificado que ninguna entrada del TOC apuntaba justo a un bloque
+  eliminado antes de aplicar el remapeo.
+
+### Dato de Lauro Castanedo de Alba corregido (Apéndice VI y Apéndice XV)
+- Ambas menciones («Vocal del Comité de Ética durante el bienio
+  2024-2025») sonaban a un hecho puntual sesenta años después de su
+  presidencia (1990-1991), lo que parecía una atribución mal hecha. El
+  compilador confirmó que el dato es real y continuo: se mantuvo en esa
+  Distinción hasta el bienio de Alejandro Molina López. Reescrito en las
+  dos apariciones a «Vocal del Comité de Ética, cargo que mantuvo hasta el
+  bienio de Alejandro Molina López (2024-2025)», sin alterar ningún otro
+  dato de la ficha ni del pasaje de in memoriam.
+
+### Verificación
+- `libro.py` recompone limpio: 297 páginas, ninguna caja desborda.
+  Comparador de integridad: 492 diferencias (bajó de 583 al desaparecer
+  109 bloques), todas de las mismas categorías cosméticas ya documentadas
+  (URLs partidas, versalitas espaciadas, folios del índice automático);
+  verificado además que los folios que el TOC resuelve ahora son números
+  reales y consistentes, no vacíos ni fuera de rango. Revisión visual del
+  testimonio de Alejandro Díaz Martínez: el antetítulo, ficha y
+  «Antecedentes» permanecen; los cinco rótulos intermedios que tenía
+  desaparecieron y la prosa corre seguida. Ambos flipbooks
+  resincronizados.
+
+### Pendiente
+- Reconstruir el paginador del flipbook (en pausa, decisión del
+  compilador).
+- Por confirmar: ubicación exacta del pasaje de Camarena en el capítulo
+  III («cap3 3,1 Cancún se rompe»), el encabezado de ficha de testimonio
+  («BIENIO… ENTREVISTA PRESENCIAL…») que debe recortarse moviendo el dato
+  de la entrevista a notas o fichas, y si cada ficha de Mesa Directiva
+  debe llevar además su propio rótulo H3 (confirmado que sí se quiere;
+  falta implementarlo).
