@@ -564,3 +564,62 @@ forma corta de nota («Asociación Psiquiátrica Mexicana, A.C. (2013),
 Testimonios.») por una decisión de lote sin visibilidad sobre las 21 notas
 idénticas que la clasificación protegió sin él; se unificaron con sus
 vecinas. Flipbooks re-sincronizados.
+
+---
+
+## Homogeneidad tipográfica del volumen · 28 de agosto de 2026
+
+Revisión página a página del compilador. Los defectos señalados («no
+justificados, sino a izquierda», «dos tipos de nota», «subtítulos de
+apéndices mal», «títulos con espacios entre letras», «siglas rotas»)
+tenían cuatro causas de fondo, corregidas en la raíz:
+
+1. **Solo dos familias iban justificadas.** El cuerpo de lectura y las
+   entradillas se justificaban; las citas de testimonio, las notas, las
+   referencias, las notas al pie, los campos y las atribuciones quedaban en
+   bandera. Esa mezcla era la heterogeneidad que se percibía en cada
+   testimonio y en cada relación de fuentes. Ahora todas las familias de
+   cuerpo van justificadas, y solo quedan en bandera los bloques que
+   contienen una dirección electrónica, donde justificar abriría ríos.
+2. **Guionización española.** El Chromium de composición no trae diccionario
+   de partición, de modo que la justificación quedaba floja. Se instaló un
+   silabeador del español (grupos de ataque, dígrafos, diptongos e hiatos)
+   que inserta guiones blandos: los no usados no dejan rastro y los usados
+   imprimen el guion de fin de línea, como en la edición XeLaTeX. **1278
+   particiones** en el volumen; la mancha cierra pareja y desaparecen las
+   líneas abiertas. Queda declarado que el extractor devuelve esos guiones
+   como U+FFFE, de modo que una palabra partida se busca sin el guion.
+3. **Dos formatos de nota al pie.** Cada testimonio cierra con dos notas: la
+   de fuente («Nota.») llevaba filete y rótulo en cursiva; la de edición
+   («Nota de edición.») no llevaba ni filete ni rótulo y su fórmula de
+   entrada corría dentro del cuerpo. Ahora el filete abre el grupo una sola
+   vez y ambas notas destacan su fórmula con el mismo peso.
+4. **Saltos de línea rígidos en los títulos mayores.** Los títulos de
+   capítulo y apéndice traían saltos heredados de otra medida, que partían
+   el subtítulo en puntos arbitrarios («Glosario, siglas / y definiciones
+   operativas», «Ruta de / recuperación documental»). Se conserva solo el
+   salto que separa el ordinal de su subtítulo —estructural y común a
+   todos— y el resto fluye con reparto equilibrado. El interletraje de la
+   familia de títulos baja de 0,05 a 0,015 em.
+
+La extensión queda en **289 páginas** (la guionización compacta la mancha) y
+los dos cardinales impresos se derivaron de nuevo.
+
+### Declarado, no corregido: el orden de tres testimonios
+
+Once de los catorce testimonios ordenan cada sección como rótulo → cita →
+glosa del compilador. Tres —Ontiveros Uribe, Suárez Mendoza y Cortés
+Morelos— la ordenan como rótulo → glosa → cita. **No se uniformó**, y la
+razón importa: en los once, la glosa comenta la cita que acaba de leerse; en
+los tres, la glosa anuncia la cita que sigue («De esa participación creciente
+surgió…», y a continuación la cita). Invertir el orden dejaría esas glosas
+apuntando al vacío. Es decisión de redacción del compilador, no de
+composición, y solo él puede resolverla reescribiendo los enlaces.
+
+### Verificación
+
+289 páginas, ninguna caja desborda, cero páginas casi vacías; comparación
+palabra por palabra, reuniendo las palabras partidas: 557 discrepancias,
+todas de la familia de artefactos de extracción ya declarada (interletraje de
+cubierta, versalitas, llamadas de nota, folios del Contenido). Ninguna toca
+el contenido.
