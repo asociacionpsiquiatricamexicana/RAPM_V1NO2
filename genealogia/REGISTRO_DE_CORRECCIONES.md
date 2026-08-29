@@ -1608,3 +1608,12 @@ jerarquía (A a F).
 - 332 páginas, ninguna caja desborda. Comparador de integridad: 718 diferencias,
   las mismas de la tanda anterior; sin categorías nuevas. Revisión visual de la
   ficha de Tovar Acosta. PDF sellado y ambos flipbooks resincronizados.
+
+### Enmienda: fecha del documental
+- Por indicación del compilador, la presentación del documental «Burnout. En la
+  línea de fuego» se fecha en dos mil veintiuno, durante la gestión de Bernardo
+  Ng Solís, sin nombrar sede: el enunciado anterior la ligaba al Congreso
+  Nacional híbrido, que el propio libro sitúa en Acapulco, y esa identificación
+  no procede. Queda «en una sola ocasión, en dos mil veintiuno, durante la
+  gestión de Bernardo Ng Solís». 332 páginas, comparador en 718 sin categorías
+  nuevas; PDF sellado y flipbooks resincronizados.
