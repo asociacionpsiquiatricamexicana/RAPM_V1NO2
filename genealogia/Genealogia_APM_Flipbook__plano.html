@@ -377,7 +377,7 @@ function partsHtml(parts, o = {}) {
     let x = esc(o.hyph && !p.url ? guionizar(p.x) : p.x);
     if (p.cap) { out += x; continue; }  // capitular retirada por decisión del compilador: letra normal
     if (p.sc) x = `<span style="font-variant:small-caps;text-transform:lowercase">${x}</span>`;
-    if (p.ls) x = `<span style="letter-spacing:0.12em;word-spacing:-0.12em">${x}</span>`;
+    if (p.ls) x = `<span style="letter-spacing:0.1em;word-spacing:-0.1em">${x}</span>`;
     if (p.i) x = `<em>${x}</em>`;
     if (p.b) x = `<strong style="font-weight:600">${x}</strong>`;
     if (p.sup) x = `<sup style="font-size:0.66em;line-height:0">${x}</sup>`;
@@ -456,13 +456,13 @@ function blockStyle(b, k, ts) {
     // del rotulo, para que no compita con las subsecciones que vienen despues.
     case 'rot': return b.kicker
       ? { ...base, fontFamily: HEAD, fontSize: f(6.8), lineHeight: 1.4, fontWeight: 400,
-          textTransform: 'uppercase', letterSpacing: '0.2em', color: C.gris, margin: `0 0 ${u(2)}` }
+          textTransform: 'uppercase', letterSpacing: '0.1em', color: C.gris, margin: `0 0 ${u(2)}` }
       : { ...base, fontFamily: HEAD, fontSize: f(7.6), lineHeight: 1.4, fontWeight: 600,
-          textTransform: 'uppercase', letterSpacing: '0.13em', color: C.vino, margin: `${u(11)} 0 ${u(4)}` };
+          textTransform: 'uppercase', letterSpacing: '0.1em', color: C.vino, margin: `${u(11)} 0 ${u(4)}` };
     case 'field': return { ...base, fontSize: f(8.6), lineHeight: 1.35,
       textAlign: 'justify', hyphens: 'auto', margin: `0 0 ${u(4)}` };
     case 'fclose': return { ...base, fontFamily: HEAD, fontSize: f(7), lineHeight: 1.4, fontWeight: 600,
-      textTransform: 'uppercase', letterSpacing: '0.12em', color: C.vino, margin: `${u(12)} 0 ${u(4)}` };
+      textTransform: 'uppercase', letterSpacing: '0.1em', color: C.vino, margin: `${u(12)} 0 ${u(4)}` };
     // Las dos clases de cita en bloque comparten sangria: la voz transcrita
     // ('epi') y la nota de encuadre ('ent') se retiran del margen lo mismo, de
     // modo que el lector las lea como un mismo escalon respecto del cuerpo.
@@ -510,7 +510,7 @@ function blockHtml(b, k, ts) {
     </div>`;
   }
   if (b.t === 'cardStart') {
-    return `<div style="${css({ fontFamily: HEAD, fontSize: (6.6 * k * ts) + 'px', letterSpacing: '0.12em', textTransform: 'uppercase', color: C.vino, background: C.crema, display: 'inline-block', padding: `${u(2)} ${u(4)}`, margin: `${u(10)} 0 ${u(3)}`, border: '1px solid ' + C.vino })}">${esc((b.label || 'Ficha de catalogación').replace(/\.$/, ''))}</div>`;
+    return `<div style="${css({ fontFamily: HEAD, fontSize: (6.6 * k * ts) + 'px', letterSpacing: '0.1em', textTransform: 'uppercase', color: C.vino, background: C.crema, display: 'inline-block', padding: `${u(2)} ${u(4)}`, margin: `${u(10)} 0 ${u(3)}`, border: '1px solid ' + C.vino })}">${esc((b.label || 'Ficha de catalogación').replace(/\.$/, ''))}</div>`;
   }
   if (b.t === 'cardEnd') return '';
   if (b.t === 'field') {
@@ -556,7 +556,7 @@ function blockHtml(b, k, ts) {
         <span style="${css({ fontFamily: BODY, fontSize: f2(9.2), lineHeight: 1.34, color: C.tinta, textAlign: 'justify', hyphens: 'auto', flex: '1' })}">${partsHtml(ps, { hyph: true })}</span>
       </div>`).join('');
     return `<div style="${css({ border: '1px solid #c9bdbd', padding: `${u(9)} ${u(9)} ${u(6)}`, margin: `${u(8)} 0 ${u(10)}`, position: 'relative' })}">
-      <div style="${css({ position: 'absolute', top: u(-4.6), left: u(12), background: '#fff', padding: `0 ${u(5)}`, fontFamily: HEAD, fontSize: f2(6.9), fontWeight: 600, letterSpacing: '0.17em', textTransform: 'uppercase', color: C.vino })}">${esc(b.label || 'Resumen y puntos clave')}</div>
+      <div style="${css({ position: 'absolute', top: u(-4.6), left: u(12), background: '#fff', padding: `0 ${u(5)}`, fontFamily: HEAD, fontSize: f2(6.9), fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: C.vino })}">${esc(b.label || 'Resumen y puntos clave')}</div>
       ${li}
     </div>`;
   }
@@ -687,7 +687,7 @@ function tocHtml(toc, pageOf, k, ts) {
   const rows = toc.map((t) => {
     const p = pageOf[t.i];
     const lab = `<span style="${css({ paddingLeft: t.lvl ? u(10) : 0 })}">${esc(t.label)}</span>`;
-    if (t.lvl === 0 && !p) return `<div style="${css({ fontFamily: HEAD, fontSize: (7 * k * ts) + 'px', letterSpacing: '0.12em', textTransform: 'uppercase', color: C.vino, margin: `${u(9)} 0 ${u(3)}` })}">${esc(t.label)}</div>`;
+    if (t.lvl === 0 && !p) return `<div style="${css({ fontFamily: HEAD, fontSize: (7 * k * ts) + 'px', letterSpacing: '0.1em', textTransform: 'uppercase', color: C.vino, margin: `${u(9)} 0 ${u(3)}` })}">${esc(t.label)}</div>`;
     return `<div style="${css({ display: 'flex', alignItems: 'baseline', gap: u(4), fontFamily: BODY, fontSize: (8.6 * k * ts) + 'px', lineHeight: 1.75, color: C.tinta })}">
       ${lab}<span style="${css({ flex: 1, borderBottom: `1px dotted ${C.gris}`, transform: 'translateY(-0.2em)', opacity: 0.6 })}"></span>
       <span style="${css({ fontVariantNumeric: 'tabular-nums', color: C.gris })}">${p || ''}</span></div>`;
@@ -2999,7 +2999,7 @@ h3 { font-size: 25px; }
 h4 { font-size: 20px; }
 h5 { font-size: 16px; }
 h6 { font-size: 13px; }
-h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+h6 { letter-spacing: 0.08em;word-spacing:-0.08em; text-transform: uppercase; }
 p { margin: 0 0 var(--space-3); }
 a { color: var(--color-accent); text-underline-offset: 3px; }
 img { display: block; max-width: 100%; }
@@ -3090,7 +3090,7 @@ textarea.input { min-height: 90px; resize: vertical; }
   display: flex; flex-direction: column; gap: var(--space-2);
   padding: var(--space-3); border-radius: var(--radius-md); background: transparent; border: 1px solid var(--color-divider);
 }
-.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-kicker { font-size: 10px; letter-spacing: 0.1em;word-spacing:-0.1em; text-transform: uppercase; color: var(--color-accent); }
 .card-title {
   font-family: var(--font-heading); font-weight: var(--font-heading-weight);
   font-size: 17px; line-height: 1.2;
@@ -3107,7 +3107,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 /* — tags — */
 .tag {
   display: inline-flex; align-items: center; font-size: 11px;
-  letter-spacing: 0.02em; padding: 3px 10px;
+  letter-spacing: 0.02em;word-spacing:-0.02em; padding: 3px 10px;
   border-radius: calc(var(--radius-md) * 0.75);
 }
 .tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
@@ -3131,7 +3131,7 @@ textarea.input { min-height: 90px; resize: vertical; }
 /* — tables — */
 .table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .table th {
-  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  text-align: left; font-size: 11px; letter-spacing: 0.08em;word-spacing:-0.08em; text-transform: uppercase;
   color: color-mix(in srgb, var(--color-text) 60%, transparent);
   padding: var(--space-2); border-bottom: 1px solid var(--color-divider);
 }
@@ -3178,7 +3178,7 @@ const __ds_scope = {};
     a:hover { color: #5E3033; }
     ::selection { background: rgba(125,67,67,.18); }
     .fb-btn { font-family: var(--font-heading); font-weight: 600; font-size: 12px;
-      letter-spacing: 0.09em; text-transform: uppercase; background: transparent;
+      letter-spacing: 0.09em;word-spacing:-0.09em; text-transform: uppercase; background: transparent;
       border: 1px solid var(--color-divider); color: var(--color-text);
       padding: 7px 11px; border-radius: var(--radius-md); cursor: pointer; line-height: 1;
       transition: border-color 140ms, color 140ms, background 140ms; white-space: nowrap; }
@@ -3195,8 +3195,8 @@ const __ds_scope = {};
 <div style="{{ shellStyle }}">
   <header style="{{ headerStyle }}">
     <div style="display:flex;flex-direction:column;gap:2px;min-width:0">
-      <div style="font-family:var(--font-heading);font-weight:600;font-size:16px;letter-spacing:0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Genealogía de la Asociación Psiquiátrica Mexicana, A.C.</div>
-      <div style="font-family:var(--font-heading);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#767070;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Sexagésimo Aniversario, 1966–2026 · Primera Edición</div>
+      <div style="font-family:var(--font-heading);font-weight:600;font-size:16px;letter-spacing:0.01em;word-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Genealogía de la Asociación Psiquiátrica Mexicana, A.C.</div>
+      <div style="font-family:var(--font-heading);font-size:10px;letter-spacing:0.18em;word-spacing:-0.18em;text-transform:uppercase;color:#767070;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Sexagésimo Aniversario, 1966–2026 · Primera Edición</div>
     </div>
     <div style="display:flex;align-items:center;gap:7px">
       <button class="fb-btn" sc-camel-on-click="{{ toggleToc }}" aria-pressed="{{ tocOpen }}">Índice</button>
@@ -3245,7 +3245,7 @@ const __ds_scope = {};
     <button class="fb-btn" sc-camel-on-click="{{ prev }}">← Anterior</button>
     <div style="flex:1;display:flex;align-items:center;gap:14px;min-width:0">
       <input type="range" min="1" max="{{ total }}" value="{{ page }}" sc-camel-on-change="{{ onSlide }}" style="flex:1;min-width:80px" aria-label="Ir a página">
-      <div style="font-size:11.5px;letter-spacing:0.04em;color:#767070;font-variant-numeric:tabular-nums;white-space:nowrap">{{ positionLabel }}</div>
+      <div style="font-size:11.5px;letter-spacing:0.04em;word-spacing:-0.04em;color:#767070;font-variant-numeric:tabular-nums;white-space:nowrap">{{ positionLabel }}</div>
     </div>
     <button class="fb-btn" sc-camel-on-click="{{ next }}">Siguiente →</button>
   </footer>
@@ -3259,7 +3259,7 @@ const __ds_scope = {};
       <sc-if value="{{ searchOpen }}">
         <div style="padding:14px 0 2px">
           <input type="text" value="{{ q }}" sc-camel-on-change="{{ onQuery }}" placeholder="Buscar en el volumen" style="width:100%;font-family:var(--font-body);font-size:13.5px;padding:9px 11px;background:transparent;border:1px solid var(--color-divider);border-radius:var(--radius-md);color:var(--color-text)">
-          <div style="font-family:var(--font-heading);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#767070;padding-top:10px">{{ resultLabel }}</div>
+          <div style="font-family:var(--font-heading);font-size:11px;letter-spacing:0.1em;word-spacing:-0.1em;text-transform:uppercase;color:#767070;padding-top:10px">{{ resultLabel }}</div>
         </div>
       </sc-if>
       <sc-if value="{{ emptyNote }}">
@@ -3284,7 +3284,7 @@ const __ds_scope = {};
   <sc-if value="{{ busy }}">
     <div style="{{ busyStyle }}">
       <div style="font-family:var(--font-heading);font-size:20px;color:#7D4343">{{ busyLabel }}</div>
-      <div style="font-family:var(--font-heading);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#767070">Genealogía · 1966–2026</div>
+      <div style="font-family:var(--font-heading);font-size:11px;letter-spacing:0.16em;word-spacing:-0.16em;text-transform:uppercase;color:#767070">Genealogía · 1966–2026</div>
     </div>
   </sc-if>
 </div>

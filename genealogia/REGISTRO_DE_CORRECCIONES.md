@@ -1659,3 +1659,53 @@ jerarquía (A a F).
   Guillermo Calderón Narváez (sección Voz) y del epígrafe del Primer
   Episodio, antes y después: el hueco entre palabras quedó uniforme. PDF
   sellado y ambos flipbooks resincronizados.
+
+## Tanda: la capa de texto del PDF deja de partir palabras
+
+La tanda anterior dejó declarado, sin corregir, un artefacto: al copiar o
+buscar texto dentro del PDF, algunas palabras en versalitas con seguimiento
+amplio salían partidas por un espacio de más. Esta tanda lo mide y lo corrige.
+
+### Medición
+- Se construyó una sonda que recorre las 332 páginas del PDF y mide, con la
+  geometría real de cada glifo, el hueco entre palabras de cada renglón,
+  comparándolo con la mediana de su propio renglón. Resultado: **ninguna
+  línea del cuerpo del libro queda sobre-justificada** — la corrección de la
+  tanda anterior sobre las citas en bloque cerró ese defecto por completo.
+- La misma sonda contó **ciento cincuenta y una líneas que se rompían al
+  copiarlas**: las ochenta y siete cornisas, los rótulos de subsección de las
+  fichas, el antetítulo «Testimonio», el Contenido y las cajas de datos,
+  además de las cubiertas y las portadillas de parte.
+- Una segunda prueba compuso las voces afectadas con las mismas fuentes y el
+  mismo motor del libro, variando el seguimiento de cero a trece centésimas
+  de eme, y extrayendo el texto con el mismo lector que usan los visores.
+  El umbral resultó nítido y uniforme: **hasta 0,10 em la capa de texto sale
+  íntegra; desde 0,11 em el extractor intercala espacios dentro de las
+  palabras**. Los dígitos de Cormorant Garamond son el punto que primero cede.
+
+### Corrección
+- Se puso techo de 0,10 em al seguimiento de todos los elementos del interior:
+  cornisa, rótulos de subsección, antetítulo de pieza, cierre de ficha,
+  apertura de tarjeta, rótulo de caja de datos y nivel mayor del Contenido.
+  El cambio es de centésimas de eme —a 6,8 puntos, dos centésimas de punto por
+  letra— y no se distingue en la página.
+- No se tocó el seguimiento ancho de las cubiertas ni de las portadillas de
+  parte, que es un rasgo deliberado de composición: son las únicas doce líneas
+  que siguen partiéndose al copiarlas, en cinco páginas.
+- En la interfaz de los dos flipbooks, los rótulos que se escriben como CSS
+  plano quedaban fuera de la compensación central de la tanda anterior y
+  doblaban el espacio entre palabras (subtítulo de cabecera, aviso de carga,
+  botones, cajón de búsqueda). El sincronizador los compensa ahora por sí
+  mismo, de modo que la corrección sobreviva a cada resincronización.
+
+### Verificación
+- 332 páginas, ninguna caja desborda; el archivo de contenido no se tocó, de
+  modo que no hubo deriva posible de texto. Comparador de integridad: 719
+  diferencias frente a 718, y la única de más está en la capa de texto de la
+  portada, que ahora se extrae de otro modo.
+- Líneas que se rompen al copiar: **de ciento cincuenta y una a doce**.
+- Comparación de píxeles entre el PDF anterior y el nuevo en diez páginas
+  representativas: entre el 0,1 % y el 0,5 % de píxeles cambian, y solo en la
+  zona de los rótulos; las dos cubiertas quedan idénticas píxel a píxel.
+- Cotejo visual de la cornisa a seis aumentos, antes y después. Prueba de
+  carga del flipbook plano en el navegador: sin errores, cabecera correcta.
