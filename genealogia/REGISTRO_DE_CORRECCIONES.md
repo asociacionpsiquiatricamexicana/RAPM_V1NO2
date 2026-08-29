@@ -1195,3 +1195,33 @@ datos de referencia que se construye distinta en cada contexto.
   de las delegaciones regionales de la Asociación, y renombrar a ciegas
   arriesgaba confundir ambos sentidos. Pendiente de revisión caso por
   caso si el compilador lo confirma.
+
+### Fase B, segundo incremento: Fichas y Fuentes por episodio
+- «Conclusiones», «Referencias» y «Notas» pasan de H2 a H3 (mismo nivel
+  que «Antecedentes»), consistente con la jerarquía nueva.
+- Se agrega «Fichas» (H3) en los cuatro episodios: tabla compacta de
+  bienio + presidente, derivada de las fichas de Mesa Directiva del
+  periodo correspondiente — dato ya existente, solo reempaquetado.
+- Se agrega «Fuentes» (H3) en los episodios I, II y IV, separando de
+  «Referencias» los asientos autopublicados por la Asociación (su propia
+  página institucional, estatutos, código de ética, la compilación de
+  Testimonios de 2013) y el Archivo de Historia Oral — mismo criterio que
+  el capítulo III ya aplicaba en su «Fuentes primarias del capítulo»,
+  que aquí se retitula simplemente «Fuentes» para quedar parejo con los
+  otros tres. Orden final en los cuatro: Antecedentes, Conclusiones,
+  Referencias, Fichas, Fuentes, Notas.
+- TOC y anclas remapeados por identidad de bloque (no por corrimiento de
+  índice) para sostener con exactitud el reacomodo de los asientos
+  bibliográficos movidos.
+
+### Verificación
+- `libro.py` compone limpio: 301 páginas, ninguna caja desborda.
+  Comparador de integridad: 508 diferencias, misma familia cosmética,
+  ninguna nueva. Revisión visual del Primer Episodio: Fichas, Fuentes y
+  Notas en su lugar y orden correctos, con las dos fuentes
+  institucionales correctamente separadas de las nueve referencias
+  académicas. Ambos flipbooks resincronizados.
+
+Con esto se cierra la Fase B. Sigue la Fase A (fichas de Mesa Directiva,
+la más pesada: redacción nueva de Tesis/Antítesis/Síntesis para las 30
+personas).
