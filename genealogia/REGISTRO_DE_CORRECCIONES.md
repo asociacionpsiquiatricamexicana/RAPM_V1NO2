@@ -1571,3 +1571,40 @@ jerarquía (A a F).
 - 332 páginas, ninguna caja desborda. Comparador de integridad: 718 diferencias,
   las mismas de la tanda anterior; sin categorías nuevas. PDF sellado y ambos
   flipbooks resincronizados.
+
+---
+
+## Tanda: ocho resoluciones del compilador sobre la auditoría (29 de agosto de 2026)
+
+- **Ficha de Tovar Acosta.** La frase sobre el hospital que lleva su nombre era
+  encuadre del compilador con comillas puestas por error, no cita: se retiran
+  las comillas y queda como la nota de encuadre que es.
+- **Ficha de Velasco Fernández.** Se elimina el enunciado que lo declaraba
+  «el único expresidente fallecido de este primer periodo del que se conserva un
+  texto propio de reflexión»: Ramón de la Fuente, también fallecido, dejó texto
+  propio, de modo que la exclusividad no se sostenía.
+- **Citas de Camarena Robles y de Macías Avilés.** Las variantes entre el
+  epígrafe y la sección Voz se conservan tal cual, por decisión del compilador:
+  son citas y no se tocan.
+- **Documental «Burnout. En la línea de fuego».** Se presentó en una sola
+  ocasión, en el Congreso Nacional híbrido que convocó Bernardo Ng Solís, dato
+  que sustituye a la fórmula vaga «en el Congreso Nacional del bienio».
+- **Apéndice VI.** Jacqueline Cortés Morelos fue electa únicamente en el bienio
+  de Bernardo Ng Solís: se retira su mención como presidenta electa del bienio
+  de 2018 a 2019, donde figuraba por duplicado.
+- **Apéndice VIII.** Se elimina el enunciado sobre «varios más» galardonados que
+  serían Socios Honorarios: del cotejo de ambas listas solo resulta una
+  coincidencia, la de María Elena Medina-Mora Icaza.
+- **El rango de 2027.** Era rezago de cuando el proyecto se concibió en tres
+  tomos y no en un libro. El cuarto episodio y el recorte temporal del método
+  cierran en dos mil veintiséis, y se retira el enunciado que hacía cubrir las
+  treinta fichas «hasta dos mil veintisiete».
+- **Cita ambigua del capítulo IV.** «(Asociación Psiquiátrica Mexicana, 2026)»
+  remite al sitio institucional: la cita y sus dos asientos reciben la letra de
+  desambiguación que exige APA 7 (2026a para «Fundación e historia», 2026b para
+  la colección de la publicación periódica).
+
+### Verificación
+- 332 páginas, ninguna caja desborda. Comparador de integridad: 718 diferencias,
+  las mismas de la tanda anterior; sin categorías nuevas. Revisión visual de la
+  ficha de Tovar Acosta. PDF sellado y ambos flipbooks resincronizados.
