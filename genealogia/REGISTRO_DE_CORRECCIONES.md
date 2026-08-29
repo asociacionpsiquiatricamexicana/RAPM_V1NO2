@@ -1429,3 +1429,12 @@ Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
   flipbooks resincronizados.
 
 Con esto se cierra la Fase E. Sigue la Fase F (páginas de descanso).
+
+### Enmienda inmediata, por indicación del compilador
+- La nota del criterio editorial dentro de «Información para Consulta»
+  resultaba intrusiva entre el párrafo de identificación y el
+  identificador digital. Se movió íntegra al cierre de la Página Legal,
+  después de la caja «Fichas», donde acompaña sin interrumpir. La caja
+  incorpora además el número internacional normalizado electrónico
+  (e-ISSN 3061-7979, de la Revista, con la debida distinción), como
+  dictaba la estructura.
