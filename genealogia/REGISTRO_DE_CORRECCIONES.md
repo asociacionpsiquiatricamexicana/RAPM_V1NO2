@@ -1367,3 +1367,65 @@ Con esto se cierra la Fase C, salvo el diagrama del Apéndice II (Fase D).
   la página del diagrama. PDF sellado y flipbooks resincronizados.
 
 Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
+
+---
+
+## Tanda: Fase E — frontispicio (29 de agosto de 2026)
+
+### Corrección de fondo: el Contenido se reancla por identidad
+- Se detectó que las entradas del Contenido guardaban índices de bloque
+  que las reestructuras de esta tanda habían dejado atrás: el índice
+  imprimía folios de hasta treinta páginas de desfase en los apéndices
+  («Apéndice I … 182» cuando abre en 213). Se escribió un reanclado que
+  resuelve cada entrada por su ancla o su título de apertura —no por
+  índice— y queda como paso obligatorio tras toda edición estructural.
+  Con ello los folios del Contenido y los marcadores del PDF vuelven a
+  coincidir con las páginas reales.
+
+### Página Legal
+- Nueva sección con página propia, separada de «Créditos de la edición»:
+  «Página Legal» (H1), «Información para Consulta» (H2) con la
+  identificación, el identificador digital de objeto, la licencia y su
+  alcance; «Avisos» (H3) con los tres avisos ya existentes; «Fichas»
+  (H3) con caja de datos: identificador digital de objeto, licencia,
+  número internacional normalizado electrónico (el de la Revista,
+  empleado con la debida distinción, como declara la propia nota legal),
+  edición e identificador de plataforma. Créditos conserva el pie
+  editorial, el directorio de la casa editora y la ficha de catalogación.
+
+### Directorio y Contacto
+- «Directorio institucional» pasa a «Directorio» (H1); sus grupos
+  (Comité Ejecutivo, Vicepresidencias regionales, Coordinaciones de
+  capítulo, Comités, Secretaría Académica y Secciones, Membresía)
+  suben a H2. «Contacto y presencia digital» pasa a «Contacto» (H2)
+  y su contenido se reformatea como tabla Medio · Dirección (domicilio
+  y atención, correos, sitios, redes sociales), texto íntegro por fila,
+  con su nota de verificación al pie.
+
+### Equipo Editorial
+- «¿Quiénes hacen este libro?» pasa a «Equipo Editorial» (H1), con el
+  orden invertido que se dictó: «Compilador» (H2) primero —José Carlos
+  Medina Rodríguez— y «Editor» (H2) después —David Eduardo Saucedo
+  Martínez—, cada uno con su «Ficha» (H3): nombre, función y obra o
+  cargo, armadas solo con datos ya presentes en el libro.
+
+### Prefacio
+- El subtítulo «Pertinencia de la conservación histórica…» sube a H2;
+  se agrega «Nombre» (H3) con el autor del prefacio; el epígrafe de Jung
+  permanece como cita sin rótulo; «Exordio», «Encargo» y «Referencias»
+  bajan a H3, consistentes con la plantilla general.
+
+### Portada y contracubierta en el Contenido
+- Ambas entran al índice como entradas propias, sin folio (son páginas
+  ciegas); en los marcadores del PDF apuntan a la primera y a la última
+  página reales del volumen.
+
+### Verificación
+- 326 páginas, ninguna caja desborda; comparador en 717 diferencias,
+  familias cosméticas conocidas, sin pérdida. Contenido cotejado contra
+  las páginas reales (Prefacio en folio 1, Apéndice I en 213, Colofón en
+  306). Revisión visual de Página Legal, Contacto, Equipo Editorial y
+  del Contenido. PDF sellado con marcadores de once raíces y ambos
+  flipbooks resincronizados.
+
+Con esto se cierra la Fase E. Sigue la Fase F (páginas de descanso).
