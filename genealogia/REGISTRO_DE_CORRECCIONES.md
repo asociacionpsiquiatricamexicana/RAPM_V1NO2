@@ -1341,3 +1341,29 @@ Con esto se cierra la Fase A. Sigue la Fase C (apéndices).
   ambos flipbooks resincronizados.
 
 Con esto se cierra la Fase C, salvo el diagrama del Apéndice II (Fase D).
+
+---
+
+## Tanda: Fase D — diagrama de flujo del método, Apéndice II (29 de agosto de 2026)
+
+- La caja de texto «Flujo del método» se sustituye por un diagrama de
+  flujo real, al modo de las declaraciones PRISMA: seis cajas con filete
+  en vino sobre fondo crema, conectadas por flechas descendentes dibujadas
+  con CSS (sin depender de glifos de la tipografía), una por etapa —
+  Delimitación, Recuperación documental, Corpus de Historia Oral, Cotejo
+  y triangulación, Clasificación del dato, Redacción e interpretación.
+- El texto de cada etapa se conserva íntegro dentro de su caja (capa
+  cero), incluida la llamada de nota que remite a la referencia PRISMA.
+  El diagrama lleva pie de figura conforme a APA 7 («Figura 1. Flujo del
+  método»). Cada etapa es un bloque independiente, de modo que el
+  paginador puede partir el diagrama entre cajas si hiciera falta; en la
+  composición actual entra completo en una página.
+- Tipo de bloque nuevo en el módulo de estilo y en su gemelo del flipbook.
+
+### Verificación
+- 325 páginas, ninguna caja desborda; comparador en 721 diferencias
+  (seis menos que la tanda anterior: desaparece el desplazamiento de la
+  caja de resumen sustituida), sin categorías nuevas. Revisión visual de
+  la página del diagrama. PDF sellado y flipbooks resincronizados.
+
+Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
