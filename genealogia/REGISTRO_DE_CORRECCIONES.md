@@ -1709,3 +1709,52 @@ amplio salían partidas por un espacio de más. Esta tanda lo mide y lo corrige.
   zona de los rótulos; las dos cubiertas quedan idénticas píxel a píxel.
 - Cotejo visual de la cornisa a seis aumentos, antes y después. Prueba de
   carga del flipbook plano en el navegador: sin errores, cabecera correcta.
+
+## Tanda: revisión de código de la composición
+
+Una revisión del código de composición señaló cuatro puntos. Se comprobó uno
+por uno contra el libro construido, y los cuatro resultaron ciertos, aunque de
+consecuencia muy distinta.
+
+### Un conteo de palabras que podía perder texto sin dejar rastro
+- El paginador acota el corte de un bloque con `wordCount()`, que contaba sobre
+  el texto concatenado del bloque, mientras `sliceBlock()` indexa fragmento por
+  fragmento. Una palabra repartida entre dos fragmentos —una versalita o una
+  cursiva pegada a su puntuación, «siglo xiii.»— valía una en el primero y dos
+  en el segundo. **Cuarenta y ocho bloques del libro tienen esa discrepancia.**
+  Si el corte de página caía justo en ese tope, la cola del bloque quedaba fuera
+  y no se componía en ninguna otra página, sin marca de continuación.
+- Se comprobó bloque por bloque, buscando en el PDF la cola de cada uno de los
+  cuarenta y ocho: **ninguna falta**. El defecto estaba armado pero no había
+  llegado a dispararse con esta composición.
+- Se corrigió igualmente `wordCount()` para que cuente como indexa
+  `sliceBlock()`, de modo que la trampa no quede en pie para la próxima edición.
+
+### Dos filas que declaraban columnas que no tienen
+- En la relación In Memoriam, dos entradas son colectivas —enumeran a varias
+  personas en un solo texto— y se componen a todo lo ancho, abarcando la tabla.
+  Declaraban sin embargo un reparto de dos columnas que el compositor descarta,
+  con razón, por no coincidir con el número de celdas. Se retiró ese dato
+  contradictorio: la página no cambia, y el archivo deja de afirmar algo que no
+  es cierto de esas dos filas.
+
+### El visor tenía su propia cornisa, fuera de toda compensación
+- El componente que pinta cada cara del libro en los dos flipbooks arma su
+  estilo como objetos de JavaScript aplicados directamente, sin pasar por la
+  función que compensa el seguimiento: su cornisa y su folio, y también el
+  rótulo mayor del cajón del Índice, seguían doblando el espacio entre palabras
+  que esta corrección eliminó en todo lo demás. La cornisa del visor estaba
+  además en trece centésimas de eme, por encima del techo fijado para el
+  impreso.
+- Se compensaron los tres y se bajó la cornisa al mismo techo. En el flipbook
+  autónomo ese componente viaja comprimido dentro de su manifiesto, de modo que
+  el sincronizador lo descomprime, lo corrige y lo vuelve a comprimir en cada
+  pasada.
+
+### Verificación
+- 332 páginas, ninguna caja desborda. Comparador de integridad: 719 diferencias,
+  las mismas que antes de esta tanda — el conteo corregido no movió la
+  paginación. Ninguna cola de bloque falta en el PDF.
+- El manifiesto del flipbook autónomo sigue cuadrando con el libro en ida y
+  vuelta. Los dos visores se cargaron en el navegador sin errores, y se
+  fotografió una doble página interior para comprobar la cornisa corregida.
