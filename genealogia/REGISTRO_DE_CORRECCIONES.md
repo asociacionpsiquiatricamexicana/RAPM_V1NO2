@@ -1521,3 +1521,53 @@ jerarquía (A a F).
   nuevo; sin categorías nuevas. Revisión visual del párrafo del capítulo IV, del
   encuadre del Testimonio y del apéndice decimotercero con el asiento nuevo y su
   conteo actualizado. PDF sellado y ambos flipbooks resincronizados.
+
+---
+
+## Tanda de cierre: precisión del expediente registral y hallazgos de auditoría (29 de agosto de 2026)
+
+### El expediente registral, con lo que el compilador aporta
+- La reserva de derechos **vigente** es pública y consta impresa en la propia
+  revista. La **anterior**, caducada por falta de renovación, fue registrada
+  después por un tercero y hoy es propiedad de ese titular: su expediente **no
+  es consultable**, de modo que el libro no puede ofrecer su número, su fecha de
+  vencimiento ni la identidad de quien lo detenta. Por eso el asunto deja de
+  figurar como documentación pendiente de consultar, con su ruta, y pasa a la
+  tercera clase del apéndice duodécimo, la de lo cerrado al Gremio.
+- El hecho tiene testigo: **Alejandro Molina López**, en cuyo bienio la
+  responsabilidad del expediente pasó al compilador. Así consta en la nota
+  cuarta del capítulo IV y en el asiento de conocimiento directo.
+- Se consigna además un indicio material: los ejemplares antiguos conservados
+  por Martha Patricia Ontiveros Uribe y por Enrique Chávez León **no llevan
+  impresa la reserva de derechos**, ausencia coherente con el desconocimiento de
+  la pertinencia de renovarla en tiempo que ambos expresidentes refieren. Ese
+  dato explica, de paso, el recuerdo de Chávez León sobre un trámite «iniciado y
+  no terminado»: es como se ve el problema desde dentro de esa etapa.
+
+### Hallazgos de la auditoría corregidos
+- **Contradicciones de aritmética**: de 1978 a 2014 median treinta y seis años,
+  no «cuatro decenios» (ficha de Pucheu Regis); de 1988 a 2001 median trece, no
+  «al menos tres decenios» (ficha de Salgado Arteaga).
+- **Dato erróneo**: en el congreso de Zacatecas de 1993 la fuente resultó electa
+  **vicepresidente**, no presidente; la presidencia llegó en el bienio 1996-1997.
+- **Ambigüedad de lectura**: «publicados entre mil novecientos ochenta y dos mil
+  ocho» se leía como 1982 más un resto incongruente; pasa a «de mil novecientos
+  ochenta a dos mil ocho».
+- **Gramática**: subjuntivo tras «es pertinente que» («tenga», no «tener»); y
+  concordancia de los pronombres con «su relato», masculino («lo antecede», «lo
+  funda»).
+- **Cifras con letra en la prosa**: cuatro pasajes mezclaban numeral y letra
+  dentro de un mismo rango de fechas. Las cajas de datos conservan el numeral,
+  que ahí es la convención; solo se corrigió la prosa corrida.
+- **Glosario**: WADD y WPA reciben la marca «sigla inglesa de», que el propio
+  glosario aplica a las siglas cuya traducción no reconstruye las letras.
+- **Apéndice VI**: capitalización pareja de los cargos de la Primera Mesa
+  Directiva y nombre completo de Raymundo Macías Avilés.
+- **Apéndice XV**: la cita «(Sacristán, 2010)» carecía de asiento en las
+  Referencias de ese apéndice; se añadió, alfabetizado, con los datos del que ya
+  figuraba en la relación general.
+
+### Verificación
+- 332 páginas, ninguna caja desborda. Comparador de integridad: 718 diferencias,
+  las mismas de la tanda anterior; sin categorías nuevas. PDF sellado y ambos
+  flipbooks resincronizados.
