@@ -1438,3 +1438,30 @@ Con esto se cierra la Fase E. Sigue la Fase F (páginas de descanso).
   incorpora además el número internacional normalizado electrónico
   (e-ISSN 3061-7979, de la Revista, con la debida distinción), como
   dictaba la estructura.
+
+---
+
+## Tanda: Fase F — páginas de descanso entre episodios (29 de agosto de 2026)
+
+- Se agrega una página de descanso al cierre de cada uno de los cuatro
+  episodios, justo antes de su sección de Mesas Directivas: portadilla
+  en vino con filete interior, «Mesas Directivas» en versalitas y, en
+  cursiva, el rango de bienios del periodo. Mismo tratamiento visual que
+  las portadillas de parte ya existentes, sin ordinal, de modo que se
+  lea como una respiración dentro de la parte y no como una división
+  nueva del volumen.
+- El ancla del Contenido de cada relación de Mesas Directivas se mudó
+  delante de su portadilla: antes quedaba pegada a las secciones
+  finales del episodio (Fichas, Fuentes, Notas) y el índice remitía a
+  la página equivocada; ahora la entrada abre en la portadilla, igual
+  que las de parte.
+
+### Verificación
+- 330 páginas (cuatro más, las cuatro portadillas nuevas), ninguna caja
+  desborda. Comparador de integridad: 717 diferencias, exactamente las
+  mismas de la tanda anterior — las portadillas no aportan texto de
+  cuerpo. Revisión visual de las cuatro páginas. PDF sellado y ambos
+  flipbooks resincronizados.
+
+Con esto se cierran las seis fases de la reestructuración integral de
+jerarquía (A a F).
