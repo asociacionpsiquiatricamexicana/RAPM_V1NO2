@@ -1465,3 +1465,59 @@ Con esto se cierra la Fase E. Sigue la Fase F (páginas de descanso).
 
 Con esto se cierran las seis fases de la reestructuración integral de
 jerarquía (A a F).
+
+---
+
+## Tanda: el expediente registral de la publicación periódica (29 de agosto de 2026)
+
+### Diagnóstico: el libro sostenía dos versiones incompatibles
+- El capítulo IV afirmaba que «la denominación **nunca contó** con registro de
+  marca ni con reserva de derechos, de modo que un tercero pudo registrarla».
+  El encuadre y la nota al pie del Testimonio de Enrique Chávez León afirmaban
+  que «la pérdida del título se produjo **por omisión en el trámite de
+  renovación registral**». No haber tenido nunca registro y haberlo perdido por
+  no renovarlo se excluyen mutuamente: el libro no podía sostener ambas.
+- Además, ninguna de las dos versiones estaba sostenida por la fuente que se le
+  atribuía. La cita de Chávez León dice «esa publicación no tenía un registro de
+  derechos reservados terminado: uno se inició, pero no se terminó» —un trámite
+  inconcluso, no un registro caducado—, y el Testimonio de Aldo Antonio Suárez
+  Mendoza, invocado por la nota cuarta del capítulo IV, solo declara que aquello
+  ocurrió «antes de que nos diéramos cuenta de las necesidades… las de los
+  derechos de uso». En ambos lugares se atribuía a un Testimonio una conclusión
+  que no era suya.
+
+### Resolución del compilador
+- El mecanismo queda establecido así: la reserva de derechos al uso exclusivo
+  que amparó el título **se obtuvo**, **no se renovó** a su vencimiento, el
+  numeral quedó libre y **fue registrado por un tercero**, de modo que el Gremio
+  perdió el uso legal de la denominación y **hubo de publicar bajo una nueva**.
+  Con ello el cambio de nombre de dos mil veintidós, que el libro ya
+  documentaba, deja de leerse como decisión editorial y se lee como lo que fue:
+  la salida jurídica al título perdido.
+- El dato se declara por **conocimiento directo del autor**, categoría que el
+  libro ya tenía abierta en el apéndice decimotercero, con asiento fechado; y se
+  abre la **verificación pendiente** del expediente ante el Instituto Nacional
+  del Derecho de Autor, con su ruta en el apéndice duodécimo (constancia del
+  estado de la reserva y de su titular, que establecería fecha de vencimiento,
+  ausencia de renovación e identidad del titular actual).
+
+### Corregido
+- Capítulo IV, párrafo del expediente registral y su nota cuarta: mecanismo
+  correcto y procedencia rehecha.
+- Encuadre y nota al pie del Testimonio de Chávez León, y el párrafo que lo
+  presenta: dejan de atribuirle el mecanismo y le conservan lo que sí documenta
+  —la etapa de informalidad registral, la desconfianza de los socios y el
+  trámite iniciado sin concluir—.
+- Apéndice IX, fila del segundo periodo: enunciaba el mecanismo al revés
+  («no llegó a formalizarse por completo» → «dejó de estar vigente»).
+- Ficha de Chávez León: la pérdida queda «originada en una reserva de derechos
+  no renovada, no en un litigio».
+- Apéndice XIII: asiento nuevo de conocimiento directo (161 asientos).
+- Apéndice XII, Segunda Clase: ruta de la verificación pendiente.
+
+### Verificación
+- 331 páginas, ninguna caja desborda. Comparador de integridad: 718
+  diferencias, una más que la tanda anterior, correspondiente al contenido
+  nuevo; sin categorías nuevas. Revisión visual del párrafo del capítulo IV, del
+  encuadre del Testimonio y del apéndice decimotercero con el asiento nuevo y su
+  conteo actualizado. PDF sellado y ambos flipbooks resincronizados.
