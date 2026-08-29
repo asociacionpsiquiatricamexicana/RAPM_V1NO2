@@ -1281,3 +1281,63 @@ personas).
   y ambos flipbooks resincronizados.
 
 Con esto se cierra la Fase A. Sigue la Fase C (apéndices).
+
+---
+
+## Tanda: Fase C — plantilla de jerarquía y tablas en los quince apéndices (29 de agosto de 2026)
+
+### Apertura de apéndice: ordinal H1, nombre H2
+- La apertura de cada apéndice invierte su jerarquía anterior: «Apéndice N»
+  compone ahora como H1 (versalitas en vino, cuerpo de título) y el nombre
+  baja a H2 (estilo de sección). El mismo tratamiento se aplica a los
+  cuatro episodios («Primer Episodio» H1, nombre temático H2), con lo que
+  queda saldada la separación tipográfica que la Fase B dejó pendiente.
+  Cornisas y Contenido no cambian.
+
+### Plantilla H3 común
+- Cada apéndice incorpora «Generalidades» (H3) sobre su párrafo
+  introductorio ya existente, «Punto Clave» (H3, una síntesis breve nueva
+  derivada del propio apéndice) y «Fichas» (H3, caja de datos de
+  referencia: alcance, cobertura, conteos verificables). Las secciones
+  internas de los apéndices pasan de H2 a H3; los títulos informativos se
+  conservan tal cual (no se homogeneizan nombres, solo el nivel). El
+  Apéndice I conserva sus episodios como H2, por dictado expreso, y suma
+  «Resumen» (H3) al cierre; no lleva Punto Clave ni Fichas.
+
+### Tablas (tipo de bloque nuevo)
+- Se agregó al módulo de estilo (y a su gemelo del flipbook) un par de
+  tipos de bloque, cabecera y fila de tabla, compuestos como retícula con
+  filete: cada fila es un bloque independiente, de modo que el paginador
+  parte entre filas sin maquinaria nueva; la cabecera queda pegada a su
+  primera fila. Convertidos a tabla: V (Expresidente · Bienio · Ubicación,
+  30 filas), VI (Bienio · Presidencia y cargos, 30), VII (Encuentro ·
+  Sede, fecha y lema, 32), VIII (Año · Persona galardonada, 19), IX
+  (Periodo · Alcance · Relato, 3), X (Año · Suceso, 67), XI (Paso ·
+  Gestión, el orden de gestiones propuesto), XIII (Autor · Año · Asiento,
+  160 asientos en veinte grupos) y XV (Persona · Semblanza, 15). Cambio de
+  formato, no de contenido: cada fila conserva su texto íntegro; los
+  asientos que no admiten partición en columnas quedan como fila corrida a
+  todo lo ancho.
+- El Apéndice VII no lleva sección «Referencias» pese al dictado, porque
+  no tiene asientos bibliográficos propios que separar: no se crean
+  secciones vacías (mismo criterio que en las fichas).
+
+### Apéndice II
+- «Límites declarados» y «La relación de Mesas Directivas» dejan de ser
+  secciones de cuerpo y pasan a «Notas» (H3) al cierre, cada una como
+  nota con su título plegado en cursiva de entrada; texto íntegro. El
+  diagrama del flujo del método queda para la fase siguiente.
+
+### Verificación
+- `libro.py` compone limpio: 325 páginas, ninguna caja desborda. Durante
+  la revisión se detectó y corrigió un desborde real de retícula (las
+  columnas sumaban el cien por ciento y el espacio entre columnas recortaba
+  el último glifo de algunas filas; la retícula pasó a fracciones del
+  espacio disponible) y una colisión de claves con el paginador en los
+  bloques de fila partidos entre páginas. Comparador de integridad: 727
+  diferencias, todas de las familias cosméticas documentadas más las
+  cabeceras de tabla en versalitas espaciadas; sin pérdida de contenido.
+  Revisión visual de los apéndices II, V, IX, XI y XIII. PDF sellado y
+  ambos flipbooks resincronizados.
+
+Con esto se cierra la Fase C, salvo el diagrama del Apéndice II (Fase D).
