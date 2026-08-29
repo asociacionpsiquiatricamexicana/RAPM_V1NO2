@@ -1225,3 +1225,59 @@ datos de referencia que se construye distinta en cada contexto.
 Con esto se cierra la Fase B. Sigue la Fase A (fichas de Mesa Directiva,
 la más pesada: redacción nueva de Tesis/Antítesis/Síntesis para las 30
 personas).
+
+---
+
+## Tanda: Fase A — reestructuración de las 30 fichas de Mesa Directiva (29 de agosto de 2026)
+
+### Estructura nueva por ficha
+- Cada ficha queda: bienio (H2, en vino y versalitas, sobre el nombre),
+  nombre del expresidente (H1), cita ad verbatim inmediatamente bajo el
+  título, Semblanza (H3), Tesis (H3), Antítesis (H3), Síntesis (H3),
+  Voz (H3), Referencias (H3, cuando la ficha cita bibliografía formal),
+  Fichas (H3), Fuentes (H3, cuando hay asientos de archivo, entrevista o
+  placas) y Notas (H3, cuando hay notas aclaratorias). Ninguna sección se
+  crea vacía.
+
+### Tesis, Antítesis, Síntesis: redacción nueva
+- La sección «Gestión» se sustituye en las 30 fichas por un análisis en
+  tres partes redactado por el compilador asistido: la lectura favorable
+  del bienio (Tesis), la tensión o límite documentado del mismo periodo
+  (Antítesis) y el cierre del análisis (Síntesis). La redacción se apoya
+  exclusivamente en lo ya documentado en el propio libro (Semblanza,
+  Gestión anterior, Testimonios, deudas y lagunas declaradas): donde no
+  hay fricción documentada, la Antítesis lo declara en vez de fabricarla.
+  El texto de la antigua «Gestión» quedó absorbido por la Semblanza y las
+  tres secciones nuevas sin pérdida factual; la prosa nueva pasó revisión
+  de estilo (sin gerundios: cinco corregidos en pase propio; los que
+  permanecen en página pertenecen a citas textuales de Testimonio, que no
+  se tocan).
+
+### Caja «Fichas» y reparto del aparato
+- El primer párrafo de cada ficha (sede y año del Congreso Nacional del
+  bienio) deja la prosa corrida y se reempaqueta como caja de datos bajo
+  «Fichas»: Cargo, Periodo, Congresos — texto íntegro conservado, capa
+  cero respetada. Con ello la cita queda directamente bajo el título.
+- Las notas de la antigua «Fuentes» se reparten por naturaleza:
+  bibliografía formal a «Referencias»; entrevistas, placas, esquelas,
+  consultas institucionales, el volumen de Testimonios (2013) y la
+  colección de la Revista a «Fuentes»; discrepancias y pendientes de
+  verificación a «Notas». Ningún asiento se reescribió ni se dividió.
+
+### Bienio como H2
+- El renglón del bienio sobre el nombre pasa de antetítulo gris pequeño
+  a jerarquía H2 (versalitas en vino, cuerpo de sección), en el módulo de
+  estilo y en su gemelo del flipbook.
+
+### Verificación
+- `libro.py` compone limpio: 323 páginas (301 antes de la fase; el alza
+  corresponde a las ~90 secciones nuevas de análisis), ninguna caja
+  desborda. Comparador de integridad: 624 diferencias, todas de las
+  familias cosméticas documentadas (versalitas espaciadas, URLs y rangos
+  de años partidos por el extractor, folios del índice), ninguna de
+  contenido. Revisión visual de la ficha fundacional completa (apertura
+  con bienio en vino, cita bajo el título, Tesis/Antítesis/Síntesis,
+  Voz, Referencias, caja de Fichas, Fuentes). PDF sellado con marcadores
+  y ambos flipbooks resincronizados.
+
+Con esto se cierra la Fase A. Sigue la Fase C (apéndices).
