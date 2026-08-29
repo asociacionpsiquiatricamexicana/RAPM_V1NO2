@@ -1149,3 +1149,49 @@ flipbooks resincronizados.
   siempre, ninguna nueva. Revisión visual de la ficha de Raymundo Macías
   Avilés: título en tamaño H1, igual que un título de testimonio. Ambos
   flipbooks resincronizados.
+
+## Tanda: reestructuración integral de jerarquía — Fase B (29 de agosto de 2026, decimotercera entrega)
+
+El compilador dictó una jerarquía H1-H3 nueva para prácticamente todo el
+libro (fichas de Mesa Directiva, capítulos, apéndices, frontispicio).
+Dado el tamaño, se ejecuta en fases separadas y verificadas; ver el plan
+completo en el historial de la sesión. Dos puntos ya confirmados: «Tesis,
+Antítesis, Síntesis» en cada ficha es contenido nuevo que se redacta por
+persona (no un simple cambio de rótulo), y «Fichas H3» es una caja de
+datos de referencia que se construye distinta en cada contexto.
+
+### Capítulos renombrados a Episodios (primer incremento de la Fase B)
+- «Capítulo I-IV» pasa a «Primer/Segundo/Tercer/Cuarto Episodio» en el
+  título, la cornisa, el índice de Contenido y el campo `h` de todos los
+  bloques de cada capítulo — nomenclatura ya usada en el propio libro
+  (Apéndice I y las secciones «Mesas Directivas del [ordinal] episodio»
+  ya se llamaban así).
+- El rango de años sale del título («Fundación e identidad, 1966-1980» →
+  «Fundación e identidad») y se reubica como oración en el primer
+  párrafo del cuerpo. En los episodios II y III el rango ya aparecía de
+  forma natural en la prosa; en I y IV se agregó una oración nueva breve.
+- Se restituye «Antecedentes» como rótulo H3 explícito al inicio del
+  cuerpo de los cuatro episodios (se había retirado en una tanda
+  anterior junto con los demás rótulos idiosincráticos; este se
+  recupera porque es estructural, no idiosincrático).
+- TOC (43 entradas) y anclas remapeados tras insertar los 4 rótulos
+  nuevos.
+
+### Verificación
+- `libro.py` compone limpio: 299 páginas, ninguna caja desborda.
+  Comparador de integridad: 489 diferencias, misma familia cosmética,
+  ninguna nueva. Revisión visual del Primer y Cuarto Episodio: título
+  sin años, cornisa correcta, oración con el rango de años en el primer
+  párrafo, «Antecedentes» en su lugar. Ambos flipbooks resincronizados.
+
+### Pendiente de esta fase (siguiente incremento)
+- Agregar «Fichas H3» (tabla compacta de la Mesa Directiva del episodio)
+  y «Fuentes H3» (separado de Referencias: fuentes de archivo/
+  institucionales vs. bibliografía publicada, siguiendo el patrón que
+  el capítulo III ya usa con «Fuentes primarias del capítulo») a los
+  cuatro episodios.
+- No se tocaron las menciones sueltas de «capítulo primero/segundo…» en
+  prosa corrida (referencias cruzadas): «capítulo» es también el nombre
+  de las delegaciones regionales de la Asociación, y renombrar a ciegas
+  arriesgaba confundir ambos sentidos. Pendiente de revisión caso por
+  caso si el compilador lo confirma.
