@@ -1617,3 +1617,45 @@ jerarquía (A a F).
   no procede. Queda «en una sola ocasión, en dos mil veintiuno, durante la
   gestión de Bernardo Ng Solís». 332 páginas, comparador en 718 sin categorías
   nuevas; PDF sellado y flipbooks resincronizados.
+
+---
+
+## Tanda: corrección del "espacio doble" señalado por el compilador (29 de agosto de 2026)
+
+### Diagnóstico
+- No había ningún espacio doble en el contenido fuente (verificado carácter
+  por carácter: cero ocurrencias). El defecto era real pero de otra
+  naturaleza: el justificado nativo del navegador, sin el algoritmo de
+  LaTeX, sobre-estira el espacio entre palabras en renglones cortos de
+  columna angosta — visible sobre todo en las citas en bloque itálicas
+  («Voz» de cada ficha, epígrafes de episodio y de Testimonio), que llevan
+  sangría a ambos lados. En renglones con muchas palabras cortas (artículos,
+  preposiciones) el hueco entre palabras podía leerse como un espacio doble.
+  Confirmado visualmente antes y después con captura a escala 3×.
+- Corrección aplicada: los bloques de cita en bloque (`epi`, `ent`) pasan de
+  justificado a bandera (alineados a la izquierda), la convención tipográfica
+  estándar para citas indentadas precisamente por este motivo. El cuerpo
+  corrido del libro (`p`, `note`, `ref`, `field`) permanece justificado, sin
+  cambio.
+- De paso, se corrigió un defecto menor relacionado pero distinto: todo texto
+  con `letter-spacing` (versalitas de títulos, rótulos y cornisas) sumaba la
+  separación también al carácter de espacio, de modo que el hueco entre
+  palabras crecía el doble que el hueco entre letras. Se añadió un
+  `word-spacing` negativo que cancela ese doble conteo, aplicado centralmente
+  en la función `css()` del módulo de estilo (un solo punto para todos los
+  usos) y en la cornisa, que se define aparte en CSS plano.
+- Queda documentado, sin corregir por no ser visible en la página impresa:
+  la capa de texto copiable del PDF inserta un espacio espurio dentro de
+  algunas palabras en versalitas con seguimiento amplio («EPISODIO» →
+  «EPI SODIO» al copiar el texto de la cornisa), un artefacto de cómo el
+  extractor de texto interpreta el trazado carácter por carácter que Chrome
+  genera para el seguimiento tipográfico. No afecta la lectura ni la
+  impresión, solo el copiado o la búsqueda de texto dentro del PDF.
+
+### Verificación
+- 332 páginas, ninguna caja desborda. Comparador de integridad: 718
+  diferencias, las mismas que la tanda anterior — el cambio es puramente de
+  composición visual, no de contenido. Revisión visual de la ficha de
+  Guillermo Calderón Narváez (sección Voz) y del epígrafe del Primer
+  Episodio, antes y después: el hueco entre palabras quedó uniforme. PDF
+  sellado y ambos flipbooks resincronizados.

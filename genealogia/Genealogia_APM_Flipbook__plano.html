@@ -377,7 +377,7 @@ function partsHtml(parts, o = {}) {
     let x = esc(o.hyph && !p.url ? guionizar(p.x) : p.x);
     if (p.cap) { out += x; continue; }  // capitular retirada por decisión del compilador: letra normal
     if (p.sc) x = `<span style="font-variant:small-caps;text-transform:lowercase">${x}</span>`;
-    if (p.ls) x = `<span style="letter-spacing:0.12em">${x}</span>`;
+    if (p.ls) x = `<span style="letter-spacing:0.12em;word-spacing:-0.12em">${x}</span>`;
     if (p.i) x = `<em>${x}</em>`;
     if (p.b) x = `<strong style="font-weight:600">${x}</strong>`;
     if (p.sup) x = `<sup style="font-size:0.66em;line-height:0">${x}</sup>`;
@@ -420,6 +420,15 @@ function sliceBlock(b, from, to) {
 
 /* ---------- block styles ---------- */
 function css(o) {
+  // El letter-spacing de un texto plano (no envuelto palabra por palabra en
+  // spans) se suma tambien tras el caracter de espacio, de modo que el hueco
+  // entre palabras crece el doble que el hueco entre letras -- se lee como
+  // un espacio de mas. Un word-spacing negativo, igual al letter-spacing,
+  // cancela ese doble conteo sin tocar cada sitio de llamada.
+  if (o.letterSpacing !== undefined && o.letterSpacing !== null && o.wordSpacing === undefined) {
+    const m = /^(-?[\d.]+)em$/.exec(String(o.letterSpacing));
+    if (m) o = { ...o, wordSpacing: (-parseFloat(m[1])) + 'em' };
+  }
   return Object.entries(o).filter(([, v]) => v !== undefined && v !== null)
     .map(([k, v]) => k.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase()) + ':' + v).join(';');
 }
@@ -457,9 +466,15 @@ function blockStyle(b, k, ts) {
     // Las dos clases de cita en bloque comparten sangria: la voz transcrita
     // ('epi') y la nota de encuadre ('ent') se retiran del margen lo mismo, de
     // modo que el lector las lea como un mismo escalon respecto del cuerpo.
+    // Columna angosta (sangria a ambos lados) mas texto italico: el
+    // justificado del navegador, sin el algoritmo de LaTeX, estira algunos
+    // renglones cortos hasta que el espacio entre palabras se lee como un
+    // espacio doble. Es el defecto senalado por el compilador. Convencion
+    // tipografica estandar para citas en bloque angostas: bandera (alineado
+    // a la izquierda), nunca justificado.
     case 'epi': return { ...base, fontSize: f(10), lineHeight: 1.4, fontStyle: 'italic',
-      textAlign: 'justify', hyphens: 'auto', margin: `${u(cont ? 0 : 6)} ${u(25.5)} ${u(8)} ${u(25.5)}` };
-    case 'ent': return { ...base, fontSize: f(8.6), lineHeight: 1.35, fontStyle: 'italic', textAlign: 'justify',
+      textAlign: 'left', hyphens: 'auto', margin: `${u(cont ? 0 : 6)} ${u(25.5)} ${u(8)} ${u(25.5)}` };
+    case 'ent': return { ...base, fontSize: f(8.6), lineHeight: 1.35, fontStyle: 'italic', textAlign: 'left',
       hyphens: 'auto', margin: `${u(cont ? 0 : 4)} ${u(25.5)} ${u(9)} ${u(25.5)}` };
     case 'note': return { ...base, fontSize: f(8.6), lineHeight: 1.35, color: C.tinta,
       textAlign: 'justify', hyphens: 'auto', margin: `0 0 ${u(5)}`, overflowWrap: 'anywhere' };
