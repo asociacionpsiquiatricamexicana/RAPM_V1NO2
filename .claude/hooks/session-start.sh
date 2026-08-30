@@ -53,11 +53,16 @@ echo "taller: listo. Se compone con «cd genealogia/taller && python3 libro.py»
 # olvidarse. No aborta el arranque: un defecto de configuración no debe impedir
 # que el taller quede listo, solo hay que enterarse de que está.
 VERIF="$RAIZ/.claude/verificar-configuracion.sh"
-if [ -x "$VERIF" ]; then
-  if salida=$("$VERIF" --breve 2>&1); then
-    echo "configuración: sin fallos"
-  else
-    echo "configuración: HAY FALLOS —lo de abajo carga mal y nada más lo avisa—"
-    printf '%s\n' "$salida"
-  fi
+if [ ! -f "$VERIF" ]; then
+  # Saltárselo en silencio seria repetir el defecto que este verificador
+  # existe para cazar: un guion que falta y una comprobacion que deja pasar
+  # sin decir nada. Si no se pudo revisar, se dice.
+  echo "configuración: NO SE REVISÓ — falta ${VERIF#"$RAIZ"/}"
+elif [ ! -x "$VERIF" ]; then
+  echo "configuración: NO SE REVISÓ — ${VERIF#"$RAIZ"/} no es ejecutable (chmod +x)"
+elif salida=$("$VERIF" --breve 2>&1); then
+  echo "configuración: sin fallos"
+else
+  echo "configuración: HAY FALLOS —lo de abajo carga mal y nada más lo avisa—"
+  printf '%s\n' "$salida"
 fi
