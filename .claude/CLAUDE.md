@@ -18,6 +18,10 @@ No se altera **nunca** el texto ajeno. Eso incluye:
 Corregir ahí no es mejorar el libro: es falsear una fuente. Si algo parece un
 error dentro de una cita, se señala en una nota, no se toca el texto.
 
+Antes de confirmar una tanda, lee `docs/git-instructions.md`: qué se verifica
+primero, qué se anota en el registro y qué debe decir el mensaje del commit. No se
+carga solo; hay que abrirlo.
+
 ## Cómo se trabaja
 
 El compilador dirige por tandas. Cada tanda se verifica **midiendo el PDF
