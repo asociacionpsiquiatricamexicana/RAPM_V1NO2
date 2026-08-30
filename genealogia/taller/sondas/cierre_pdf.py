@@ -21,7 +21,14 @@ rotas = []
 for i in range(len(pdf)):
     for ln in pdf[i].get_textpage().get_text_bounded().split("\n"):
         tk = ln.split()
-        if len(tk) >= 4 and sum(1 for x in tk if len(x) == 1) > len(tk) * 0.45:
+        # «y», «o», «a», «e», «u» son palabras enteras del español, no restos de
+        # un rotulo con seguimiento ancho que el extractor rompio en letras
+        # sueltas. Sin excluirlas, un renglon tan corriente como «sesenta y ocho
+        # a» daba el 50 % y se anunciaba como roto: la sonda gritaba lobo, y una
+        # sonda que grita lobo acaba ignorandose el dia que acierta.
+        sueltas = sum(1 for x in tk
+                      if len(x) == 1 and x.lower() not in "yoaeu")
+        if len(tk) >= 4 and sueltas > len(tk) * 0.45:
             rotas.append((i + 1, ln.strip()[:60]))
 print(f"renglones que se parten al copiar: {len(rotas)} {rotas}")
 
