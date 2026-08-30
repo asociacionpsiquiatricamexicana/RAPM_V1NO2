@@ -1849,3 +1849,46 @@ Los dos flipbooks quedan un paso por detrás en este punto por indicación del
 compilador: su pila de familias todavía termina en una sans del sistema, de modo
 que en pantalla el griego se ve en palo seco. Se igualará cuando concluya el
 trabajo sobre el PDF.
+
+## Tanda: el PDF, completo — nada queda sin copiarse ni buscarse
+
+Quedaban doce líneas que no se copiaban ni se encontraban al buscar dentro del
+PDF: las de cubierta y contracubierta y las tres portadillas de parte, cuyo
+seguimiento tipográfico ancho hacía que el lector intercalara espacios dentro de
+las palabras. Se habían dejado por ser un rasgo deliberado de composición. La
+verificación de los nodos mostró que el costo no era estético sino funcional:
+**buscar «Primera parte» dentro del PDF no encontraba nada.**
+
+### Cómo se resolvió sin aplanar el diseño
+- El umbral no es el mismo para todos: depende del cuerpo, de si el rótulo lleva
+  dígitos —los de Cormorant son los primeros en ceder— y de si va en versalita,
+  que el navegador sintetiza a un cuerpo menor. En vez de bajarlos todos a un
+  valor único se midió el techo de **cada** rótulo, componiendo su texto real y
+  extrayéndolo con el mismo lector que usan los visores.
+- Techos aplicados: portadilla de parte, de treinta a doce centésimas de eme;
+  aniversario de cubierta, de veintiocho a once; título de cubierta, de once a
+  ocho; cargos, de veinticuatro a doce; sede, de dieciséis a diez; sello de
+  cubierta, de veinte a doce; pie de contracubierta, de catorce a diez.
+- El ordinal de portadilla se ajustó dos veces: el sondeo aislado daba catorce
+  centésimas por limpias, pero en el libro «Primera» y «Segunda» seguían
+  partiéndose —el umbral depende del par de letras concreto—, de modo que se
+  decidió sobre el libro y no sobre el sondeo.
+
+### Verificación
+- **Renglones que se parten al copiar: ninguno.** El único aviso que queda es un
+  falso positivo de la sonda: «sesenta y ocho a», un renglón de celda estrecha
+  con dos palabras de una letra.
+- Buscar dentro del PDF encuentra ahora «Primera parte», «Segunda parte»,
+  «Tercera parte», «Sexagésimo Aniversario», «de la Asociación Psiquiátrica»,
+  «Historiador Compilador», «Síntesis», «Mesas Directivas», el DOI completo y
+  «ἱστορία».
+- 332 páginas, ninguna caja desborda. Comparador de integridad: 719 diferencias,
+  las mismas. Ninguna cola de bloque falta. El archivo de contenido no se tocó.
+- Cotejo visual de cubierta, contracubierta y portadilla, antes y después: los
+  rótulos quedan un punto más compactos y la composición se sostiene.
+- Tipografías del PDF: las de la edición y, en una sola página, la griega.
+
+### Pendiente declarado
+Los dos flipbooks quedan un paso por detrás, por indicación del compilador: no
+llevan todavía la tipografía griega ni estos techos. Se igualarán ahora que el
+trabajo sobre el PDF concluye.
