@@ -2248,3 +2248,70 @@ Se probó en las dos direcciones, que es lo que hace útil a un instrumento:
 
 Las entradas anteriores no se reescriben. Queda constancia aquí de la cifra
 buena y de por qué la primera estaba de más.
+
+## Tanda: la sonda de marcadores deja de callar lo que no pudo medir (30 de agosto de 2026)
+
+La entrada anterior presentó `sondas/marcadores.py` como verificada. Lo estaba
+en un sentido estrecho —encontraba los dieciocho desfases y salía con código
+uno—, pero una revisión del código mostró que la sonda callaba en tres
+situaciones en las que debía gritar, y esa es la falla que más caro sale en un
+instrumento de verificación: **una sonda que sale en cero cuando no pudo medir
+es peor que no tener sonda**, porque compra confianza sin darla.
+
+Callaba cuando un marcador no resolvía página de destino —lo imprimía, pero
+salía en cero igual—; cuando el PDF no traía ni un solo marcador —cero
+desfasados es, literalmente, ninguno mal—; cuando el título no dejaba palabra
+con que buscar; y, la peor, cuando el rótulo no aparecía ni en su página ni en
+la siguiente: ese marcador se caía del bucle sin dejar rastro.
+
+En el libro publicado había dos así, invisibles hasta hoy: «Portada» y
+«Contracubierta». Ninguno es defecto —su rótulo **nombra** la página en vez de
+estar impreso en ella—, pero la sonda no lo sabía: los ignoraba, que no es lo
+mismo que aprobarlos. Ahora se declaran por nombre en `ROTULO_NO_IMPRESO`, y
+cualquier otro marcador que caiga en esa casilla hace salir uno.
+
+El umbral que separa una portadilla de una página de texto estaba en
+trescientos caracteres, contra los ochenta que el propio comentario decía. La
+diferencia no era cosmética: la Portada mide exactamente trescientos, y
+páginas de contenido real caen en doscientos cuarenta y cuatro, doscientos
+sesenta y seis, doscientos setenta y dos. Medido sobre el libro, las
+portadillas reales van de setenta y cuatro a ciento diez caracteres y la
+página de texto más rala salta a doscientos cuarenta y cuatro; el umbral baja
+a ciento sesenta, que cae en el hueco.
+
+Ahora cada marcador entra en una sola casilla y la suma se imprime, de modo que
+un marcador perdido se ve en la aritmética: **cuarenta y seis** caen sobre su
+rótulo, **uno** en portadilla y **dos** llevan por rótulo el nombre de la
+página. Cuarenta y nueve.
+
+**El libro no se tocó.** El PDF publicado es el mismo; lo que cambió es el
+instrumento que lo mide.
+
+### Verificación
+
+Sobre el PDF publicado: sale en cero y la suma cierra en cuarenta y nueve.
+
+Sobre el PDF anterior al arreglo, recuperado del historial en `925fda0`:
+encuentra los mismos **dieciocho** desfases de siempre, y ahí la suma también
+cierra —veintiocho sobre su rótulo, uno en portadilla, dos declarados,
+dieciocho desfasados—.
+
+Se fabricaron además cuatro PDF averiados a propósito, uno por cada silencio:
+
+- sin marcadores: «el PDF no trae un solo marcador», código uno;
+- con un marcador retrocedido una página sobre página de texto: lo nombra como
+  desfasado, código uno;
+- con un destino roto: «sin página de destino resoluble», código uno;
+- con un título sin palabra útil y otro cuyo rótulo no está en ninguna parte:
+  nombra los dos por separado, código uno.
+
+Antes, los cuatro salían en cero.
+
+### Lo que queda declarado sin corregir
+
+La sonda solo mira la página de destino y la siguiente. Un marcador que
+apuntara **después** de su rótulo no aparecería como desfase, sino en la
+casilla de «no aparece ni aquí ni en la siguiente», que es ruidosa pero no
+nombra la causa. No se corrigió porque ese desfase no se ha observado nunca en
+este libro y el mecanismo que lo produciría —un `anchor` que el paginador
+adelanta— no existe.
