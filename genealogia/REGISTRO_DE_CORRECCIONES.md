@@ -1892,3 +1892,33 @@ verificación de los nodos mostró que el costo no era estético sino funcional:
 Los dos flipbooks quedan un paso por detrás, por indicación del compilador: no
 llevan todavía la tipografía griega ni estos techos. Se igualarán ahora que el
 trabajo sobre el PDF concluye.
+
+## Tanda: el taller entra al repositorio
+
+La verificación de los nodos dejó ver que **ninguno de los cuarenta y ocho
+llevaba el código que produce el PDF**: los commits tocaban dieciséis archivos,
+todos ellos salidas —el PDF, los dos flipbooks, el registro y las normas—. El
+compositor vivía solo en el entorno efímero de trabajo, que se recicla al
+terminar la sesión.
+
+El atenuante era real y se comprobó: el contenido del libro y el módulo de
+estilo **sí** se recuperan del flipbook autónomo publicado, extrayéndolos de su
+manifiesto, y coinciden con los vivos. Lo que no se recuperaba era el compositor
+en Python ni la hoja de tipografías. Dicho de otro modo: el libro se podía volver
+a editar, pero no a componer.
+
+### Qué se sube
+`genealogia/taller/` reúne el paginador (`libro.py`), las medidas del papel
+(`componer.py`), el módulo de estilo y su gemelo de flipbook, la fuente de verdad
+del contenido, la hoja de tipografías incrustadas, las herramientas de
+verificación y sellado, y las ocho sondas escritas a lo largo del proyecto. El
+archivo `taller/LEEME.md` explica el orden del proceso y los cuidados que cuestan
+caro si se olvidan: que toda inserción de bloques desancla el Contenido, que no
+conviene regenerar la hoja de tipografías, que el seguimiento tiene techo y que
+la capa cero no se toca.
+
+### Verificación
+No se afirma que sea reproducible: **se comprobó**. Se copió el taller a un
+directorio limpio, fuera del entorno vivo, y se compuso el libro desde ahí. El
+resultado da las mismas 332 páginas y la misma huella criptográfica del texto
+extraído que el compuesto en el taller de trabajo.
