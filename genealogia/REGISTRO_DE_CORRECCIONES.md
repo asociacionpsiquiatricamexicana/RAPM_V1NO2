@@ -1802,3 +1802,50 @@ familias de fallo que ya mordieron en tandas anteriores.
 - Recuento de tipografías por página, leído del propio PDF: la ajena baja de
   cinco páginas a una, la del griego. Cotejo visual de la viñeta a seis aumentos,
   antes y después.
+
+## Tanda: tipografía griega para el Prefacio
+
+La tanda anterior dejó declarado, sin corregir, que las voces «ἱστορία» e
+«ἵστωρ» del Prefacio caían en la serif por omisión del navegador, porque ni Lora
+ni Cormorant Garamond traen griego politónico. El compilador resolvió incorporar
+una tipografía griega compatible, a criterio del compositor.
+
+### Cómo se eligió
+- Se trajeron cuatro candidatas con griego politónico —EB Garamond, Cardo,
+  Gentium Book Plus y GFS Didot— y se compuso con cada una la frase real del
+  Prefacio, al cuerpo y al ancho de caja del libro.
+- Se comprobó glifo a glifo, no a ojo, que cada una cubre los nueve signos que el
+  libro necesita: las cuatro los cubren.
+- Se midió la altura de x de cada una contra la de Lora, que es la del cuerpo del
+  texto: EB Garamond queda un veinte por ciento por debajo —se lee encogida—,
+  Cardo un doce, y Gentium Book Plus y GFS Didot en torno al nueve.
+- **Se eligió Gentium Book Plus.** Cubre lo necesario, y entre las dos de tamaño
+  más próximo es la de construcción humanista, la misma familia de formas que
+  Lora; GFS Didot es una didona de contraste alto, que junto a Lora se lee
+  afilada. Su griego, además, está dibujado como escritura de pleno derecho y no
+  derivado del latín.
+- La diferencia de tamaño que quedaba se anula con `size-adjust` al ciento diez
+  coma uno por ciento, calculado de las métricas de ambas tipografías: la altura
+  de x del griego iguala exactamente la del texto que lo rodea.
+
+### Cómo se aplicó
+- Las seis caras griegas se incrustan en la hoja de tipografías. No se regeneró
+  el archivo entero a propósito: volver a pedir Lora y Cormorant podría traer
+  versiones con otras métricas y repaginar el libro sin necesidad.
+- La familia entra **detrás** de la latina en las dos pilas, de modo que solo la
+  tomen los signos que la latina no tiene. No hay que marcar el griego en el
+  texto: el mecanismo es el mismo que producía la sustitución, ahora dirigido.
+
+### Verificación
+- 332 páginas, ninguna caja desborda. Comparador de integridad: 719 diferencias,
+  las mismas que la tanda anterior. El archivo de contenido no se tocó.
+- Recuento de tipografías leído del PDF sellado: la sustituta desaparece y
+  Gentium Book Plus queda incrustada en una sola página, la veinte.
+- El griego sigue siendo texto: se extrae del PDF como «ἱστορία» e «ἵστωρ».
+- Cotejo visual a once aumentos, antes y después.
+
+### Pendiente declarado
+Los dos flipbooks quedan un paso por detrás en este punto por indicación del
+compilador: su pila de familias todavía termina en una sans del sistema, de modo
+que en pantalla el griego se ve en palo seco. Se igualará cuando concluya el
+trabajo sobre el PDF.
