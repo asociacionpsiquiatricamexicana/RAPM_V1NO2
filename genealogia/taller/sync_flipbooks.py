@@ -140,11 +140,18 @@ assert back_style == style.decode('utf-8'), 'estilo: ida y vuelta no coincide'
 print(f'standalone OK · {len(back["blocks"])} bloques · {os.path.getsize(OUT)/1024:.0f} KB')
 
 # plano
+# flatten.py rearma el plano desde assets/: ademas del libro y del modulo de
+# estilo necesita la plantilla (template.html) y los recursos del visor —React,
+# ReactDOM, el cargador y el componente de pagina—, que no viven en el
+# repositorio. Sin ellos este ultimo paso no puede correr y el plano publicado
+# se queda como esta.
 r = subprocess.run(['python3', 'flatten.py'], capture_output=True, text=True)
 print(r.stdout.strip())
 if r.returncode != 0:
     print(r.stderr[-800:])
-    raise SystemExit('flatten fallo')
+    raise SystemExit('flatten fallo: el standalone ya quedo actualizado, pero el '
+                     'plano no se pudo rearmar. Comprueba que estan template.html '
+                     'y los recursos del visor en assets/.')
 
 PLANO = 'Genealogia_APM_Flipbook__plano.html'
 plano = compensar_seguimiento(open(PLANO, encoding='utf-8').read())

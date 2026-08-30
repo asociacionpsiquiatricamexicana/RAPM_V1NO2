@@ -78,6 +78,7 @@ assert 'src="%s"'%SUPPORT not in tpl and 'src="%s"'%DSB not in tpl
 
 # --- 6. comprobaciones finales -------------------------------------------
 assert not re.search(r'src="[0-9a-f-]{36}"', tpl), 'quedan referencias por UUID'
-assert 'unpkg.com' not in tpl.split('REACT_URL')[0][:0] or True
+# React y ReactDOM van en linea antes del cargador, de modo que las URL de
+# unpkg que el visor conserva como respaldo no llegan a pedirse.
 open('Genealogia_APM_Flipbook__plano.html','w',encoding='utf-8').write(tpl)
 print('escrito · %.1f MB'%(len(tpl.encode())/1048576))

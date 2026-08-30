@@ -5,6 +5,7 @@ from playwright.sync_api import sync_playwright
 import pypdfium2 as pdfium
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+TALLER = os.path.dirname(HERE)          # las sondas viven un piso mas abajo
 def _chromium():
     """El navegador que compone las paginas.
 
@@ -28,7 +29,7 @@ def _chromium():
 
 
 CHROME = _chromium()
-fuentes = open(os.path.join(HERE, 'fuentes', 'fuentes.css'), encoding='utf-8').read()
+fuentes = open(os.path.join(TALLER, 'fuentes', 'fuentes.css'), encoding='utf-8').read()
 HEAD = "'Cormorant Garamond','Gentium Griego',Georgia,serif"
 TEXTOS = ["Primera Parte", "Segunda Parte", "Tercera Parte"]
 VAL = [0.08, 0.09, 0.10, 0.11, 0.12, 0.13, 0.14]

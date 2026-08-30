@@ -416,7 +416,19 @@ def paginate(page, limit):
             continue
         cur = cur + [[i, 0, best]]
         flush()
-        cur = [[i, best, None]]
+        # La cola puede ser mas alta que la caja entera (el Contenido, una
+        # relacion larga): se sigue partiendo aqui, como el bloque que no cabe
+        # en pagina vacia. Antes viajaba entera a la pagina siguiente y, cuando
+        # el bloque posterior la cerraba, lo que rebasaba lo recortaba la caja
+        # en silencio.
+        rest_from = best
+        while rest_from < wc and ev([[i, rest_from, None]]) > limit:
+            nb, _ = natural_cut([], i, rest_from, limit)
+            if not nb or nb <= rest_from or nb >= wc:
+                break
+            pages.append({'bleed': False, 'segs': [[i, rest_from, nb]]})
+            rest_from = nb
+        cur = [[i, rest_from, None]]
         i += 1
     flush()
 
@@ -534,7 +546,12 @@ def paginate(page, limit):
             continue
         if merged and merged[-1].get('carry'):
             carried = merged.pop()
-            p['segs'] = carried['segs'] + p['segs']
+            # En una pagina a sangre manda el primer segmento: es el bloque que
+            # se pinta a plana entera. Los bloques ciegos arrastrados van
+            # detras, o la lamina se compondria a partir de un ancla y saldria
+            # en blanco.
+            p['segs'] = (p['segs'] + carried['segs'] if p['bleed']
+                         else carried['segs'] + p['segs'])
         merged.append(p)
     return [p for p in merged if p['bleed'] or visible(p['segs'])]
 

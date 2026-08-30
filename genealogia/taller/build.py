@@ -8,7 +8,7 @@ mypages.json por su cuenta. Este archivo lo cargaba tambien —535 KB parseados
 para nada, resto de haber copiado el encabezado de cmp.py— y eso ademas lo
 ataba a que extraer_texto_pdf.py se hubiera ejecutado antes.
 """
-import json, re, unicodedata, pickle
+import json, re, pickle
 
 from componer import BOOK
 

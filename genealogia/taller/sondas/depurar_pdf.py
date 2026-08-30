@@ -41,7 +41,10 @@ fuentes = sorted(set(re.findall(rb"/BaseFont\s*/([A-Za-z0-9+#\-,]+)", crudo)))
 emb = set(re.findall(rb"/FontFile2?\d?", crudo))
 for f in fuentes:
     nom = f.decode("latin-1")
-    ok = re.search(r"Lora|Cormorant", nom)
+    # Gentium Book Plus la incrusta la propia edicion para el griego
+    # politonico del Prefacio (fuentes_griego.py): no es sustitucion del
+    # navegador y no debe rotularse como ajena.
+    ok = re.search(r"Lora|Cormorant|Gentium", nom)
     print(f"   {nom:<44}{'' if ok else '   <-- ajena a la edicion'}")
     if not ok:
         aviso("tipografia", f"aparece «{nom}», que no es de la edicion (sustitucion del navegador)")
