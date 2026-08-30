@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import json, re, pickle, unicodedata, difflib
+import json, re, pickle, unicodedata, difflib, os
 
 pages = json.load(open('mypages.json', encoding='utf-8'))
 idx   = json.load(open('indice_final.json', encoding='utf-8'))['pages']
@@ -49,6 +49,32 @@ for tag,i1,i2,j1,j2 in ops:
     if tag=='equal': continue
     tot+=1
 print('opcodes no iguales:', tot)
+
+# La cifra anclada. La norma del proyecto dice que este numero es la senal
+# —si sube tras un cambio que debia ser solo visual, algo se movio que no
+# debia—, pero hasta ahora no habia contra que compararlo: habia que recordar
+# la cifra de la tanda anterior. Aqui queda escrita, y la comparacion se hace
+# sola. Al cerrar una tanda que la mueva legitimamente, se actualiza el
+# archivo y se dice en el registro por que se movio.
+REF = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cmp_referencia.txt')
+esperado = None
+if os.path.exists(REF):
+    for linea in open(REF, encoding='utf-8'):
+        linea = linea.split('#')[0].strip()
+        if linea.isdigit():
+            esperado = int(linea); break
+
+if esperado is None:
+    print(f'  (sin cifra anclada: escribe {tot} en cmp_referencia.txt para anclarla)')
+elif tot == esperado:
+    print(f'  cuadra con la cifra anclada ({esperado})')
+elif tot < esperado:
+    print(f'  BAJA: {esperado} -> {tot}. Se cerraron {esperado - tot} diferencias;')
+    print('  si era lo buscado, actualiza cmp_referencia.txt al cerrar la tanda.')
+else:
+    print(f'  SUBE: {esperado} -> {tot}. Aparecieron {tot - esperado} diferencias nuevas.')
+    print('  Si el cambio debia ser solo visual, algo se movio que no debia.')
+    print('  Las diferencias van listadas abajo; busca las que no reconozcas.')
 for tag,i1,i2,j1,j2 in ops:
     if tag=='equal': continue
     print('---', tag, 'bloq', exp_tok[i1][0] if i1<len(exp_tok) else '?', 'pag', act_tok[j1][0] if j1<len(act_tok) else '?')

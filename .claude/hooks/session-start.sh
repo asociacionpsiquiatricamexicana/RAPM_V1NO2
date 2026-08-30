@@ -45,3 +45,19 @@ else
 fi
 
 echo "taller: listo. Se compone con «cd genealogia/taller && python3 libro.py»."
+
+# La configuración de Claude Code de este repositorio falla en silencio cuando
+# está mal: un frontmatter roto no avisa, un hook cuyo guion no existe deja
+# pasar en vez de bloquear. El verificador lo detecta, pero hasta ahora solo si
+# alguien se acordaba de correrlo. Cuesta unas décimas y aquí no puede
+# olvidarse. No aborta el arranque: un defecto de configuración no debe impedir
+# que el taller quede listo, solo hay que enterarse de que está.
+VERIF="$RAIZ/.claude/verificar-configuracion.sh"
+if [ -x "$VERIF" ]; then
+  if salida=$("$VERIF" --breve 2>&1); then
+    echo "configuración: sin fallos"
+  else
+    echo "configuración: HAY FALLOS —lo de abajo carga mal y nada más lo avisa—"
+    printf '%s\n' "$salida"
+  fi
+fi

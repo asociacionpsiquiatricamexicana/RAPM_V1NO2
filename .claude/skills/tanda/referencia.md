@@ -77,6 +77,7 @@ En `genealogia/taller/sondas/`. Todas miden el PDF construido, no el código.
 | `depurar_pdf.py`        | tipografías, páginas sin texto, tipos sin compositor, marcadores, bloques compuestos dos veces | revisión periódica                   |
 | `techo_por_elemento.py` | el seguimiento máximo que admite cada rótulo sin romper la copia                               | antes de cambiar `letter-spacing`    |
 | `recuperable.py`        | qué se puede reconstruir desde el repositorio y qué no                                         | al tocar el taller                   |
+| `reproducible.py`       | si el libro se recompone igual desde lo versionado, comparando el hash del texto               | tras tocar libro.py o el estilo      |
 
 Las que leen el PDF lo reciben como argumento; sin él toman el publicado.
 

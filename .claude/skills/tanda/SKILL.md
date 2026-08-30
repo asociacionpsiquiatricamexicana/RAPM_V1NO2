@@ -39,7 +39,8 @@ python3 build.py
 python3 cmp.py
 ```
 
-`cmp.py` da un número de diferencias. **Ese número es la señal**: si sube tras
+`cmp.py` da un número de diferencias y lo compara solo contra la cifra
+anclada en `cmp_referencia.txt`. **Ese número es la señal**: si sube tras
 un cambio que debía ser solo visual, algo se movió que no debía; si no se mueve
 tras un cambio de composición, la corrección es puramente visual y el contenido
 quedó intacto. Anótalo en los dos sentidos.

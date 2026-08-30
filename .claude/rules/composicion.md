@@ -31,7 +31,9 @@ primera vez por su propia geometría, no por defectos del libro.
 
 `cmp.py` coteja palabra por palabra el texto extraído contra la fuente. Su
 número de diferencias es la señal: si sube tras un cambio que debía ser solo
-visual, algo se movió que no debía. Las diferencias que persisten son de
+visual, algo se movió que no debía. Ya no hay que recordar la cifra de la tanda
+anterior: está anclada en `cmp_referencia.txt` y `cmp.py` avisa solo cuando se
+mueve, en los dos sentidos. Las diferencias que persisten son de
 extracción —versalitas, direcciones partidas— y están descritas en
 `genealogia/REGISTRO_DE_CORRECCIONES.md`.
 

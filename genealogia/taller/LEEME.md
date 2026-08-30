@@ -95,6 +95,7 @@ PDF construido y no sobre el código:
 | `techo_plate.py` | lo mismo, solo para el ordinal de portadilla: barre «PRIMERA», «SEGUNDA» y «TERCERA», que ceden a valores distintos |
 | `cierre_pdf.py` | estado final: tipografías, roturas al copiar, búsquedas |
 | `recuperable.py` | qué se puede recuperar del repositorio y qué no |
+| `reproducible.py` | si el libro se vuelve a componer igual desde lo versionado; tarda un minuto |
 
 Las sondas que leen el PDF lo reciben como argumento; sin él toman el publicado
 en `genealogia/`. `verificar_toc.py` necesita el PDF ya sellado, porque lee sus

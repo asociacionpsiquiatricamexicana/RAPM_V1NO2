@@ -1,0 +1,6 @@
+719   # diferencias esperadas de cmp.py.
+      # Todas de extraccion, no del libro: versalitas con letras espaciadas,
+      # direcciones y rangos de anos partidos por el extractor, folios del
+      # indice, cabeceras de tabla. Medido el 30 de agosto de 2026 sobre las
+      # 332 paginas. Se actualiza al cerrar una tanda que lo mueva, diciendo
+      # en el registro por que se movio.
