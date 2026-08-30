@@ -2183,3 +2183,38 @@ abortado con «aparece 0 veces» en un texto que sí está. Ahora recorre tambi�
 - **La portada interior sigue diciendo «PRIMERA EDICIÓN DIGITAL».** El registro
   acota el cambio a «Primera Edición» a la ficha de catalogación, de modo que
   no se extendió por cuenta propia: puede ser deliberado.
+
+## Tanda: el colofón dice cómo se compuso el libro (30 de agosto de 2026)
+
+El colofón afirmaba que el libro «se compuso con XeLaTeX sobre la clase memoir
+[…] con Pagella para el texto, Heros para los rótulos y FreeSerif para el
+griego». Medido sobre el archivo, ninguna de esas tres tipografías está
+incrustada: la única con nombre es GentiumBookPlus, y el volumen no salió de
+una cadena LaTeX.
+
+No se corrigió a ojo. Se leyó del taller con qué se compone de verdad —la hoja
+de tipografías declara Lora, Cormorant Garamond y Gentium Book Plus; el
+compositor asigna Lora al cuerpo y Cormorant Garamond a los rótulos; el motor
+es Chromium gobernado por Playwright— y el colofón pasa a decir eso. **La caja
+declarada no se tocó porque era correcta**: 15,5 por 23 centímetros, que
+coinciden con los 439,37 por 651,97 puntos del propio módulo de estilo.
+
+Un colofón que describe una composición que no ocurrió no es un adorno
+equivocado: es la única página donde el libro explica cómo se hizo, y de ella
+depende quien quiera rehacerlo.
+
+### Lo que se decidió no tocar
+
+La portada interior sigue diciendo «PRIMERA EDICIÓN DIGITAL». El compilador lo
+mantiene: el cambio a «Primera Edición» quedó acotado a la ficha de
+catalogación y no se extiende al resto del volumen.
+
+### Verificación
+
+- 332 páginas, ninguna caja desborda; el texto nuevo no repaginó nada.
+- `cmp.py`: 719 diferencias, cuadra con la cifra anclada.
+- Sobre el PDF publicado: no queda ninguna mención de «XeLaTeX», ni «289
+  páginas», ni «303 páginas». El colofón, en la página 331, dice ya el
+  compositor, el motor y las tres tipografías reales.
+- Marcadores: 11 raíz y 38 hijos, la estructura de siempre.
+- `sondas/reproducible.py` reanclada: la huella del texto queda en `7f0af5df…`.
