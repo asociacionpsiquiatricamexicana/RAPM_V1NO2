@@ -1,6 +1,6 @@
 # Registro de correcciones
 
-**Obra:** *Genealogía de la Asociación Psiquiátrica Mexicana, A.C. Gran Proyecto Historiográfico*  
+**Obra:** _Genealogía de la Asociación Psiquiátrica Mexicana, A.C. Gran Proyecto Historiográfico_  
 **Soporte:** flipbook HTML autónomo (1937 bloques · 268 páginas)  
 **Norma aplicada:** OLE 2010 y actualizaciones RAE-ASALE · NGLE · DTM · FundéuRAE · Martínez de Sousa · APA 7 en español
 
@@ -123,7 +123,7 @@ en total, 569 bloques verificados sin una sola alteración. El índice, las ancl
 Dos puntos exigen decisión del autor y se dejaron intactos:
 
 1. **Atribución contradictoria de una misma obra.** El apéndice XI (bloque 1654) atribuye
-   *Voces de la psiquiatría. Los precursores* a **Sergio Javier Villaseñor Bayardo**, publicada por la
+   _Voces de la psiquiatría. Los precursores_ a **Sergio Javier Villaseñor Bayardo**, publicada por la
    Universidad de Guadalajara en febrero de 2006; el mismo apéndice, en su adenda (bloque 1687), la
    atribuye al **Grupo Latinoamericano de Estudios Transculturales**. Ambas menciones no pueden sostenerse
    tal como están redactadas. Es dato duro y no se enmienda sin fuente.
@@ -379,8 +379,7 @@ haber caído en lotes distintos.
   origen. No hay hueco de cobertura.
 - **Inconsistencia real, corregida:** los cuatro encabezados «Mesas Directivas
   del [n.º] periodo» (bloques 188, 315, 513, 711) son estructuralmente
-  idénticos entre sí. Tres se capitalizaron correctamente; el cuarto (bloque
-  315) fue clasificado como «proteger» con el argumento explícito de que era
+  idénticos entre sí. Tres se capitalizaron correctamente; el cuarto (bloque 315) fue clasificado como «proteger» con el argumento explícito de que era
   «consistente en minúscula con los otros tres encabezados idénticos» —
   argumento que dejó de ser cierto en cuanto los otros tres se corrigieron en
   lotes distintos y en paralelo, sin visibilidad entre sí. Corregido a «Mesas
@@ -629,6 +628,7 @@ el contenido.
 ## Tanda: homogeneización editorial y nomenclatura (28 de agosto de 2026)
 
 ### Reconciliación previa
+
 - Se rehízo la tanda desde el respaldo anterior a ella, esta vez **sin borrar**
   los rótulos intermedios idiosincráticos de cada testimonio de la Segunda
   Parte. Solo se renombraron los extremos (primero → «Antecedentes», último →
@@ -636,6 +636,7 @@ el contenido.
   instrucción expresa de no homogeneizarlos.
 
 ### Nomenclatura de la obra
+
 - «volumen»/«Volumen» → «libro»/«Libro» en 112 lugares del cuerpo, títulos,
   índice y portadillas. Quedan intactos, por ser hechos bibliográficos ajenos o
   sentido de magnitud: la numeración de tomos y números de la publicación
@@ -650,29 +651,35 @@ el contenido.
   cita textual de testimonio y no se toca.
 
 ### Primera Parte
+
 - Retirados los numerales romanos que encabezaban seis subtítulos.
 - Cuatro subtítulos «Balance del periodo» → «Conclusiones», para que todos los
   capítulos cierren con el mismo rótulo.
 
 ### Segunda Parte
+
 - Cada uno de los catorce testimonios abre ahora con una ficha en línea:
   persona, expresidencia, año del testimonio y el DOI del libro —uno solo para
   toda la obra, por no tratarse de una publicación periódica.
 
 ### Apéndice del glosario
+
 - Entradas ordenadas alfabéticamente dentro de cada subsección.
 - Encabezados de subsección y términos definidos compuestos como nombres
   propios: «Términos Técnicos», «Historia Oral», «Patología Dual», etcétera.
 
 ### Aparato de notas
+
 - Cuatro rótulos de nota al pie unificados a «Nota.»: un solo tipo de nota en
   todo el libro.
 
 ### Composición
+
 - Dos portadillas nuevas: «Prefacio» y «Cierre».
 - Dos listados extensos del directorio institucional pasan a dos columnas.
 
 ### Instrumental de verificación
+
 - Corregido un defecto del comparador de integridad: reunía las palabras
   partidas por guion de línea insertando un guion literal, lo que las contaba
   como discrepancia. Ahora reúne la palabra. Las discrepancias señaladas bajaron
@@ -684,11 +691,13 @@ el contenido.
 ## Tanda: estructura, orden y disciplina visual (28 de agosto de 2026, segunda entrega)
 
 ### Disciplina de una sola raya
+
 - La raya decorativa queda reservada a dos lugares: bajo la cornisa y sobre el
   folio. Se retiraron los filetes sueltos tras los títulos, bajo las fichas y
   sobre los grupos de notas; el separador de sección conserva solo su punto.
 
 ### Jerarquías
+
 - Los títulos con ordinal («Capítulo I», «Apéndice IV») componen ahora el
   ordinal como antetítulo pequeño y sin punto, y el título real queda solo en
   su jerarquía, igual que el antetítulo «Testimonio» de las piezas.
@@ -699,6 +708,7 @@ el contenido.
   cronología general y las fuentes no consultadas.
 
 ### Orden
+
 - Segunda Parte reordenada por bienio de la expresidencia: la pieza de
   Alejandro Díaz Martínez (1986-1987) deja el final —donde la puso su fecha de
   recepción— y ocupa su lugar en la serie. El índice sigue el nuevo orden.
@@ -706,6 +716,7 @@ el contenido.
   cronológico.
 
 ### Testimonios
+
 - La ficha y el rótulo «Bienio…» que abrían cada pieza por separado, con
   cifras a dos tamaños, se fusionaron en una sola ficha: persona,
   expresidencia, modalidad y fecha de la sesión, y el DOI único del libro.
@@ -715,6 +726,7 @@ el contenido.
   (sobraban las fechas vitales entre paréntesis).
 
 ### Apéndices
+
 - Nuevo Apéndice I, «Línea del Tiempo»: un párrafo de prosa corrida por
   periodo, con conectores y cifras en letra, construido solo con hechos ya
   documentados en el libro. Los demás apéndices se desplazan.
@@ -726,12 +738,14 @@ el contenido.
   numeración nueva (ninguna referencia huérfana).
 
 ### Aparato
+
 - Las direcciones electrónicas se componen como texto, sin función de enlace:
   la referencia debe leerse igual en pantalla y fuera de ella.
 - Cornisas de Mesas Directivas y del Sexagésimo Aniversario con mayúscula de
   nombre propio.
 
 ### Paginador
+
 - Nueva pasada de «reparto de corte»: la página que recibía solo dos líneas
   residuales de una nota partida antes de un salto duro reúne ahora el bloque
   entero, o recoloca el corte sin dejar cabezas ni colas de una línea. El
@@ -742,6 +756,7 @@ el contenido.
 ## Tanda: léxico, nomenclatura y cifras en letra (28 de agosto de 2026, tercera entrega)
 
 ### Nomenclatura institucional (dictada por el compilador)
+
 - «Perspectivas» sustituye a «Los que presidieron» como título de la Segunda
   Parte, en portadilla, índice y cornisas.
 - «Episodios» sustituye a «periodos» en los rótulos estructurales de la
@@ -764,6 +779,7 @@ el contenido.
   cada bienio, no anual).
 
 ### Cifras en letra
+
 - Toda cifra de año, fecha completa y rango de bienio de la prosa corrida se
   escribe con letra: 296 pasajes convertidos («el jueves treinta y uno de
   marzo de mil novecientos sesenta y seis», «el bienio de dos mil cuatro a dos
@@ -772,6 +788,7 @@ el contenido.
   y listados de los apéndices de datos, y el DOI.
 
 ### Curaduría de estilo
+
 - Sin gerundios en la prosa del compilador (los lemas citados los conservan);
   sin superlativos ni calificativos; «impulsar» sustituido por motivar,
   incentivar o promover; «buscó darles» reformulado como deliberación;
@@ -782,6 +799,7 @@ el contenido.
   explicitado como «El Territorio Mexicano».
 
 ### Estructura
+
 - Cajas «Resumen y puntos clave» (tres a cinco asientos) al abrir cada
   capítulo de la Primera Parte.
 - Tercera Parte con doble autoría declarada (editor y compilador), apertura
@@ -796,6 +814,7 @@ el contenido.
 ## Tanda: identidad editorial y contracubierta (28 de agosto de 2026, cuarta entrega)
 
 ### Página legal
+
 - El criterio editorial queda así consignado: el libro es una publicación
   propia y única de la Asociación, por parte de su presidencia y de su Comité
   Ejecutivo, no una publicación periódica ni suplemento, volumen o número de
@@ -808,6 +827,7 @@ el contenido.
   refiere a este libro (se conservan las obras ajenas y el verbo obrar).
 
 ### Contracubierta
+
 - Declaración epistemológica dictada por el compilador: el libro nace de una
   pregunta empírica (¿qué pasó?), explica cuando el hecho lo permite e
   interpreta cuando el registro calla, con los métodos científicos propios de
@@ -817,6 +837,7 @@ el contenido.
   y nueva mención de la línea del tiempo.
 
 ### Roles y semblanzas
+
 - El compilador figura como «Historiador Compilador» en portada y semblanza;
   semblanza reescrita con sus títulos (Médico Cirujano, Especialista en
   Psiquiatría, Alta Especialidad en Neuropsiquiatría, Maestro en Filosofía de
@@ -824,6 +845,7 @@ el contenido.
   Directiva del bienio, Comité Científico y Comité Editorial).
 
 ### Léxico afinado
+
 - «Es pertinente» en lugar de «conviene»; «al relato de» en lugar de «a la
   crónica de»; el tipo de fuente «testimonio único / testimonios de terceros»
   vuelve a minúscula (solo la pieza de un expresidente es Testimonio);
@@ -834,6 +856,7 @@ el contenido.
   volumen→libro (bloque de la página legal).
 
 ### Flipbooks
+
 - Ambos flipbooks (standalone y plano) resincronizados con el contenido y el
   módulo de estilo vigentes; leyenda de cabecera «Primera Edición»; prueba de
   carga en Chromium sin errores de ejecución.
@@ -877,6 +900,7 @@ el contenido.
 ## Tanda: saneamiento de los preliminares, pág. iii-xvi (28 de agosto de 2026, séptima entrega)
 
 ### Bug real del paginador, encontrado al revisar la pág. iv
+
 - La pasada de «reparto de corte» (añadida para eliminar páginas-residuo de
   dos líneas) reunía el bloque partido en la página siguiente pero dejaba el
   rótulo o el ornamento que lo anunciaba huérfano al pie de la página
@@ -886,12 +910,14 @@ el contenido.
   control: 0 páginas terminan en encabezado huérfano en todo el libro.
 
 ### Directorio institucional
+
 - Revertida la columnación por bloque de las Coordinaciones de Capítulo: al
   aplicarse región por región, entrelazaba las columnas de un modo confuso.
   Ahora todo el Directorio corre a una sola columna, uniforme con los
   Comités y el resto de la sección.
 
 ### Página legal
+
 - Domicilio, teléfono, correo y sitio institucional (antes cuatro líneas
   sueltas) se compactaron en un solo campo; el detalle completo permanece en
   «Contacto y presencia digital».
@@ -899,6 +925,7 @@ el contenido.
   en 289, de una tanda anterior).
 
 ### Contacto y semblanzas
+
 - Domicilio de «Contacto y presencia digital» sin dos puntos en la prosa.
 - Fechas del Directorio, de la nota de verificación de Contacto y de la
   semblanza del editor escritas con letra.
@@ -914,6 +941,7 @@ flipbooks resincronizados.
 ## Tanda: desambiguación de citas homónimas, APA 7 (28 de agosto de 2026, octava entrega)
 
 ### Colisión real de cita, con lector afectado
+
 - Dos decretos distintos de la Cámara de Diputados del H. Congreso de la
   Unión, ambos fechados el 15 de enero de 2026 (uno reforma la Ley General
   para la Igualdad entre Mujeres y Hombres, la de Acceso de las Mujeres a
@@ -953,6 +981,7 @@ flipbooks resincronizados.
 ## Tanda: orden del aparato, capitulares residuales y notas homónimas (28 de agosto de 2026, novena entrega)
 
 ### Diagnóstico: el flipbook interactivo pagina distinto que el PDF
+
 - Confirmado navegando el flipbook Standalone con Playwright: reporta 278
   páginas contra las 303-304 reales del PDF (`libro.py`, auditado con
   `cmp.py`, cero páginas casi vacías, ninguna caja desborda). El flipbook
@@ -969,6 +998,7 @@ flipbooks resincronizados.
   navegador.
 
 ### Orden del aparato: Referencias antes de Notas, en los cuatro capítulos
+
 - Los capítulos I-IV traían «Notas» antes de «Referencias» al cierre de
   cada uno (y, en el capítulo III, antes también de «Fuentes primarias del
   capítulo»). Por indicación del compilador, se invirtió: Referencias (y
@@ -977,6 +1007,7 @@ flipbooks resincronizados.
   de referencia se alteró.
 
 ### Letras capitulares residuales
+
 - 38 primeras letras de párrafo mayor (`"cap": true`) quedaban marcadas
   como capitular en los datos aunque el renderizador ya las trataba como
   texto corrido desde una tanda anterior. Por indicación del compilador
@@ -985,6 +1016,7 @@ flipbooks resincronizados.
   una palabra.
 
 ### «Nota de edición.» homologada a «Nota.»
+
 - 14 notas de los testimonios (segunda parte) llevaban el rótulo «Nota de
   edición.» compuesto como texto en cursiva dentro del propio párrafo, en
   vez del mecanismo estándar de rótulo que ya usan las otras 21 notas de
@@ -994,10 +1026,12 @@ flipbooks resincronizados.
   retiró el rótulo duplicado que encabezaba el párrafo.
 
 ### Verificación
+
 - Comparador de integridad sin discrepancias nuevas: mismas 583 diferencias
   cosméticas ya documentadas. Ambos flipbooks resincronizados.
 
 ### Decisión del compilador: PDF como entregable principal
+
 - El flipbook Standalone pagina con un motor propio (bundle minificado de
   ~1900 líneas, mide el DOM real en el navegador) que diverge del de
   `libro.py`: reportaba 278 páginas contra las 297-304 reales del PDF, con
@@ -1012,6 +1046,7 @@ flipbooks resincronizados.
 ## Tanda: rótulos idiosincráticos retirados, dato de Lauro Castanedo corregido (28 de agosto de 2026, décima entrega)
 
 ### Rótulos intermedios idiosincráticos retirados (reversión deliberada de una regla anterior)
+
 - Por indicación expresa del compilador, se revierte la regla fijada antes
   en esta misma sesión («no se homogeneizan las etiquetas intermedias
   idiosincráticas»): se retiran 109 rótulos intermedios — 20 secciones
@@ -1030,6 +1065,7 @@ flipbooks resincronizados.
   eliminado antes de aplicar el remapeo.
 
 ### Dato de Lauro Castanedo de Alba corregido (Apéndice VI y Apéndice XV)
+
 - Ambas menciones («Vocal del Comité de Ética durante el bienio
   2024-2025») sonaban a un hecho puntual sesenta años después de su
   presidencia (1990-1991), lo que parecía una atribución mal hecha. El
@@ -1040,6 +1076,7 @@ flipbooks resincronizados.
   dato de la ficha ni del pasaje de in memoriam.
 
 ### Verificación
+
 - `libro.py` recompone limpio: 297 páginas, ninguna caja desborda.
   Comparador de integridad: 492 diferencias (bajó de 583 al desaparecer
   109 bloques), todas de las mismas categorías cosméticas ya documentadas
@@ -1052,6 +1089,7 @@ flipbooks resincronizados.
   resincronizados.
 
 ### Pendiente
+
 - Reconstruir el paginador del flipbook (en pausa, decisión del
   compilador).
 - El pasaje de Camarena en el capítulo III (caja «Resumen y Puntos Clave»
@@ -1065,6 +1103,7 @@ flipbooks resincronizados.
 ## Tanda: apellido de Alejandro Córdova Córdova y comillas de las voces (28 de agosto de 2026, undécima entrega)
 
 ### «Alejandro Córdova» → «Alejandro Córdova Córdova» (confirmado por el compilador)
+
 - El socio fundador que diseñó el primer emblema de la Asociación aparecía
   con un solo apellido «Córdova» en el capítulo I y en el Apéndice VI, y
   con el apellido doblado «Córdova Córdova» en el testimonio de Martha
@@ -1073,6 +1112,7 @@ flipbooks resincronizados.
   apellido se corrigieron para decir «Alejandro Córdova Córdova».
 
 ### Comillas latinas «» restituidas en 118 citas de Voz de la Segunda Parte
+
 - Barrido programático de los 267 bloques de cita («epi») del libro:
   en las treinta fichas de Mesa Directiva, las citas reales llevan «»
   y las notas de ausencia de testimonio («No se conserva registro
@@ -1088,6 +1128,7 @@ flipbooks resincronizados.
   atribución en las citas de testimonio.
 
 ### Verificación
+
 - `libro.py` compone limpio: 297 páginas, ninguna caja desborda.
   Comparador de integridad: mismas 492 diferencias cosméticas ya
   documentadas, ninguna nueva. Revisión visual del testimonio de
@@ -1095,6 +1136,7 @@ flipbooks resincronizados.
   como el resto del aparato. Ambos flipbooks resincronizados.
 
 ### Barrido adicional sin hallazgos (verificado, no son defectos)
+
 - Cero desbalances de paréntesis, comillas «» o corchetes en los 1870
   bloques del libro.
 - Cero dobles espacios o puntuación duplicada real (el único candidato,
@@ -1111,6 +1153,7 @@ flipbooks resincronizados.
 ## Tanda: fichas de Mesa Directiva a H1, ficha de testimonio simplificada (28 de agosto de 2026, duodécima entrega)
 
 ### Verificación con imagen de tres puntos pendientes — sin defecto real
+
 - «Encargo» (Prefacio del autor): renderizado, la «A» inicial es tamaño
   normal, sin capitular deformando el texto.
 - Ficha de Raymundo Macías Avilés en el Apéndice VI (Mesas Directivas):
@@ -1125,6 +1168,7 @@ flipbooks resincronizados.
   mismo orden en los catorce, sin excepción.
 
 ### Cada Mesa Directiva pasa a H1
+
 - Por indicación del compilador, las treinta fichas de Mesa Directiva
   (cada una ya abría su propia página, igual que un capítulo o un
   testimonio) suben de tamaño tipográfico al mismo nivel que esos
@@ -1135,6 +1179,7 @@ flipbooks resincronizados.
   tamaño de letra.
 
 ### Encabezado de ficha de testimonio simplificado
+
 - La línea «Persona · Expresidencia · [modo y fecha de entrevista] · DOI»
   incluía el modo y la fecha de la entrevista, que el compilador señaló
   que no debía ir ahí. Se verificó que las catorce notas de cierre de
@@ -1144,6 +1189,7 @@ flipbooks resincronizados.
   DOI del libro: [doi]».
 
 ### Verificación
+
 - `libro.py` compone limpio: 299 páginas, ninguna caja desborda.
   Comparador de integridad: 493 diferencias, misma familia cosmética de
   siempre, ninguna nueva. Revisión visual de la ficha de Raymundo Macías
@@ -1161,6 +1207,7 @@ persona (no un simple cambio de rótulo), y «Fichas H3» es una caja de
 datos de referencia que se construye distinta en cada contexto.
 
 ### Capítulos renombrados a Episodios (primer incremento de la Fase B)
+
 - «Capítulo I-IV» pasa a «Primer/Segundo/Tercer/Cuarto Episodio» en el
   título, la cornisa, el índice de Contenido y el campo `h` de todos los
   bloques de cada capítulo — nomenclatura ya usada en el propio libro
@@ -1178,6 +1225,7 @@ datos de referencia que se construye distinta en cada contexto.
   nuevos.
 
 ### Verificación
+
 - `libro.py` compone limpio: 299 páginas, ninguna caja desborda.
   Comparador de integridad: 489 diferencias, misma familia cosmética,
   ninguna nueva. Revisión visual del Primer y Cuarto Episodio: título
@@ -1185,6 +1233,7 @@ datos de referencia que se construye distinta en cada contexto.
   párrafo, «Antecedentes» en su lugar. Ambos flipbooks resincronizados.
 
 ### Pendiente de esta fase (siguiente incremento)
+
 - Agregar «Fichas H3» (tabla compacta de la Mesa Directiva del episodio)
   y «Fuentes H3» (separado de Referencias: fuentes de archivo/
   institucionales vs. bibliografía publicada, siguiendo el patrón que
@@ -1197,6 +1246,7 @@ datos de referencia que se construye distinta en cada contexto.
   caso si el compilador lo confirma.
 
 ### Fase B, segundo incremento: Fichas y Fuentes por episodio
+
 - «Conclusiones», «Referencias» y «Notas» pasan de H2 a H3 (mismo nivel
   que «Antecedentes»), consistente con la jerarquía nueva.
 - Se agrega «Fichas» (H3) en los cuatro episodios: tabla compacta de
@@ -1215,6 +1265,7 @@ datos de referencia que se construye distinta en cada contexto.
   bibliográficos movidos.
 
 ### Verificación
+
 - `libro.py` compone limpio: 301 páginas, ninguna caja desborda.
   Comparador de integridad: 508 diferencias, misma familia cosmética,
   ninguna nueva. Revisión visual del Primer Episodio: Fichas, Fuentes y
@@ -1231,6 +1282,7 @@ personas).
 ## Tanda: Fase A — reestructuración de las 30 fichas de Mesa Directiva (29 de agosto de 2026)
 
 ### Estructura nueva por ficha
+
 - Cada ficha queda: bienio (H2, en vino y versalitas, sobre el nombre),
   nombre del expresidente (H1), cita ad verbatim inmediatamente bajo el
   título, Semblanza (H3), Tesis (H3), Antítesis (H3), Síntesis (H3),
@@ -1240,6 +1292,7 @@ personas).
   crea vacía.
 
 ### Tesis, Antítesis, Síntesis: redacción nueva
+
 - La sección «Gestión» se sustituye en las 30 fichas por un análisis en
   tres partes redactado por el compilador asistido: la lectura favorable
   del bienio (Tesis), la tensión o límite documentado del mismo periodo
@@ -1254,6 +1307,7 @@ personas).
   se tocan).
 
 ### Caja «Fichas» y reparto del aparato
+
 - El primer párrafo de cada ficha (sede y año del Congreso Nacional del
   bienio) deja la prosa corrida y se reempaqueta como caja de datos bajo
   «Fichas»: Cargo, Periodo, Congresos — texto íntegro conservado, capa
@@ -1265,11 +1319,13 @@ personas).
   verificación a «Notas». Ningún asiento se reescribió ni se dividió.
 
 ### Bienio como H2
+
 - El renglón del bienio sobre el nombre pasa de antetítulo gris pequeño
   a jerarquía H2 (versalitas en vino, cuerpo de sección), en el módulo de
   estilo y en su gemelo del flipbook.
 
 ### Verificación
+
 - `libro.py` compone limpio: 323 páginas (301 antes de la fase; el alza
   corresponde a las ~90 secciones nuevas de análisis), ninguna caja
   desborda. Comparador de integridad: 624 diferencias, todas de las
@@ -1287,6 +1343,7 @@ Con esto se cierra la Fase A. Sigue la Fase C (apéndices).
 ## Tanda: Fase C — plantilla de jerarquía y tablas en los quince apéndices (29 de agosto de 2026)
 
 ### Apertura de apéndice: ordinal H1, nombre H2
+
 - La apertura de cada apéndice invierte su jerarquía anterior: «Apéndice N»
   compone ahora como H1 (versalitas en vino, cuerpo de título) y el nombre
   baja a H2 (estilo de sección). El mismo tratamiento se aplica a los
@@ -1295,6 +1352,7 @@ Con esto se cierra la Fase A. Sigue la Fase C (apéndices).
   Cornisas y Contenido no cambian.
 
 ### Plantilla H3 común
+
 - Cada apéndice incorpora «Generalidades» (H3) sobre su párrafo
   introductorio ya existente, «Punto Clave» (H3, una síntesis breve nueva
   derivada del propio apéndice) y «Fichas» (H3, caja de datos de
@@ -1305,6 +1363,7 @@ Con esto se cierra la Fase A. Sigue la Fase C (apéndices).
   «Resumen» (H3) al cierre; no lleva Punto Clave ni Fichas.
 
 ### Tablas (tipo de bloque nuevo)
+
 - Se agregó al módulo de estilo (y a su gemelo del flipbook) un par de
   tipos de bloque, cabecera y fila de tabla, compuestos como retícula con
   filete: cada fila es un bloque independiente, de modo que el paginador
@@ -1323,12 +1382,14 @@ Con esto se cierra la Fase A. Sigue la Fase C (apéndices).
   secciones vacías (mismo criterio que en las fichas).
 
 ### Apéndice II
+
 - «Límites declarados» y «La relación de Mesas Directivas» dejan de ser
   secciones de cuerpo y pasan a «Notas» (H3) al cierre, cada una como
   nota con su título plegado en cursiva de entrada; texto íntegro. El
   diagrama del flujo del método queda para la fase siguiente.
 
 ### Verificación
+
 - `libro.py` compone limpio: 325 páginas, ninguna caja desborda. Durante
   la revisión se detectó y corrigió un desborde real de retícula (las
   columnas sumaban el cien por ciento y el espacio entre columnas recortaba
@@ -1361,6 +1422,7 @@ Con esto se cierra la Fase C, salvo el diagrama del Apéndice II (Fase D).
 - Tipo de bloque nuevo en el módulo de estilo y en su gemelo del flipbook.
 
 ### Verificación
+
 - 325 páginas, ninguna caja desborda; comparador en 721 diferencias
   (seis menos que la tanda anterior: desaparece el desplazamiento de la
   caja de resumen sustituida), sin categorías nuevas. Revisión visual de
@@ -1373,6 +1435,7 @@ Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
 ## Tanda: Fase E — frontispicio (29 de agosto de 2026)
 
 ### Corrección de fondo: el Contenido se reancla por identidad
+
 - Se detectó que las entradas del Contenido guardaban índices de bloque
   que las reestructuras de esta tanda habían dejado atrás: el índice
   imprimía folios de hasta treinta páginas de desfase en los apéndices
@@ -1383,6 +1446,7 @@ Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
   coincidir con las páginas reales.
 
 ### Página Legal
+
 - Nueva sección con página propia, separada de «Créditos de la edición»:
   «Página Legal» (H1), «Información para Consulta» (H2) con la
   identificación, el identificador digital de objeto, la licencia y su
@@ -1394,6 +1458,7 @@ Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
   editorial, el directorio de la casa editora y la ficha de catalogación.
 
 ### Directorio y Contacto
+
 - «Directorio institucional» pasa a «Directorio» (H1); sus grupos
   (Comité Ejecutivo, Vicepresidencias regionales, Coordinaciones de
   capítulo, Comités, Secretaría Académica y Secciones, Membresía)
@@ -1403,6 +1468,7 @@ Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
   con su nota de verificación al pie.
 
 ### Equipo Editorial
+
 - «¿Quiénes hacen este libro?» pasa a «Equipo Editorial» (H1), con el
   orden invertido que se dictó: «Compilador» (H2) primero —José Carlos
   Medina Rodríguez— y «Editor» (H2) después —David Eduardo Saucedo
@@ -1410,17 +1476,20 @@ Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
   cargo, armadas solo con datos ya presentes en el libro.
 
 ### Prefacio
+
 - El subtítulo «Pertinencia de la conservación histórica…» sube a H2;
   se agrega «Nombre» (H3) con el autor del prefacio; el epígrafe de Jung
   permanece como cita sin rótulo; «Exordio», «Encargo» y «Referencias»
   bajan a H3, consistentes con la plantilla general.
 
 ### Portada y contracubierta en el Contenido
+
 - Ambas entran al índice como entradas propias, sin folio (son páginas
   ciegas); en los marcadores del PDF apuntan a la primera y a la última
   página reales del volumen.
 
 ### Verificación
+
 - 326 páginas, ninguna caja desborda; comparador en 717 diferencias,
   familias cosméticas conocidas, sin pérdida. Contenido cotejado contra
   las páginas reales (Prefacio en folio 1, Apéndice I en 213, Colofón en
@@ -1431,6 +1500,7 @@ Con esto se cierra la Fase D. Sigue la Fase E (frontispicio).
 Con esto se cierra la Fase E. Sigue la Fase F (páginas de descanso).
 
 ### Enmienda inmediata, por indicación del compilador
+
 - La nota del criterio editorial dentro de «Información para Consulta»
   resultaba intrusiva entre el párrafo de identificación y el
   identificador digital. Se movió íntegra al cierre de la Página Legal,
@@ -1457,6 +1527,7 @@ Con esto se cierra la Fase E. Sigue la Fase F (páginas de descanso).
   que las de parte.
 
 ### Verificación
+
 - 330 páginas (cuatro más, las cuatro portadillas nuevas), ninguna caja
   desborda. Comparador de integridad: 717 diferencias, exactamente las
   mismas de la tanda anterior — las portadillas no aportan texto de
@@ -1471,6 +1542,7 @@ jerarquía (A a F).
 ## Tanda: el expediente registral de la publicación periódica (29 de agosto de 2026)
 
 ### Diagnóstico: el libro sostenía dos versiones incompatibles
+
 - El capítulo IV afirmaba que «la denominación **nunca contó** con registro de
   marca ni con reserva de derechos, de modo que un tercero pudo registrarla».
   El encuadre y la nota al pie del Testimonio de Enrique Chávez León afirmaban
@@ -1487,6 +1559,7 @@ jerarquía (A a F).
   que no era suya.
 
 ### Resolución del compilador
+
 - El mecanismo queda establecido así: la reserva de derechos al uso exclusivo
   que amparó el título **se obtuvo**, **no se renovó** a su vencimiento, el
   numeral quedó libre y **fue registrado por un tercero**, de modo que el Gremio
@@ -1502,6 +1575,7 @@ jerarquía (A a F).
   ausencia de renovación e identidad del titular actual).
 
 ### Corregido
+
 - Capítulo IV, párrafo del expediente registral y su nota cuarta: mecanismo
   correcto y procedencia rehecha.
 - Encuadre y nota al pie del Testimonio de Chávez León, y el párrafo que lo
@@ -1516,6 +1590,7 @@ jerarquía (A a F).
 - Apéndice XII, Segunda Clase: ruta de la verificación pendiente.
 
 ### Verificación
+
 - 331 páginas, ninguna caja desborda. Comparador de integridad: 718
   diferencias, una más que la tanda anterior, correspondiente al contenido
   nuevo; sin categorías nuevas. Revisión visual del párrafo del capítulo IV, del
@@ -1527,6 +1602,7 @@ jerarquía (A a F).
 ## Tanda de cierre: precisión del expediente registral y hallazgos de auditoría (29 de agosto de 2026)
 
 ### El expediente registral, con lo que el compilador aporta
+
 - La reserva de derechos **vigente** es pública y consta impresa en la propia
   revista. La **anterior**, caducada por falta de renovación, fue registrada
   después por un tercero y hoy es propiedad de ese titular: su expediente **no
@@ -1545,6 +1621,7 @@ jerarquía (A a F).
   no terminado»: es como se ve el problema desde dentro de esa etapa.
 
 ### Hallazgos de la auditoría corregidos
+
 - **Contradicciones de aritmética**: de 1978 a 2014 median treinta y seis años,
   no «cuatro decenios» (ficha de Pucheu Regis); de 1988 a 2001 median trece, no
   «al menos tres decenios» (ficha de Salgado Arteaga).
@@ -1568,6 +1645,7 @@ jerarquía (A a F).
   figuraba en la relación general.
 
 ### Verificación
+
 - 332 páginas, ninguna caja desborda. Comparador de integridad: 718 diferencias,
   las mismas de la tanda anterior; sin categorías nuevas. PDF sellado y ambos
   flipbooks resincronizados.
@@ -1605,11 +1683,13 @@ jerarquía (A a F).
   la colección de la publicación periódica).
 
 ### Verificación
+
 - 332 páginas, ninguna caja desborda. Comparador de integridad: 718 diferencias,
   las mismas de la tanda anterior; sin categorías nuevas. Revisión visual de la
   ficha de Tovar Acosta. PDF sellado y ambos flipbooks resincronizados.
 
 ### Enmienda: fecha del documental
+
 - Por indicación del compilador, la presentación del documental «Burnout. En la
   línea de fuego» se fecha en dos mil veintiuno, durante la gestión de Bernardo
   Ng Solís, sin nombrar sede: el enunciado anterior la ligaba al Congreso
@@ -1623,6 +1703,7 @@ jerarquía (A a F).
 ## Tanda: corrección del "espacio doble" señalado por el compilador (29 de agosto de 2026)
 
 ### Diagnóstico
+
 - No había ningún espacio doble en el contenido fuente (verificado carácter
   por carácter: cero ocurrencias). El defecto era real pero de otra
   naturaleza: el justificado nativo del navegador, sin el algoritmo de
@@ -1653,6 +1734,7 @@ jerarquía (A a F).
   impresión, solo el copiado o la búsqueda de texto dentro del PDF.
 
 ### Verificación
+
 - 332 páginas, ninguna caja desborda. Comparador de integridad: 718
   diferencias, las mismas que la tanda anterior — el cambio es puramente de
   composición visual, no de contenido. Revisión visual de la ficha de
@@ -1667,6 +1749,7 @@ buscar texto dentro del PDF, algunas palabras en versalitas con seguimiento
 amplio salían partidas por un espacio de más. Esta tanda lo mide y lo corrige.
 
 ### Medición
+
 - Se construyó una sonda que recorre las 332 páginas del PDF y mide, con la
   geometría real de cada glifo, el hueco entre palabras de cada renglón,
   comparándolo con la mediana de su propio renglón. Resultado: **ninguna
@@ -1684,6 +1767,7 @@ amplio salían partidas por un espacio de más. Esta tanda lo mide y lo corrige.
   palabras**. Los dígitos de Cormorant Garamond son el punto que primero cede.
 
 ### Corrección
+
 - Se puso techo de 0,10 em al seguimiento de todos los elementos del interior:
   cornisa, rótulos de subsección, antetítulo de pieza, cierre de ficha,
   apertura de tarjeta, rótulo de caja de datos y nivel mayor del Contenido.
@@ -1699,6 +1783,7 @@ amplio salían partidas por un espacio de más. Esta tanda lo mide y lo corrige.
   mismo, de modo que la corrección sobreviva a cada resincronización.
 
 ### Verificación
+
 - 332 páginas, ninguna caja desborda; el archivo de contenido no se tocó, de
   modo que no hubo deriva posible de texto. Comparador de integridad: 719
   diferencias frente a 718, y la única de más está en la capa de texto de la
@@ -1717,6 +1802,7 @@ por uno contra el libro construido, y los cuatro resultaron ciertos, aunque de
 consecuencia muy distinta.
 
 ### Un conteo de palabras que podía perder texto sin dejar rastro
+
 - El paginador acota el corte de un bloque con `wordCount()`, que contaba sobre
   el texto concatenado del bloque, mientras `sliceBlock()` indexa fragmento por
   fragmento. Una palabra repartida entre dos fragmentos —una versalita o una
@@ -1731,6 +1817,7 @@ consecuencia muy distinta.
   `sliceBlock()`, de modo que la trampa no quede en pie para la próxima edición.
 
 ### Dos filas que declaraban columnas que no tienen
+
 - En la relación In Memoriam, dos entradas son colectivas —enumeran a varias
   personas en un solo texto— y se componen a todo lo ancho, abarcando la tabla.
   Declaraban sin embargo un reparto de dos columnas que el compositor descarta,
@@ -1739,6 +1826,7 @@ consecuencia muy distinta.
   es cierto de esas dos filas.
 
 ### El visor tenía su propia cornisa, fuera de toda compensación
+
 - El componente que pinta cada cara del libro en los dos flipbooks arma su
   estilo como objetos de JavaScript aplicados directamente, sin pasar por la
   función que compensa el seguimiento: su cornisa y su folio, y también el
@@ -1752,6 +1840,7 @@ consecuencia muy distinta.
   pasada.
 
 ### Verificación
+
 - 332 páginas, ninguna caja desborda. Comparador de integridad: 719 diferencias,
   las mismas que antes de esta tanda — el conteo corregido no movió la
   paginación. Ninguna cola de bloque falta en el PDF.
@@ -1768,6 +1857,7 @@ salieron limpias; conviene dejar dicho qué quedó probado, porque son las
 familias de fallo que ya mordieron en tandas anteriores.
 
 ### Lo que quedó probado
+
 - **Ningún bloque se compone dos veces.** Se cotejó el mapa de armado página por
   página: de los bloques que aparecen en más de una página, ninguno tiene tramos
   solapados ni repetidos. El reflujo que mueve bloques entre páginas no duplica
@@ -1782,6 +1872,7 @@ familias de fallo que ya mordieron en tandas anteriores.
   cubiertas y no llevan folio impreso.
 
 ### La viñeta de las cajas de resumen se componía con la tipografía del navegador
+
 - El punto medio que abre cada asiento de «Resumen y puntos clave» se pintaba en
   un elemento que no declaraba familia tipográfica y no heredaba ninguna, de modo
   que Chromium recurría a su serif por omisión. El resultado: **Liberation Serif
@@ -1790,6 +1881,7 @@ familias de fallo que ya mordieron en tandas anteriores.
   tipografía ajena desaparece de cuatro de las cinco páginas en que aparecía.
 
 ### Límite declarado, no corregido: el griego del Prefacio
+
 - La página veinte cita «ἱστορία» y «ἵστωρ» en griego politónico. Ni Lora ni
   Cormorant Garamond traen esos glifos, de modo que el navegador sustituye la
   tipografía para esas dos voces: se leen sin dificultad, pero con un color de
@@ -1797,6 +1889,7 @@ familias de fallo que ya mordieron en tandas anteriores.
   cuarta tipografía a la edición, decisión que corresponde al compilador.
 
 ### Verificación
+
 - 332 páginas, ninguna caja desborda. Comparador de integridad: 719 diferencias,
   las mismas que la tanda anterior. El archivo de contenido no se tocó.
 - Recuento de tipografías por página, leído del propio PDF: la ajena baja de
@@ -1811,6 +1904,7 @@ ni Cormorant Garamond traen griego politónico. El compilador resolvió incorpor
 una tipografía griega compatible, a criterio del compositor.
 
 ### Cómo se eligió
+
 - Se trajeron cuatro candidatas con griego politónico —EB Garamond, Cardo,
   Gentium Book Plus y GFS Didot— y se compuso con cada una la frase real del
   Prefacio, al cuerpo y al ancho de caja del libro.
@@ -1829,6 +1923,7 @@ una tipografía griega compatible, a criterio del compositor.
   de x del griego iguala exactamente la del texto que lo rodea.
 
 ### Cómo se aplicó
+
 - Las seis caras griegas se incrustan en la hoja de tipografías. No se regeneró
   el archivo entero a propósito: volver a pedir Lora y Cormorant podría traer
   versiones con otras métricas y repaginar el libro sin necesidad.
@@ -1837,6 +1932,7 @@ una tipografía griega compatible, a criterio del compositor.
   texto: el mecanismo es el mismo que producía la sustitución, ahora dirigido.
 
 ### Verificación
+
 - 332 páginas, ninguna caja desborda. Comparador de integridad: 719 diferencias,
   las mismas que la tanda anterior. El archivo de contenido no se tocó.
 - Recuento de tipografías leído del PDF sellado: la sustituta desaparece y
@@ -1845,6 +1941,7 @@ una tipografía griega compatible, a criterio del compositor.
 - Cotejo visual a once aumentos, antes y después.
 
 ### Pendiente declarado
+
 Los dos flipbooks quedan un paso por detrás en este punto por indicación del
 compilador: su pila de familias todavía termina en una sans del sistema, de modo
 que en pantalla el griego se ve en palo seco. Se igualará cuando concluya el
@@ -1860,6 +1957,7 @@ verificación de los nodos mostró que el costo no era estético sino funcional:
 **buscar «Primera parte» dentro del PDF no encontraba nada.**
 
 ### Cómo se resolvió sin aplanar el diseño
+
 - El umbral no es el mismo para todos: depende del cuerpo, de si el rótulo lleva
   dígitos —los de Cormorant son los primeros en ceder— y de si va en versalita,
   que el navegador sintetiza a un cuerpo menor. En vez de bajarlos todos a un
@@ -1875,6 +1973,7 @@ verificación de los nodos mostró que el costo no era estético sino funcional:
   decidió sobre el libro y no sobre el sondeo.
 
 ### Verificación
+
 - **Renglones que se parten al copiar: ninguno.** El único aviso que queda es un
   falso positivo de la sonda: «sesenta y ocho a», un renglón de celda estrecha
   con dos palabras de una letra.
@@ -1889,6 +1988,7 @@ verificación de los nodos mostró que el costo no era estético sino funcional:
 - Tipografías del PDF: las de la edición y, en una sola página, la griega.
 
 ### Pendiente declarado
+
 Los dos flipbooks quedan un paso por detrás, por indicación del compilador: no
 llevan todavía la tipografía griega ni estos techos. Se igualarán ahora que el
 trabajo sobre el PDF concluye.
@@ -1908,6 +2008,7 @@ en Python ni la hoja de tipografías. Dicho de otro modo: el libro se podía vol
 a editar, pero no a componer.
 
 ### Qué se sube
+
 `genealogia/taller/` reúne el paginador (`libro.py`), las medidas del papel
 (`componer.py`), el módulo de estilo y su gemelo de flipbook, la fuente de verdad
 del contenido, la hoja de tipografías incrustadas, las herramientas de
@@ -1918,7 +2019,100 @@ conviene regenerar la hoja de tipografías, que el seguimiento tiene techo y que
 la capa cero no se toca.
 
 ### Verificación
+
 No se afirma que sea reproducible: **se comprobó**. Se copió el taller a un
 directorio limpio, fuera del entorno vivo, y se compuso el libro desde ahí. El
 resultado da las mismas 332 páginas y la misma huella criptográfica del texto
 extraído que el compuesto en el taller de trabajo.
+
+## Tanda: lo medido que queda sin corregir (30 de agosto de 2026)
+
+Esta entrada no registra correcciones al libro: registra **hallazgos**. La
+sesión midió más de lo que corrigió, y lo corregido consta en los commits,
+que no se pierden. Lo hallado y no corregido, en cambio, vive solo en la
+memoria de una sesión que se recicla. Se escribe aquí para que no se vaya con
+ella.
+
+### Los diecinueve marcadores que caen una página antes
+
+Quien pincha «Enrique Chávez León» en el panel de marcadores de su visor
+aterriza en la página anterior. Le ocurre a **diecinueve de los cuarenta y
+nueve marcadores**: trece de los catorce Testimonios, tres de los cuatro
+Episodios, el Equipo Editorial, los Agradecimientos y el Colofón. El patrón
+los delata: son los bloques que abren página.
+
+Es el fallo que este proyecto ya tiene descrito —«si el ancla precede a su
+portadilla, la entrada apunta a la portadilla, no al ancla, o el lector cae en
+la página anterior»— y que se resolvió **para el Contenido y no para los
+marcadores**. El Contenido está sano: `sondas/verificar_toc.py` da cuarenta y
+una entradas que cuadran de cuarenta y tres, y la única que falla es un falso
+positivo conocido, que lee el código postal «01900» del directorio de contacto
+como si fuera un folio.
+
+Cómo se midió: recorriendo `/Outlines` del PDF sellado, resolviendo la página
+de destino de cada marcador y buscando su rótulo en esa página y en la
+siguiente. Es corrección de composición, no de contenido: vive en
+`sellar_pdf.py`, no roza la capa cero y no debe mover la cifra de `cmp.py`.
+
+### Las tres extensiones que el libro declara de sí mismo
+
+| Dónde                        | Qué dice                                                    |
+| ---------------------------- | ----------------------------------------------------------- |
+| Portada interior (p. 3)      | «Ciudad de México, 2026; 289 páginas»                       |
+| Ficha de catalogación (p. 5) | «Asociación Psiquiátrica Mexicana, A.C., 2026. 303 páginas» |
+| El archivo, medido           | 332 páginas                                                 |
+
+Las tres no pueden ser ciertas. Las dos declaradas son cifras de estados
+anteriores del volumen, que cambió de extensión en casi todas las tandas. Es
+dato duro, de modo que su enmienda es decisión del compilador y no se ejecuta
+por cuenta propia.
+
+### El colofón describe una composición que no es la del archivo
+
+El colofón afirma que el libro «se compuso con XeLaTeX sobre la clase memoir
+[…] con Pagella para el texto, Heros para los rótulos y FreeSerif para el
+griego». Medido sobre el archivo, la **única tipografía incrustada con nombre
+es GentiumBookPlus**, en dos subconjuntos, que es la griega elegida en esta
+misma campaña; todo lo demás va en tipos anónimos con su `/ToUnicode`, que es
+lo que mantiene el texto extraíble.
+
+El colofón es texto del libro, no fuente ajena, así que no está protegido por
+la capa cero; pero es una afirmación del libro sobre sí mismo y su enmienda
+corresponde al compilador. O se corrige, o se declara como está.
+
+### El desfase de los flipbooks, ahora cuantificado
+
+Deja de ser una advertencia general: el módulo de estilo empaquetado en el
+flipbook publicado tiene 33 392 bytes contra los 33 394 del taller, y el
+flipbook **no lleva ninguna mención de Gentium** frente a las siete de la hoja
+de tipografías del PDF —es decir, en pantalla el griego del Prefacio sigue
+cayendo en la serif por omisión del navegador—. Se cierra con
+`sync_flipbooks.py` cuando el compilador lo indique; sigue en segundo plano por
+decisión suya.
+
+### Lo que sí se corrigió, y dónde consta
+
+En el taller: once importaciones muertas retiradas, un `.gitignore` que hacía
+cumplir una regla que solo estaba escrita, y la sonda `recuperable.py`, que
+anunciaba como ausentes once archivos ya versionados y ahora se lo pregunta a
+git. Se añadieron tres mecanismos para reglas que antes se cumplían de memoria:
+la cifra de `cmp.py` anclada en `cmp_referencia.txt`, el verificador de la
+configuración enganchado al arranque, y `sondas/reproducible.py`, que recompone
+el libro desde una copia limpia de lo versionado y compara la huella del texto.
+
+Fuera del taller: el volumen recibió su licencia —CC BY-NC-ND 4.0, la que
+declara su página legal— donde antes solo había un `LICENSE` heredado con el
+texto de CC0 1.0, que admite el uso comercial y las obras derivadas que aquella
+prohíbe; y el libro estrenó puerta de entrada propia.
+
+### Verificación
+
+- `sondas/verificar_toc.py` sobre el PDF sellado: cuarenta y una entradas
+  cuadran, una falla por el falso positivo descrito, una carece de folio.
+- Recorrido de `/Outlines`: diecinueve marcadores de cuarenta y nueve caen una
+  página antes de su rótulo.
+- Tipografías incrustadas leídas del propio archivo: tres distintas, y la única
+  con nombre es GentiumBookPlus en dos subconjuntos.
+- `sondas/reproducible.py`: el libro se recompone desde lo versionado con las
+  mismas 332 páginas y la misma huella del texto, `6a3e8cc0…`.
+- El archivo de contenido no se tocó en ninguna de estas comprobaciones.
