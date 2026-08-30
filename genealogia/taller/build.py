@@ -1,9 +1,19 @@
 # -*- coding: utf-8 -*-
+"""Extrae de la fuente de verdad el texto que cada bloque debe llevar y lo deja
+en exp.pkl, para que cmp.py lo coteje palabra por palabra contra el texto real
+del PDF.
+
+Solo necesita el .bin: la extraccion del PDF es asunto de cmp.py, que carga
+mypages.json por su cuenta. Este archivo lo cargaba tambien —535 KB parseados
+para nada, resto de haber copiado el encabezado de cmp.py— y eso ademas lo
+ataba a que extraer_texto_pdf.py se hubiera ejecutado antes.
+"""
 import json, re, unicodedata, pickle
 
-D = json.load(open('assets/08fffc00-d395-438c-88b0-a0545e4c4793.bin', encoding='utf-8'))
-blocks = D['blocks']; TOC = D['toc']
-pages = json.load(open('mypages.json', encoding='utf-8'))
+from componer import BOOK
+
+libro = json.load(open(BOOK, encoding='utf-8'))
+blocks = libro['blocks']; TOC = libro['toc']
 
 def blocktext(b):
     if b.get('parts') is not None:
