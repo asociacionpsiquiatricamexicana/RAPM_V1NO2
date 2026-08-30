@@ -1,8 +1,11 @@
 """Estado final del PDF publicado, medido sobre el archivo."""
 import re, collections
+import os
+import sys
 import pikepdf, pypdfium2 as pdfium
 
-R = "/home/user/RAPM_V1NO2/genealogia/APM60_Genealogia__corregido.pdf"
+R = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), os.pardir,
+                   "APM60_Genealogia__corregido.pdf")
 px, pdf = pikepdf.open(R), pdfium.PdfDocument(R)
 print(f"paginas: {len(pdf)}")
 

@@ -15,7 +15,29 @@ from componer import (TRIM_W, TRIM_H, M_TOP, M_SIDE, M_BOT, BOX_W, BOX_H, PX,
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'pdfs')
 os.makedirs(OUT, exist_ok=True)
-CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
+def _chromium():
+    """El navegador que compone las paginas.
+
+    Se toma de la variable CHROME si esta definida; si no, del directorio de
+    navegadores de Playwright, y en ultimo termino se deja que Playwright
+    resuelva el suyo. Antes iba una ruta fija, valida solo en la maquina donde
+    se compuso el libro.
+    """
+    import glob
+    ruta = os.environ.get('CHROME')
+    if ruta and os.path.exists(ruta):
+        return ruta
+    base = os.environ.get('PLAYWRIGHT_BROWSERS_PATH', '')
+    for patron in (os.path.join(base, 'chromium*', 'chrome-linux', 'chrome'),
+                   os.path.join(base, 'chromium*', 'chrome-*', 'chrome'),
+                   os.path.join(base, 'chromium')):
+        hallado = sorted(glob.glob(patron))
+        if hallado:
+            return hallado[-1]
+    return None
+
+
+CHROME = _chromium()
 TS = 1.0
 C_VINO, C_TINTA, C_GRIS = '#7D4343', '#1C1B1A', '#767070'
 
@@ -586,7 +608,7 @@ def run():
     f = lambda pt: f'{pt * PX * TS:.2f}px'
 
     with sync_playwright() as pw:
-        br = pw.chromium.launch(executable_path=CHROME)
+        br = pw.chromium.launch(**({'executable_path': CHROME} if CHROME else {}))
         page = br.new_page(viewport={'width': 1200, 'height': 900})
         page.set_content(shell(fuentes, style_js), wait_until='load')
         page.wait_for_timeout(1800)
@@ -696,7 +718,7 @@ html,body{{margin:0;padding:0;background:#fff;
     path = os.path.join(OUT, 'libro.html')
     open(path, 'w', encoding='utf-8').write(''.join(parts))
     with sync_playwright() as pw:
-        br = pw.chromium.launch(executable_path=CHROME)
+        br = pw.chromium.launch(**({'executable_path': CHROME} if CHROME else {}))
         pg = br.new_page()
         pg.goto('file://' + path, wait_until='load')
         pg.wait_for_timeout(3500)

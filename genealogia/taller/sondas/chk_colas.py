@@ -7,6 +7,8 @@ en el primero y dos en el segundo. Si el paginador corta justo en ese tope, la
 cola del bloque queda fuera de la pagina y no se compone en ninguna otra.
 """
 import json, re, unicodedata
+import os
+import sys
 import pypdfium2 as pdfium
 
 BLANDOS = "­​�‍"
@@ -38,7 +40,8 @@ def n_por_fragmento(b):
     return n
 
 
-pdf = pdfium.PdfDocument("/home/user/RAPM_V1NO2/genealogia/APM60_Genealogia__corregido.pdf")
+pdf = pdfium.PdfDocument(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), os.pardir,
+                   "APM60_Genealogia__corregido.pdf"))
 todo = norm(" ".join(pdf[i].get_textpage().get_text_bounded() for i in range(len(pdf))))
 
 malos = [i for i, b in enumerate(B)

@@ -5,10 +5,13 @@ sellado y las que usa el visor—, no de leer el numero impreso, que puede caer
 en cualquier sitio del flujo de texto extraido.
 """
 import re
+import os
+import sys
 import pikepdf
 import pypdfium2 as pdfium
 
-RUTA = "/home/user/RAPM_V1NO2/genealogia/APM60_Genealogia__corregido.pdf"
+RUTA = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), os.pardir,
+                   "APM60_Genealogia__corregido.pdf")
 px = pikepdf.open(RUTA)
 pdf = pdfium.PdfDocument(RUTA)
 N = len(pdf)
@@ -23,6 +26,9 @@ def romano(n):
         while n >= v: s += r; n -= v
     return s
 
+if "/PageLabels" not in px.Root:
+    raise SystemExit(f"{RUTA} no lleva etiquetas de pagina: esta sonda necesita el PDF "
+                     "ya sellado (sellar_pdf.py), no el recien compuesto.")
 labels = px.Root.PageLabels.Nums
 reglas = [(int(labels[i]), labels[i + 1]) for i in range(0, len(labels), 2)]
 folio_de = {}

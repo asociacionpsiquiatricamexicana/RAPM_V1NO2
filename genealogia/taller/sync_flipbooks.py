@@ -7,10 +7,21 @@
 """
 import json, base64, gzip, re, io, os, subprocess
 
-HERE = '/tmp/claude-0/-home-user-RAPM-V1NO2/73a5f144-6b79-5632-a979-586a5b8a1536/scratchpad'
+HERE = os.path.dirname(os.path.abspath(__file__))
 os.chdir(HERE)
-SRC = '/root/.claude/uploads/73a5f144-6b79-5632-a979-586a5b8a1536/d347a829-Genealogia_APM_Flipbook__Standalone.html'
+
+# El flipbook autonomo se construye reinyectando el libro y el modulo de estilo
+# en el manifiesto de una plantilla: el visor con su codigo, sus tipografias y
+# su andamiaje. Esa plantilla es un archivo grande que no vive en el repositorio;
+# se indica con FLIPBOOK_SRC. A falta de ella se puede partir del flipbook ya
+# publicado, que sirve de plantilla de si mismo.
 OUT = 'Genealogia_APM_Flipbook__Standalone__corregido.html'
+SRC = os.environ.get('FLIPBOOK_SRC') or os.path.join(HERE, os.pardir, OUT)
+if not os.path.exists(SRC):
+    raise SystemExit(
+        f'no se encuentra la plantilla del flipbook autonomo: {SRC}\n'
+        'Indica su ruta en la variable FLIPBOOK_SRC, o deja en '
+        f'genealogia/{OUT} el flipbook publicado, que sirve de plantilla.')
 UUID_BOOK = '08fffc00-d395-438c-88b0-a0545e4c4793'
 UUID_STYLE = 'a4d0e564-9e95-4331-9b24-990858d9e4e7'
 

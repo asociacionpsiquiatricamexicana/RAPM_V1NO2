@@ -1,8 +1,13 @@
 """Comprueba que se puede recuperar del repositorio lo que hace falta para
 volver a componer el libro, y dice que falta."""
 import re, json, gzip, base64, hashlib, os
+import sys
 
-REPO = "/home/user/RAPM_V1NO2/genealogia"
+REPO = sys.argv[1] if len(sys.argv) > 1 else os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))), os.pardir)
+if not os.path.isdir(REPO):
+    raise SystemExit(f"{REPO} no es un directorio: esta sonda recibe la carpeta de "
+                     "publicacion (genealogia/), donde estan el PDF y los flipbooks.")
 s = open(f"{REPO}/Genealogia_APM_Flipbook__Standalone__corregido.html", encoding="utf-8").read()
 man = json.loads(re.search(r'<script type="__bundler/manifest">\n(.*?)\n  </script>', s, re.S).group(1))
 

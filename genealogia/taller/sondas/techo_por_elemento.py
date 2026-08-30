@@ -9,7 +9,29 @@ from playwright.sync_api import sync_playwright
 import pypdfium2 as pdfium
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome'
+def _chromium():
+    """El navegador que compone las paginas.
+
+    Se toma de la variable CHROME si esta definida; si no, del directorio de
+    navegadores de Playwright, y en ultimo termino se deja que Playwright
+    resuelva el suyo. Antes iba una ruta fija, valida solo en la maquina donde
+    se compuso el libro.
+    """
+    import glob
+    ruta = os.environ.get('CHROME')
+    if ruta and os.path.exists(ruta):
+        return ruta
+    base = os.environ.get('PLAYWRIGHT_BROWSERS_PATH', '')
+    for patron in (os.path.join(base, 'chromium*', 'chrome-linux', 'chrome'),
+                   os.path.join(base, 'chromium*', 'chrome-*', 'chrome'),
+                   os.path.join(base, 'chromium')):
+        hallado = sorted(glob.glob(patron))
+        if hallado:
+            return hallado[-1]
+    return None
+
+
+CHROME = _chromium()
 fuentes = open(os.path.join(HERE, 'fuentes', 'fuentes.css'), encoding='utf-8').read()
 HEAD = "'Cormorant Garamond','Gentium Griego',Georgia,serif"
 
@@ -38,7 +60,7 @@ html = ('<!doctype html><meta charset="utf-8"><style>' + fuentes +
         '.pg{page-break-after:always;white-space:nowrap}</style><body>' + "".join(pags))
 
 with sync_playwright() as p:
-    b = p.chromium.launch(executable_path=CHROME)
+    b = p.chromium.launch(**({'executable_path': CHROME} if CHROME else {}))
     pg = b.new_page()
     pg.set_content(html, wait_until='load')
     pg.pdf(path='techo.pdf', width='320mm', height='30mm',

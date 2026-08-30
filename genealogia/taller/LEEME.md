@@ -26,6 +26,22 @@ superíndice o dirección.
 lleva las tipografías incrustadas en base64: Lora y Cormorant Garamond para el
 latín, y las caras griegas de Gentium Book Plus, que Lora y Cormorant no traen.
 
+## Qué hace falta
+
+```
+pip install -r requisitos.txt
+python3 -m playwright install chromium
+```
+
+El navegador se resuelve solo: se toma de la variable `CHROME` si está definida,
+si no del directorio de navegadores de Playwright, y en último término se deja
+que Playwright resuelva el suyo.
+
+`sync_flipbooks.py` necesita además la plantilla del flipbook autónomo —el visor
+con su código y sus tipografías—, que es un archivo grande y no vive en el
+repositorio. Se indica con `FLIPBOOK_SRC`; a falta de ella toma el flipbook ya
+publicado en `genealogia/`, que sirve de plantilla de sí mismo.
+
 ## Cómo se compone
 
 ```
@@ -77,6 +93,10 @@ PDF construido y no sobre el código:
 | `techo_por_elemento.py` | el seguimiento máximo que admite cada rótulo |
 | `cierre_pdf.py` | estado final: tipografías, roturas al copiar, búsquedas |
 | `recuperable.py` | qué se puede recuperar del repositorio y qué no |
+
+Las sondas que leen el PDF lo reciben como argumento; sin él toman el publicado
+en `genealogia/`. `verificar_toc.py` necesita el PDF ya sellado, porque lee sus
+etiquetas de página.
 
 ## Límite declarado
 
