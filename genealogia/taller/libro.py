@@ -748,10 +748,23 @@ html,body{{margin:0;padding:0;background:#fff;
     for pi, p in enumerate(final):
         for bi, _, _ in p['segs']:
             page_of.setdefault(bi, pi)
+    # Los marcadores del PDF apuntaban una pagina antes que su rotulo en
+    # diecinueve de los cuarenta y nueve: quien pinchaba «Enrique Chavez Leon»
+    # en el panel de su visor aterrizaba en la pagina anterior. La causa: la
+    # entrada apunta a un bloque `anchor`, que va detras del salto de pagina y
+    # delante del rotulo, y como no ocupa altura el paginador lo deja en la
+    # cola de la pagina que se cierra. Se avanza hasta el primer bloque que de
+    # verdad pinta. El folio impreso del Contenido no se toca: ya salia bien, y
+    # se comprueba aparte con sondas/verificar_toc.py.
+    INVISIBLES = ('anchor', 'pb')
     marks = []
     for t in TOC:
         destino = destino_toc(t)
-        pi = page_of.get(destino)
+        visible = destino
+        while (visible < len(blocks)
+               and blocks[visible].get('t') in INVISIBLES):
+            visible += 1
+        pi = page_of.get(visible if visible < len(blocks) else destino)
         if pi is None:
             for bj in range(destino, len(blocks)):
                 if bj in page_of:

@@ -10,3 +10,6 @@ genealogia/taller/__pycache__/
 genealogia/taller/mypages.json
 genealogia/taller/indice_final.json
 genealogia/taller/*.pkl
+# sync_flipbooks.py deja en el taller su copia de trabajo del flipbook; la
+# publicada es la de genealogia/, y son 800 KB que no aportan historial.
+genealogia/taller/*.html

@@ -37,9 +37,30 @@ def cargar(ruta=None):
     return ruta, json.load(open(ruta, encoding="utf-8"))
 
 
+def fragmentos(nodo, salida=None):
+    """Todos los fragmentos de texto de un bloque, en orden de lectura.
+
+    No basta con recorrer `parts`: los bloques de portadilla y de tarjeta
+    guardan su texto en `rows`, cada fila con sus propios `parts`. Un
+    parcheador que solo mirase el primer nivel no vería, por ejemplo, la
+    extension declarada en la portada interior —y como aborta cuando no
+    encuentra, el sintoma seria «no aparece» en un texto que si esta ahi.
+    """
+    salida = [] if salida is None else salida
+    if isinstance(nodo, dict):
+        if isinstance(nodo.get("x"), str):
+            salida.append(nodo)
+        for clave in ("parts", "rows", "cells", "items"):
+            fragmentos(nodo.get(clave), salida)
+    elif isinstance(nodo, list):
+        for hijo in nodo:
+            fragmentos(hijo, salida)
+    return salida
+
+
 def texto(bloque):
-    return "".join((" " if p.get("br") else (p.get("x") or ""))
-                   for p in (bloque.get("parts") or []))
+    return "".join((" " if f.get("br") else (f.get("x") or ""))
+                   for f in fragmentos(bloque))
 
 
 def planear(bloques, parches):
@@ -57,13 +78,13 @@ def planear(bloques, parches):
         if not (0 <= i < len(bloques)):
             fallos.append((ident, f"el bloque {i} está fuera de rango"))
             continue
-        partes = bloques[i].get("parts") or []
+        partes = fragmentos(bloques[i])
         donde = [k for k, f in enumerate(partes) if p["viejo"] in (f.get("x") or "")]
         veces = sum((f.get("x") or "").count(p["viejo"]) for f in partes)
         if len(donde) != 1 or veces != 1:
             fallos.append((ident, f"aparece {veces} veces en {len(donde)} fragmentos del bloque {i}"))
             continue
-        plan.append((ident, i, donde[0], p["viejo"], p["nuevo"]))
+        plan.append((ident, i, donde[0], partes[donde[0]], p["viejo"], p["nuevo"]))
     return plan, fallos
 
 
@@ -81,11 +102,10 @@ def main():
             print(f"  · {ident}: {motivo}")
         raise SystemExit(1)
 
-    for ident, i, k, viejo, nuevo in plan:
+    for ident, i, k, frag, viejo, nuevo in plan:
         print(f"  {'(ensayo) ' if ensayo else ''}bloque {i:>4} fragmento {k}: {ident}")
         if not ensayo:
-            libro["blocks"][i]["parts"][k]["x"] = \
-                libro["blocks"][i]["parts"][k]["x"].replace(viejo, nuevo)
+            frag["x"] = frag["x"].replace(viejo, nuevo)
 
     if ensayo:
         print(f"{len(plan)} parches comprobados, ninguno aplicado")

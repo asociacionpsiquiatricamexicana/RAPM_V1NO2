@@ -2116,3 +2116,70 @@ prohíbe; y el libro estrenó puerta de entrada propia.
 - `sondas/reproducible.py`: el libro se recompone desde lo versionado con las
   mismas 332 páginas y la misma huella del texto, `6a3e8cc0…`.
 - El archivo de contenido no se tocó en ninguna de estas comprobaciones.
+
+## Tanda: los marcadores y la extensión declarada (30 de agosto de 2026)
+
+Dos correcciones que la entrada anterior dejó declaradas, resueltas en una sola
+recomposición porque comparten pasada de compositor y de sellado.
+
+### Los marcadores del PDF
+
+De los cuarenta y nueve marcadores, **diecinueve caían una página antes de su
+rótulo**: quien pinchaba «Enrique Chávez León» en el panel de su visor
+aterrizaba en la página anterior. Le ocurría a trece de los catorce
+Testimonios, a tres de los cuatro Episodios, al Equipo Editorial, a los
+Agradecimientos y al Colofón.
+
+La causa, medida y no supuesta: la entrada apunta a un bloque `anchor`, que va
+detrás del salto de página y delante del rótulo, y como no ocupa altura el
+paginador lo deja en la cola de la página que se cierra. El arreglo va en
+`libro.py`, donde se construyen los marcadores, y no en el sellador, que solo
+los transcribe: se avanza desde el destino hasta el primer bloque que de verdad
+pinta. El folio impreso del Contenido no se tocó, porque ya salía bien.
+
+### La extensión que el libro declaraba de sí mismo
+
+Decía 289 páginas en la portada interior y 303 en la ficha de catalogación,
+sobre un archivo de 332. Ambas pasan a **332**, la medida, por decisión del
+compilador y siguiendo la regla de la casa: la medición gobierna sobre la
+norma. Las dos cifras retiradas eran de estados anteriores del volumen, que
+cambió de extensión en casi todas las tandas.
+
+La de la portada interior obligó de paso a reparar el parcheador: vive en
+`blocks[1].rows[8]`, y `scripts/parche.py` solo recorría el primer nivel de
+`parts`, de modo que los bloques con `rows` —las portadillas, las tarjetas—
+quedaban fuera de su alcance. Fallaba cerrado, que es lo correcto: habría
+abortado con «aparece 0 veces» en un texto que sí está. Ahora recorre también
+`rows`, y se comprobó que sigue rechazando un parche imposible.
+
+### Verificación
+
+- 332 páginas, ninguna caja desborda.
+- `cmp.py`: **719 diferencias, cuadra con la cifra anclada**. No se movió, que
+  es lo que debía pasar: el cotejo compara el PDF contra la fuente, y ambos
+  cambiaron a la vez. Era la primera vez que el anclaje de esa cifra trabajaba
+  en una tanda real.
+- Marcadores, medidos recorriendo `/Outlines` del PDF sellado y buscando cada
+  rótulo en su página de destino y en la siguiente: **de diecinueve a uno**. El
+  que queda —«Agradecimientos»— es falso positivo del instrumento y no defecto
+  del libro: apunta a la portadilla de Cierre, que es donde debe apuntar una
+  apertura de parte; el rótulo impreso cae en la página siguiente.
+- `sondas/verificar_toc.py`: cuarenta y una entradas de cuarenta y tres cuadran;
+  la que falla es el falso positivo conocido del código postal.
+- `sondas/reproducible.py`: reanclada. La huella del texto pasa de `6a3e8cc0…`
+  a `bdd59f99…`, que es justo lo que debía ocurrir al cambiar dos cifras del
+  contenido, y el libro vuelve a recomponerse igual desde lo versionado.
+
+### Pendiente declarado
+
+- **Los flipbooks no se pusieron al día.** `sync_flipbooks.py` no pudo rearmar
+  el plano: `flatten.py` necesita `template.html` y los recursos del visor, que
+  nunca estuvieron en el repositorio. Los dos flipbooks publicados quedan
+  intactos y por tanto **coherentes entre sí**, ambos declarando todavía 289 y 303. Se decidió no actualizar solo el Standalone: dos entregables del mismo
+  libro diciendo cifras distintas es peor que dos igual de atrasados.
+- **El colofón** sigue atribuyendo la composición a XeLaTeX sobre memoir con
+  Pagella, Heros y FreeSerif, cuando la única tipografía incrustada con nombre
+  es GentiumBookPlus. Es afirmación del libro sobre sí mismo y espera decisión.
+- **La portada interior sigue diciendo «PRIMERA EDICIÓN DIGITAL».** El registro
+  acota el cambio a «Primera Edición» a la ficha de catalogación, de modo que
+  no se extendió por cuenta propia: puede ser deliberado.
