@@ -7,7 +7,7 @@ como caracteres —son un borde de CSS—, de modo que no se puede analizar por
 texto. Aqui el Contenido se comprueba contra el mapa de bloques del propio
 armado, que es donde estuvo el fallo real de una tanda anterior.
 """
-import json, re, collections, subprocess
+import json, re, collections
 import pypdfium2 as pdfium
 
 BIN, PDF = "assets/08fffc00-d395-438c-88b0-a0545e4c4793.bin", "pdfs/APM60_Genealogia__final.pdf"

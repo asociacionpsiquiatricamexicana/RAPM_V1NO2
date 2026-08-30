@@ -1,5 +1,5 @@
 """Trae las caras griegas de las candidatas y comprueba que traen politonico."""
-import re, subprocess, base64, os
+import re, subprocess, os
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
       "Chrome/120.0 Safari/537.36")
 CAND = {

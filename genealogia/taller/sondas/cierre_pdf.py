@@ -1,5 +1,5 @@
 """Estado final del PDF publicado, medido sobre el archivo."""
-import re, collections
+import collections
 import os
 import sys
 import pikepdf, pypdfium2 as pdfium

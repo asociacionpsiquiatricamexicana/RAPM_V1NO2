@@ -3,6 +3,7 @@ paths:
   - "genealogia/taller/bookstyle_extraido.js"
   - "genealogia/taller/assets/*.js"
 ---
+
 # El módulo de estilo tiene un gemelo
 
 `bookstyle_extraido.js` decide cómo se ve cada bloque, y

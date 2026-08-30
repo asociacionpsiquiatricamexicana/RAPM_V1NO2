@@ -27,7 +27,7 @@ titulo() { [ "$BREVE" = "--breve" ] || printf '\n\033[1m%s\033[0m\n' "$1"; }
 # campos y la pieza queda con el nombre de su directorio y una descripción
 # tomada de la primera línea del cuerpo. Nada lo advierte.
 revisar_frontmatter() {
-  local archivo="$1" exigidos="$2" rel="${1#$RAIZ/}"
+  local archivo="$1" exigidos="$2"
   python3 - "$archivo" "$exigidos" <<'PY'
 import re, sys, yaml
 archivo, exigidos = sys.argv[1], sys.argv[2].split(",")
@@ -51,7 +51,7 @@ titulo "Habilidades"
 hallada=0
 while IFS= read -r f; do
   hallada=1
-  rel="${f#$RAIZ/}"
+  rel="${f#"$RAIZ"/}"
   if salida=$(revisar_frontmatter "$f" "name,description"); then
     bien "$rel"
   else
@@ -64,7 +64,7 @@ titulo "Agentes"
 hallada=0
 while IFS= read -r f; do
   hallada=1
-  rel="${f#$RAIZ/}"
+  rel="${f#"$RAIZ"/}"
   if salida=$(revisar_frontmatter "$f" "name,description"); then
     bien "$rel"
   else
@@ -77,7 +77,7 @@ titulo "Reglas con ámbito"
 hallada=0
 while IFS= read -r f; do
   hallada=1
-  rel="${f#$RAIZ/}"
+  rel="${f#"$RAIZ"/}"
   if salida=$(revisar_frontmatter "$f" "paths"); then
     bien "$rel"
   else
@@ -96,7 +96,7 @@ while IFS= read -r s; do
     guion=$(printf '%s' "$cmd" | awk '{print $1}' | sed "s#\$CLAUDE_PROJECT_DIR#$RAIZ#; s#\${CLAUDE_PROJECT_DIR}#$RAIZ#")
     case "$guion" in *.sh|*.py) ;; *) continue ;; esac
     hallada=1
-    rel="${guion#$RAIZ/}"
+    rel="${guion#"$RAIZ"/}"
     if [ ! -f "$guion" ]; then
       mal "$rel — el hook lo invoca y no existe (dejaría pasar sin avisar)"
     elif [ ! -x "$guion" ]; then
@@ -149,10 +149,14 @@ else
 fi
 
 # ── resumen ──────────────────────────────────────────────────────────────────
+# `${avisos:+...}` se cumple con avisos=0, porque «0» no es cadena vacía: el
+# sufijo se decide contando, no por si la variable trae algo.
+cola=''
+[ "$avisos" -gt 0 ] && cola=" · $avisos aviso(s)"
 printf '\n'
 if [ $fallos -eq 0 ]; then
-  printf '\033[32m%s\033[0m\n' "sin fallos${avisos:+ · $avisos aviso(s)}"
+  printf '\033[32m%s\033[0m\n' "sin fallos$cola"
   exit 0
 fi
-printf '\033[31m%s\033[0m\n' "$fallos fallo(s)${avisos:+ · $avisos aviso(s)}"
+printf '\033[31m%s\033[0m\n' "$fallos fallo(s)$cola"
 exit 1

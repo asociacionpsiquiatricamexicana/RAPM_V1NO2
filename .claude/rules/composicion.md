@@ -3,6 +3,7 @@ paths:
   - "genealogia/taller/*.py"
   - "genealogia/taller/sondas/*.py"
 ---
+
 # Componer y verificar
 
 El orden importa, y está en `genealogia/taller/LEEME.md`:
@@ -38,5 +39,5 @@ extracción —versalitas, direcciones partidas— y están descritas en
 
 `fuentes/fuentes.css` lleva las tipografías incrustadas. Volver a pedirlas puede
 traer versiones con otras métricas y repaginar el libro entero.
-`fetch_fonts.py` y `fetch_griego.py` están para trazabilidad, no para uso
-rutinario.
+`fetch_fonts.py`, `fetch_griego.py` y `fuentes_griego.py` están para
+trazabilidad, no para uso rutinario.

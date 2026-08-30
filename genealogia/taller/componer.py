@@ -10,7 +10,7 @@ los folios que las anclas no traen (el JSON no registra un ancla cuando el corte
 cae dentro de un bloque). Nada se rellena para cuadrar un total: lo que salga,
 sale medido.
 """
-import json, math, os, re, base64
+import os
 
 TRIM_W, TRIM_H = 439.37, 651.97          # 15,5 × 23 cm, del propio módulo de estilo
 M_TOP, M_SIDE, M_BOT = 56.7, 62.4, 82.2  # ídem

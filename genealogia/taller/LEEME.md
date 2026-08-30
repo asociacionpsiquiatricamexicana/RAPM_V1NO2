@@ -68,8 +68,9 @@ el recién compuesto. Hay que pasarle la ruta, o se compara contra el anterior.
   edición estructural.
 - **No se regenera `fuentes/fuentes.css` sin motivo.** Volver a pedir las
   tipografías puede traer versiones con otras métricas y repaginar el libro
-  entero. `fetch_fonts.py` y `fetch_griego.py` están aquí por trazabilidad, no
-  para uso rutinario.
+  entero. `fetch_fonts.py`, `fetch_griego.py` y `fuentes_griego.py` —el que
+  incorporó la cara griega y midió su `size-adjust`— están aquí por
+  trazabilidad, no para uso rutinario.
 - **El seguimiento tipográfico tiene techo.** Por encima de cierto valor, el
   lector de PDF intercala espacios dentro de las palabras y el texto deja de
   copiarse y de encontrarse al buscar. El techo no es común: depende del cuerpo,
@@ -91,6 +92,7 @@ PDF construido y no sobre el código:
 | `depurar_pdf.py` | tipografías, páginas sin texto, cobertura de tipos de bloque, marcadores, bloques compuestos dos veces |
 | `verificar_toc.py` | que cada entrada del Contenido caiga donde anuncia |
 | `techo_por_elemento.py` | el seguimiento máximo que admite cada rótulo |
+| `techo_plate.py` | lo mismo, solo para el ordinal de portadilla: barre «PRIMERA», «SEGUNDA» y «TERCERA», que ceden a valores distintos |
 | `cierre_pdf.py` | estado final: tipografías, roturas al copiar, búsquedas |
 | `recuperable.py` | qué se puede recuperar del repositorio y qué no |
 

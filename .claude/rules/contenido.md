@@ -2,6 +2,7 @@
 paths:
   - "genealogia/taller/assets/*.bin"
 ---
+
 # La fuente de verdad del libro
 
 Este archivo es todo el texto del volumen y no hay copia autorizada en ningún

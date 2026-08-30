@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import json, re, pickle, unicodedata, difflib, sys
+import json, re, pickle, unicodedata, difflib
 
 pages = json.load(open('mypages.json', encoding='utf-8'))
 idx   = json.load(open('indice_final.json', encoding='utf-8'))['pages']
