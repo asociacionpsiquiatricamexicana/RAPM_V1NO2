@@ -566,7 +566,7 @@ function blockHtml(b, k, ts) {
     if (cur.length) items.push(cur);
     const li = items.map((ps) =>
       `<div style="${css({ display: 'flex', gap: u(5), marginBottom: u(3) })}">
-        <span style="${css({ color: C.vino, flex: 'none' })}">·</span>
+        <span style="${css({ fontFamily: BODY, color: C.vino, flex: 'none' })}">·</span>
         <span style="${css({ fontFamily: BODY, fontSize: f2(9.2), lineHeight: 1.34, color: C.tinta, textAlign: 'justify', hyphens: 'auto', flex: '1' })}">${partsHtml(ps, { hyph: true })}</span>
       </div>`).join('');
     return `<div style="${css({ border: '1px solid #c9bdbd', padding: `${u(9)} ${u(9)} ${u(6)}`, margin: `${u(8)} 0 ${u(10)}`, position: 'relative' })}">

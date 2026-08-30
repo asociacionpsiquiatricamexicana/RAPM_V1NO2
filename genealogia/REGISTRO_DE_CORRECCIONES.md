@@ -1758,3 +1758,47 @@ consecuencia muy distinta.
 - El manifiesto del flipbook autónomo sigue cuadrando con el libro en ida y
   vuelta. Los dos visores se cargaron en el navegador sin errores, y se
   fotografió una doble página interior para comprobar la cornisa corregida.
+
+## Tanda: depuración del código que produce el PDF
+
+Batería de comprobaciones automáticas sobre el PDF construido —tipografías
+realmente incrustadas, páginas sin texto, cobertura de tipos de bloque, anclaje
+del Contenido, marcadores y bloques compuestos dos veces—. Cinco de las seis
+salieron limpias; conviene dejar dicho qué quedó probado, porque son las
+familias de fallo que ya mordieron en tandas anteriores.
+
+### Lo que quedó probado
+- **Ningún bloque se compone dos veces.** Se cotejó el mapa de armado página por
+  página: de los bloques que aparecen en más de una página, ninguno tiene tramos
+  solapados ni repetidos. El reflujo que mueve bloques entre páginas no duplica
+  contenido.
+- **Los cuarenta y nueve marcadores tienen destino válido** dentro del rango de
+  páginas.
+- **Los veintiocho tipos de bloque de la fuente tienen compositor.** Los tres que
+  parecían huérfanos —ancla, índice automático y página a sangre— los compone
+  `libro.py`, no el módulo de estilo.
+- **El Contenido apunta a donde dice**: cada entrada cae en un bloque cuyo texto
+  la contiene, salvo Portada y Contracubierta, que por construcción remiten a las
+  cubiertas y no llevan folio impreso.
+
+### La viñeta de las cajas de resumen se componía con la tipografía del navegador
+- El punto medio que abre cada asiento de «Resumen y puntos clave» se pintaba en
+  un elemento que no declaraba familia tipográfica y no heredaba ninguna, de modo
+  que Chromium recurría a su serif por omisión. El resultado: **Liberation Serif
+  incrustada en el PDF solo para ese carácter**, en las cuatro páginas que llevan
+  caja de resumen. Se le da la tipografía del cuerpo. Tras la corrección esa
+  tipografía ajena desaparece de cuatro de las cinco páginas en que aparecía.
+
+### Límite declarado, no corregido: el griego del Prefacio
+- La página veinte cita «ἱστορία» y «ἵστωρ» en griego politónico. Ni Lora ni
+  Cormorant Garamond traen esos glifos, de modo que el navegador sustituye la
+  tipografía para esas dos voces: se leen sin dificultad, pero con un color de
+  página distinto del texto que las rodea. No es corregible sin incorporar una
+  cuarta tipografía a la edición, decisión que corresponde al compilador.
+
+### Verificación
+- 332 páginas, ninguna caja desborda. Comparador de integridad: 719 diferencias,
+  las mismas que la tanda anterior. El archivo de contenido no se tocó.
+- Recuento de tipografías por página, leído del propio PDF: la ajena baja de
+  cinco páginas a una, la del griego. Cotejo visual de la viñeta a seis aumentos,
+  antes y después.
