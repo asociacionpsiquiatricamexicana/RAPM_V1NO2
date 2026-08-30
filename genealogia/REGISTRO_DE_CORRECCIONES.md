@@ -2218,3 +2218,33 @@ catalogación y no se extiende al resto del volumen.
   compositor, el motor y las tres tipografías reales.
 - Marcadores: 11 raíz y 38 hijos, la estructura de siempre.
 - `sondas/reproducible.py` reanclada: la huella del texto queda en `7f0af5df…`.
+
+## Tanda: la medición de los marcadores pasa a sonda, y corrige su propia cifra (30 de agosto de 2026)
+
+Las dos entradas anteriores dicen que **diecinueve** marcadores caían una
+página antes de su rótulo. La cifra correcta es **dieciocho**, y la diferencia
+importa porque señala un defecto del instrumento, no del libro.
+
+Aquella medición se hizo con un guion desechable que buscaba el rótulo en su
+página de destino y, si no aparecía, lo daba por desfasado. Con ese criterio,
+«Agradecimientos» salía marcado: apunta a la portadilla de Cierre, donde la
+palabra no está impresa. Pero apuntar ahí **es lo correcto** —es lo que se
+busca para las aperturas de parte, y su rótulo se imprime en la página
+siguiente—, así que nunca fue defecto. Dieciocho lo eran; el decimonoveno no.
+
+La medición queda ahora en `sondas/marcadores.py`, que distingue el caso por la
+mancha de la página: una portadilla ronda los ochenta caracteres frente a los
+más de mil de una página de texto. Se corrigió la sonda, no el libro.
+
+### Verificación
+
+Se probó en las dos direcciones, que es lo que hace útil a un instrumento:
+
+- Sobre el PDF anterior al arreglo, recuperado del historial en `925fda0`:
+  encuentra **dieciocho** marcadores desfasados, excusa el de la portadilla y
+  sale con código uno.
+- Sobre el PDF publicado hoy: «cada marcador cae sobre su rótulo», la misma
+  portadilla excusada, código cero.
+
+Las entradas anteriores no se reescriben. Queda constancia aquí de la cifra
+buena y de por qué la primera estaba de más.

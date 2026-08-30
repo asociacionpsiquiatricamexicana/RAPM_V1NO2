@@ -1,4 +1,4 @@
-# Taller de composición del volumen *Genealogía*
+# Taller de composición del volumen _Genealogía_
 
 Aquí está lo que hace falta para volver a componer el libro desde cero. Hasta
 esta tanda vivía solo en el entorno efímero de trabajo: el PDF publicado no se
@@ -85,17 +85,18 @@ el recién compuesto. Hay que pasarle la ruta, o se compara contra el anterior.
 `sondas/` reúne las comprobaciones que se han ido escribiendo, cada una sobre el
 PDF construido y no sobre el código:
 
-| Sonda | Qué mide |
-|---|---|
-| `debug_espacios.py` | huecos entre palabras anómalos, glifo a glifo |
-| `chk_colas.py` | que ninguna cola de bloque se pierda al paginar |
-| `depurar_pdf.py` | tipografías, páginas sin texto, cobertura de tipos de bloque, marcadores, bloques compuestos dos veces |
-| `verificar_toc.py` | que cada entrada del Contenido caiga donde anuncia |
-| `techo_por_elemento.py` | el seguimiento máximo que admite cada rótulo |
-| `techo_plate.py` | lo mismo, solo para el ordinal de portadilla: barre «PRIMERA», «SEGUNDA» y «TERCERA», que ceden a valores distintos |
-| `cierre_pdf.py` | estado final: tipografías, roturas al copiar, búsquedas |
-| `recuperable.py` | qué se puede recuperar del repositorio y qué no |
-| `reproducible.py` | si el libro se vuelve a componer igual desde lo versionado; tarda un minuto |
+| Sonda                   | Qué mide                                                                                                            |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `debug_espacios.py`     | huecos entre palabras anómalos, glifo a glifo                                                                       |
+| `chk_colas.py`          | que ninguna cola de bloque se pierda al paginar                                                                     |
+| `depurar_pdf.py`        | tipografías, páginas sin texto, cobertura de tipos de bloque, marcadores, bloques compuestos dos veces              |
+| `verificar_toc.py`      | que cada entrada del Contenido caiga donde anuncia                                                                  |
+| `techo_por_elemento.py` | el seguimiento máximo que admite cada rótulo                                                                        |
+| `techo_plate.py`        | lo mismo, solo para el ordinal de portadilla: barre «PRIMERA», «SEGUNDA» y «TERCERA», que ceden a valores distintos |
+| `cierre_pdf.py`         | estado final: tipografías, roturas al copiar, búsquedas                                                             |
+| `recuperable.py`        | qué se puede recuperar del repositorio y qué no                                                                     |
+| `reproducible.py`       | si el libro se vuelve a componer igual desde lo versionado; tarda un minuto                                         |
+| `marcadores.py`         | si cada marcador del PDF cae sobre su propio rótulo                                                                 |
 
 Las sondas que leen el PDF lo reciben como argumento; sin él toman el publicado
 en `genealogia/`. `verificar_toc.py` necesita el PDF ya sellado, porque lee sus
