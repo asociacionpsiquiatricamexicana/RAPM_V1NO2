@@ -2847,3 +2847,39 @@ correcto habría ahorrado dos entradas equivocadas en el registro del libro.
 Lo único que hay que hacer con esto, si el compilador quiere, es medirlo con un
 extractor que no sea pdfium antes de decidir nada. Hasta entonces: **no hay
 defecto demostrado en el archivo.**
+
+### La corrección, ya con muestra en vez de un solo caso
+
+La entrada anterior se apoyaba en una sola palabra de la página 302. Se contrastó
+después, página por página, lo que pdfium da por roto contra lo que dicen los
+CMap del propio archivo, en las seis páginas más afectadas y cuatro repartidas
+por el volumen:
+
+| Página | U+0002 según pdfium | Códigos sin mapa en el archivo | Códigos leídos |
+| -----: | ------------------: | -----------------------------: | -------------: |
+| 294 | 27 | **0** | 2 049 |
+| 304 | 22 | **0** | 1 797 |
+| 293 | 19 | **0** | 1 947 |
+| 295 | 18 | **0** | 1 820 |
+| 297 | 18 | **0** | 1 792 |
+| 302 | 14 | **0** | 1 847 |
+| 260 |  8 | **0** | 2 343 |
+| 200 |  6 | **0** | 1 999 |
+|  30 |  4 | **0** | 2 094 |
+| 120 |  1 | **0** | 1 087 |
+
+**137 de los 1 644**, y los ciento treinta y siete caen sobre códigos que el
+archivo mapea correctamente. Cero sin mapa sobre **18 775 códigos leídos**; la
+cifra de códigos leídos se imprime justamente para que un cero no pueda
+confundirse con «no pude mirar».
+
+Queda demostrado sobre muestra, y no sobre un caso: **el archivo dice bien lo
+que pdfium lee mal.**
+
+Nota sobre el camino: la primera versión de este contraste devolvió cero
+caracteres decodificados en las 332 páginas y **salió sin quejarse**, porque un
+`except` mudo se tragaba el fallo y una búsqueda de tipos por nombre sin barra
+no encontraba ninguno. Es exactamente el defecto que esta jornada empezó
+corrigiendo en `sondas/marcadores.py`, reproducido por quien lo estaba
+corrigiendo. Se rehízo imprimiendo cuántos códigos lee cada página, que es lo
+que convierte un cero en una medición.
