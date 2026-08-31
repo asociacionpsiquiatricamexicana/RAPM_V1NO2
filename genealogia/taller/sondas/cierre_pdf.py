@@ -9,13 +9,40 @@ R = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.d
 px, pdf = pikepdf.open(R), pdfium.PdfDocument(R)
 print(f"paginas: {len(pdf)}")
 
+# El grueso del libro va en tipos Type3: el motor de Chromium escribe cada
+# glifo como un procedimiento de dibujo dentro de /CharProcs, de modo que no
+# hay /BaseFont que leer ni /FontFile que buscar. No es que falte la
+# tipografia: va incrustada de otra forma, y el /ToUnicode de cada tipo es lo
+# que mantiene el texto extraible. Antes esta tabla imprimia «?» para las 332
+# paginas, que se lee como «no se pudo identificar» cuando la respuesta se
+# sabe.
 uso = collections.defaultdict(set)
 for i, p in enumerate(px.pages):
     for _, f in ((p.get("/Resources", {}) or {}).get("/Font", {}) or {}).items():
-        uso[str(f.get("/BaseFont", "?"))].add(i + 1)
+        st = str(f.get("/Subtype", "?"))
+        nom = str(f.get("/BaseFont", "")) or f"anonima {st.lstrip('/')}"
+        # en un Type0 el descriptor no cuelga del tipo, sino de su descendiente:
+        # buscarlo solo en el primer nivel acusaba de no incrustadas a las dos
+        # griegas, que van incrustadas en subconjunto (el prefijo WAAAAA+ lo dice)
+        desc = f.get("/DescendantFonts")
+        d = (desc[0].get("/FontDescriptor") if desc is not None and len(desc)
+             else f.get("/FontDescriptor"))
+        prog = d is not None and any(k in d for k in ("/FontFile", "/FontFile2", "/FontFile3"))
+        como = ("programa incrustado" if prog else
+                "glifos en /CharProcs" if "/CharProcs" in f else
+                "SIN INCRUSTAR")
+        uso[(nom, como)].add(i + 1)
 print("tipografias:")
-for b, ps in sorted(uso.items(), key=lambda x: -len(x[1])):
-    print(f"   {b:<40} {len(ps)} pags")
+sin_incrustar = []
+for (nom, como), ps in sorted(uso.items(), key=lambda x: -len(x[1])):
+    print(f"   {nom:<32} {como:<22} {len(ps)} pags")
+    if como == "SIN INCRUSTAR":
+        sin_incrustar.append((nom, len(ps)))
+if sin_incrustar:
+    print("\nHAY TIPOGRAFIA SIN INCRUSTAR: el libro se veria distinto en otra maquina.")
+    for nom, n in sin_incrustar:
+        print(f"   {nom} en {n} paginas")
+    raise SystemExit(1)
 
 def renglones(tp):
     """Agrupa los caracteres de una pagina en renglones, con su geometria."""

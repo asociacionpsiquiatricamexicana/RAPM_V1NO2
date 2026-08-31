@@ -2491,3 +2491,74 @@ salen enteros hoy, medidos. Pero es la misma posición que produjo el defecto de
 la entrada anterior, donde un renglón en el techo cedió al cambiar la variante
 tipográfica. Quedan anotados aquí y vigilados por la sonda, que los nombrará el
 día que el techo baje bajo sus pies.
+
+## Tanda: lo que el archivo dice de sí mismo, medido (31 de agosto de 2026)
+
+Entrada de hallazgos, no de correcciones al libro. **El PDF publicado no se
+tocó**; se midieron propiedades del archivo que ninguna sonda miraba, y se
+corrigió una sonda que decía «?» donde había respuesta y acusaba sin razón.
+
+### El libro va en tipos Type3, y va entero dentro del archivo
+
+`sondas/cierre_pdf.py` imprimía «?» para las 332 páginas en su tabla de
+tipografías, que se lee como «no se pudo identificar». La respuesta se sabe: el
+motor de Chromium escribe el grueso del libro en **tipos Type3**, donde cada
+glifo es un procedimiento de dibujo dentro de `/CharProcs`. Por eso no hay
+`/BaseFont` que leer ni `/FontFile` que buscar; no es que falte la tipografía,
+va incrustada de otra forma, y el `/ToUnicode` de cada tipo es lo que mantiene
+el texto extraíble y buscable. Las dos griegas —GentiumBookPlus en dos
+subconjuntos— sí llevan programa incrustado.
+
+La tabla lo dice ahora, y la sonda sale con código uno si alguna vez aparece un
+tipo sin incrustar, que es el defecto que haría verse el libro distinto en otra
+máquina. Al escribir esa comprobación, la primera versión acusó a las dos
+griegas: en un Type0 el descriptor no cuelga del tipo sino de su descendiente, y
+buscarlo solo en el primer nivel las daba por no incrustadas. **El instrumento
+otra vez antes que el libro.** Corregido, y probado con un PDF fabricado con
+Helvetica sin incrustar: lo nombra y sale con uno.
+
+### Las direcciones no son pulsables, y es decisión escrita
+
+Medido sobre el archivo: **198 direcciones web (162 distintas), 62 menciones de
+DOI (32 distintos) y dos correos, repartidos en 44 páginas**. El PDF no lleva
+**ni una sola anotación**: ningún enlace es pulsable.
+
+No es defecto. La decisión está escrita en el compositor, junto al código que
+las compone: «las direcciones se componen como texto, no como enlace vivo: el
+aparato debe leerse igual en pantalla y fuera de ella, y una referencia no
+depende de que su destino siga en pie». Queda aquí la cifra, que no constaba, y
+la decisión, que constaba solo en un comentario del código.
+
+### Lo demás que se midió y salió sano
+
+| Qué                        | Medido                                              |
+| -------------------------- | --------------------------------------------------- |
+| Caja de página             | 438,96 × 652,08 pt, **idéntica en las 332**          |
+| Idioma declarado           | `es-MX`                                              |
+| Título, autoría, materia   | presentes; el visor muestra el título, no el nombre del archivo |
+| Modo de apertura           | panel de marcadores desplegado                       |
+| Etiquetado de estructura   | **ausente** (`/MarkInfo` y `/StructTreeRoot`)        |
+
+El etiquetado ausente no se corrige aquí ni se declara como deuda nueva: el
+colofón ya compromete para dos mil veintisiete la edición accesible conforme al
+estándar de documentos universales, y eso es justamente lo que falta.
+
+### Una trampa que no está armada
+
+El compositor pone seguimiento de 0,10 em a las partes marcadas con `ls`, y
+versalitas a las marcadas con `sc`. La entrada anterior midió que en versalitas
+la capa de texto cede desde 0,10: una parte que llevara las dos marcas caería
+justo en el punto de ruptura. Contadas sobre el archivo de contenido: **diez
+partes con `ls`, cuatro con `sc`, ninguna con las dos**. No se añadió guarda
+alguna porque el mecanismo que la cazaría ya existe y ya se probó: la sonda de
+cierre mide los 7 692 renglones del libro por su geometría y encontró
+exactamente ese caso en la cubierta.
+
+### Verificación
+
+- `sondas/cierre_pdf.py` sobre el PDF publicado: sale en cero, con las tres
+  tipografías identificadas y su forma de incrustación.
+- Sobre un PDF fabricado con Helvetica sin incrustar: la nombra y sale con uno.
+- Batería completa sobre el PDF publicado —`cierre_pdf`, `marcadores`,
+  `verificar_toc`, `techo_plate`, `techo_por_elemento`—: ninguna señala defecto.
+- El archivo publicado es byte a byte el mismo que dejó la primera tanda de hoy.
