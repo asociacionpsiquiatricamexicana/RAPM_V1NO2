@@ -3308,3 +3308,76 @@ de auditoría de hoy (`informes/informe_barrido_de_auditoria.md`).
 que los únicos archivos tocados son el LEEME, este registro y el LICENSE
 nuevo. Las once sondas del directorio contra la tabla: `for f in sondas/*.py`
 ya no deja ninguna fuera.
+
+## Tanda: la prosa alcanza a los Episodios, los años vuelven a la letra, y el libro crece una página (31 de agosto de 2026)
+
+Tanda sobre los hallazgos uno, tres, cuatro, cinco y siete del barrido de
+auditoría, con las tres decisiones que el compilador delegó resueltas y
+declaradas aquí. Cuarenta y nueve parches sobre la fuente y veinte rótulos de
+navegación, aplicados con `parche.py` (cada uno casó exactamente una vez).
+
+**La nomenclatura.** Las veintinueve remisiones de la prosa a «capítulo» en
+sentido estructural pasan a «episodio», que es como el libro se navega:
+«Véase el capítulo tercero, nota 8» dice ahora «Véase el tercer episodio,
+nota 8», y las dieciocho remisiones por ordinal dejan de apuntar a un rótulo
+que no existía. En prosa corrida va en minúscula y con el ordinal antepuesto,
+como ya hacía el Contenido («del primer episodio»). Quedan como estaban, por
+intangibles o por ser otra cosa: los dos usos dentro de cita, el «Capítulo
+VII» de la Ley General de Salud, la entrada de glosario del capítulo estatal
+y los cuarenta y nueve usos territoriales.
+
+**El doble sentido de «episodio».** Donde el sentido narrativo convivía con
+el estructural se deshizo la colisión: el suceso de mil novecientos sesenta
+y cinco (bloque 370), el racimo de Zacatecas (332, 360, 496, 1055) y el
+«episodio de política interna» (575) dicen ahora «suceso», y «ese primer
+episodio de visibilidad» (1067) dice «ese primer momento». Los usos
+narrativos sin colisión (567, 989 y los de las citas) se conservan: el
+contexto los distingue solo.
+
+**El año del cuarto episodio.** El compilador dictó que el bienio de Saucedo
+Martínez termina el último día hábil de 2027: el bloque 1433 pasa de «dos mil
+veintiséis» a «dos mil veintisiete», con lo que las cuatro voces que databan
+la división (Contenido, Apéndice VI, bloque 1433 y rótulo interno 813) dicen
+ya el mismo año. El corte del objeto —el Sexagésimo Aniversario, dos mil
+veintiséis— no se tocó: es otra cosa y estaba bien.
+
+**Los años en numeral.** Los catorce que sobrevivían en la prosa narrativa
+frente a cuatrocientos diecisiete con letra pasan a letra (bloques 206, 208,
+265, 392, 411, 415, 449, 744, 761, 781, 798 y 908). Los ciento siete de
+apéndices, fichas y cronología se quedan en numeral: son cajas de datos y ahí
+el numeral es el correcto. **Las tres estadísticas con doble grafía se
+declaran y no se tocan**: el 60,34 %, el 3,68 y el 1,6 van en numeral dentro
+de las series estadísticas del tercer episodio y sus notas —donde el numeral
+es práctica declarada de este libro— y con letra en la recapitulación
+retórica de la conclusión. Es variación por registro, no descuido; unificarla
+habría roto una de las dos convenciones locales.
+
+**Los rótulos de navegación.** Los veinte `anchor` con nomenclatura anterior
+a dos renumeraciones quedan alineados con el libro (episodios en vez de
+capítulos, apéndices II a XV en su número actual, In memoriam de XII a XV).
+No llegan a ninguna página —verificado en el barrido—, pero eran la trampa
+lista para la siguiente tanda.
+
+**El libro crece una página: 333.** Los años con letra alargan la prosa y la
+paginación gana una página en el segundo episodio; desde la página 110 del
+PDF todo corre una. La extensión declarada se actualizó en sus dos asientos
+(página legal y ficha de catalogación): «332 páginas» → «333 páginas», y hoy
+vuelve a ser verdad medible.
+
+**Cómo se comprobó.** `cmp.py`: **722 diferencias, exactamente el ancla**,
+antes y después del parche de extensión —el contenido se movió con su fuente
+y no nació artefacto nuevo—. `verificar_toc.py` sobre el sellado: las 49
+entradas caen donde anuncian tras el corrimiento. `marcadores.py`: los 49
+sobre su rótulo. `cierre_pdf.py`: las once búsquedas se encuentran.
+`chk_colas.py`: 0 colas perdidas. `debug_espacios.py`: 0 huecos.
+`depurar_pdf.py`: 0 sin compositor, 0 dobles. `aire_de_la_bajada.py`: 11 de
+11 pegadas. Ninguna caja desborda. En el PDF sellado: cero «capítulo» en
+sentido estructural, cero «332 páginas», y los tres «1971», «1985» y «2008»
+que quedan viven en apéndices y fichas, donde corresponden. Página 22 (folio)
+revisada a ojo: la cifra en letra parte bien y la caja no sufre.
+`reproducible.py` se reancló con razón: 333 páginas, hash `0574c357…`;
+el ancla anterior (332, `968f7ff9…`) describía el libro de ayer.
+
+**Declarado sin corregir.** Nada nuevo; las deudas estructurales de la tanda
+de los Episodios (cornisa transcrita, dos funciones de Contenido, jerarquía
+por sangría) siguen declaradas y en pie.

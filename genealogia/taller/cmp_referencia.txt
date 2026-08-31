@@ -8,7 +8,7 @@
       # cuatro titulos de Episodio su jerarquia de ordinal y tema: el ordinal se
       # compone como antetitulo y el antetitulo no imprime punto final, de modo
       # que «Primer Episodio.» pasa a leerse «Primer Episodio» en la pagina.
-      # Son cuatro diferencias, una por capitulo, y los quince apendices ya las
+      # Son cuatro diferencias, una por episodio, y los quince apendices ya las
       # tenian por la misma razon.
       # Se actualiza al cerrar una tanda que lo mueva, diciendo en el registro
       # por que se movio.
