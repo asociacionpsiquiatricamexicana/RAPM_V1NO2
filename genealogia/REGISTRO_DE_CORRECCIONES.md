@@ -2594,3 +2594,24 @@ dedicatoria. **El instrumento antes que el libro**, otra vez.
 Los folios se cotejaron contra las etiquetas de página que fija el sellado, que
 son las que el visor muestra en su casilla: en las trescientas dieciocho páginas
 que imprimen folio, el número impreso y el del visor son el mismo.
+
+### Cómo está escrito el archivo, y una rebaja que no se aplicó (31 de agosto de 2026)
+
+Medido sobre el PDF publicado, que es lo que el lector descarga:
+
+- **Está linealizado**, de modo que el visor muestra la primera página sin
+  esperar los tres megabytes. Era lo primero que había que comprobar en un
+  libro que se sirve por web, y no constaba en ninguna parte.
+- No va cifrado, declara `es-MX`, y sus 2 205 flujos van comprimidos salvo uno.
+- Se declara **PDF 1.4**, y por eso sus 2 755 objetos van sueltos: los flujos de
+  objetos, que los compactan, piden 1.5.
+
+Compactarlos deja el archivo en **2 868 488 bytes contra 2 992 166: un 4,1 %
+menos**, sin tocar un solo glifo. Comprobado sobre el archivo compacto: mismas
+332 páginas, huella del texto idéntica, los mismos cuarenta y nueve marcadores,
+mismo título e idioma, sigue linealizado, y cinco páginas repartidas por el
+volumen se dibujan **byte a byte iguales**.
+
+**No se aplicó.** No corrige defecto alguno, y a cambio de un 4 % sube la
+versión declarada del formato de un libro ya publicado. La medición queda aquí
+para que la decisión sea del compilador y le cueste una línea, no una tarde.
