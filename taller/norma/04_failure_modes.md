@@ -1,0 +1,45 @@
+# Failure modes documentados (catálogo consolidado)
+
+## Nota sobre esta numeración
+
+El material fuente traía **cuatro numeraciones distintas** de failure modes entre sesiones (FM01–16, FM01–21, "24 modes" sin prefijo, "26 total"), y varios números se referían a bugs de diseños ya descartados (paleta Rojo #C41E3A, footer con nombres del editor, Folio visible). Esta tabla es la única que debe citarse de aquí en adelante. Si en una sesión futura encuentras un failure mode nuevo, agrégalo al final con el siguiente número — no reutilices ni reordenes los existentes.
+
+## Catálogo (FM01–FM23)
+
+| # | Problema | Causa raíz | Solución |
+|---|---|---|---|
+| FM01 | `\\` crashes dentro de `\twocolumn[]` | El argumento opcional de `\twocolumn[...]` es frágil; `\\` se interpreta como terminador | Usar `\savebox` para pre-construir el header; `\par` en vez de `\\` |
+| FM02 | `academicons` incompatible con pdfLaTeX | Encoding TU no soportado en pdfLaTeX | Badge DOI con TikZ; no usar `academicons` |
+| FM03 | `\url{}` dentro de `\savebox` | Conflicto de expansión con hyperref | Texto plano, no `\url{}`, dentro del savebox del header |
+| FM04 | `\columnbreak` ignorado dentro de `\begingroup` | Se ignora silenciosamente | `\endgroup\newpage\begingroup` |
+| FM05 | `\APMrefsbreak` con ≤10 refs genera columna vacía | Balance de columnas insuficiente | Solo usar con ≥12 refs |
+| FM06 | CM font leak (Computer Modern) | `mathptmx` no cargado o cargado tarde | Verificar con `pdffonts`; cargar `mathptmx` temprano |
+| FM07 | UTF-8 en metadata PDF | Limitación de pdfLaTeX | `\pdfinfo` + codificación octal (ver `03_estructura_manuscrito.md`) |
+| FM08 | `\centering` sin scope filtra a otros elementos | Falta de agrupamiento | Siempre `{\centering...\par}` |
+| FM09 | `\textcolor` no permite `\par` dentro | Error de LaTeX | Usar `\color{...}` en vez de `\textcolor{...}{...}` cuando hay `\par` en medio |
+| FM10 | `cream!60!burg` no resuelve en `\savebox` | Mezcla de color no se resuelve dentro del savebox | `\definecolor{creamborder}{HTML}{...}` explícito, no mezclas inline |
+| FM11 | Doble `\par` genera línea en blanco | Copy-paste / macros anidadas | Auditar con regex `\\par\s*\\par` |
+| FM12 | Overfull en colofón por texto largo inline | Frase larga sin puntos de quiebre | `\sloppy\emergencystretch=5em\hfuzz=15pt` como wrapper |
+| FM13 | `pdflang` duplicado | Fijado en `babel` Y en `hypersetup` | Fijarlo solo en `\hypersetup{pdflang={es-MX}}` |
+| FM14 | `#` en `\newcommand` con `\pdfstringdef` | `#` se interpreta como referencia de parámetro | Duplicar: `##` |
+| FM15 | `dblfloatfix` + `stfloats` conflicto | Ambos parchan el mismo mecanismo de floats a dos columnas | Usar solo `dblfloatfix`; nunca cargar `stfloats` |
+| FM16 | `hyperxmp` antes de `hyperref` | Orden de carga incorrecto | `hyperxmp` SIEMPRE después de `hyperref` |
+| FM17 | Columna derecha empieza arriba del heading de la izquierda | Offset inherente al `twocolumn` con heading tipo `\section*` | Heading inline + `\vspace{4pt}` (ver INTRODUCCIÓN en `03_estructura_manuscrito.md`) |
+| FM18 | "NoComercial" vs "No Comercial" | Error de transcripción | Siempre "No Comercial" (2 palabras, con espacio) |
+| FM19 | `babel` spanish sin `texlive-lang-spanish` | Patrones de guionado no instalados | `\babelprovide[main,import]{spanish}` o instalar el paquete de idioma |
+| FM20 | `updmap-sys` falla durante instalación | Carrera de condición con `dpkg` | Esperar a que `dpkg` termine, luego correr `updmap-sys` |
+| FM21 | `pdfplumber` intercala caracteres en tamaños de fuente pequeños | Bug conocido de `pdfplumber` con texto <8pt | Usar PyMuPDF (`fitz`) para extraer footer/texto pequeño, no `pdfplumber` |
+| FM22 | `\parindent` persiste dentro de `mdframed` pese a `\setlength` | `mdframed` puede restaurar el parindent local | Triple seguro: `\setlength{\parindent}{0pt}` + `\noindent` explícito + confirmar dentro del propio entorno `mdframed` |
+| FM23 | `csquotes` genera backtick de Computer Modern dentro de `\savebox` | Conflicto de fuente en contexto de savebox | Usar comillas literales «»/“” en vez de `\enquote{}` dentro del header |
+| FM24 | `! Package totpages Error: Can't use both, lastpage and totpages` | `hyperxmp` carga `totpages` de forma **transitiva** (solo en pdfLaTeX, no en LuaTeX); `totpages` aborta en `\AtBeginDocument` si detecta `lastpage`. Reordenar la carga NO lo resuelve — el check es al inicio del documento, no al cargar | NO cargar `lastpage`. Cargar `totpages` explícitamente y obtener el total con `\ref{TotPages}` en vez de `\pageref{LastPage}`. **Ya aplicado en `assets/apm-editorial.cls`** (línea ~278 y los dos footers) |
+
+## Paquetes que NO deben usarse (conflictos documentados)
+
+- `academicons` — incompatible con pdfLaTeX (FM02)
+- `stfloats` — conflicto con `dblfloatfix` (FM15)
+
+## Limitaciones conocidas y aceptadas (no son bugs, no las "arregles")
+
+- **Desbalance de columnas con pocas referencias**: con ~10 refs, la última página puede quedar con una columna visiblemente más corta. Es estructural (FM05); no fuerces `\APMrefsbreak` para "parejar" si hay menos de 12 refs — empeora el resultado.
+- **`$\cdot$` requiere fuente matemática CM**: el punto medio matemático viene de Computer Modern incluso con `mathptmx` cargado. Es inevitable con este stack; no cuenta como "CM font leak" en el diagnóstico de fuentes (capa M).
+- **`\enlargethispage` puede alterar el margen inferior de P1**: documentarlo en el reporte técnico, no marcarlo como error de geometría.

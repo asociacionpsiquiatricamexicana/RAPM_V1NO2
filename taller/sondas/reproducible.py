@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Comprueba que el ejemplo se recompone igual desde lo versionado.
+
+Leccion del libro: si el entregable no se puede regenerar desde el
+repositorio, el repositorio no guarda el sistema, guarda un recuerdo. Copia
+SOLO los archivos rastreados por git a un directorio limpio, compila alli y
+compara paginas y texto contra el ancla (reproducible_referencia.txt).
+
+Uso: python3 sondas/reproducible.py [--anclar]
+"""
+import hashlib, os, shutil, subprocess, sys, tempfile
+
+AQUI = os.path.dirname(os.path.abspath(__file__))
+TALLER = os.path.join(AQUI, os.pardir)
+seguidos = subprocess.run(['git', '-C', TALLER, 'ls-files'], capture_output=True, text=True).stdout.split()
+tmp = tempfile.mkdtemp()
+for rel in seguidos:
+    src = os.path.join(TALLER, rel)
+    dst = os.path.join(tmp, rel)
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    shutil.copy2(src, dst)
+print(f'taller versionado: {len(seguidos)} archivos · compilando en limpio...')
+for _ in range(2):
+    r = subprocess.run(['pdflatex', '-interaction=nonstopmode', '-halt-on-error', 'ejemplo_editorial.tex'],
+                       cwd=tmp, capture_output=True, text=True)
+if r.returncode != 0:
+    raise SystemExit('NO COMPILA desde lo versionado:\n' + r.stdout[-800:])
+pdf = os.path.join(tmp, 'ejemplo_editorial.pdf')
+texto = subprocess.run(['pdftotext', pdf, '-'], capture_output=True).stdout
+h = hashlib.sha256(texto).hexdigest()
+import pypdfium2 as pdfium
+paginas = len(pdfium.PdfDocument(pdf))
+print(f'paginas: {paginas}\nhash del texto: {h}')
+REF = os.path.join(AQUI, 'reproducible_referencia.txt')
+if '--anclar' in sys.argv:
+    open(REF, 'w', encoding='utf-8').write(f'{h}\n{paginas}\n')
+    print('anclado en reproducible_referencia.txt'); sys.exit(0)
+if not os.path.exists(REF):
+    raise SystemExit('sin ancla: corre con --anclar la primera vez y dilo en el registro')
+eh, ep = open(REF, encoding='utf-8').read().split()
+if (eh, int(ep)) != (h, paginas):
+    raise SystemExit(f'NO SE RECOMPONE IGUAL: se esperaban {ep} paginas y {eh[:16]}..., '
+                     f'salieron {paginas} y {h[:16]}...\n'
+                     'Si el cambio era buscado, vuelve a anclar con --anclar y dilo en el registro.')
+print('SE RECOMPONE IGUAL desde lo versionado.')
