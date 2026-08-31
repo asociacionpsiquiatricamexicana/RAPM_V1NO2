@@ -1,0 +1,244 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap">
+<style>
+:root{
+  --pergamino:#EDE2C8; --papel:#F9F3E4; --carta:#FFFDF6;
+  --azul:#1B3A6B; --hondo:#0E2547; --vino:#A32035;
+  --tinta:#26221B; --sepia:#6B5B45; --dorado:#B08D57; --linea:#D9CBAA;
+  --g:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:2360px}
+body{
+  font-family:Lora,Georgia,serif;color:var(--tinta);font-size:15px;line-height:1.46;
+  background:linear-gradient(103deg,var(--pergamino) 0%,var(--papel) 52%,#E5E9F2 86%,#D6DEEE 100%);
+  padding:26px;
+}
+/* ---------- marco de doble filete, como la cubierta del volumen ---------- */
+.marco{border:1.5px solid var(--dorado);padding:7px;height:100%}
+.marco-int{border:3px solid var(--hondo);padding:0 52px 0;position:relative}
+
+/* ---------- huecos de inyeccion ---------- */
+.ph{
+  border:1.5px dashed var(--dorado);background:rgba(176,141,87,.06);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  text-align:center;color:var(--sepia);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;line-height:1.55;padding:10px;font-weight:500;
+}
+.ph::before{content:"✛";font-size:14px;color:var(--dorado);opacity:.65}
+.ph-circle{border-radius:50%}
+
+/* ---------- cabecera ---------- */
+header{display:grid;grid-template-columns:210px 1fr 210px;align-items:center;gap:34px;
+  padding:44px 0 26px;border-bottom:1px solid var(--dorado);position:relative}
+header::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;background:var(--azul)}
+.ph-cabL{width:210px;height:158px}
+.ph-cabR{width:168px;height:168px;justify-self:end}
+.titulos{text-align:center}
+h1{font-family:'Cormorant Garamond',serif;font-size:67px;font-weight:700;letter-spacing:.05em;color:var(--hondo);text-transform:uppercase;text-wrap:balance;line-height:1.05}
+.sub{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:600;color:var(--vino);letter-spacing:.2em;margin-top:10px;font-variant:small-caps}
+.sub::before,.sub::after{content:"·";margin:0 16px;color:var(--dorado);font-variant:normal}
+.rango{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;margin-top:6px;letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.orn{color:var(--dorado);font-size:19px;margin-top:6px}
+
+/* ---------- fila de eras ---------- */
+.eras{display:flex;gap:var(--g);padding:30px 0 0;align-items:stretch}
+.era{background:var(--carta);border:1px solid var(--linea);border-top:4px solid var(--azul);
+  padding:20px 19px;box-shadow:0 1.5px 8px rgba(38,34,27,.09);flex:1;display:flex;flex-direction:column}
+.era.hito{border-top-color:var(--vino)}
+.cab{min-height:122px}
+.anio{font-family:'Cormorant Garamond',serif;font-size:37px;font-weight:700;color:var(--azul);line-height:1;font-variant-numeric:tabular-nums}
+.era.hito .anio{color:var(--vino)}
+.era h2{font-family:Lora,serif;font-size:15.5px;font-weight:600;font-variant:small-caps;letter-spacing:.09em;color:var(--vino);margin:9px 0 3px;line-height:1.3}
+.baja{font-style:italic;color:var(--sepia);font-size:13.2px;line-height:1.4}
+.era ul{list-style:none;margin-top:3px}
+.era li{padding:7px 0 7px 16px;position:relative;font-size:13.5px;border-top:1px dotted var(--linea);line-height:1.46;text-align:left}
+.era li:first-child{border-top:none}
+.era li::before{content:"";position:absolute;left:1px;top:13.5px;width:6px;height:6px;background:var(--azul);opacity:.5}
+.era.hito li::before{background:var(--vino)}
+.era b{color:var(--hondo);font-weight:600}
+.pie-slot{margin-top:auto;padding-top:16px}
+.pie-slot .ph{height:158px}
+
+/* 1936: cinco tarjetas con retrato */
+.gen{flex:2.78}
+.cinco{display:flex;gap:13px;margin-top:6px}
+.tarjeta{flex:1;border:1px solid var(--linea);background:var(--papel);padding:11px;display:flex;flex-direction:column}
+.retrato{width:100%;aspect-ratio:3/3.7;margin-bottom:10px}
+.tarjeta h3{font-family:Lora,serif;font-size:14px;font-weight:600;color:var(--hondo);line-height:1.28;text-align:center;text-wrap:balance}
+.vida{font-size:11.4px;color:var(--sepia);font-variant-numeric:tabular-nums;display:block;text-align:center;margin:4px 0 9px;letter-spacing:.05em}
+.tarjeta p{font-size:12.1px;line-height:1.45;text-align:left}
+.coda{margin-top:16px;padding-top:11px;border-top:1px solid var(--linea);font-size:12.6px;font-style:italic;color:var(--sepia);line-height:1.5;text-align:left}
+
+/* retrato grande (De la Fuente) */
+.retrato-g{width:56%;aspect-ratio:3/3.6;margin:4px auto 14px}
+
+/* chips con icono (siglo XXI) */
+.era li.chip{display:flex;gap:11px;align-items:flex-start;padding-left:0}
+.era li.chip::before{display:none}
+.chip .ph{flex:0 0 40px;height:40px;padding:0;border-width:1.5px}
+.chip .ph::before{font-size:12px}
+.chip span{flex:1;padding-top:2px}
+
+/* imagotipo 60 */
+.ph-60{width:176px;height:176px;margin:8px auto 14px}
+
+/* ---------- banda cronologica ---------- */
+.banda{margin-top:30px;border-top:2.5px solid var(--azul);border-bottom:2.5px solid var(--azul);
+  background:var(--carta);display:flex;padding:20px 10px;gap:2px}
+.hito-b{flex:1;text-align:center;padding:0 13px;position:relative;display:flex;flex-direction:column}
+.hito-b + .hito-b::after{content:"➤";position:absolute;left:-8px;top:43%;color:var(--dorado);font-size:14px}
+.hito-b .ph{height:110px;margin-bottom:10px}
+.hito-b .a{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:27px;color:var(--vino);font-variant-numeric:tabular-nums}
+.hito-b .q{font-family:Lora,serif;font-size:13px;font-variant:small-caps;letter-spacing:.08em;color:var(--hondo);font-weight:600;margin-top:2px}
+.hito-b .d{font-size:11.9px;color:var(--sepia);margin-top:4px;line-height:1.4}
+
+/* ---------- pie ---------- */
+.pie{background:var(--hondo);color:#EFE9DC;display:flex;align-items:center;gap:34px;
+  padding:24px 46px;margin:26px -52px 0}
+.pie .lema{font-family:'Cormorant Garamond',serif;font-size:31px;letter-spacing:.13em;font-variant:small-caps;flex:1}
+.pie .ph{width:88px;height:88px;border-color:#57709B;color:#9FB0CE;background:rgba(255,255,255,.045)}
+.pie .ph::before{color:#57709B}
+.pie .marca{text-align:right}
+.pie .marca .b{font-size:12.8px;color:#B9C4D8;letter-spacing:.09em;line-height:1.65}
+.fuente{text-align:center;font-size:12.2px;color:var(--sepia);font-style:italic;padding:13px 0 15px}
+</style></head><body>
+<div class="marco"><div class="marco-int">
+
+<header>
+  <div class="ph ph-cabL">Imagen de época<br>(La Castañeda)</div>
+  <div class="titulos">
+    <h1>Historia de la Psiquiatría en México</h1>
+    <div class="sub">De la generación de 1936 al siglo xxi</div>
+    <div class="rango">1936 – 2026</div>
+    <div class="orn">❦</div>
+  </div>
+  <div class="ph ph-circle ph-cabR">Emblema<br>APM</div>
+</header>
+
+<div class="eras">
+
+  <div class="era gen">
+    <div class="cab" style="min-height:0">
+      <span class="anio">1936</span>
+      <h2>La generación de La Castañeda</h2>
+      <p class="baja">La generación que profesionaliza la especialidad</p>
+    </div>
+    <div class="cinco">
+      <div class="tarjeta"><div class="ph retrato">Retrato</div><h3>Samuel Ramírez Moreno</h3><span class="vida">1898-1951</span><p>Precursor de la psiquiatría moderna; promotor de la enseñanza formal y de la asistencia. El hospital de Tláhuac lleva su nombre.</p></div>
+      <div class="tarjeta"><div class="ph retrato">Retrato</div><h3>Leopoldo Salazar Viniegra</h3><span class="vida">1898-1957</span><p>Jefe del Manicomio General; campaña contra el alcoholismo y las toxicomanías; promotor de la despenalización de 1940.</p></div>
+      <div class="tarjeta"><div class="ph retrato">Retrato</div><h3>Manuel Guevara Oropeza</h3><span class="vida">&nbsp;</span><p>Psiquiatra de La Castañeda; su Testimonio conservó la memoria de la demolición y del destino del predio.</p></div>
+      <div class="tarjeta"><div class="ph retrato">Retrato</div><h3>Alfonso Millán Maldonado</h3><span class="vida">&nbsp;</span><p>Documentó la institucionalización del psicoanálisis en México: Sociedad Psicoanalítica e Instituto Mexicano de Psicoanálisis.</p></div>
+      <div class="tarjeta"><div class="ph retrato">Retrato</div><h3>Mathilde Rodríguez Cabo</h3><span class="vida">1902-1967</span><p>Primera mujer psiquiatra de México; dirigió el pabellón de psiquiatría infantil (1932-1957); militante feminista.</p></div>
+    </div>
+    <p class="coda">Con ellos: Edmundo Buentello, Raúl González Enríquez, Mario Fuentes y, con el exilio español, Dionisio Nieto. De esta generación proceden los primeros textos sobre laborterapia, enfermería especializada, higiene mental y distribución territorial de la asistencia.</p>
+  </div>
+
+  <div class="era hito">
+    <div class="cab">
+      <span class="anio">1937</span>
+      <h2>Nace la psiquiatría organizada</h2>
+      <p class="baja">La Sociedad Mexicana de Neurología y Psiquiatría</p>
+    </div>
+    <ul>
+      <li>Durante <b>casi tres décadas</b>, el único cuerpo gremial de ambas especialidades.</li>
+      <li><b>1940</b> — despenalización del consumo de drogas, promovida por Salazar Viniegra.</li>
+      <li><b>1950</b> — González Enríquez funda la <b>Asociación Psiquiátrica de América Latina</b> en el primer Congreso Mundial (París).</li>
+    </ul>
+    <div class="pie-slot"><div class="ph">Documento o imagen de época</div></div>
+  </div>
+
+  <div class="era hito">
+    <div class="cab">
+      <span class="anio">1966</span>
+      <h2>Fundación de la APM</h2>
+      <p class="baja">La psiquiatría mexicana se da agrupación propia</p>
+    </div>
+    <ul>
+      <li><b>31 de marzo, 12:30 h</b> — 142 psiquiatras constituyen la Asociación, en el aula del Pabellón Central de La Castañeda.</li>
+      <li>Separación de la SMNP, planteada desde 1965: identidad profesional propia.</li>
+      <li><b>1967</b> — I Reunión Nacional, Ciudad de México.</li>
+      <li><b>1971</b> — México acoge el V Congreso Mundial de Psiquiatría.</li>
+    </ul>
+    <div class="pie-slot"><div class="ph">Fotografía de la asamblea o acta</div></div>
+  </div>
+
+  <div class="era">
+    <div class="cab">
+      <span class="anio">1968</span>
+      <h2>El año bisagra</h2>
+      <p class="baja">Fin de La Castañeda, nace el órgano de difusión</p>
+    </div>
+    <ul>
+      <li>La <b>Operación Castañeda</b> cierra el gran manicomio: la población pasa a hospitales campestres y de especialidad (Fray Bernardino Álvarez, Juan N. Navarro).</li>
+      <li>En <b>abril</b> aparece la publicación periódica del Gremio.</li>
+      <li>Primer directorio: <b>219 socios</b>, 162 en la capital; lo nacional vendrá con los capítulos estatales, desde 1978.</li>
+    </ul>
+    <div class="pie-slot"><div class="ph">La Castañeda, 1968</div></div>
+  </div>
+
+  <div class="era">
+    <div class="cab">
+      <span class="anio">1966-1998</span>
+      <h2>Ramón de la Fuente Muñiz</h2>
+      <p class="baja">El magisterio y sus tres vértices</p>
+    </div>
+    <div class="ph retrato-g">Retrato</div>
+    <ul>
+      <li><b>Presidente fundador</b> de la APM (1966-1969); anfitrión del V Congreso Mundial (1971).</li>
+      <li><b>1979</b> — crea el <b>Instituto Mexicano de Psiquiatría</b> y lo dirige hasta 1998; en 2000 el Instituto toma su nombre.</li>
+      <li>Gremio, consejo certificador e instituto: <b>en los tres vértices estuvo presente</b>.</li>
+    </ul>
+  </div>
+
+  <div class="era">
+    <div class="cab">
+      <span class="anio">2000-2026</span>
+      <h2>La psiquiatría del siglo XXI</h2>
+      <p class="baja">Del padrón nacional al compromiso social</p>
+    </div>
+    <ul>
+      <li class="chip"><div class="ph ph-circle"></div><span><b>2014</b> — la estructura territorial se completa en las 32 entidades.</span></li>
+      <li class="chip"><div class="ph ph-circle"></div><span>Censo profesional propio: la especialidad se mide a sí misma.</span></li>
+      <li class="chip"><div class="ph ph-circle"></div><span>Voto electrónico, congresos híbridos, primer Congreso virtual (2020).</span></li>
+      <li class="chip"><div class="ph ph-circle"></div><span><b>2022</b> — reforma de salud mental: el modelo comunitario y de derechos humanos entra a la ley.</span></li>
+    </ul>
+    <div class="pie-slot"><div class="ph">Instituto Nacional de Psiquiatría</div></div>
+  </div>
+
+  <div class="era hito">
+    <div class="cab">
+      <span class="anio">2026</span>
+      <h2>Sexagésimo Aniversario</h2>
+      <p class="baja">Herederos de una tradición de 460 años</p>
+    </div>
+    <div class="ph ph-circle ph-60">Imagotipo<br>APM · 60 años</div>
+    <ul>
+      <li><b>XXX Congreso Nacional</b> — Expo Santa Fe, Ciudad de México, 10-12 de septiembre de 2026.</li>
+      <li>Se publica la <em>Genealogía</em> del Gremio, en acceso abierto.</li>
+      <li>Bienio 2026-2027 — David Eduardo Saucedo Martínez.</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="banda">
+  <div class="hito-b"><div class="ph">Imagen</div><div class="a">1566</div><div class="q">San Hipólito</div><div class="d">Primer hospital del continente para enfermos mentales</div></div>
+  <div class="hito-b"><div class="ph">Imagen</div><div class="a">1910</div><div class="q">La Castañeda</div><div class="d">El Manicomio General abre el 1 de septiembre</div></div>
+  <div class="hito-b"><div class="ph">Imagen</div><div class="a">1936</div><div class="q">La generación</div><div class="d">Profesionaliza la especialidad</div></div>
+  <div class="hito-b"><div class="ph">Imagen</div><div class="a">1937</div><div class="q">SMNP</div><div class="d">Primer cuerpo gremial</div></div>
+  <div class="hito-b"><div class="ph">Imagen</div><div class="a">1966</div><div class="q">APM</div><div class="d">142 psiquiatras, en el Pabellón Central</div></div>
+  <div class="hito-b"><div class="ph">Imagen</div><div class="a">1968</div><div class="q">Cierre y revista</div><div class="d">Fin de La Castañeda; nace el órgano de difusión</div></div>
+  <div class="hito-b"><div class="ph">Imagen</div><div class="a">1979</div><div class="q">IMP</div><div class="d">Hoy Instituto Nacional de Psiquiatría Ramón de la Fuente Muñiz</div></div>
+  <div class="hito-b"><div class="ph">Imagen</div><div class="a">2026</div><div class="q">60 años</div><div class="d">Psiquiatría mexicana global, científica y humanista</div></div>
+</div>
+
+<div class="pie">
+  <div class="lema">Desde el dolor humano hasta la ciencia, la historia continúa…</div>
+  <div class="marca"><div class="b">ASOCIACIÓN PSIQUIÁTRICA MEXICANA, A.C.<br>SEXAGÉSIMO ANIVERSARIO · 1966-2026</div></div>
+  <div class="ph ph-circle">Emblema</div>
+</div>
+<div class="fuente">Datos verificados contra Genealogía de la Asociación Psiquiátrica Mexicana, A.C. (2026), edición del Sexagésimo Aniversario.</div>
+
+</div></div>
+</body></html>
