@@ -24,6 +24,14 @@ if len(pages) != len(pdf.pages):
     raise SystemExit(f'El indice tiene {len(pages)} paginas y el PDF {len(pdf.pages)}: '
                      'vuelve a componer antes de sellar.')
 
+# Las palabras clave iban escritas dos veces, una para el XMP y otra para la
+# ficha del documento, y habian derivado: el XMP decia «salud mental» y omitia
+# el «A.C.» del nombre del Gremio, y la ficha al reves. Los repositorios leen
+# uno u otro segun la herramienta, de modo que el archivo se describia distinto
+# a si mismo. Van una sola vez, con el nombre completo y los siete terminos.
+CLAVES = ('Asociación Psiquiátrica Mexicana, A.C.; psiquiatría; México; '
+          'historia; historia oral; prosopografía; salud mental')
+
 with pdf.open_metadata(set_pikepdf_as_editor=False) as meta:
     meta['dc:title'] = TITLE
     meta['dc:creator'] = [AUTHOR]
@@ -32,17 +40,15 @@ with pdf.open_metadata(set_pikepdf_as_editor=False) as meta:
     meta['dc:description'] = (
         SUBTITLE + '. Obra conmemorativa del sexagésimo aniversario de la '
         'fundación de la Asociación Psiquiátrica Mexicana, A.C., 1966-2026. '
-        'Primera edición digital, Ciudad de México, 2026.')
+        'Primera Edición, Ciudad de México, 2026.')
     meta['dc:rights'] = ['CC BY-NC-ND 4.0']
     meta['dc:identifier'] = 'DOI 10.5281/zenodo.22035217'
-    meta['pdf:Keywords'] = ('Asociación Psiquiátrica Mexicana; psiquiatría; México; '
-                            'historia; historia oral; prosopografía; salud mental')
+    meta['pdf:Keywords'] = CLAVES
 
 pdf.docinfo['/Title'] = String(TITLE)
 pdf.docinfo['/Author'] = String(AUTHOR)
 pdf.docinfo['/Subject'] = String(SUBTITLE + ' · Sexagésimo aniversario, 1966-2026')
-pdf.docinfo['/Keywords'] = String('Asociación Psiquiátrica Mexicana, A.C.; psiquiatría; '
-                                  'México; historia; historia oral; prosopografía')
+pdf.docinfo['/Keywords'] = String(CLAVES)
 
 # el visor debe abrir mostrando el índice de marcadores y una página completa
 pdf.Root[Name.PageMode] = Name.UseOutlines

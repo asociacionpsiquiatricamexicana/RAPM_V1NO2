@@ -2615,3 +2615,62 @@ volumen se dibujan **byte a byte iguales**.
 **No se aplicó.** No corrige defecto alguno, y a cambio de un 4 % sube la
 versión declarada del formato de un libro ya publicado. La medición queda aquí
 para que la decisión sea del compilador y le cueste una línea, no una tarde.
+
+## Tanda: «Primera Edición», y el archivo deja de describirse distinto a sí mismo (31 de agosto de 2026)
+
+Dos decisiones del compilador, aplicadas: **la edición se llama «Primera
+Edición» y ya**, y **los flipbooks se dan por no necesarios**.
+
+### La edición
+
+El libro se nombraba a sí mismo de dos maneras. Cuatro sitios decían «Primera
+Edición» —los créditos, la ficha de catalogación, el Equipo Editorial y la
+contracubierta— y uno decía **«PRIMERA EDICIÓN DIGITAL»**: la portada interior.
+Un sexto, invisible en la página pero no para quien recolecta el archivo, decía
+«Primera edición digital» en los metadatos XMP.
+
+Los dos discordantes pasan a «Primera Edición». La portada interior se parcheó
+con el parcheador del taller, que comprueba que el texto viejo aparezca
+exactamente una vez antes de escribir nada; el XMP, en `sellar_pdf.py`.
+
+### Las palabras clave iban escritas dos veces, y habían derivado
+
+Al medir los metadatos apareció un defecto que nadie había mirado: el juego XMP
+y la ficha del documento llevaban **listas de palabras clave distintas**. El XMP
+decía «salud mental» y omitía el «A.C.» del nombre del Gremio; la ficha llevaba
+el «A.C.» y no «salud mental». Los repositorios leen uno u otro según la
+herramienta —Zenodo, donde vive el DOI, entre ellos—, de modo que el archivo se
+describía distinto a sí mismo según quién preguntara.
+
+Van ahora una sola vez, en una constante que alimenta a los dos: el nombre
+completo con «A.C.» y los siete términos, que es la unión de lo que cada lista
+tenía. No se quitó ninguno: la discordancia venía de que una se editó y la otra
+no, no de una decisión de descartar un término.
+
+### Los flipbooks
+
+Por decisión del compilador dejan de ser entregable. Deja de tener sentido la
+deuda declarada en las últimas tandas —que siguen anunciando 289 y 303 páginas
+y que `flatten.py` no puede rearmar sin `template.html`—: no hay nada que poner
+al día. Los dos archivos publicados siguen en `genealogia/` y su retirada queda
+a la orden del compilador; no se borra un entregable publicado por cuenta
+propia.
+
+### Verificación
+
+- Las **seis** menciones de la edición dicen ahora lo mismo: portada interior
+  (p. 3), créditos (p. 4), ficha de catalogación (p. 5), Equipo Editorial
+  (p. 17), contracubierta (p. 332) y los metadatos XMP. «PRIMERA EDICIÓN
+  DIGITAL» no aparece ni una vez en el archivo.
+- Palabras clave del XMP y de la ficha del documento: **idénticas**, leídas del
+  archivo sellado.
+- `cmp.py`: **719 diferencias, cuadra con la cifra anclada.** El cotejo compara
+  el PDF contra la fuente, y ambos cambiaron a la vez.
+- 332 páginas, ninguna caja desborda. Batería completa —`cierre_pdf`,
+  `marcadores`, `verificar_toc`, `techo_plate`, `techo_por_elemento`—, las cinco
+  en cero.
+- Comparación de píxeles página por página contra el PDF anterior, a dos
+  aumentos: **cambia una sola página de 332**, la portada interior, en el
+  0,282 % de sus bytes. Las otras 331 salen idénticas.
+- `sondas/reproducible.py`: reanclada, de `8bcc6148…` a `8817c343…`, que es lo
+  que debía mover un cambio de dos palabras en el contenido.
