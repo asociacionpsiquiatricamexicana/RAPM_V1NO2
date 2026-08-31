@@ -2883,3 +2883,71 @@ no encontraba ninguno. Es exactamente el defecto que esta jornada empezó
 corrigiendo en `sondas/marcadores.py`, reproducido por quien lo estaba
 corrigiendo. Se rehízo imprimiendo cuántos códigos lee cada página, que es lo
 que convierte un cero en una medición.
+
+## Tanda: el compilador firma sin guion (31 de agosto de 2026)
+
+Por indicación del compilador se revisaron los apellidos compuestos del libro.
+Se corrigió **uno** y se dejan **treinta y cinco declarados**, por la razón que
+sigue.
+
+### Lo corregido
+
+El nombre del compilador aparecía escrito de dos maneras en su propio libro:
+**sesenta y nueve veces «Medina Rodríguez»** —la cubierta, los créditos, el
+colofón, el Equipo Editorial— y **ocho veces «Medina-Rodríguez»**, en dos
+asientos de Referencias y en seis filas del Apéndice XIII.
+
+Las ocho citan material suyo de este mismo proyecto —el Archivo de Historia Oral
+levantado para el libro, un informe técnico de la Revista—, no publicaciones
+ajenas con firma propia. No es, por tanto, la diferencia de firma entre
+publicaciones que la capa cero protege: es el mismo hombre escrito de dos
+maneras en el mismo volumen, y quien firma ha dicho cómo firma. Pasan las ocho a
+«Medina Rodríguez».
+
+### Lo declarado sin corregir: los otros treinta y cinco
+
+El libro trae **treinta y seis apellidos compuestos distintos en ciento cincuenta
+y cinco apariciones**. De los treinta y cinco restantes:
+
+- Varios son firmas académicas reales y verificables, de las que se usan en la
+  literatura biomédica latinoamericana precisamente para que ambos apellidos
+  queden indizados: Medina-Mora, Pérez-Rincón, Álvarez-Leefmans, León-Portilla,
+  Aguilar-Gaxiola, Barrientos-Gutiérrez. **Quitarles el guion falsearía la
+  fuente**, que es lo único que este proyecto prohíbe sin excepción.
+- **Cincuenta y una de esas apariciones caen en zona protegida** —asientos de
+  Referencias, epígrafes y cuerpos de Testimonio—, donde no se toca el texto
+  ajeno ni aunque parezca equivocado.
+- Cuatro no son apellidos y el guion es correcto: «México-Francia», «Re-Unión»,
+  «Mayo-Julio», «Agosto-Septiembre».
+
+Si la indicación alcanza también a esos treinta y cinco, hace falta que lo diga
+el compilador nombre por nombre, o al menos que confirme que ninguno de ellos
+firma con guion: la lista completa, con su reparto entre zona libre y protegida,
+queda medida y disponible.
+
+### Lo que se midió y no había que corregir
+
+- **Palabras repetidas en prosa corrida: tres**, y las tres son «Córdova
+  Córdova», apellido real ya resuelto en una tanda anterior. Ninguna errata.
+- **Numerales en prosa corrida: ochenta años y un porcentaje.** No se tocaron.
+  La norma de la casa pide letra para cifras y años en prosa corrida, pero el
+  libro sigue una práctica coherente y deliberada que la acota: escribe con
+  letra los recuentos narrativos —«treinta y tres hospitales», «cuatro mil
+  trescientos»— y conserva el numeral para los años y para las series
+  estadísticas, que funcionan como dato. El caso que parecía inconsistente
+  —«el 24 por ciento»— resultó no serlo: su párrafo da toda la serie en cifra,
+  «el 28,6 por ciento», «el 13,…». Cambiar los ochenta años es decisión
+  editorial de fondo y repaginaría; queda a la orden del compilador.
+
+### Verificación
+
+- «Medina-Rodríguez» en el PDF publicado: **cero**. «Medina Rodríguez»:
+  setenta y una apariciones impresas.
+- `cmp.py`: **de 719 a 718**, y la baja está explicada: ese guion era una de las
+  diferencias de extracción del cotejo, y al desaparecer el guion desapareció la
+  diferencia. La cifra queda reanclada en 718 con esa razón escrita.
+- 332 páginas, ninguna caja desborda.
+- Comparación de píxeles contra el PDF anterior: cambian **cinco páginas de
+  332** —63, 150, 295, 296 y 313—, entre el 0,08 % y el 0,33 % de sus bytes, que
+  son exactamente las que llevaban el nombre.
+- Huella del texto reanclada en `d256d5be…`.
