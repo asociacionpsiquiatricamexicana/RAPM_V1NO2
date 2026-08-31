@@ -8,9 +8,22 @@ podía regenerar desde el repositorio.
 
 **La fuente de verdad del contenido** es `assets/08fffc00-d395-438c-88b0-a0545e4c4793.bin`
 —un JSON con `blocks`, `toc` y `anchors`—. Todo el texto del libro está ahí y
-en ningún otro sitio. Un bloque tiene un tipo (`t`) y una lista de fragmentos
-(`parts`), cada uno con su texto y sus marcas de cursiva, versalita, negrita,
-superíndice o dirección.
+en ningún otro sitio. Un bloque tiene un tipo (`t`) y su texto vive en tres
+sitios según el tipo, y hay que leer los tres:
+
+- los bloques de prosa llevan una lista de fragmentos (`parts`); el texto de
+  cada fragmento va bajo la clave **`x`**, con sus marcas de cursiva (`i`),
+  negrita (`b`), versalita (`sc`), espaciado (`ls`), superíndice (`sup`) o
+  dirección (`url`), y `br` marca un salto;
+- los bloques de tabla (`trow`, `thead`) no llevan `parts` sino **`rows`**, y
+  cada fila lleva los suyos;
+- cincuenta y ocho bloques llevan su prosa en **`title`, `sub` o `label`**,
+  donde ni `parts` ni `rows` llegan: las portadillas `plate`, los `anchor`,
+  los `field` y los `fnote` con rótulo.
+
+**Trampa cara:** un extractor que lea solo `parts` buscando una clave `text`
+devuelve cero caracteres y ninguna excepción, y ese silencio se confunde con
+«no encontrado». Ya pasó una vez.
 
 **La composición** la reparten dos archivos:
 
@@ -97,6 +110,7 @@ PDF construido y no sobre el código:
 | `recuperable.py`        | qué se puede recuperar del repositorio y qué no                                                                     |
 | `reproducible.py`       | si el libro se vuelve a componer igual desde lo versionado; tarda un minuto                                         |
 | `marcadores.py`         | si cada marcador del PDF cae sobre su propio rótulo                                                                 |
+| `aire_de_la_bajada.py`  | que cada bajada quede más cerca de su título que del cuerpo que la sigue                                            |
 
 Las sondas que leen el PDF lo reciben como argumento; sin él toman el publicado
 en `genealogia/`. `verificar_toc.py` necesita el PDF ya sellado, porque lee sus

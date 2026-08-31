@@ -2449,19 +2449,19 @@ Los once rótulos de seguimiento ancho, con el valor leído de la hoja de estilo
 y el máximo que no rompe la copia, medido componiendo cada uno con su
 tipografía, su cuerpo y su texto reales:
 
-| Rótulo                    | Va en | Techo limpio |
-| ------------------------- | ----- | ------------ |
-| portadilla · ordinal      | 0,12  | 0,14         |
-| cubierta · aniversario    | 0,11  | 0,11         |
-| cubierta · título         | 0,05  | 0,09         |
-| cubierta · subtítulo      | 0,08  | 0,09         |
-| cubierta · cargos         | 0,12  | 0,12         |
-| cubierta · congreso       | 0,08  | 0,09         |
-| cubierta · sede           | 0,10  | 0,10         |
-| cubierta · sello          | 0,12  | 0,12         |
-| contracubierta · título   | 0,07  | 0,09         |
-| contracubierta · pie      | 0,10  | 0,11         |
-| contracubierta · DOI      | 0,10  | 0,10         |
+| Rótulo                  | Va en | Techo limpio |
+| ----------------------- | ----- | ------------ |
+| portadilla · ordinal    | 0,12  | 0,14         |
+| cubierta · aniversario  | 0,11  | 0,11         |
+| cubierta · título       | 0,05  | 0,09         |
+| cubierta · subtítulo    | 0,08  | 0,09         |
+| cubierta · cargos       | 0,12  | 0,12         |
+| cubierta · congreso     | 0,08  | 0,09         |
+| cubierta · sede         | 0,10  | 0,10         |
+| cubierta · sello        | 0,12  | 0,12         |
+| contracubierta · título | 0,07  | 0,09         |
+| contracubierta · pie    | 0,10  | 0,11         |
+| contracubierta · DOI    | 0,10  | 0,10         |
 
 Ninguno se pasa. La tabla confirma además, por otro camino, lo medido en la
 entrada anterior: los tres rótulos en versalitas tienen techo 0,09, y los de
@@ -2531,13 +2531,13 @@ la decisión, que constaba solo en un comentario del código.
 
 ### Lo demás que se midió y salió sano
 
-| Qué                        | Medido                                              |
-| -------------------------- | --------------------------------------------------- |
-| Caja de página             | 438,96 × 652,08 pt, **idéntica en las 332**          |
-| Idioma declarado           | `es-MX`                                              |
-| Título, autoría, materia   | presentes; el visor muestra el título, no el nombre del archivo |
-| Modo de apertura           | panel de marcadores desplegado                       |
-| Etiquetado de estructura   | **ausente** (`/MarkInfo` y `/StructTreeRoot`)        |
+| Qué                      | Medido                                                          |
+| ------------------------ | --------------------------------------------------------------- |
+| Caja de página           | 438,96 × 652,08 pt, **idéntica en las 332**                     |
+| Idioma declarado         | `es-MX`                                                         |
+| Título, autoría, materia | presentes; el visor muestra el título, no el nombre del archivo |
+| Modo de apertura         | panel de marcadores desplegado                                  |
+| Etiquetado de estructura | **ausente** (`/MarkInfo` y `/StructTreeRoot`)                   |
 
 El etiquetado ausente no se corrige aquí ni se declara como deuda nueva: el
 colofón ya compromete para dos mil veintisiete la edición accesible conforme al
@@ -2570,17 +2570,17 @@ ven al pasar página y que ninguna sonda vigila. **No hubo que corregir nada**;
 se anota porque «medido y sano» es información: ahorra a quien venga después
 volver a derivarlo, y deja constancia de con qué se midió.
 
-| Qué se buscó                                             | Resultado |
-| -------------------------------------------------------- | --------- |
-| Viudas: última línea corta de un párrafo, sola al abrir página | **0** |
-| Huérfanas: primer renglón de párrafo solo al pie           | **0** |
-| Rótulos varados al pie, sin cuerpo debajo                  | **0** |
-| Folio impreso que no case con la etiqueta del visor        | **0** de 318 |
-| Páginas casi vacías                                        | **1**, la portadilla «Umbral», por diseño |
-| Páginas sin folio impreso                                  | **14**, las portadillas y las dos cubiertas, por norma |
-| Comillas «» desparejas en los 2 187 bloques                | **0** |
-| Paréntesis desparejos                                      | **0** |
-| Comillas rectas, espacio antes de puntuación               | **0** |
+| Qué se buscó                                                   | Resultado                                              |
+| -------------------------------------------------------------- | ------------------------------------------------------ |
+| Viudas: última línea corta de un párrafo, sola al abrir página | **0**                                                  |
+| Huérfanas: primer renglón de párrafo solo al pie               | **0**                                                  |
+| Rótulos varados al pie, sin cuerpo debajo                      | **0**                                                  |
+| Folio impreso que no case con la etiqueta del visor            | **0** de 318                                           |
+| Páginas casi vacías                                            | **1**, la portadilla «Umbral», por diseño              |
+| Páginas sin folio impreso                                      | **14**, las portadillas y las dos cubiertas, por norma |
+| Comillas «» desparejas en los 2 187 bloques                    | **0**                                                  |
+| Paréntesis desparejos                                          | **0**                                                  |
+| Comillas rectas, espacio antes de puntuación                   | **0**                                                  |
 
 Cómo se midió: las viudas y las huérfanas, por la geometría real de cada
 renglón —ancho contra la caja de texto, sangría contra el margen izquierdo de
@@ -2675,7 +2675,13 @@ propia.
 - `sondas/reproducible.py`: reanclada, de `8bcc6148…` a `8817c343…`, que es lo
   que debía mover un cambio de dos palabras en el contenido.
 
-## Hallazgo mayor sin corregir: mil seiscientas cuarenta y cuatro palabras llevan un carácter invisible dentro (31 de agosto de 2026)
+## Hallazgo mayor, después retirado: mil seiscientas cuarenta y cuatro palabras parecían llevar un carácter invisible dentro (31 de agosto de 2026)
+
+> **Nota puesta al corregir el encabezado.** Este título decía «Hallazgo mayor
+> sin corregir» y anunciaba como vigente lo que la subsección final de esta
+> misma entrada retracta: el carácter era un espejismo del extractor, no del
+> archivo. El cuerpo de la entrada se conserva tal cual, incluida la
+> retractación, porque el registro también documenta cómo se llegó a saber.
 
 Buscando fusiones de palabras en el texto compuesto —«nal.Ciudad»,
 «cuentenario.Hotel»— apareció algo bastante mayor que lo buscado, y que
@@ -2717,11 +2723,11 @@ elementos, es decir, la guionización nativa del motor.
 Se compuso la misma palabra de tres maneras, con el mismo motor y las mismas
 tipografías, forzando el corte:
 
-| Cómo se compuso                    | Cómo sale al copiarla |
-| ---------------------------------- | --------------------- |
-| Con guiones blandos manuales       | `Aso·cia·ción` — **dos caracteres de control** |
-| Con `hyphens:auto` del motor       | `Asociación` — **limpia** |
-| Sin cortar                         | `Asociación` — limpia |
+| Cómo se compuso              | Cómo sale al copiarla                          |
+| ---------------------------- | ---------------------------------------------- |
+| Con guiones blandos manuales | `Aso·cia·ción` — **dos caracteres de control** |
+| Con `hyphens:auto` del motor | `Asociación` — **limpia**                      |
+| Sin cortar                   | `Asociación` — limpia                          |
 
 El guión blando manual deja un U+0002 por cada guión insertado en la palabra,
 **incluidos los que no llegaron a cortar**. La guionización nativa del motor
@@ -2759,9 +2765,9 @@ que la decisión del compilador se tome sobre cifras y no sobre una advertencia.
 
 **Lo que costaría dejar la guionización al motor:**
 
-| | Publicado | Ensayo |
-| --- | --- | --- |
-| Páginas | 332 | **335** (+3) |
+|                       | Publicado            | Ensayo               |
+| --------------------- | -------------------- | -------------------- |
+| Páginas               | 332                  | **335** (+3)         |
 | Caracteres de control | 1 644 en 291 páginas | **81 en 32 páginas** |
 
 La paginación se desvía a partir de la **página 7**, de modo que arrastra el
@@ -2857,16 +2863,16 @@ por el volumen:
 
 | Página | U+0002 según pdfium | Códigos sin mapa en el archivo | Códigos leídos |
 | -----: | ------------------: | -----------------------------: | -------------: |
-| 294 | 27 | **0** | 2 049 |
-| 304 | 22 | **0** | 1 797 |
-| 293 | 19 | **0** | 1 947 |
-| 295 | 18 | **0** | 1 820 |
-| 297 | 18 | **0** | 1 792 |
-| 302 | 14 | **0** | 1 847 |
-| 260 |  8 | **0** | 2 343 |
-| 200 |  6 | **0** | 1 999 |
-|  30 |  4 | **0** | 2 094 |
-| 120 |  1 | **0** | 1 087 |
+|    294 |                  27 |                          **0** |          2 049 |
+|    304 |                  22 |                          **0** |          1 797 |
+|    293 |                  19 |                          **0** |          1 947 |
+|    295 |                  18 |                          **0** |          1 820 |
+|    297 |                  18 |                          **0** |          1 792 |
+|    302 |                  14 |                          **0** |          1 847 |
+|    260 |                   8 |                          **0** |          2 343 |
+|    200 |                   6 |                          **0** |          1 999 |
+|     30 |                   4 |                          **0** |          2 094 |
+|    120 |                   1 |                          **0** |          1 087 |
 
 **137 de los 1 644**, y los ciento treinta y siete caen sobre códigos que el
 archivo mapea correctamente. Cero sin mapa sobre **18 775 códigos leídos**; la
@@ -2960,12 +2966,12 @@ se anota con qué se comprobó cada cosa.
 **Los cuatro guiones que no son apellidos: ninguno debe tocarse.** Se miraron uno
 por uno, y el contexto los desautoriza como erratas:
 
-| Guion | Dónde vive | Por qué se queda |
-| --- | --- | --- |
-| Mayo-Julio | dentro de `…/uploads/Numero-4.-Mayo-Julio-2021_singles.pdf` | es una **dirección web**; alterarla la rompe |
-| Agosto-Septiembre | dentro de `…/uploads/Numero-5.-Agosto-Septiembre-2021.pdf` | ídem |
-| Re-Unión | divisa entrecomillada del IX Congreso, adoptada tras el sismo de 1985 | es **cita de una divisa documentada** |
-| México-Francia | «Coloquio México-Francia de Psiquiatría», tres apariciones, una en Testimonio | es el **nombre propio de un encuentro** |
+| Guion             | Dónde vive                                                                    | Por qué se queda                             |
+| ----------------- | ----------------------------------------------------------------------------- | -------------------------------------------- |
+| Mayo-Julio        | dentro de `…/uploads/Numero-4.-Mayo-Julio-2021_singles.pdf`                   | es una **dirección web**; alterarla la rompe |
+| Agosto-Septiembre | dentro de `…/uploads/Numero-5.-Agosto-Septiembre-2021.pdf`                    | ídem                                         |
+| Re-Unión          | divisa entrecomillada del IX Congreso, adoptada tras el sismo de 1985         | es **cita de una divisa documentada**        |
+| México-Francia    | «Coloquio México-Francia de Psiquiatría», tres apariciones, una en Testimonio | es el **nombre propio de un encuentro**      |
 
 Dos son direcciones y dos son nombres ajenos: corregirlos habría roto un enlace
 y renombrado un coloquio y una divisa.
@@ -2998,3 +3004,415 @@ dirección cortan, los once, sobre guiones que ya existen en la dirección —lo
 los DOI `S0185-2620`, `SM.0185-3325`, los rangos de página—. El riesgo es latente,
 no actual; corregirlo pide separar la dirección en su propio fragmento en ciento
 trece asientos, sin cambiar un solo carácter, y queda a la orden del compilador.
+
+## Tanda: los cuatro Episodios recuperan su jerarquía, y la bajada vuelve a su título (31 de agosto de 2026)
+
+Tanda dictada por el compilador sobre tres frentes: **apéndices, títulos con su
+subtítulo, e índice**. Lo que sigue es lo que se midió, lo que se cambió, con qué
+se confirmó y qué quedó declarado sin corregir.
+
+### El defecto que la tanda anterior dio por bueno
+
+El barrido del 31 de agosto anotó en este mismo registro:
+
+> «Títulos de episodio y de apéndice: mismo patrón, sin discrepancia. Los cuatro
+> episodios y los quince apéndices resuelven igual el título y su nombre temático.»
+
+**No era cierto en el libro impreso**, y la razón por la que pareció serlo es
+instructiva: aquello se comprobó leyendo la fuente, donde en efecto los
+diecinueve títulos tienen la misma forma —ordinal, salto, tema—. El PDF decía
+otra cosa.
+
+`libro.py` normalizaba en memoria los saltos de línea rígidos de los títulos
+mayores, con este patrón:
+
+```python
+ordinal = bool(_re.match(r'^(Capítulo|Apéndice)\s', (parts[0].get('x') or '')))
+```
+
+El módulo de estilo, que es quien compone, reconocía **tres** formas de ordinal:
+
+```js
+parts[0].x.match(/^(Capítulo|Apéndice)\s+[IVX]+\.?\s*$/) ||
+  parts[0].x.match(/^(Primer|Segundo|Tercer|Cuarto)\s+Episodio\.?\s*$/);
+```
+
+Los dos patrones habían derivado. A los cuatro títulos de capítulo el
+normalizador les retiraba el salto **estructural** —el que separa el ordinal del
+tema— por no reconocer «Primer Episodio» como ordinal, y el compositor, al no
+encontrar ya el salto, los componía de una pieza:
+
+|           | Antes                                                                                                                 | Ahora                                                           |
+| --------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| Capítulos | «Primer Episodio. Fundación e identidad» en un solo renglón de 19 pt, con el punto en medio, partiéndose donde cayera | «Primer Episodio» de 19 pt · «Fundación e identidad» de 12,5 pt |
+| Apéndices | «Apéndice I» de 19 pt · «Línea del Tiempo» de 12,5 pt                                                                 | igual que antes                                                 |
+
+El «Segundo Episodio» era el caso más visible: se partía en «Segundo Episodio.
+Expansión» / «académica y gremial», rompiendo el nombre temático por la mitad.
+
+**El arreglo no fue ensanchar el patrón de `libro.py`**, que es lo que perpetúa
+el problema, sino llevar la forma a la fuente y dejar aquí solo la comprobación.
+
+### Por qué la fuente y no la pasada de composición
+
+Los flipbooks componen desde `assets/*.bin` **en crudo**, con el módulo de
+estilo gemelo. Todo lo que `libro.py` derivaba en memoria llegaba al PDF y **no
+llegaba a los flipbooks**: los saltos arbitrarios seguían vivos allí, de modo
+que el mismo apéndice se titulaba «Ruta de / recuperación documental» en el
+lector digital y «Ruta de recuperación documental» en el impreso. Un arreglo en
+el compositor era, además de un parche, una divergencia entre los dos
+entregables.
+
+Ahora la fuente lleva la forma normalizada —solo el salto estructural, en los
+diecinueve títulos— y `libro.py` la comprueba en cada corrida con
+`comprobar_titulos()`, que **aborta** si alguien reintroduce un salto arbitrario
+o desmarca una pareja. Seis títulos quedaron limpios de saltos sobrantes:
+
+- Apéndice III: «Criterios de transcripción / y de edición» → un solo tema
+- Apéndice IV: «Glosario, siglas / y definiciones operativas»
+- Apéndice V: «Relación enlazada / de expresidentes»
+- Apéndice IX: «Genealogía / del órgano de difusión»
+- Apéndice XI: «Ruta de / recuperación documental» — partido tras una preposición
+- Pieza testimonial: «Eduardo Ángel / Madrigal de León»
+
+### La bajada estaba pegada al cuerpo y suelta de su título
+
+Trece bloques `sub` sirven a dos oficios distintos con un solo estilo. **Once**
+son bajadas: siguen inmediatamente a un rótulo o a una sección y le pertenecen.
+**Dos** son ladillos sueltos, en medio de la prosa, sin título encima.
+
+El estilo era el del ladillo —aire arriba, poco abajo— y en las once bajadas
+salía al revés de lo que pide el oficio. Medido sobre el PDF, base a base:
+
+|       | Aire sobre la bajada | Aire bajo la bajada |
+| ----- | -------------------- | ------------------- |
+| Antes | 19,7 a 24,0 pt       | 16,2 a 18,8 pt      |
+| Ahora | 13,7 a 18,0 pt       | 20,7 a 23,9 pt      |
+
+Las once se separaban de su propio título **más** que del cuerpo que
+introducen, de modo que el ojo las leía como entradilla del texto. Los dos
+ladillos sueltos conservan su aire arriba: la fuente distingue ahora las dos
+funciones con `bajada: 1`, y el estilo cede margen en las dos piezas de la
+pareja, porque los márgenes verticales contiguos se funden en el mayor.
+
+Afecta a la línea del tiempo del Apéndice I (los cuatro episodios), a la
+cronología del Apéndice X, a las tres clases de ausencia del Apéndice XII, al
+tercer capítulo y a la conclusión.
+
+### Los apéndices se llamaban de dos maneras según la página
+
+Ocho de los quince llevaban en la cornisa una versión recortada del título, y el
+recorte no seguía ninguna regla: unos perdían la cláusula final, otro cambiaba
+la palabra que encabeza. Peor: **la cornisa va transcrita en cada bloque de la
+sección, no derivada de su título**, y al acortarla en su día solo se tocó el
+bloque del título. La primera página de cada apéndice anunciaba una cosa y las
+de continuación otra.
+
+| Apéndice | Decía la 1.ª página                            | Decían las demás           |
+| -------- | ---------------------------------------------- | -------------------------- |
+| III      | Criterios de transcripción y de edición        | Criterios de transcripción |
+| IV       | Glosario, siglas y definiciones operativas     | Glosario                   |
+| V        | Relación enlazada de expresidentes             | Relación enlazada          |
+| VI       | Mesas Directivas, 1966-2027                    | Mesas Directivas           |
+| VII      | Congresos y reuniones nacionales, 1967-2026    | Congresos                  |
+| IX       | Genealogía del órgano de difusión              | Órgano de difusión         |
+| XI       | Ruta de recuperación documental                | Ruta de recuperación       |
+| XII      | Fuentes no consultadas y vía para consultarlas | Fuentes no consultadas     |
+
+Se unificaron las quince al título entero, en 263 bloques. **El recorte no lo
+imponía la medida:** la cornisa más larga del libro —«CUARTO EPISODIO ·
+TRANSFORMACIÓN DIGITAL Y COMPROMISO SOCIAL»— mide 269,6 pt sobre una mancha de
+314,57, y la más larga de las nuevas —la del Apéndice XII— no la alcanza. El
+caso del VI lo pedía además la claridad: la primera parte del libro tiene cuatro
+secciones llamadas «Mesas Directivas», y sin el rango de años la cornisa del
+apéndice no se distinguía de ellas.
+
+Las cornisas que dicen a propósito algo distinto del título —«Conclusión»,
+«Cierre», «Prefacio del autor», «Sexagésimo Aniversario»— **no se tocaron**: ahí
+la cornisa nombra la parte, no la sección, y es decisión editorial.
+`comprobar_titulos()` vigila desde ahora que ningún apéndice vuelva a
+llamarse de dos maneras.
+
+### El Contenido prometía folio donde no lo hay
+
+«Portada» y «Contracubierta» son páginas ciegas: se listan sin folio, por
+decisión ya asentada. Pero su renglón dibujaba la línea de puntos, que existe
+solo para llevar el ojo hasta un número, y lo llevaba hasta un hueco. Las dos
+entradas quedan ahora sin guía.
+
+### La sonda del Contenido callaba lo que no medía
+
+`verificar_toc.py` barría las veinte primeras páginas del PDF y daba por entrada
+del índice **todo renglón que acabara en número**. De ahí dos defectos propios:
+
+- leía **42 de las 49** entradas y no decía que faltaran siete;
+- acusaba de descuadre la dirección postal de la página de créditos
+  («…Ciudad de México, Mé» → folio 55), que llevaba tandas apareciendo como
+  ruido y no era del libro.
+
+Reescrita: toma las entradas de la fuente, localiza las páginas del Contenido
+por su cornisa y comprueba **las 49**, distinguiendo las dos ciegas. Se le
+introdujo el defecto que dice detectar —un rótulo que el Contenido no imprime, y
+una página ciega declarada no ciega— sobre una copia de la fuente: **falló las
+dos veces**, y volvió a pasar al restaurarla.
+
+### Sonda nueva: `aire_de_la_bajada.py`
+
+Mide sobre el PDF, renglón a renglón, el aire que separa cada bajada de su
+título y del cuerpo. Contra el PDF anterior a esta tanda denuncia **11 de 11**;
+contra el nuevo, **ninguna**. Su primera versión agrupaba los renglones por
+igualdad exacta de la base de la caja holgada y partía cada uno en trozos: medía
+el interlineado dentro de un renglón y no el aire entre renglones. Queda anotado
+en su cabecera, porque es la cuarta vez en este proyecto que la sonda está mal y
+el libro bien.
+
+### Verificación
+
+- **332 páginas**, ninguna caja desborda, y **ningún folio del Contenido se
+  mueve**: las 47 entradas con folio anuncian exactamente los mismos que antes.
+- `cmp.py`: **de 718 a 722**, y las cuatro diferencias nuevas están
+  identificadas una por una: son los puntos finales de «Primer Episodio.»,
+  «Segundo Episodio.», «Tercer Episodio.» y «Cuarto Episodio.», que el
+  antetítulo no imprime. Los quince apéndices ya las tenían por la misma razón.
+  La cifra queda reanclada en 722 con esa razón escrita.
+- `verificar_toc.py`: las 49 entradas están y caen donde anuncian.
+- `aire_de_la_bajada.py`: las 11 bajadas se componen pegadas a su título.
+- `marcadores.py`: los 49 marcadores caen sobre su rótulo.
+- `chk_colas.py`: ninguna cola de bloque se pierde.
+- `debug_espacios.py`: 0 renglones con hueco anómalo, de 332 páginas.
+- `cierre_pdf.py`: **0 renglones se parten al copiar**, de 7700 medidos. Las
+  ocho cornisas nuevas, más largas, se buscan y se encuentran dentro del PDF:
+  el seguimiento tipográfico no rebasó su techo.
+- `depurar_pdf.py`: 2187 bloques, 0 sin compositor, 0 compuestos dos veces, y
+  los dos avisos de siempre —«Portada» y «Contracubierta», que apuntan a
+  páginas ciegas cuyo texto no las nombra—.
+- `reproducible.py`: el libro se recompone **idéntico** desde lo versionado; la
+  huella del texto se reancla en `968f7ff9…` porque el texto cambió a propósito
+  en esos cuatro puntos.
+- Comparación de píxeles contra el PDF anterior: **55 páginas de 332**. Las
+  cuatro aperturas de capítulo, las cuatro páginas de bajadas de los apéndices I,
+  X y XII, la conclusión, las dos del Contenido —al 0,05 %, que es la línea de
+  puntos retirada—, treinta y siete páginas de apéndice al 0,20-0,38 %, que es
+  solo la cornisa, y ocho páginas del primer capítulo que refluyen.
+
+### Lo que el reflujo del primer capítulo arregló de paso
+
+Dar al «Primer Episodio» su segundo escalón añadió altura a la página 27 y el
+texto refluyó hasta absorberse en la 35, sin cambiar un solo folio. En esa
+página 35 el reflujo **corrigió un defecto anterior**: la página abría con la
+cola suelta de una dirección electrónica —«https://www.scielo.org.mx/…» y
+«33252010000100001»— separada de su asiento bibliográfico, que quedaba en la
+página anterior. Ahora el asiento de Sosenski y Sosenski entra entero.
+
+### Lo declarado sin corregir
+
+- **El flipbook plano no se pudo rearmar.** `flatten.py` necesita
+  `template.html` y los recursos del visor, que no viven en el repositorio. El
+  flipbook autónomo sí quedó al día —lleva la fuente y el módulo de estilo
+  nuevos, comprobado con ida y vuelta—; el plano se queda como estaba y lo dice
+  `recuperable.py`. Es el límite que ya declara el LEEME del taller.
+- **La cornisa sigue transcrita, no derivada.** Vive en cada uno de los 2187
+  bloques en vez de deducirse del título de su sección. Esta tanda la unificó
+  y le puso una guarda que vigila los apéndices, pero la duplicación sigue ahí
+  y volverá a derivar en cuanto alguien cambie un título sin cambiar la sección
+  entera. Corregirlo de raíz pide derivar la cornisa al componer, lo que toca
+  las dos series de páginas y repaginaría: queda a la orden del compilador.
+- **El Contenido del PDF y el del flipbook los componen dos funciones
+  distintas** —`toc_html()` en `libro.py` y `tocHtml()` en el módulo de
+  estilo—, que no dicen exactamente lo mismo: la del flipbook compone las
+  entradas de nivel cero sin folio como rótulo en versalita, y la del impreso
+  como renglón corriente. Hoy no produce discrepancia visible porque el flipbook
+  folia todas sus páginas, pero son dos verdades sobre una misma página.
+- **La jerarquía visual del Contenido descansa solo en la sangría.** Las cuatro
+  entradas de parte y las cuarenta y cinco de sección comparten cuerpo, color y
+  tipografía; solo las separa una sangría de 10 pt. Distinguirlas de veras es
+  decisión editorial y no defecto medible: no se tocó.
+
+## Barrido de auditoría: diecisiete dimensiones medidas, nada corregido, once hallazgos declarados (31 de agosto de 2026)
+
+Barrido de solo lectura sobre el PDF publicado y sobre el propio taller,
+posterior al cierre de la tanda de los Episodios. No se corrigió nada: este
+asiento existe para que conste qué se midió, qué salió limpio y qué queda
+declarado a decisión del compilador. El informe completo, con cada cifra y la
+orden que la reproduce, está en
+`informes/informe_barrido_de_auditoria.md`.
+
+**Cómo se comprobó.** Las once sondas del taller más mediciones propias sobre
+el archivo: `cmp.py` da 722 diferencias, exactamente su ancla;
+`reproducible.py` recompone idéntico (332 páginas, mismo hash de texto); las
+49 entradas del Contenido y los 49 marcadores caen donde anuncian; 0 de 7 700
+renglones se parten al copiar; 0 colas perdidas, 0 huecos anómalos, 0 bloques
+sin compositor, 0 caracteres de control; las 64 claves autor-año citadas en el
+cuerpo tienen asiento localizable; el flipbook autónomo lleva incrustado un
+`.bin` byte a byte igual al del taller y no necesita red.
+
+**Declarado sin corregir, a decisión del compilador.** Cinco hallazgos sobre
+el libro: la prosa remite veintinueve veces a «capítulo» donde el libro navega
+por Episodios —dieciocho son remisiones por ordinal a un rótulo que no
+existe—, y «episodio» quedó con dos sentidos; el flipbook plano publicado va
+una tanda atrás, con la cornisa corta anterior en ocho apéndices y 271
+bloques; el cuarto Episodio termina en 2027 según el Contenido y en «dos mil
+veintiséis» según el bloque 1433; catorce años quedan en numeral dentro de la
+prosa narrativa que escribe 417 con letra; y tres estadísticas aparecen con
+letra en un sitio y con numeral en otro. Seis sobre los instrumentos: el LEEME
+describe mal el formato de la fuente y quien lo siga extrae cero caracteres
+sin error; los 46 rótulos `anchor` conservan la nomenclatura anterior a dos
+renumeraciones (verificado que no llegan a ninguna página: metadato muerto);
+el encabezado de la línea 2678 de este registro sigue anunciando como vigente
+el hallazgo de los 1 644 caracteres invisibles que su propia subsección
+retracta y que hoy mide cero; la sonda `aire_de_la_bajada.py` no entró en la
+tabla del LEEME; el taller carece de licencia propia y hereda una que prohíbe
+obras derivadas; y los documentos de la norma describen un volumen de 283
+páginas con apéndices I a XIV y nombran cinco entregas por partes que no
+existen en el repositorio, sin nota de fecha que los date.
+
+**Método, para que conste.** El barrido estaba previsto como flujo de agentes
+en paralelo con verificación adversarial; el flujo falló entero por el límite
+semanal de capacidad y las diecisiete dimensiones se recorrieron una a una en
+el hilo principal. La verificación adversarial se hizo a mano: retiró cuatro
+hallazgos aparentes de bibliografía —eran editoriales dentro de una lista de
+libros, o asientos que sí existen en nota al pie— y bajó de grado el de los
+rótulos `anchor`.
+
+## Tanda: los instrumentos dejan de mentir sobre sí mismos (31 de agosto de 2026)
+
+Cuatro correcciones de higiene sobre los instrumentos, ninguna sobre una
+página del libro; salen de los hallazgos seis, ocho, nueve y diez del barrido
+de auditoría de hoy (`informes/informe_barrido_de_auditoria.md`).
+
+- **El encabezado de la línea 2678 de este registro** decía «Hallazgo mayor
+  sin corregir» sobre los mil seiscientos cuarenta y cuatro caracteres
+  invisibles, cuando la subsección final de esa misma entrada los retracta
+  —eran del extractor, no del archivo—. Se retitula «Hallazgo mayor, después
+  retirado» y se antepone una nota que remite a la retractación; el cuerpo se
+  conserva íntegro, porque el registro también documenta cómo se llegó a
+  saber. Medido hoy: cero U+0002 en el PDF publicado.
+- **El LEEME del taller describía mal el formato de la fuente**: decía que un
+  bloque lleva fragmentos «cada uno con su texto», cuando la clave es `x`, los
+  bloques de tabla llevan `rows` en vez de `parts`, y cincuenta y ocho bloques
+  guardan su prosa en `title`, `sub` o `label`. Se reescribe la descripción
+  con las tres vías y se añade la trampa a la lista de trampas caras: un
+  extractor escrito desde la descripción anterior devuelve cero caracteres y
+  ninguna excepción. Ya pasó una vez, durante el propio barrido.
+- **La tabla de sondas del LEEME** no listaba `aire_de_la_bajada.py`, escrita
+  en la tanda de los Episodios. Se añade su fila; las once sondas del
+  directorio quedan las once en la tabla.
+- **El taller no tenía licencia propia** y heredaba la BY-NC-ND del libro, que
+  prohíbe obras derivadas de un código cuyo LEEME enseña a modificar. Se añade
+  `taller/LICENSE` (MIT, titular la Asociación Psiquiátrica Mexicana, A.C.)
+  con una nota expresa de que el contenido del libro y sus entregables siguen
+  bajo BY-NC-ND según el LICENSE de la raíz. Decisión delegada por el
+  compilador en esta tanda; revisable si la Asociación prefiere otra.
+
+**Cómo se comprobó.** Nada de esto toca la composición: `git diff` confirma
+que los únicos archivos tocados son el LEEME, este registro y el LICENSE
+nuevo. Las once sondas del directorio contra la tabla: `for f in sondas/*.py`
+ya no deja ninguna fuera.
+
+## Tanda: la prosa alcanza a los Episodios, los años vuelven a la letra, y el libro crece una página (31 de agosto de 2026)
+
+Tanda sobre los hallazgos uno, tres, cuatro, cinco y siete del barrido de
+auditoría, con las tres decisiones que el compilador delegó resueltas y
+declaradas aquí. Cuarenta y nueve parches sobre la fuente y veinte rótulos de
+navegación, aplicados con `parche.py` (cada uno casó exactamente una vez).
+
+**La nomenclatura.** Las veintinueve remisiones de la prosa a «capítulo» en
+sentido estructural pasan a «episodio», que es como el libro se navega:
+«Véase el capítulo tercero, nota 8» dice ahora «Véase el tercer episodio,
+nota 8», y las dieciocho remisiones por ordinal dejan de apuntar a un rótulo
+que no existía. En prosa corrida va en minúscula y con el ordinal antepuesto,
+como ya hacía el Contenido («del primer episodio»). Quedan como estaban, por
+intangibles o por ser otra cosa: los dos usos dentro de cita, el «Capítulo
+VII» de la Ley General de Salud, la entrada de glosario del capítulo estatal
+y los cuarenta y nueve usos territoriales.
+
+**El doble sentido de «episodio».** Donde el sentido narrativo convivía con
+el estructural se deshizo la colisión: el suceso de mil novecientos sesenta
+y cinco (bloque 370), el racimo de Zacatecas (332, 360, 496, 1055) y el
+«episodio de política interna» (575) dicen ahora «suceso», y «ese primer
+episodio de visibilidad» (1067) dice «ese primer momento». Los usos
+narrativos sin colisión (567, 989 y los de las citas) se conservan: el
+contexto los distingue solo.
+
+**El año del cuarto episodio.** El compilador dictó que el bienio de Saucedo
+Martínez termina el último día hábil de 2027: el bloque 1433 pasa de «dos mil
+veintiséis» a «dos mil veintisiete», con lo que las cuatro voces que databan
+la división (Contenido, Apéndice VI, bloque 1433 y rótulo interno 813) dicen
+ya el mismo año. El corte del objeto —el Sexagésimo Aniversario, dos mil
+veintiséis— no se tocó: es otra cosa y estaba bien.
+
+**Los años en numeral.** Los catorce que sobrevivían en la prosa narrativa
+frente a cuatrocientos diecisiete con letra pasan a letra (bloques 206, 208,
+265, 392, 411, 415, 449, 744, 761, 781, 798 y 908). Los ciento siete de
+apéndices, fichas y cronología se quedan en numeral: son cajas de datos y ahí
+el numeral es el correcto. **Las tres estadísticas con doble grafía se
+declaran y no se tocan**: el 60,34 %, el 3,68 y el 1,6 van en numeral dentro
+de las series estadísticas del tercer episodio y sus notas —donde el numeral
+es práctica declarada de este libro— y con letra en la recapitulación
+retórica de la conclusión. Es variación por registro, no descuido; unificarla
+habría roto una de las dos convenciones locales.
+
+**Los rótulos de navegación.** Los veinte `anchor` con nomenclatura anterior
+a dos renumeraciones quedan alineados con el libro (episodios en vez de
+capítulos, apéndices II a XV en su número actual, In memoriam de XII a XV).
+No llegan a ninguna página —verificado en el barrido—, pero eran la trampa
+lista para la siguiente tanda.
+
+**El libro crece una página: 333.** Los años con letra alargan la prosa y la
+paginación gana una página en el segundo episodio; desde la página 110 del
+PDF todo corre una. La extensión declarada se actualizó en sus dos asientos
+(página legal y ficha de catalogación): «332 páginas» → «333 páginas», y hoy
+vuelve a ser verdad medible.
+
+**Cómo se comprobó.** `cmp.py`: **722 diferencias, exactamente el ancla**,
+antes y después del parche de extensión —el contenido se movió con su fuente
+y no nació artefacto nuevo—. `verificar_toc.py` sobre el sellado: las 49
+entradas caen donde anuncian tras el corrimiento. `marcadores.py`: los 49
+sobre su rótulo. `cierre_pdf.py`: las once búsquedas se encuentran.
+`chk_colas.py`: 0 colas perdidas. `debug_espacios.py`: 0 huecos.
+`depurar_pdf.py`: 0 sin compositor, 0 dobles. `aire_de_la_bajada.py`: 11 de
+11 pegadas. Ninguna caja desborda. En el PDF sellado: cero «capítulo» en
+sentido estructural, cero «332 páginas», y los tres «1971», «1985» y «2008»
+que quedan viven en apéndices y fichas, donde corresponden. Página 22 (folio)
+revisada a ojo: la cifra en letra parte bien y la caja no sufre.
+`reproducible.py` se reancló con razón: 333 páginas, hash `0574c357…`;
+el ancla anterior (332, `968f7ff9…`) describía el libro de ayer.
+
+**Declarado sin corregir.** Nada nuevo; las deudas estructurales de la tanda
+de los Episodios (cornisa transcrita, dos funciones de Contenido, jerarquía
+por sangría) siguen declaradas y en pie.
+
+## Tanda: el flipbook plano vuelve a poder rearmarse, y se rearma (31 de agosto de 2026)
+
+El hallazgo dos del barrido: el flipbook plano publicado iba una tanda atrás
+—la cornisa corta anterior en ocho apéndices, 271 bloques— y no podía
+rearmarse porque `flatten.py` necesita `template.html`, que no vivía en el
+repositorio. La limitación estaba declarada; el artefacto atrasado seguía
+publicándose.
+
+**De dónde salió la plantilla.** Del propio flipbook autónomo, que empaqueta
+en su manifiesto las diecinueve piezas del visor: la plantilla, el componente
+de página, los dos guiones del visor, React y ReactDOM, y las doce
+tipografías. Se extrajeron a `taller/template.html` y `taller/assets/`, de
+modo que el plano se recompone desde lo versionado, como todo lo demás.
+
+**Cómo se verificó la fidelidad.** Viaje redondo: se rearmó el plano con la
+plantilla recuperada y las entradas (fuente y estilo) del commit `c5860c4`, y
+se comparó contra el plano publicado. De 3 807 líneas, 3 795 salieron
+idénticas; las doce distintas son valores de seguimiento de cubiertas y
+portadillas dentro del módulo de estilo —un estado anterior a que el gemelo
+de estilo entrara al repositorio, que ya no existe en ningún commit—. Toda la
+divergencia vive en las dos entradas intercambiables; ninguna en la
+estructura de la plantilla. Con esa evidencia se dio por fiel.
+
+**El rearme.** `flatten.py` con la fuente y el estilo vigentes: las doce
+tipografías incrustadas, las quince exportaciones del estilo, 1,7 MB. En el
+plano nuevo: las cornisas largas de los ocho apéndices (42 veces «Apéndice
+VI · Mesas Directivas, 1966-2027»), los episodios de la tanda de hoy, «El
+suceso de Zacatecas», «333 páginas», y cero restos de la nomenclatura
+anterior. Publicado junto al PDF y al autónomo: los tres entregables dicen
+por fin lo mismo.
+
+**Declarado.** Las doce tipografías del visor se guardan como `.bin` en
+`assets/` porque `flatten.py` resuelve recursos probando extensiones y no
+conoce `.woff2`; el contenido es WOFF2 y así lo declara cada `@font-face`.

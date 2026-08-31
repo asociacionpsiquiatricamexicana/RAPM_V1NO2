@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/classical-32bbb524-0513-4065-851f-d1298e13f6fb/styles.css">
+  <script src="_ds/classical-32bbb524-0513-4065-851f-d1298e13f6fb/_ds_bundle.js"></script>
+</helmet>
+<div lang="es" style="{{ pageStyle }}">
+  <sc-if value="{{ hasHead }}" hint-placeholder-val="{{ true }}">
+    <div style="{{ headStyle }}">{{ head }}</div>
+  </sc-if>
+  <div style="{{ bodyBox }}">
+    <div ref="{{ bodyRef }}" style="width:100%"></div>
+  </div>
+  <sc-if value="{{ hasNum }}" hint-placeholder-val="{{ true }}">
+    <div style="{{ footStyle }}">
+      <span>{{ num }}</span>
+      <sc-if value="{{ folioText }}">
+        <span style="{{ folioStyle }}">{{ folioText }}</span>
+      </sc-if>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:683},&quot;html&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;string&quot;},&quot;head&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;num&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;folios&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;k&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;},&quot;side&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;l&quot;,&quot;r&quot;],&quot;default&quot;:&quot;r&quot;,&quot;tsType&quot;:&quot;'l'|'r'&quot;},&quot;paper&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#faf8f5&quot;,&quot;options&quot;:[&quot;#faf8f5&quot;,&quot;#f6f1e7&quot;,&quot;#fdfdfc&quot;],&quot;tsType&quot;:&quot;string&quot;},&quot;plate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showHead&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const TRIM = { w: 439.37, h: 651.97, top: 56.7, side: 62.4, bottom: 82.2 };
+
+class Component extends DCLogic {
+  constructor(p) { super(p); this.bodyRef = React.createRef(); }
+  componentDidMount() { this.paint(); }
+  componentDidUpdate() { this.paint(); }
+
+  paint() {
+    const el = this.bodyRef.current;
+    if (!el) return;
+    const html = this.props.html || '';
+    if (this.last !== html) { el.innerHTML = html; this.last = html; }
+    /* safety only: pagination is computed at reference scale, so rounding at
+       small render scales can add a line. Never more than 4 %. */
+    const box = el.parentElement;
+    if (!box || !box.clientHeight || this.props.plate) return;
+    el.style.width = '100%';
+    el.style.transform = 'none';
+    const over = el.scrollHeight / box.clientHeight;
+    if (over > 1.003) {
+      const f = Math.max(0.96, 1 / over);
+      el.style.width = (100 / f) + '%';
+      el.style.transformOrigin = 'top left';
+      el.style.transform = 'scale(' + f + ')';
+    }
+  }
+
+  renderVals() {
+    const p = this.props;
+    const k = p.k ?? 1;
+    const px = (v) => (v * k) + 'px';
+    const plate = !!p.plate;
+    return {
+      bodyRef: this.bodyRef,
+      head: p.head ?? '',
+      hasHead: !!(p.head && p.showHead !== false && !plate),
+      hasNum: !!p.num && !plate,
+      num: p.num ?? '',
+      folioText: p.folios || '',
+      pageStyle: {
+        position: 'relative', width: '100%', height: '100%',
+        background: plate ? 'transparent' : (p.paper ?? '#faf8f5'),
+        color: '#1C1B1A', overflow: 'hidden', backfaceVisibility: 'hidden'
+      },
+      headStyle: {
+        position: 'absolute', top: px(30), left: px(TRIM.side), right: px(TRIM.side),
+        fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: px(7),
+        letterSpacing: '0.1em', wordSpacing: '-0.1em', textTransform: 'uppercase', color: '#767070',
+        textAlign: p.side === 'l' ? 'left' : 'right', whiteSpace: 'nowrap', overflow: 'hidden'
+      },
+      bodyBox: plate
+        ? { position: 'absolute', inset: 0 }
+        : { position: 'absolute', top: px(TRIM.top), left: px(TRIM.side), right: px(TRIM.side),
+            height: px(TRIM.h - TRIM.top - TRIM.bottom), overflow: 'hidden' },
+      footStyle: {
+        position: 'absolute', bottom: px(42), left: px(TRIM.side), right: px(TRIM.side),
+        display: 'flex', alignItems: 'baseline', gap: px(10),
+        flexDirection: p.side === 'l' ? 'row' : 'row-reverse',
+        fontSize: px(9.5), fontVariantNumeric: 'tabular-nums', color: '#7D4343'
+      },
+      folioStyle: {
+        fontFamily: 'var(--font-heading)', fontSize: px(6.6), letterSpacing: '0.1em', wordSpacing: '-0.1em', wordSpacing: '-0.1em',
+        textTransform: 'uppercase', color: '#767070'
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

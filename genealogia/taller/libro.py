@@ -7,7 +7,7 @@ La escala tipográfica ya no se ata al mapa de folios del flipbook: se elige la
 que llena la caja con la fuente de esta edición. El Contenido se recalcula
 sobre la paginación resultante hasta que deja de moverse.
 """
-import json, os
+import json, os, re
 from playwright.sync_api import sync_playwright
 from componer import (TRIM_W, TRIM_H, M_TOP, M_SIDE, M_BOT, BOX_W, BOX_H, PX,
                       BOOK, roman)
@@ -45,6 +45,100 @@ book = json.load(open(BOOK, encoding='utf-8'))
 blocks = book['blocks']
 TOC = book['toc']
 
+# El unico salto de linea que un titulo mayor conserva es el estructural: el que
+# separa su ordinal («Apendice II.», «Primer Episodio.») del tema que lo nombra.
+# El mismo par de patrones lo reconoce bookstyle_extraido.js para componer el
+# ordinal como antetitulo y el tema como seccion; si los dos se separan, el
+# titulo se compone de una pieza y pierde su jerarquia sin que nada avise.
+ORDINAL_DE_TITULO = re.compile(
+    r'^(?:(?:Capítulo|Apéndice)\s+[IVX]+|(?:Primer|Segundo|Tercer|Cuarto)\s+Episodio)\.?\s*$')
+
+
+def comprobar_titulos():
+    """Los saltos rigidos de los titulos y la marca de la bajada viven en la
+    fuente, no en esta pasada.
+
+    Estuvieron aqui, y era una trampa: los flipbooks componen desde
+    `assets/*.bin` en crudo, de modo que todo lo que se arreglaba al componer
+    llegaba al PDF y no llegaba a ellos. Peor: el patron de aqui reconocia
+    «Apendice» y «Capitulo» pero no «Primer Episodio», asi que a los cuatro
+    titulos de capitulo se les retiraba el salto estructural y se componian de
+    corrido —«Primer Episodio. Fundacion e identidad» en una sola linea de 19 pt
+    con el punto en medio—, mientras los quince apendices si recibian su
+    jerarquia. Ahora se deriva sobre la fuente y aqui solo se comprueba.
+    """
+    INVIS = {'anchor', 'pb', 'rule', 'cardEnd', 'cardStart'}
+    faltas = []
+    for i, b in enumerate(blocks):
+        if b.get('t') != 'major':
+            continue
+        parts = b.get('parts') or []
+        saltos = sum(1 for p in parts if p.get('br'))
+        if not saltos:
+            continue
+        ordinal = bool(ORDINAL_DE_TITULO.match(parts[0].get('x') or ''))
+        if saltos > (1 if ordinal else 0):
+            faltas.append(f'bloque {i}: {saltos} saltos rigidos en '
+                          f'«{"".join(p.get("x", "") for p in parts)}»')
+        elif ordinal and not parts[1].get('br'):
+            faltas.append(f'bloque {i}: el salto no separa el ordinal')
+
+    def sig(i):
+        j = i + 1
+        while j < len(blocks) and blocks[j].get('t') in INVIS:
+            j += 1
+        return j if j < len(blocks) else None
+
+    parejas = 0
+    for i, b in enumerate(blocks):
+        if b.get('t') not in ('sec', 'rot') or b.get('kicker'):
+            continue
+        j = sig(i)
+        es = j is not None and blocks[j].get('t') == 'sub'
+        if es:
+            parejas += 1
+            if not (b.get('bajada') and blocks[j].get('bajada')):
+                faltas.append(f'bloques {i}+{j}: pareja titulo+bajada sin marcar')
+        elif b.get('bajada'):
+            faltas.append(f'bloque {i}: marcado como titulo con bajada y no la tiene')
+    for i, b in enumerate(blocks):
+        if b.get('t') == 'sub' and b.get('bajada'):
+            k = i - 1
+            while k >= 0 and blocks[k].get('t') in INVIS:
+                k -= 1
+            if k < 0 or blocks[k].get('t') not in ('sec', 'rot'):
+                faltas.append(f'bloque {i}: bajada sin titulo encima')
+
+    # La cornisa va transcrita en cada bloque de la seccion, no derivada de su
+    # titulo. En los apendices habia derivado: se acorto la del titulo mayor y
+    # las paginas de continuacion siguieron anunciando la version vieja, de modo
+    # que un mismo apendice se llamaba de dos maneras segun la pagina. Aqui se
+    # comprueba que todos los bloques de un apendice dicen la misma cornisa que
+    # su titulo.
+    cornisa_de = {}
+    for b in blocks:
+        if b.get('t') != 'major':
+            continue
+        parts = b.get('parts') or []
+        if parts and (parts[0].get('x') or '').startswith('Apéndice'):
+            cornisa_de[parts[0]['x'].strip().rstrip('.')] = b.get('h')
+    dispares = {}
+    for b in blocks:
+        h = b.get('h')
+        if not isinstance(h, str) or ' · ' not in h:
+            continue
+        buena = cornisa_de.get(h.split(' · ')[0])
+        if buena and h != buena:
+            dispares[(h, buena)] = dispares.get((h, buena), 0) + 1
+    for (h, buena), n in sorted(dispares.items()):
+        faltas.append(f'{n} bloques anuncian «{h}» donde su titulo dice «{buena}»')
+
+    if faltas:
+        raise SystemExit('la fuente no cumple la forma de los titulos:\n  '
+                         + '\n  '.join(faltas))
+    print(f'titulos: saltos estructurales en regla · {parejas} parejas titulo+bajada')
+
+
 def normalizar_aparato():
     """Un párrafo embutido en una relación de referencias se componía al cuerpo
     de lectura (10,9 pt) mientras las entradas que lo rodean van al cuerpo de
@@ -74,35 +168,7 @@ def normalizar_aparato():
         b['ni'] = 1
         ajustados += 1
 
-    # Los titulos mayores traian saltos de linea rigidos heredados de otra
-    # medida, que partian el subtitulo en puntos arbitrarios («Glosario, siglas
-    # / y definiciones operativas», «Ruta de / recuperacion documental»). Se
-    # conserva unicamente el salto que separa el ordinal («Apendice II.») de su
-    # subtitulo —estructural y comun a todos— y el resto se deja fluir con
-    # reparto equilibrado.
-    import re as _re
-    titulos = 0
-    for b in blocks:
-        if b.get('t') != 'major':
-            continue
-        parts = b.get('parts') or []
-        if not any(p.get('br') for p in parts):
-            continue
-        ordinal = bool(_re.match(r'^(Capítulo|Apéndice)\s', (parts[0].get('x') or '')))
-        nuevas, visto = [], False
-        for p in parts:
-            if p.get('br'):
-                if ordinal and not visto:
-                    nuevas.append(p); visto = True
-                continue          # los demas saltos se retiran
-            if nuevas and not nuevas[-1].get('br') and 'x' in nuevas[-1] and 'x' in p:
-                nuevas[-1] = {**nuevas[-1], 'x': nuevas[-1]['x'] + ' ' + p['x']}
-            else:
-                nuevas.append(p)
-        if nuevas != parts:
-            b['parts'] = nuevas
-            titulos += 1
-    print(f'titulos: {titulos} con saltos rigidos normalizados')
+    comprobar_titulos()
 
     # una nota al pie que sigue a otra continua su grupo: no repite el filete
     grupo = 0
@@ -209,12 +275,17 @@ def toc_html(folio_of_block, u, f):
         folio = '' if t.get('key') in ('portada', 'contracubierta') \
             else folio_of_block.get(t['i'], '')
         pad = u(10) if t['lvl'] else '0'
+        # La linea de puntos existe para llevar el ojo hasta el folio. Donde no
+        # hay folio —portada y contracubierta, que son paginas ciegas— llevaba
+        # el ojo hasta un hueco: prometia un numero que la entrada no tiene.
+        guia = (f'<span style="flex:1;border-bottom:1px dotted {C_GRIS};'
+                f'transform:translateY(-0.25em);opacity:.55"></span>') if folio \
+            else '<span style="flex:1"></span>'
         rows.append(
             f'<div style="display:flex;align-items:baseline;gap:{u(4)};'
             f'font-family:var(--font-body);font-size:{f(8.6)};line-height:1.85;'
             f'color:{C_TINTA}"><span style="padding-left:{pad}">{t["label"]}</span>'
-            f'<span style="flex:1;border-bottom:1px dotted {C_GRIS};'
-            f'transform:translateY(-0.25em);opacity:.55"></span>'
+            f'{guia}'
             f'<span style="font-variant-numeric:tabular-nums;color:{C_GRIS}">{folio}</span></div>')
     head = (f'<div style="font-family:var(--font-heading);font-size:{f(19)};'
             f'font-variant:small-caps;letter-spacing:.05em;color:{C_VINO};font-weight:400">'
