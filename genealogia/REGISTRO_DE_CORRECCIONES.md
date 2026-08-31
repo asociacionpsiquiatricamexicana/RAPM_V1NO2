@@ -3480,3 +3480,39 @@ físicamente transcrita en el `.bin` en vez de generarse al componer: los
 flipbooks la leen en crudo y retirarla exigiría tocar el visor empaquetado.
 Lo que la deuda pedía de fondo —que no pueda volver a divergir en silencio—
 queda cumplido: ahora diverge y la composición no sale.
+
+## Tanda: la lámina del editor, verificada contra el libro y recompuesta (31 de agosto de 2026)
+
+El editor produjo con un sistema generativo un borrador de lámina cronológica
+—«Historia de la Psiquiatría en México, 1936-2026»— y pidió verificarlo
+contra la *Genealogía* y recomponerlo. No se tocó una página del libro: esta
+tanda produce material derivado, que queda en `informes/`.
+
+**El dictamen.** Cinco afirmaciones del borrador contradicen el libro: el
+«inicio de la psiquiatría organizada» en 1966 (la SMNP es de 1937 y fue casi
+tres décadas el único cuerpo gremial); la «integración gremial nacional»
+en 1966 (162 de 219 socios en la capital en 1968; lo nacional es de los
+capítulos estatales, 1978-2014); el «creó» del Pabellón de Psiquiatría
+Infantil (Rodríguez Cabo lo dirigió, 1932-1957); el «Instituto Nacional» en
+1979 (nació Mexicano; el nombre es del 2000); y la «escuela de Ramón de la
+Fuente» fechada 1970-2000 (su magisterio es anterior a 1966; presidió
+1966-1969 y dirigió el Instituto 1979-1998). Seis atribuciones más se
+retiraron por no constar en el libro, y una errata («labortreapia»). El
+detalle, con lo añadido y su respaldo, en
+`informes/informe_verificacion_lamina.md`.
+
+**La recomposición.** Lámina con la identidad de la Asociación —doble filete
+como la cubierta, azul institucional, rojo APM, Cormorant y Lora, versalitas
+verdaderas, cifras tabulares, prosa en bandera— con huecos de inyección
+marcados para retratos, emblemas, imagotipo y fotografías: los rostros del
+borrador eran generados y no se publican caras falsas de personas reales.
+Entregables en `informes/`: la fuente (`lamina_historia_psiquiatria.html`) y
+el PDF vectorial de imprenta (`lamina_historia_psiquiatria.pdf`), que escala
+sin pérdida; el PNG de trabajo (7080 × 4623 px, 300 ppp a 60 cm) se regenera
+desde la fuente con el Chromium del taller.
+
+**Cómo se comprobó.** Cada afirmación del borrador se buscó en la fuente de
+verdad del libro con el extractor completo (parts, rows, title/sub/label);
+lo contradicho se corrigió citando bloque, lo no hallado se retiró y se
+declaró, lo confirmado se conservó. La lámina recompuesta se revisó a ojo
+en render a tres aumentos.
