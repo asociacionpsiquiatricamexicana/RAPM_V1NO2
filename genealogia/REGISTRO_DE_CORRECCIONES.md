@@ -3381,3 +3381,38 @@ el ancla anterior (332, `968f7ff9…`) describía el libro de ayer.
 **Declarado sin corregir.** Nada nuevo; las deudas estructurales de la tanda
 de los Episodios (cornisa transcrita, dos funciones de Contenido, jerarquía
 por sangría) siguen declaradas y en pie.
+
+## Tanda: el flipbook plano vuelve a poder rearmarse, y se rearma (31 de agosto de 2026)
+
+El hallazgo dos del barrido: el flipbook plano publicado iba una tanda atrás
+—la cornisa corta anterior en ocho apéndices, 271 bloques— y no podía
+rearmarse porque `flatten.py` necesita `template.html`, que no vivía en el
+repositorio. La limitación estaba declarada; el artefacto atrasado seguía
+publicándose.
+
+**De dónde salió la plantilla.** Del propio flipbook autónomo, que empaqueta
+en su manifiesto las diecinueve piezas del visor: la plantilla, el componente
+de página, los dos guiones del visor, React y ReactDOM, y las doce
+tipografías. Se extrajeron a `taller/template.html` y `taller/assets/`, de
+modo que el plano se recompone desde lo versionado, como todo lo demás.
+
+**Cómo se verificó la fidelidad.** Viaje redondo: se rearmó el plano con la
+plantilla recuperada y las entradas (fuente y estilo) del commit `c5860c4`, y
+se comparó contra el plano publicado. De 3 807 líneas, 3 795 salieron
+idénticas; las doce distintas son valores de seguimiento de cubiertas y
+portadillas dentro del módulo de estilo —un estado anterior a que el gemelo
+de estilo entrara al repositorio, que ya no existe en ningún commit—. Toda la
+divergencia vive en las dos entradas intercambiables; ninguna en la
+estructura de la plantilla. Con esa evidencia se dio por fiel.
+
+**El rearme.** `flatten.py` con la fuente y el estilo vigentes: las doce
+tipografías incrustadas, las quince exportaciones del estilo, 1,7 MB. En el
+plano nuevo: las cornisas largas de los ocho apéndices (42 veces «Apéndice
+VI · Mesas Directivas, 1966-2027»), los episodios de la tanda de hoy, «El
+suceso de Zacatecas», «333 páginas», y cero restos de la nomenclatura
+anterior. Publicado junto al PDF y al autónomo: los tres entregables dicen
+por fin lo mismo.
+
+**Declarado.** Las doce tipografías del visor se guardan como `.bin` en
+`assets/` porque `flatten.py` resuelve recursos probando extensiones y no
+conoce `.woff2`; el contenido es WOFF2 y así lo declara cada `@font-face`.

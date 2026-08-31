@@ -15,3 +15,5 @@ genealogia/taller/huecos.json
 # sync_flipbooks.py deja en el taller su copia de trabajo del flipbook; la
 # publicada es la de genealogia/, y son 800 KB que no aportan historial.
 genealogia/taller/*.html
+# la plantilla del flipbook plano es fuente, no artefacto: se versiona
+!genealogia/taller/template.html
