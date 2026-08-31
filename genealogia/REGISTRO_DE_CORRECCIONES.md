@@ -2801,3 +2801,49 @@ de control aparezca donde hubo guión blando y donde hay guión de verdad.
 
 Nada de esto se aplicó. El ensayo se hizo en `/tmp`, el taller no se tocó y el
 PDF publicado sigue siendo el de la tanda anterior.
+
+### Corrección de la entrada anterior: el defecto es del extractor, no del archivo (31 de agosto de 2026)
+
+Las dos entradas anteriores declararon como defecto del libro que 1 644 palabras
+llevaran dentro un carácter de control. **Esa declaración estaba mal, y se
+corrige aquí antes de que nadie actúe sobre ella.**
+
+Al ir a repararlo hubo que leer el archivo por dentro, y ahí apareció lo que no
+se había mirado: en la página 302, entre «Pérez» y «Rincón», el flujo de
+contenido lleva el código **0xB5 del tipo /F36**, y el `/ToUnicode` de ese
+mismo tipo **mapea 0xB5 al guión**. Decodificado por el CMap del propio
+archivo, carácter a carácter, el texto dice «Pérez-Rincón», que es exactamente
+lo que debe decir.
+
+Es decir: **el PDF está bien y quien se equivoca es el extractor.** Los 1 644
+U+0002 son lo que pypdfium2 —la biblioteca con la que miden todas las sondas de
+este taller— devuelve donde el archivo tiene un mapeo correcto.
+
+Y eso invalida de paso el experimento de los tres casos: se midió con el mismo
+extractor, así que lo que mostró no es que el guión blando ensucie el archivo,
+sino que pdfium lee de una manera lo compuesto con guión blando y de otra lo
+compuesto con guionización nativa.
+
+**Lo que queda en pie y lo que no:**
+
+- **No hay 1 644 palabras rotas en el libro.** No hay que repaginar nada, y las
+  tres páginas de más que costaba el ensayo no compran nada.
+- **Los apellidos y las direcciones están bien en el archivo**, no solo en la
+  fuente. La capa cero no está tocada.
+- **Sigue en pie que un lector de Chrome o Edge —que usan pdfium— vería el
+  carácter de control al copiar.** Cuánto afecta a otros visores no se midió, y
+  no se declara lo que no se midió.
+- **El segundo intento de decodificar el libro entero por sus CMap dio 197 322
+  códigos sin resolver**, cifra absurda: el decodificador no sigue los objetos
+  de formulario ni resuelve los recursos anidados. Queda inservible y se dice,
+  para que nadie lo dé por bueno.
+
+En una sola pregunta fallaron **tres instrumentos**: el que contaba, el que
+inspeccionaba los tipos y el que decodificaba. La regla de la casa —sospechar
+del instrumento antes que del libro— se aplicó tarde: primero se escribió la
+entrada y después se fue a mirar por dentro. Debió ser al revés, y el orden
+correcto habría ahorrado dos entradas equivocadas en el registro del libro.
+
+Lo único que hay que hacer con esto, si el compilador quiere, es medirlo con un
+extractor que no sea pdfium antes de decidir nada. Hasta entonces: **no hay
+defecto demostrado en el archivo.**
