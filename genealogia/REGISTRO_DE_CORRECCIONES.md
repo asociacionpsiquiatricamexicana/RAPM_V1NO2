@@ -3221,3 +3221,49 @@ página anterior. Ahora el asiento de Sosenski y Sosenski entra entero.
   entradas de parte y las cuarenta y cinco de sección comparten cuerpo, color y
   tipografía; solo las separa una sangría de 10 pt. Distinguirlas de veras es
   decisión editorial y no defecto medible: no se tocó.
+
+## Barrido de auditoría: diecisiete dimensiones medidas, nada corregido, once hallazgos declarados (31 de agosto de 2026)
+
+Barrido de solo lectura sobre el PDF publicado y sobre el propio taller,
+posterior al cierre de la tanda de los Episodios. No se corrigió nada: este
+asiento existe para que conste qué se midió, qué salió limpio y qué queda
+declarado a decisión del compilador. El informe completo, con cada cifra y la
+orden que la reproduce, está en
+`informes/informe_barrido_de_auditoria.md`.
+
+**Cómo se comprobó.** Las once sondas del taller más mediciones propias sobre
+el archivo: `cmp.py` da 722 diferencias, exactamente su ancla;
+`reproducible.py` recompone idéntico (332 páginas, mismo hash de texto); las
+49 entradas del Contenido y los 49 marcadores caen donde anuncian; 0 de 7 700
+renglones se parten al copiar; 0 colas perdidas, 0 huecos anómalos, 0 bloques
+sin compositor, 0 caracteres de control; las 64 claves autor-año citadas en el
+cuerpo tienen asiento localizable; el flipbook autónomo lleva incrustado un
+`.bin` byte a byte igual al del taller y no necesita red.
+
+**Declarado sin corregir, a decisión del compilador.** Cinco hallazgos sobre
+el libro: la prosa remite veintinueve veces a «capítulo» donde el libro navega
+por Episodios —dieciocho son remisiones por ordinal a un rótulo que no
+existe—, y «episodio» quedó con dos sentidos; el flipbook plano publicado va
+una tanda atrás, con la cornisa corta anterior en ocho apéndices y 271
+bloques; el cuarto Episodio termina en 2027 según el Contenido y en «dos mil
+veintiséis» según el bloque 1433; catorce años quedan en numeral dentro de la
+prosa narrativa que escribe 417 con letra; y tres estadísticas aparecen con
+letra en un sitio y con numeral en otro. Seis sobre los instrumentos: el LEEME
+describe mal el formato de la fuente y quien lo siga extrae cero caracteres
+sin error; los 46 rótulos `anchor` conservan la nomenclatura anterior a dos
+renumeraciones (verificado que no llegan a ninguna página: metadato muerto);
+el encabezado de la línea 2678 de este registro sigue anunciando como vigente
+el hallazgo de los 1 644 caracteres invisibles que su propia subsección
+retracta y que hoy mide cero; la sonda `aire_de_la_bajada.py` no entró en la
+tabla del LEEME; el taller carece de licencia propia y hereda una que prohíbe
+obras derivadas; y los documentos de la norma describen un volumen de 283
+páginas con apéndices I a XIV y nombran cinco entregas por partes que no
+existen en el repositorio, sin nota de fecha que los date.
+
+**Método, para que conste.** El barrido estaba previsto como flujo de agentes
+en paralelo con verificación adversarial; el flujo falló entero por el límite
+semanal de capacidad y las diecisiete dimensiones se recorrieron una a una en
+el hilo principal. La verificación adversarial se hizo a mano: retiró cuatro
+hallazgos aparentes de bibliografía —eran editoriales dentro de una lista de
+libros, o asientos que sí existen en nota al pie— y bajó de grado el de los
+rótulos `anchor`.
