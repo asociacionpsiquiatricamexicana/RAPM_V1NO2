@@ -3416,3 +3416,67 @@ por fin lo mismo.
 **Declarado.** Las doce tipografías del visor se guardan como `.bin` en
 `assets/` porque `flatten.py` resuelve recursos probando extensiones y no
 conoce `.woff2`; el contenido es WOFF2 y así lo declara cada `@font-face`.
+
+## Tanda: la norma queda datada como histórica (31 de agosto de 2026)
+
+El hallazgo once del barrido, autorizado hoy por el compilador: los
+documentos de `norma/` describen la edición XeLaTeX de 283 páginas —con
+apéndices I a XIV y cinco entregas por partes que no existen en el
+repositorio— y se leían como vigentes. Se antepone una nota de fecha a
+`CONTENIDO_DE_LAS_PARTES.txt` y al `LEEME.md` de la carpeta que los declara
+norma de referencia histórica y remite al registro y a las sondas como
+verificación de lo publicado (333 páginas, apéndices I a XV, cuatro
+Episodios). No se alteró una sola línea de su contenido original: solo se
+antepuso la nota.
+
+## Tanda: las tres deudas estructurales del taller se pagan (31 de agosto de 2026)
+
+Las tres deudas declaradas en la tanda de los Episodios, atacadas juntas por
+orden del compilador. Ningún cambio en la fuente: solo `libro.py` y los dos
+gemelos de estilo.
+
+**1. La cornisa ya se deriva y se verifica en cada composición.** La guarda
+que solo vigilaba los apéndices se sustituye por tres cercos en `libro.py`:
+todo título mayor con antetítulo («Ordinal.» + salto + «Tema») deriva su
+cornisa «Ordinal · Tema» y la del propio bloque debe coincidir; toda cornisa
+cuyo primer miembro sea un ordinal derivado debe decir exactamente lo
+derivado en todos sus bloques; y dos tramos contiguos de cornisa que
+compartan el primer miembro deben decir lo mismo, que es la forma exacta de
+la deriva histórica (la variante corta conviviendo con la larga). El `.bin`
+conserva la cornisa transcrita porque los flipbooks la leen en crudo, pero ya
+no puede divergir del título sin que la composición aborte entera. Cubre los
+diecinueve ordinales (cuatro Episodios y quince apéndices) y el cerco de
+vecindad alcanza a las galerías de Mesas Directivas.
+
+**2. Las dos funciones de Contenido dicen lo mismo.** `toc_html()` en
+`libro.py` y `tocHtml()` en el módulo de estilo comparten ahora la misma
+regla con las mismas medidas: una entrada de nivel cero con hijas debajo es
+cabeza de grupo y se compone en Cormorant 9,4 pt, seguimiento 0,06 em, vino,
+con aire de 6 pt arriba, conservando guía y folio. La rama que el flipbook
+tenía para «nivel cero sin folio» era código muerto —el flipbook folia todas
+sus páginas— y se retira. Editadas las dos gemelas juntas, como manda el
+LEEME.
+
+**3. La jerarquía del Contenido ya no descansa solo en la sangría.** Las
+cuatro cabezas de grupo —las tres partes y «Apéndices»— se distinguen por
+tipografía y color además de por la sangría de sus hijas. Sin
+`text-transform` ni versalitas, a propósito: la capa de texto no se mueve.
+
+**Cómo se comprobó.** `cmp.py`: **722, exactamente el ancla** —la capa de
+texto no se movió—. 333 páginas, mismo corte de folios; el Contenido sigue
+cabiendo en sus dos páginas (x y xi) y **ningún folio del Contenido se
+mueve**: `verificar_toc.py` da 47 + 2 ciegas = 49 de 49 sobre el sellado.
+`marcadores.py`: 49 sobre su rótulo. `cierre_pdf.py`: 0 de 7 700 renglones se
+parten al copiar —el seguimiento de las cabezas quedó bajo el techo—.
+`chk_colas.py` 0 · `debug_espacios.py` 0 · `aire_de_la_bajada.py` 11 de 11.
+Páginas x y xi revisadas a ojo: las cabezas en vino con su aire, las hijas
+sangradas, la guía y el folio en su sitio. Los dos flipbooks rearmados desde
+las gemelas nuevas y publicados. `reproducible.py` reanclado con razón: mismo
+recuento de páginas, hash `32d4b0ca…` —cambió porque el Contenido se
+recompuso, que era lo buscado—.
+
+**Deuda que se declara saldada a medias, con su porqué.** La cornisa sigue
+físicamente transcrita en el `.bin` en vez de generarse al componer: los
+flipbooks la leen en crudo y retirarla exigiría tocar el visor empaquetado.
+Lo que la deuda pedía de fondo —que no pueda volver a divergir en silencio—
+queda cumplido: ahora diverge y la composición no sale.

@@ -1,5 +1,13 @@
 # Documentos de norma editorial del proyecto
 
+> **Nota de fecha (31 de agosto de 2026).** Estos documentos describen el
+> volumen de 283 páginas de la edición XeLaTeX, anterior a las tandas de esta
+> campaña. El volumen publicado en este repositorio tiene 333 páginas,
+> apéndices I a XV y cuatro Episodios; su verificación vive en
+> `../REGISTRO_DE_CORRECCIONES.md` y en las sondas del taller. Esta carpeta
+> queda como norma de referencia histórica.
+
+
 Estos cinco archivos los aportó el autor el 28 de agosto de 2026 y describen el sistema real
 de composición y auditoría del volumen: fuentes LaTeX (`libro.tex`, `secciones/*.tex`) compiladas
 con XeLaTeX sobre la clase `memoir`, y un conjunto de scripts de verificación propios (`build.py`,
