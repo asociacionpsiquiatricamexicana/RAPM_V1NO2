@@ -2951,3 +2951,50 @@ queda medida y disponible.
   332** —63, 150, 295, 296 y 313—, entre el 0,08 % y el 0,33 % de sus bytes, que
   son exactamente las que llevaban el nombre.
 - Huella del texto reanclada en `d256d5be…`.
+
+### Barrido de títulos, fichas, cajas, listados y zona protegida (31 de agosto de 2026)
+
+Segunda pasada por indicación del compilador. **No hubo nada que corregir**, y
+se anota con qué se comprobó cada cosa.
+
+**Los cuatro guiones que no son apellidos: ninguno debe tocarse.** Se miraron uno
+por uno, y el contexto los desautoriza como erratas:
+
+| Guion | Dónde vive | Por qué se queda |
+| --- | --- | --- |
+| Mayo-Julio | dentro de `…/uploads/Numero-4.-Mayo-Julio-2021_singles.pdf` | es una **dirección web**; alterarla la rompe |
+| Agosto-Septiembre | dentro de `…/uploads/Numero-5.-Agosto-Septiembre-2021.pdf` | ídem |
+| Re-Unión | divisa entrecomillada del IX Congreso, adoptada tras el sismo de 1985 | es **cita de una divisa documentada** |
+| México-Francia | «Coloquio México-Francia de Psiquiatría», tres apariciones, una en Testimonio | es el **nombre propio de un encuentro** |
+
+Dos son direcciones y dos son nombres ajenos: corregirlos habría roto un enlace
+y renombrado un coloquio y una divisa.
+
+**Zona protegida, comprobada:** veintiocho apariciones de apellido compuesto en
+diecinueve formas viven en asientos de Referencias, epígrafes y Testimonios.
+Ninguna se tocó, como corresponde.
+
+**Las treinta fichas de expresidente, medidas una por una:** las treinta comparten
+la misma espina —Semblanza · Tesis · Antítesis · Síntesis · Voz—, las treinta
+abren con su frase ad verbatim y las treinta llevan su caja de datos. El aparato
+de cierre varía, y varía con razón: Referencias solo donde hay bibliografía
+propia, Notas solo donde hay aclaración, Fuentes solo donde hay archivo o
+entrevista. Las dos fichas sin Fuentes —Guillermo Calderón Narváez y Rafael
+Velasco Fernández— llevan Referencias en su lugar, porque sus fuentes son
+publicaciones formales, y sus Notas son aclaraciones de verdad, no listas de
+fuentes disfrazadas. Es lo que la plantilla prescribe.
+
+**Títulos de episodio y de apéndice: mismo patrón, sin discrepancia.** Los cuatro
+episodios y los quince apéndices resuelven igual el título y su nombre temático
+—ordinal y nombre en el mismo encabezado mayor, separados por salto—, de modo
+que las dos series se leen como una sola familia.
+
+**Un límite que se declara, sin daño hoy:** ciento trece fragmentos del contenido
+llevan una dirección web sin marcar como tal, casi todos en las tablas de los
+Apéndices VII y XIII. Al no estar marcados, el compositor les aplica la
+guionización y no les da el tratamiento de dirección. **Medido sobre el archivo,
+no ha roto ninguna:** los once renglones que terminan en guion dentro de una
+dirección cortan, los once, sobre guiones que ya existen en la dirección —los de
+los DOI `S0185-2620`, `SM.0185-3325`, los rangos de página—. El riesgo es latente,
+no actual; corregirlo pide separar la dirección en su propio fragmento en ciento
+trece asientos, sin cambiar un solo carácter, y queda a la orden del compilador.
