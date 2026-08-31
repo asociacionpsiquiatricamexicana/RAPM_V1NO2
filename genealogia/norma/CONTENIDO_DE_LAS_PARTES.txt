@@ -1,3 +1,10 @@
+NOTA DE FECHA (31 de agosto de 2026). Este documento describe la edición
+anterior del volumen, compuesta en XeLaTeX: 283 páginas, apéndices I a XIV y
+cinco entregas por partes cuyos archivos no viven en este repositorio. La
+edición publicada aquí tiene 333 páginas, apéndices I a XV y cuatro
+Episodios, y se compone con el taller de genealogia/taller/. Se conserva como
+documento histórico de la norma, no como descripción de lo publicado.
+
 GENEALOGÍA DE LA ASOCIACIÓN PSIQUIÁTRICA MEXICANA, A.C.
 Entrega por partes
 

@@ -3416,3 +3416,15 @@ por fin lo mismo.
 **Declarado.** Las doce tipografías del visor se guardan como `.bin` en
 `assets/` porque `flatten.py` resuelve recursos probando extensiones y no
 conoce `.woff2`; el contenido es WOFF2 y así lo declara cada `@font-face`.
+
+## Tanda: la norma queda datada como histórica (31 de agosto de 2026)
+
+El hallazgo once del barrido, autorizado hoy por el compilador: los
+documentos de `norma/` describen la edición XeLaTeX de 283 páginas —con
+apéndices I a XIV y cinco entregas por partes que no existen en el
+repositorio— y se leían como vigentes. Se antepone una nota de fecha a
+`CONTENIDO_DE_LAS_PARTES.txt` y al `LEEME.md` de la carpeta que los declara
+norma de referencia histórica y remite al registro y a las sondas como
+verificación de lo publicado (333 páginas, apéndices I a XV, cuatro
+Episodios). No se alteró una sola línea de su contenido original: solo se
+antepuso la nota.
