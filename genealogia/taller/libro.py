@@ -109,19 +109,29 @@ def comprobar_titulos():
             if k < 0 or blocks[k].get('t') not in ('sec', 'rot'):
                 faltas.append(f'bloque {i}: bajada sin titulo encima')
 
-    # La cornisa va transcrita en cada bloque de la seccion, no derivada de su
-    # titulo. En los apendices habia derivado: se acorto la del titulo mayor y
-    # las paginas de continuacion siguieron anunciando la version vieja, de modo
-    # que un mismo apendice se llamaba de dos maneras segun la pagina. Aqui se
-    # comprueba que todos los bloques de un apendice dicen la misma cornisa que
-    # su titulo.
+    # La cornisa va transcrita en cada bloque, pero ya no se confia en la
+    # transcripcion: se deriva del titulo y se verifica en cada composicion.
+    # Historia: en los apendices se acorto la cornisa del titulo mayor y las
+    # paginas de continuacion siguieron anunciando la version vieja; la misma
+    # clase de deriva alcanzo despues a los rotulos internos. Tres cercos:
+    #
+    # 1. Todo titulo mayor con antetitulo («Ordinal.» + salto + «Tema») deriva
+    #    su cornisa: «Ordinal · Tema». La del propio bloque debe coincidir.
     cornisa_de = {}
-    for b in blocks:
+    for i, b in enumerate(blocks):
         if b.get('t') != 'major':
             continue
         parts = b.get('parts') or []
-        if parts and (parts[0].get('x') or '').startswith('Apéndice'):
-            cornisa_de[parts[0]['x'].strip().rstrip('.')] = b.get('h')
+        if (len(parts) >= 3 and (parts[0].get('x') or '').rstrip().endswith('.')
+                and parts[1].get('br') and (parts[2].get('x') or '').strip()):
+            ordinal = parts[0]['x'].strip().rstrip('.')
+            derivada = f"{ordinal} · {parts[2]['x'].strip()}"
+            cornisa_de[ordinal] = derivada
+            if b.get('h') != derivada:
+                faltas.append(f'bloque {i}: el titulo deriva «{derivada}» '
+                              f'y su cornisa dice «{b.get("h")}»')
+    # 2. Toda cornisa cuyo primer tramo sea un ordinal con titulo derivado
+    #    debe decir exactamente lo derivado, en todos los bloques.
     dispares = {}
     for b in blocks:
         h = b.get('h')
@@ -131,7 +141,19 @@ def comprobar_titulos():
         if buena and h != buena:
             dispares[(h, buena)] = dispares.get((h, buena), 0) + 1
     for (h, buena), n in sorted(dispares.items()):
-        faltas.append(f'{n} bloques anuncian «{h}» donde su titulo dice «{buena}»')
+        faltas.append(f'{n} bloques anuncian «{h}» donde su titulo deriva «{buena}»')
+    # 3. Dos tramos contiguos de cornisa (saltando bloques sin ella) que
+    #    comparten el primer miembro antes del « · » deben decir lo mismo:
+    #    una variante corta conviviendo con la larga es la deriva historica.
+    tramos = []
+    for b in blocks:
+        h = b.get('h')
+        if isinstance(h, str) and h and (not tramos or tramos[-1] != h):
+            tramos.append(h)
+    for a, z in zip(tramos, tramos[1:]):
+        if (' · ' in a and ' · ' in z and a != z
+                and a.split(' · ')[0] == z.split(' · ')[0]):
+            faltas.append(f'cornisas vecinas del mismo tramo divergen: «{a}» y «{z}»')
 
     if faltas:
         raise SystemExit('la fuente no cumple la forma de los titulos:\n  '
@@ -270,7 +292,7 @@ def toc_html(folio_of_block, u, f):
     como bloque unico se desbordaba de la caja y la caja lo recortaba en
     silencio, de modo que el indice perdia las dieciseis ultimas entradas."""
     rows = []
-    for t in TOC:
+    for idx, t in enumerate(TOC):
         # las cubiertas son paginas ciegas: se listan sin folio
         folio = '' if t.get('key') in ('portada', 'contracubierta') \
             else folio_of_block.get(t['i'], '')
@@ -281,6 +303,21 @@ def toc_html(folio_of_block, u, f):
         guia = (f'<span style="flex:1;border-bottom:1px dotted {C_GRIS};'
                 f'transform:translateY(-0.25em);opacity:.55"></span>') if folio \
             else '<span style="flex:1"></span>'
+        # Cabeza de grupo: entrada de nivel cero con hijas debajo. La jerarquia
+        # descansaba solo en la sangria de 10 pt; la cabeza se distingue ahora
+        # tambien por tipografia y color. Misma regla y mismas medidas que
+        # tocHtml() en el modulo de estilo: las dos funciones dicen lo mismo.
+        # Sin text-transform ni versalitas: la capa de texto no se mueve.
+        if t['lvl'] == 0 and idx + 1 < len(TOC) and TOC[idx + 1]['lvl'] == 1:
+            rows.append(
+                f'<div style="display:flex;align-items:baseline;gap:{u(4)};'
+                f'font-family:var(--font-heading);font-size:{f(9.4)};'
+                f'letter-spacing:.06em;font-weight:600;line-height:1.85;'
+                f'color:{C_VINO};margin-top:{u(6)}"><span>{t["label"]}</span>'
+                f'{guia}'
+                f'<span style="font-variant-numeric:tabular-nums;font-weight:400;'
+                f'color:{C_GRIS}">{folio}</span></div>')
+            continue
         rows.append(
             f'<div style="display:flex;align-items:baseline;gap:{u(4)};'
             f'font-family:var(--font-body);font-size:{f(8.6)};line-height:1.85;'

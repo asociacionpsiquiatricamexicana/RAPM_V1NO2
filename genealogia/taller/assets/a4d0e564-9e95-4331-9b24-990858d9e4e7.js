@@ -401,10 +401,16 @@ export function plateHtml(b, k, ts) {
 /* ---------- generated contents page ---------- */
 export function tocHtml(toc, pageOf, k, ts) {
   const u = (pt) => (pt * k) + 'px';
-  const rows = toc.map((t) => {
+  const rows = toc.map((t, i) => {
     const p = pageOf[t.i];
     const lab = `<span style="${css({ paddingLeft: t.lvl ? u(10) : 0 })}">${esc(t.label)}</span>`;
-    if (t.lvl === 0 && !p) return `<div style="${css({ fontFamily: HEAD, fontSize: (7 * k * ts) + 'px', letterSpacing: '0.1em', textTransform: 'uppercase', color: C.vino, margin: `${u(9)} 0 ${u(3)}` })}">${esc(t.label)}</div>`;
+    /* Cabeza de grupo: entrada de nivel cero con hijas debajo. La misma regla
+       y las mismas medidas que toc_html() en libro.py: las dos funciones dicen
+       lo mismo. La rama anterior (nivel cero sin folio) era codigo muerto,
+       porque el flipbook folia todas sus paginas. */
+    if (t.lvl === 0 && toc[i + 1] && toc[i + 1].lvl === 1) return `<div style="${css({ display: 'flex', alignItems: 'baseline', gap: u(4), fontFamily: HEAD, fontSize: (9.4 * k * ts) + 'px', letterSpacing: '0.06em', fontWeight: 600, lineHeight: 1.75, color: C.vino, marginTop: u(6) })}">
+      <span>${esc(t.label)}</span><span style="${css({ flex: 1, borderBottom: `1px dotted ${C.gris}`, transform: 'translateY(-0.2em)', opacity: 0.6 })}"></span>
+      <span style="${css({ fontVariantNumeric: 'tabular-nums', fontWeight: 400, color: C.gris })}">${p || ''}</span></div>`;
     return `<div style="${css({ display: 'flex', alignItems: 'baseline', gap: u(4), fontFamily: BODY, fontSize: (8.6 * k * ts) + 'px', lineHeight: 1.75, color: C.tinta })}">
       ${lab}<span style="${css({ flex: 1, borderBottom: `1px dotted ${C.gris}`, transform: 'translateY(-0.2em)', opacity: 0.6 })}"></span>
       <span style="${css({ fontVariantNumeric: 'tabular-nums', color: C.gris })}">${p || ''}</span></div>`;
