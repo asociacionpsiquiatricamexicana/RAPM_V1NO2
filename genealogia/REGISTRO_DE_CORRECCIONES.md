@@ -2562,3 +2562,35 @@ exactamente ese caso en la cubierta.
 - Batería completa sobre el PDF publicado —`cierre_pdf`, `marcadores`,
   `verificar_toc`, `techo_plate`, `techo_por_elemento`—: ninguna señala defecto.
 - El archivo publicado es byte a byte el mismo que dejó la primera tanda de hoy.
+
+### Barrido tipográfico del volumen (31 de agosto de 2026)
+
+Cerrando la jornada se barrió el PDF publicado en busca de los defectos que se
+ven al pasar página y que ninguna sonda vigila. **No hubo que corregir nada**;
+se anota porque «medido y sano» es información: ahorra a quien venga después
+volver a derivarlo, y deja constancia de con qué se midió.
+
+| Qué se buscó                                             | Resultado |
+| -------------------------------------------------------- | --------- |
+| Viudas: última línea corta de un párrafo, sola al abrir página | **0** |
+| Huérfanas: primer renglón de párrafo solo al pie           | **0** |
+| Rótulos varados al pie, sin cuerpo debajo                  | **0** |
+| Folio impreso que no case con la etiqueta del visor        | **0** de 318 |
+| Páginas casi vacías                                        | **1**, la portadilla «Umbral», por diseño |
+| Páginas sin folio impreso                                  | **14**, las portadillas y las dos cubiertas, por norma |
+| Comillas «» desparejas en los 2 187 bloques                | **0** |
+| Paréntesis desparejos                                      | **0** |
+| Comillas rectas, espacio antes de puntuación               | **0** |
+
+Cómo se midió: las viudas y las huérfanas, por la geometría real de cada
+renglón —ancho contra la caja de texto, sangría contra el margen izquierdo de
+la página, y si el párrafo continúa en la página siguiente—; los rótulos
+varados, por el cuerpo de la letra leído del propio archivo, no por su
+apariencia. El primer intento dio noventa y una huérfanas: contaba como
+sangrado todo renglón que empezara a la derecha del margen, y eso incluye la
+sangría francesa de los asientos bibliográficos y las líneas centradas de la
+dedicatoria. **El instrumento antes que el libro**, otra vez.
+
+Los folios se cotejaron contra las etiquetas de página que fija el sellado, que
+son las que el visor muestra en su casilla: en las trescientas dieciocho páginas
+que imprimen folio, el número impreso y el del visor son el mismo.
