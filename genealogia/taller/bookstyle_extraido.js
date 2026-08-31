@@ -151,9 +151,17 @@ function blockStyle(b, k, ts) {
     case 'major': return { ...base, fontFamily: HEAD, fontSize: f(19), lineHeight: 1.22, fontWeight: 400,
       fontVariant: 'small-caps', letterSpacing: '0.015em', color: C.vino, textAlign: 'left',
       textWrap: 'balance', margin: `0 0 ${u(2)}` };
+    // La bajada («bajada: 1», derivado en la fuente) pertenece al titulo que la
+    // precede: se compone pegada a el y separada del cuerpo que introduce. Iba
+    // al reves —23,3 pt de aire arriba contra 18,0 abajo, medidos sobre el
+    // PDF—, de modo que se leia como entradilla del cuerpo y no como parte del
+    // titulo. Un 'sub' suelto, sin titulo encima, es un ladillo y conserva su
+    // aire arriba. El margen se cede en las dos piezas de la pareja porque los
+    // margenes verticales contiguos se funden en el mayor de los dos.
     case 'sec': return { ...base, fontFamily: HEAD, fontSize: f(12.5), lineHeight: 1.28, fontWeight: 600,
-      fontVariant: 'small-caps', letterSpacing: '0.04em', color: C.vino, margin: `${u(14)} 0 ${u(9)}` };
-    case 'sub': return { ...base, fontSize: f(10.5), lineHeight: 1.24, fontStyle: 'italic', margin: `${u(9)} 0 ${u(4)}` };
+      fontVariant: 'small-caps', letterSpacing: '0.04em', color: C.vino, margin: `${u(14)} 0 ${u(b.bajada ? 3 : 9)}` };
+    case 'sub': return { ...base, fontSize: f(10.5), lineHeight: 1.24, fontStyle: 'italic',
+      margin: b.bajada ? `${u(2)} 0 ${u(9)}` : `${u(9)} 0 ${u(4)}` };
     case 'ficha': return { ...base, fontFamily: HEAD, fontSize: f(19), lineHeight: 1.22, fontWeight: 400,
       fontVariant: 'small-caps', letterSpacing: '0.015em', color: C.vino, textAlign: 'left',
       textWrap: 'balance', margin: `0 0 ${u(6)}` };
@@ -167,7 +175,8 @@ function blockStyle(b, k, ts) {
       ? { ...base, fontFamily: HEAD, fontSize: f(6.8), lineHeight: 1.4, fontWeight: 400,
           textTransform: 'uppercase', letterSpacing: '0.1em', color: C.gris, margin: `0 0 ${u(2)}` }
       : { ...base, fontFamily: HEAD, fontSize: f(7.6), lineHeight: 1.4, fontWeight: 600,
-          textTransform: 'uppercase', letterSpacing: '0.1em', color: C.vino, margin: `${u(11)} 0 ${u(4)}` };
+          textTransform: 'uppercase', letterSpacing: '0.1em', color: C.vino,
+          margin: `${u(11)} 0 ${u(b.bajada ? 3 : 4)}` };
     case 'field': return { ...base, fontSize: f(8.6), lineHeight: 1.35,
       textAlign: 'justify', hyphens: 'auto', margin: `0 0 ${u(4)}` };
     case 'fclose': return { ...base, fontFamily: HEAD, fontSize: f(7), lineHeight: 1.4, fontWeight: 600,

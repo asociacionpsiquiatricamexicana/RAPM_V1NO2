@@ -2998,3 +2998,226 @@ dirección cortan, los once, sobre guiones que ya existen en la dirección —lo
 los DOI `S0185-2620`, `SM.0185-3325`, los rangos de página—. El riesgo es latente,
 no actual; corregirlo pide separar la dirección en su propio fragmento en ciento
 trece asientos, sin cambiar un solo carácter, y queda a la orden del compilador.
+
+## Tanda: los cuatro Episodios recuperan su jerarquía, y la bajada vuelve a su título (31 de agosto de 2026)
+
+Tanda dictada por el compilador sobre tres frentes: **apéndices, títulos con su
+subtítulo, e índice**. Lo que sigue es lo que se midió, lo que se cambió, con qué
+se confirmó y qué quedó declarado sin corregir.
+
+### El defecto que la tanda anterior dio por bueno
+
+El barrido del 31 de agosto anotó en este mismo registro:
+
+> «Títulos de episodio y de apéndice: mismo patrón, sin discrepancia. Los cuatro
+> episodios y los quince apéndices resuelven igual el título y su nombre temático.»
+
+**No era cierto en el libro impreso**, y la razón por la que pareció serlo es
+instructiva: aquello se comprobó leyendo la fuente, donde en efecto los
+diecinueve títulos tienen la misma forma —ordinal, salto, tema—. El PDF decía
+otra cosa.
+
+`libro.py` normalizaba en memoria los saltos de línea rígidos de los títulos
+mayores, con este patrón:
+
+```python
+ordinal = bool(_re.match(r'^(Capítulo|Apéndice)\s', (parts[0].get('x') or '')))
+```
+
+El módulo de estilo, que es quien compone, reconocía **tres** formas de ordinal:
+
+```js
+parts[0].x.match(/^(Capítulo|Apéndice)\s+[IVX]+\.?\s*$/)
+  || parts[0].x.match(/^(Primer|Segundo|Tercer|Cuarto)\s+Episodio\.?\s*$/)
+```
+
+Los dos patrones habían derivado. A los cuatro títulos de capítulo el
+normalizador les retiraba el salto **estructural** —el que separa el ordinal del
+tema— por no reconocer «Primer Episodio» como ordinal, y el compositor, al no
+encontrar ya el salto, los componía de una pieza:
+
+| | Antes | Ahora |
+| --- | --- | --- |
+| Capítulos | «Primer Episodio. Fundación e identidad» en un solo renglón de 19 pt, con el punto en medio, partiéndose donde cayera | «Primer Episodio» de 19 pt · «Fundación e identidad» de 12,5 pt |
+| Apéndices | «Apéndice I» de 19 pt · «Línea del Tiempo» de 12,5 pt | igual que antes |
+
+El «Segundo Episodio» era el caso más visible: se partía en «Segundo Episodio.
+Expansión» / «académica y gremial», rompiendo el nombre temático por la mitad.
+
+**El arreglo no fue ensanchar el patrón de `libro.py`**, que es lo que perpetúa
+el problema, sino llevar la forma a la fuente y dejar aquí solo la comprobación.
+
+### Por qué la fuente y no la pasada de composición
+
+Los flipbooks componen desde `assets/*.bin` **en crudo**, con el módulo de
+estilo gemelo. Todo lo que `libro.py` derivaba en memoria llegaba al PDF y **no
+llegaba a los flipbooks**: los saltos arbitrarios seguían vivos allí, de modo
+que el mismo apéndice se titulaba «Ruta de / recuperación documental» en el
+lector digital y «Ruta de recuperación documental» en el impreso. Un arreglo en
+el compositor era, además de un parche, una divergencia entre los dos
+entregables.
+
+Ahora la fuente lleva la forma normalizada —solo el salto estructural, en los
+diecinueve títulos— y `libro.py` la comprueba en cada corrida con
+`comprobar_titulos()`, que **aborta** si alguien reintroduce un salto arbitrario
+o desmarca una pareja. Seis títulos quedaron limpios de saltos sobrantes:
+
+- Apéndice III: «Criterios de transcripción / y de edición» → un solo tema
+- Apéndice IV: «Glosario, siglas / y definiciones operativas»
+- Apéndice V: «Relación enlazada / de expresidentes»
+- Apéndice IX: «Genealogía / del órgano de difusión»
+- Apéndice XI: «Ruta de / recuperación documental» — partido tras una preposición
+- Pieza testimonial: «Eduardo Ángel / Madrigal de León»
+
+### La bajada estaba pegada al cuerpo y suelta de su título
+
+Trece bloques `sub` sirven a dos oficios distintos con un solo estilo. **Once**
+son bajadas: siguen inmediatamente a un rótulo o a una sección y le pertenecen.
+**Dos** son ladillos sueltos, en medio de la prosa, sin título encima.
+
+El estilo era el del ladillo —aire arriba, poco abajo— y en las once bajadas
+salía al revés de lo que pide el oficio. Medido sobre el PDF, base a base:
+
+| | Aire sobre la bajada | Aire bajo la bajada |
+| --- | --- | --- |
+| Antes | 19,7 a 24,0 pt | 16,2 a 18,8 pt |
+| Ahora | 13,7 a 18,0 pt | 20,7 a 23,9 pt |
+
+Las once se separaban de su propio título **más** que del cuerpo que
+introducen, de modo que el ojo las leía como entradilla del texto. Los dos
+ladillos sueltos conservan su aire arriba: la fuente distingue ahora las dos
+funciones con `bajada: 1`, y el estilo cede margen en las dos piezas de la
+pareja, porque los márgenes verticales contiguos se funden en el mayor.
+
+Afecta a la línea del tiempo del Apéndice I (los cuatro episodios), a la
+cronología del Apéndice X, a las tres clases de ausencia del Apéndice XII, al
+tercer capítulo y a la conclusión.
+
+### Los apéndices se llamaban de dos maneras según la página
+
+Ocho de los quince llevaban en la cornisa una versión recortada del título, y el
+recorte no seguía ninguna regla: unos perdían la cláusula final, otro cambiaba
+la palabra que encabeza. Peor: **la cornisa va transcrita en cada bloque de la
+sección, no derivada de su título**, y al acortarla en su día solo se tocó el
+bloque del título. La primera página de cada apéndice anunciaba una cosa y las
+de continuación otra.
+
+| Apéndice | Decía la 1.ª página | Decían las demás |
+| --- | --- | --- |
+| III | Criterios de transcripción y de edición | Criterios de transcripción |
+| IV | Glosario, siglas y definiciones operativas | Glosario |
+| V | Relación enlazada de expresidentes | Relación enlazada |
+| VI | Mesas Directivas, 1966-2027 | Mesas Directivas |
+| VII | Congresos y reuniones nacionales, 1967-2026 | Congresos |
+| IX | Genealogía del órgano de difusión | Órgano de difusión |
+| XI | Ruta de recuperación documental | Ruta de recuperación |
+| XII | Fuentes no consultadas y vía para consultarlas | Fuentes no consultadas |
+
+Se unificaron las quince al título entero, en 263 bloques. **El recorte no lo
+imponía la medida:** la cornisa más larga del libro —«CUARTO EPISODIO ·
+TRANSFORMACIÓN DIGITAL Y COMPROMISO SOCIAL»— mide 269,6 pt sobre una mancha de
+314,57, y la más larga de las nuevas —la del Apéndice XII— no la alcanza. El
+caso del VI lo pedía además la claridad: la primera parte del libro tiene cuatro
+secciones llamadas «Mesas Directivas», y sin el rango de años la cornisa del
+apéndice no se distinguía de ellas.
+
+Las cornisas que dicen a propósito algo distinto del título —«Conclusión»,
+«Cierre», «Prefacio del autor», «Sexagésimo Aniversario»— **no se tocaron**: ahí
+la cornisa nombra la parte, no la sección, y es decisión editorial.
+`comprobar_titulos()` vigila desde ahora que ningún apéndice vuelva a
+llamarse de dos maneras.
+
+### El Contenido prometía folio donde no lo hay
+
+«Portada» y «Contracubierta» son páginas ciegas: se listan sin folio, por
+decisión ya asentada. Pero su renglón dibujaba la línea de puntos, que existe
+solo para llevar el ojo hasta un número, y lo llevaba hasta un hueco. Las dos
+entradas quedan ahora sin guía.
+
+### La sonda del Contenido callaba lo que no medía
+
+`verificar_toc.py` barría las veinte primeras páginas del PDF y daba por entrada
+del índice **todo renglón que acabara en número**. De ahí dos defectos propios:
+
+- leía **42 de las 49** entradas y no decía que faltaran siete;
+- acusaba de descuadre la dirección postal de la página de créditos
+  («…Ciudad de México, Mé» → folio 55), que llevaba tandas apareciendo como
+  ruido y no era del libro.
+
+Reescrita: toma las entradas de la fuente, localiza las páginas del Contenido
+por su cornisa y comprueba **las 49**, distinguiendo las dos ciegas. Se le
+introdujo el defecto que dice detectar —un rótulo que el Contenido no imprime, y
+una página ciega declarada no ciega— sobre una copia de la fuente: **falló las
+dos veces**, y volvió a pasar al restaurarla.
+
+### Sonda nueva: `aire_de_la_bajada.py`
+
+Mide sobre el PDF, renglón a renglón, el aire que separa cada bajada de su
+título y del cuerpo. Contra el PDF anterior a esta tanda denuncia **11 de 11**;
+contra el nuevo, **ninguna**. Su primera versión agrupaba los renglones por
+igualdad exacta de la base de la caja holgada y partía cada uno en trozos: medía
+el interlineado dentro de un renglón y no el aire entre renglones. Queda anotado
+en su cabecera, porque es la cuarta vez en este proyecto que la sonda está mal y
+el libro bien.
+
+### Verificación
+
+- **332 páginas**, ninguna caja desborda, y **ningún folio del Contenido se
+  mueve**: las 47 entradas con folio anuncian exactamente los mismos que antes.
+- `cmp.py`: **de 718 a 722**, y las cuatro diferencias nuevas están
+  identificadas una por una: son los puntos finales de «Primer Episodio.»,
+  «Segundo Episodio.», «Tercer Episodio.» y «Cuarto Episodio.», que el
+  antetítulo no imprime. Los quince apéndices ya las tenían por la misma razón.
+  La cifra queda reanclada en 722 con esa razón escrita.
+- `verificar_toc.py`: las 49 entradas están y caen donde anuncian.
+- `aire_de_la_bajada.py`: las 11 bajadas se componen pegadas a su título.
+- `marcadores.py`: los 49 marcadores caen sobre su rótulo.
+- `chk_colas.py`: ninguna cola de bloque se pierde.
+- `debug_espacios.py`: 0 renglones con hueco anómalo, de 332 páginas.
+- `cierre_pdf.py`: **0 renglones se parten al copiar**, de 7700 medidos. Las
+  ocho cornisas nuevas, más largas, se buscan y se encuentran dentro del PDF:
+  el seguimiento tipográfico no rebasó su techo.
+- `depurar_pdf.py`: 2187 bloques, 0 sin compositor, 0 compuestos dos veces, y
+  los dos avisos de siempre —«Portada» y «Contracubierta», que apuntan a
+  páginas ciegas cuyo texto no las nombra—.
+- `reproducible.py`: el libro se recompone **idéntico** desde lo versionado; la
+  huella del texto se reancla en `968f7ff9…` porque el texto cambió a propósito
+  en esos cuatro puntos.
+- Comparación de píxeles contra el PDF anterior: **55 páginas de 332**. Las
+  cuatro aperturas de capítulo, las cuatro páginas de bajadas de los apéndices I,
+  X y XII, la conclusión, las dos del Contenido —al 0,05 %, que es la línea de
+  puntos retirada—, treinta y siete páginas de apéndice al 0,20-0,38 %, que es
+  solo la cornisa, y ocho páginas del primer capítulo que refluyen.
+
+### Lo que el reflujo del primer capítulo arregló de paso
+
+Dar al «Primer Episodio» su segundo escalón añadió altura a la página 27 y el
+texto refluyó hasta absorberse en la 35, sin cambiar un solo folio. En esa
+página 35 el reflujo **corrigió un defecto anterior**: la página abría con la
+cola suelta de una dirección electrónica —«https://www.scielo.org.mx/…» y
+«33252010000100001»— separada de su asiento bibliográfico, que quedaba en la
+página anterior. Ahora el asiento de Sosenski y Sosenski entra entero.
+
+### Lo declarado sin corregir
+
+- **El flipbook plano no se pudo rearmar.** `flatten.py` necesita
+  `template.html` y los recursos del visor, que no viven en el repositorio. El
+  flipbook autónomo sí quedó al día —lleva la fuente y el módulo de estilo
+  nuevos, comprobado con ida y vuelta—; el plano se queda como estaba y lo dice
+  `recuperable.py`. Es el límite que ya declara el LEEME del taller.
+- **La cornisa sigue transcrita, no derivada.** Vive en cada uno de los 2187
+  bloques en vez de deducirse del título de su sección. Esta tanda la unificó
+  y le puso una guarda que vigila los apéndices, pero la duplicación sigue ahí
+  y volverá a derivar en cuanto alguien cambie un título sin cambiar la sección
+  entera. Corregirlo de raíz pide derivar la cornisa al componer, lo que toca
+  las dos series de páginas y repaginaría: queda a la orden del compilador.
+- **El Contenido del PDF y el del flipbook los componen dos funciones
+  distintas** —`toc_html()` en `libro.py` y `tocHtml()` en el módulo de
+  estilo—, que no dicen exactamente lo mismo: la del flipbook compone las
+  entradas de nivel cero sin folio como rótulo en versalita, y la del impreso
+  como renglón corriente. Hoy no produce discrepancia visible porque el flipbook
+  folia todas sus páginas, pero son dos verdades sobre una misma página.
+- **La jerarquía visual del Contenido descansa solo en la sangría.** Las cuatro
+  entradas de parte y las cuarenta y cinco de sección comparten cuerpo, color y
+  tipografía; solo las separa una sangría de 10 pt. Distinguirlas de veras es
+  decisión editorial y no defecto medible: no se tocó.
