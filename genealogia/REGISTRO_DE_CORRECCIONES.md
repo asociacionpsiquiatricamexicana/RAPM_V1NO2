@@ -2403,3 +2403,91 @@ de las cubiertas no se tocó: esas se extraen enteras y son rasgo deliberado.
 - **La portada interior sigue diciendo «PRIMERA EDICIÓN DIGITAL»** frente a
   «Primera Edición» de la ficha de catalogación. Sigue esperando decisión: el
   registro acotó aquel cambio a la ficha y no se extiende por cuenta propia.
+
+## Tanda: las dos sondas de seguimiento medían un libro que ya no existe (31 de agosto de 2026)
+
+Al pasar la batería completa sobre el PDF recién publicado, las dos sondas que
+vigilan el seguimiento de las cubiertas dieron una tabla que no cuadraba con la
+hoja de estilo. **El libro no se tocó en esta tanda**: el PDF publicado es el
+mismo que dejó la entrada anterior. Lo que cambió es lo que lo mide.
+
+### Guardaban copia de los valores que debían vigilar
+
+`sondas/techo_por_elemento.py` traía escrita a mano, en su propia tabla de
+casos, la columna «seguimiento actual»: 0,30 para la portadilla de parte, 0,28
+para el antetítulo de la cubierta, 0,24 para los cargos. Son los valores de
+antes de la tanda que los bajó. La hoja de estilo lleva desde entonces 0,12,
+0,11 y 0,12, de modo que la sonda anunciaba como pendientes rebajas hechas hace
+tandas y describía una portada que ya no existe. **Una sonda que guarda copia
+del libro acaba midiendo su copia.**
+
+Ahora el valor vigente se lee de `bookstyle_extraido.js` por un ancla, y si el
+ancla deja de casar exactamente una vez la sonda lo dice y sale con código uno
+en vez de suponerlo. Se probó renumerando el renglón del Congreso en la hoja de
+estilo: la sonda nombra el elemento, dice que su ancla casa cero veces y sale
+con uno.
+
+### Un barrido que empezaba por encima de lo que el libro usa
+
+El mismo instrumento barría de 0,10 a 0,30 em. Los rótulos en versalitas de la
+cubierta viven en 0,05, 0,07 y 0,08, es decir, **por debajo del primer valor
+que la sonda probaba**. De ahí que dictaminara «ninguno limpio» sobre el título
+de la portada: no es que ningún seguimiento lo dejara entero, es que no había
+mirado ninguno de los que el libro usa. Un «no» por no haber mirado es la peor
+forma de decir que no. El barrido empieza ahora en 0,04.
+
+### Ensuciaban el repositorio al medir
+
+Las dos escribían su PDF de prueba —`techo.pdf` y `techo3.pdf`, un cuarto de
+megabyte entre ambas— en el directorio del taller. Verificar dejaba el árbol de
+trabajo sucio, y un `git add -A` distraído los habría publicado dentro del
+libro. Van a un directorio temporal fuera del repositorio.
+
+### Lo que la tabla dice ahora
+
+Los once rótulos de seguimiento ancho, con el valor leído de la hoja de estilo
+y el máximo que no rompe la copia, medido componiendo cada uno con su
+tipografía, su cuerpo y su texto reales:
+
+| Rótulo                    | Va en | Techo limpio |
+| ------------------------- | ----- | ------------ |
+| portadilla · ordinal      | 0,12  | 0,14         |
+| cubierta · aniversario    | 0,11  | 0,11         |
+| cubierta · título         | 0,05  | 0,09         |
+| cubierta · subtítulo      | 0,08  | 0,09         |
+| cubierta · cargos         | 0,12  | 0,12         |
+| cubierta · congreso       | 0,08  | 0,09         |
+| cubierta · sede           | 0,10  | 0,10         |
+| cubierta · sello          | 0,12  | 0,12         |
+| contracubierta · título   | 0,07  | 0,09         |
+| contracubierta · pie      | 0,10  | 0,11         |
+| contracubierta · DOI      | 0,10  | 0,10         |
+
+Ninguno se pasa. La tabla confirma además, por otro camino, lo medido en la
+entrada anterior: los tres rótulos en versalitas tienen techo 0,09, y los de
+mayúsculas llegan a 0,10, 0,11 y 0,12 según el par de letras.
+
+### Verificación
+
+- Las dos sondas salen en cero sobre la hoja de estilo vigente, y ninguna deja
+  archivo alguno en el árbol de trabajo.
+- Subiendo el ordinal de portadilla a 0,15 em en la hoja de estilo, las dos lo
+  nombran y salen con código uno: `techo_plate.py` dice desde qué valor se
+  parten los tres ordinales, `techo_por_elemento.py` nombra el elemento.
+  Restaurada la hoja de estilo, las dos vuelven a cero.
+- Con un ancla rota a propósito, `techo_por_elemento.py` nombra el elemento y
+  sale con uno donde antes habría usado su copia.
+- `techo_plate.py` amplía el barrido a 0,16 para que el techo de 0,13 quede
+  demostrado por los dos lados, y no por agotarse el barrido: 0,14 rompe
+  «Segunda Parte» y 0,15 rompe los tres.
+- Batería completa sobre el PDF publicado: `cierre_pdf`, `marcadores`,
+  `techo_plate` y `techo_por_elemento`, las cuatro en cero.
+
+### Lo que queda declarado sin corregir
+
+Cinco rótulos van exactamente en su techo limpio —el antetítulo, los cargos, la
+sede y el sello de la cubierta, y el DOI de la contracubierta—. No es defecto:
+salen enteros hoy, medidos. Pero es la misma posición que produjo el defecto de
+la entrada anterior, donde un renglón en el techo cedió al cambiar la variante
+tipográfica. Quedan anotados aquí y vigilados por la sonda, que los nombrará el
+día que el techo baje bajo sus pies.
