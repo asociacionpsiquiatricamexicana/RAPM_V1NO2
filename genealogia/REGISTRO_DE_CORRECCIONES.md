@@ -2315,3 +2315,91 @@ casilla de «no aparece ni aquí ni en la siguiente», que es ruidosa pero no
 nombra la causa. No se corrigió porque ese desfase no se ha observado nunca en
 este libro y el mecanismo que lo produciría —un `anchor` que el paginador
 adelanta— no existe.
+
+## Tanda: el último renglón que se partía al copiarlo (31 de agosto de 2026)
+
+La sonda `sondas/cierre_pdf.py` anunciaba **cero renglones partidos**, y el
+registro de la tanda que cerró ese defecto declaraba **doce**. Cero y doce no
+podían ser ciertos a la vez. La sonda tenía razón en once de los doce y estaba
+ciega para el que quedaba.
+
+### Por qué la sonda no podía verlo
+
+Contaba un renglón como roto cuando más del cuarenta y cinco por ciento de sus
+palabras eran letras sueltas. Ese criterio ve «C o n g r e s o», que es la
+fragmentación grave, y no ve «Congre so», que es la que quedaba: cinco fichas
+—`XXX`, `Congre`, `so`, `Naciona`, `l`— con una sola letra suelta, un veinte
+por ciento, por debajo del umbral. La sonda no medía el hueco: contaba fichas.
+
+Ahora mide la geometría, que es lo que el lector padece: **un espacio sobra
+cuando el hueco que salva no es mayor que el que hay entre dos letras
+contiguas de una palabra del mismo renglón**. Ese criterio no se deja engañar
+por el texto justificado, donde la separación legítima entre palabras varía de
+renglón en renglón, y distingue los dos trozos de una palabra partida de una
+separación real. Sobre el libro mide **siete mil seiscientos noventa y dos
+renglones**; si no puede medir ninguno, lo dice y sale con código uno en vez
+de aprobar un archivo que no examinó.
+
+### El renglón
+
+Era «XXX Congreso Nacional», en la cubierta. Quien buscara esa cadena dentro
+del PDF —el nombre del Congreso en cuya clausura se publica el libro— no la
+encontraba en la portada.
+
+La causa, medida y no supuesta: se compuso otra vez ese renglón con el mismo
+motor y las mismas tipografías, variando el seguimiento de cuatro a doce
+centésimas de eme, y extrayendo el texto con el lector que usan los visores.
+El umbral es nítido: **en versalitas la capa de texto sale íntegra hasta 0,09
+em y se parte desde 0,10**. El renglón estaba exactamente en 0,10.
+
+Esto acota, no contradice, la medición de la tanda que puso el techo en 0,10
+em: aquel umbral se midió sobre texto normal, y en versalitas la síntesis del
+tipo lo baja una centésima. En toda la hoja de estilo hay un solo elemento en
+versalitas por encima del techo real, y era este.
+
+Pasa a **0,08 em**, que es el valor del otro renglón en versalitas de la misma
+cubierta —«de la Asociación Psiquiátrica Mexicana, A.C.»—: deja una centésima
+de margen bajo el punto de ruptura y hace coherentes entre sí los dos renglones
+en versalitas de la portada. El seguimiento ancho de las líneas en mayúsculas
+de las cubiertas no se tocó: esas se extraen enteras y son rasgo deliberado.
+
+### Verificación
+
+- **Renglones que se parten al copiar: de uno a cero**, sobre 7 692 medidos.
+  Es el último; los otros once que la tanda de agosto dejó declarados los
+  cerraron, sin saberlo, las tandas de reestructuración de jerarquía.
+- «XXX Congreso Nacional» pasa a la lista de cadenas que la sonda busca dentro
+  del archivo, y **la encuentra**.
+- `cmp.py`: **719 diferencias, cuadra con la cifra anclada.** No se movió, que
+  es lo que debía pasar: no se tocó el contenido.
+- 332 páginas, ninguna caja desborda. Marcadores: los cuarenta y nueve siguen
+  cayendo sobre su rótulo.
+- `sondas/verificar_toc.py`: la fila fantasma «XXX Congre so Naciona → folio l»
+  desaparece. Era la propia cubierta rota, que el lector de filas del Contenido
+  interpretaba como una entrada sin folio; de cuarenta y tres filas leídas se
+  pasa a cuarenta y dos, y de «sin folio 1» a «sin folio 0». La única que no
+  cuadra sigue siendo el falso positivo conocido del código postal.
+- Comparación de píxeles entre el PDF anterior y el nuevo, a cuatro aumentos,
+  en seis páginas: la cubierta cambia en el **0,09 %** de sus bytes, y las
+  otras cinco —contracubierta y las tres portadillas de parte incluidas— salen
+  **idénticas byte a byte**. Cotejo visual del renglón a seis aumentos, antes y
+  después: no se distingue.
+- La sonda corregida se probó en las tres direcciones: sobre el PDF publicado
+  antes de esta tanda encuentra el renglón y sale con código uno; sobre el
+  nuevo sale en cero; sobre un PDF sin capa de texto avisa de que no pudo medir
+  y sale con código uno, donde antes habría aprobado en silencio.
+- `sondas/reproducible.py`: reanclada. La huella del texto pasa de `7f0af5df…`
+  a `8bcc6148…`, que es justo lo que debía ocurrir al cambiar la capa de texto
+  de la cubierta, y el libro vuelve a recomponerse igual desde lo versionado,
+  con las mismas 332 páginas.
+
+### Lo que queda declarado sin corregir
+
+- **Los flipbooks siguen atrasados.** El módulo de estilo gemelo recibió el
+  mismo cambio, de modo que la corrección estará ahí cuando se reconstruyan,
+  pero `flatten.py` sigue necesitando `template.html` y los recursos del visor,
+  que nunca se versionaron. Los dos entregables publicados quedan intactos y
+  coherentes entre sí.
+- **La portada interior sigue diciendo «PRIMERA EDICIÓN DIGITAL»** frente a
+  «Primera Edición» de la ficha de catalogación. Sigue esperando decisión: el
+  registro acotó aquel cambio a la ficha y no se extiende por cuenta propia.

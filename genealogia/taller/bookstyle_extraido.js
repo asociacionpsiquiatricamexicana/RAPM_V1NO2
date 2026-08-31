@@ -438,7 +438,7 @@ function coverHtml(k, ts) {
     ${line(442, { fontFamily: HEAD, fontSize: f(6.4), letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(247,244,239,.7)' }, 'Historiador Compilador')}
     ${line(464, { fontFamily: BODY, fontSize: f(10.5), color: C.crema }, 'David Eduardo Saucedo Martínez')}
     ${line(482, { fontFamily: HEAD, fontSize: f(6.4), letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(247,244,239,.7)' }, 'Editor')}
-    ${line(524, { fontFamily: HEAD, fontSize: f(9.5), fontVariant: 'small-caps', letterSpacing: '0.1em', color: C.crema }, 'XXX Congreso Nacional')}
+    ${line(524, { fontFamily: HEAD, fontSize: f(9.5), fontVariant: 'small-caps', letterSpacing: '0.08em', color: C.crema }, 'XXX Congreso Nacional')}
     ${line(541, { fontFamily: HEAD, fontSize: f(6.4), lineHeight: 1.5, letterSpacing: '0.10em', textTransform: 'uppercase', color: 'rgba(247,244,239,.7)' },
       'Expo Santa Fe, Ciudad de México · 10 a 12 de septiembre de 2026')}
     ${line(586, {}, `<div style="${css({ width: u(120), height: Math.max(1, 0.35 * k) + 'px', background: 'rgba(247,244,239,.45)', margin: '0 auto' })}"></div>`)}
