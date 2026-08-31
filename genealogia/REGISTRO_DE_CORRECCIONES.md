@@ -2750,3 +2750,54 @@ una recomposición completa y la decisión es del compilador.
   con el lector que usan los visores.
 - `guionizar()` leído en el compositor; `hyphens:auto` contado en el HTML
   compuesto; guiones blandos en la fuente del libro: **cero**.
+
+### Addendum del mismo día: el ensayo, y la mitad del defecto que la guionización no explica
+
+La entrada anterior dejó el defecto declarado y la corrección descrita «en una
+línea». Se ensayó esa línea en una copia del taller, fuera del repositorio, para
+que la decisión del compilador se tome sobre cifras y no sobre una advertencia.
+
+**Lo que costaría dejar la guionización al motor:**
+
+| | Publicado | Ensayo |
+| --- | --- | --- |
+| Páginas | 332 | **335** (+3) |
+| Caracteres de control | 1 644 en 291 páginas | **81 en 32 páginas** |
+
+La paginación se desvía a partir de la **página 7**, de modo que arrastra el
+Contenido, los folios, los marcadores y la cifra anclada de `cmp.py`; y las dos
+declaraciones de extensión del propio libro tendrían que pasar de 332 a 335.
+
+**Y lo que ese ensayo deja sin arreglar, que es lo más grave.** Los 81 que
+sobreviven no son guionización: son **guiones de verdad**, que el archivo
+también convierte en caracteres de control.
+
+- `Pérez·Rincón`, `Medina·Mora`, `Calderón·Narváez`, `Molina·López` — apellidos
+  compuestos, tal como sus portadores los firman. En la fuente del libro están
+  bien: «Pérez-Rincón» aparece 23 veces con su guión, «Medina-Mora» 15.
+- `wp·content`, `cgi·bin`, `default·source`, `country·reports` — direcciones de
+  la bibliografía. «wp-content» aparece 18 veces en la fuente.
+
+Quien copie un asiento bibliográfico del PDF se lleva **el apellido de un autor
+corrompido y una dirección rota**. Es justo lo que la capa cero existe para
+proteger, y el daño no está en la fuente —que está bien— sino en la capa de
+texto del archivo.
+
+**La raíz es una sola para los 1 644**: el glifo del guión no lleva
+correspondencia Unicode en los tipos incrustados. De ahí que el mismo carácter
+de control aparezca donde hubo guión blando y donde hay guión de verdad.
+
+**Dos caminos, y no son excluyentes:**
+
+1. Dejar la guionización al motor: quita 1 563 de los 1 644, cuesta tres
+   páginas y una repaginación completa, y no toca los apellidos ni las
+   direcciones.
+2. Reparar la correspondencia de los glifos al sellar: podría llevar los 1 644
+   a cero **sin mover una sola página**, porque no cambia la composición. Es
+   cirugía sobre la capa de texto de unos dos mil doscientos objetos de tipo, y
+   **no se hace a ciegas**: el analizador con el que se inspeccionaron los tipos
+   ya dio una lectura sin sentido en el primer intento, y esa es señal de que
+   esta reparación pide su propia tanda, con su propia sonda antes.
+
+Nada de esto se aplicó. El ensayo se hizo en `/tmp`, el taller no se tocó y el
+PDF publicado sigue siendo el de la tanda anterior.
