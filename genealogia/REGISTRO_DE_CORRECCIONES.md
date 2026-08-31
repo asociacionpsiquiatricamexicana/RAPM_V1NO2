@@ -2674,3 +2674,79 @@ propia.
   0,282 % de sus bytes. Las otras 331 salen idénticas.
 - `sondas/reproducible.py`: reanclada, de `8bcc6148…` a `8817c343…`, que es lo
   que debía mover un cambio de dos palabras en el contenido.
+
+## Hallazgo mayor sin corregir: mil seiscientas cuarenta y cuatro palabras llevan un carácter invisible dentro (31 de agosto de 2026)
+
+Buscando fusiones de palabras en el texto compuesto —«nal.Ciudad»,
+«cuentenario.Hotel»— apareció algo bastante mayor que lo buscado, y que
+explica de paso aquellas dos.
+
+### Lo medido
+
+La capa de texto del PDF contiene **1 644 caracteres U+0002** —un carácter de
+control, invisible, que no corresponde a ninguna letra— repartidos en **291 de
+las 332 páginas**. No están entre palabras: están **dentro** de ellas.
+
+Afectan a **1 109 palabras distintas**, y las más frecuentes son las que más
+importa poder buscar en este libro:
+
+| Palabra tal como se copia | Veces |
+| ------------------------- | ----- |
+| Psiquiá·trica             | 31    |
+| Asocia·ción               | 18    |
+| Aso·ciación               | 14    |
+| nove·cientos              | 14    |
+| Con·greso                 | 12    |
+
+(el punto medio marca dónde va el carácter invisible)
+
+De las doscientas primeras palabras distintas afectadas, **ciento sesenta y una
+aparecen también enteras en otras páginas**. Es decir: quien busque
+«Asociación» dentro del PDF la encuentra en la mayoría de los sitios y **falla
+en silencio** en aquellos donde la palabra quedó partida por la guionización, y
+quien copie un párrafo se lleva caracteres de control dentro de las palabras.
+
+### La causa, aislada con un experimento
+
+El compositor guioniza dos veces. Por un lado, `guionizar()` en
+`bookstyle_extraido.js` recorre cada palabra de siete letras o más, la parte en
+sílabas con un silabeador propio e inserta un guión blando (U+00AD) en cada
+frontera. Por otro, el HTML compuesto lleva `hyphens:auto` en **2 165**
+elementos, es decir, la guionización nativa del motor.
+
+Se compuso la misma palabra de tres maneras, con el mismo motor y las mismas
+tipografías, forzando el corte:
+
+| Cómo se compuso                    | Cómo sale al copiarla |
+| ---------------------------------- | --------------------- |
+| Con guiones blandos manuales       | `Aso·cia·ción` — **dos caracteres de control** |
+| Con `hyphens:auto` del motor       | `Asociación` — **limpia** |
+| Sin cortar                         | `Asociación` — limpia |
+
+El guión blando manual deja un U+0002 por cada guión insertado en la palabra,
+**incluidos los que no llegaron a cortar**. La guionización nativa del motor
+hace el mismo trabajo tipográfico y no ensucia nada.
+
+### Por qué no se corrigió
+
+La corrección cabe en una línea: que `guionizar()` deje de aplicarse y la
+guionización quede en manos del motor, que ya está activada. Pero el silabeador
+propio y el diccionario del motor **no parten las palabras por los mismos
+sitios**, de modo que el cambio **repagina el libro entero**: se moverían los
+folios, el Contenido, los marcadores, la cifra anclada de `cmp.py` y las 332
+páginas.
+
+Eso no se hace por cuenta propia al cierre de una jornada. **La fuente del libro
+no lleva ni un solo guión blando** —se comprobó: cero en el archivo de
+contenido—, así que la corrección no roza la capa cero y es reversible; pero es
+una recomposición completa y la decisión es del compilador.
+
+### Verificación
+
+- Recuento de caracteres no asignados en la capa de texto, leído del PDF
+  publicado: 1 644, todos U+0002, en 291 páginas.
+- Palabras afectadas y su reparto, contadas sobre el mismo archivo.
+- Experimento de tres casos con el motor y las tipografías del libro, extraído
+  con el lector que usan los visores.
+- `guionizar()` leído en el compositor; `hyphens:auto` contado en el HTML
+  compuesto; guiones blandos en la fuente del libro: **cero**.
