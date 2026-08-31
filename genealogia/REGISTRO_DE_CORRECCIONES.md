@@ -2449,19 +2449,19 @@ Los once rótulos de seguimiento ancho, con el valor leído de la hoja de estilo
 y el máximo que no rompe la copia, medido componiendo cada uno con su
 tipografía, su cuerpo y su texto reales:
 
-| Rótulo                    | Va en | Techo limpio |
-| ------------------------- | ----- | ------------ |
-| portadilla · ordinal      | 0,12  | 0,14         |
-| cubierta · aniversario    | 0,11  | 0,11         |
-| cubierta · título         | 0,05  | 0,09         |
-| cubierta · subtítulo      | 0,08  | 0,09         |
-| cubierta · cargos         | 0,12  | 0,12         |
-| cubierta · congreso       | 0,08  | 0,09         |
-| cubierta · sede           | 0,10  | 0,10         |
-| cubierta · sello          | 0,12  | 0,12         |
-| contracubierta · título   | 0,07  | 0,09         |
-| contracubierta · pie      | 0,10  | 0,11         |
-| contracubierta · DOI      | 0,10  | 0,10         |
+| Rótulo                  | Va en | Techo limpio |
+| ----------------------- | ----- | ------------ |
+| portadilla · ordinal    | 0,12  | 0,14         |
+| cubierta · aniversario  | 0,11  | 0,11         |
+| cubierta · título       | 0,05  | 0,09         |
+| cubierta · subtítulo    | 0,08  | 0,09         |
+| cubierta · cargos       | 0,12  | 0,12         |
+| cubierta · congreso     | 0,08  | 0,09         |
+| cubierta · sede         | 0,10  | 0,10         |
+| cubierta · sello        | 0,12  | 0,12         |
+| contracubierta · título | 0,07  | 0,09         |
+| contracubierta · pie    | 0,10  | 0,11         |
+| contracubierta · DOI    | 0,10  | 0,10         |
 
 Ninguno se pasa. La tabla confirma además, por otro camino, lo medido en la
 entrada anterior: los tres rótulos en versalitas tienen techo 0,09, y los de
@@ -2531,13 +2531,13 @@ la decisión, que constaba solo en un comentario del código.
 
 ### Lo demás que se midió y salió sano
 
-| Qué                        | Medido                                              |
-| -------------------------- | --------------------------------------------------- |
-| Caja de página             | 438,96 × 652,08 pt, **idéntica en las 332**          |
-| Idioma declarado           | `es-MX`                                              |
-| Título, autoría, materia   | presentes; el visor muestra el título, no el nombre del archivo |
-| Modo de apertura           | panel de marcadores desplegado                       |
-| Etiquetado de estructura   | **ausente** (`/MarkInfo` y `/StructTreeRoot`)        |
+| Qué                      | Medido                                                          |
+| ------------------------ | --------------------------------------------------------------- |
+| Caja de página           | 438,96 × 652,08 pt, **idéntica en las 332**                     |
+| Idioma declarado         | `es-MX`                                                         |
+| Título, autoría, materia | presentes; el visor muestra el título, no el nombre del archivo |
+| Modo de apertura         | panel de marcadores desplegado                                  |
+| Etiquetado de estructura | **ausente** (`/MarkInfo` y `/StructTreeRoot`)                   |
 
 El etiquetado ausente no se corrige aquí ni se declara como deuda nueva: el
 colofón ya compromete para dos mil veintisiete la edición accesible conforme al
@@ -2570,17 +2570,17 @@ ven al pasar página y que ninguna sonda vigila. **No hubo que corregir nada**;
 se anota porque «medido y sano» es información: ahorra a quien venga después
 volver a derivarlo, y deja constancia de con qué se midió.
 
-| Qué se buscó                                             | Resultado |
-| -------------------------------------------------------- | --------- |
-| Viudas: última línea corta de un párrafo, sola al abrir página | **0** |
-| Huérfanas: primer renglón de párrafo solo al pie           | **0** |
-| Rótulos varados al pie, sin cuerpo debajo                  | **0** |
-| Folio impreso que no case con la etiqueta del visor        | **0** de 318 |
-| Páginas casi vacías                                        | **1**, la portadilla «Umbral», por diseño |
-| Páginas sin folio impreso                                  | **14**, las portadillas y las dos cubiertas, por norma |
-| Comillas «» desparejas en los 2 187 bloques                | **0** |
-| Paréntesis desparejos                                      | **0** |
-| Comillas rectas, espacio antes de puntuación               | **0** |
+| Qué se buscó                                                   | Resultado                                              |
+| -------------------------------------------------------------- | ------------------------------------------------------ |
+| Viudas: última línea corta de un párrafo, sola al abrir página | **0**                                                  |
+| Huérfanas: primer renglón de párrafo solo al pie               | **0**                                                  |
+| Rótulos varados al pie, sin cuerpo debajo                      | **0**                                                  |
+| Folio impreso que no case con la etiqueta del visor            | **0** de 318                                           |
+| Páginas casi vacías                                            | **1**, la portadilla «Umbral», por diseño              |
+| Páginas sin folio impreso                                      | **14**, las portadillas y las dos cubiertas, por norma |
+| Comillas «» desparejas en los 2 187 bloques                    | **0**                                                  |
+| Paréntesis desparejos                                          | **0**                                                  |
+| Comillas rectas, espacio antes de puntuación                   | **0**                                                  |
 
 Cómo se midió: las viudas y las huérfanas, por la geometría real de cada
 renglón —ancho contra la caja de texto, sangría contra el margen izquierdo de
@@ -2675,7 +2675,13 @@ propia.
 - `sondas/reproducible.py`: reanclada, de `8bcc6148…` a `8817c343…`, que es lo
   que debía mover un cambio de dos palabras en el contenido.
 
-## Hallazgo mayor sin corregir: mil seiscientas cuarenta y cuatro palabras llevan un carácter invisible dentro (31 de agosto de 2026)
+## Hallazgo mayor, después retirado: mil seiscientas cuarenta y cuatro palabras parecían llevar un carácter invisible dentro (31 de agosto de 2026)
+
+> **Nota puesta al corregir el encabezado.** Este título decía «Hallazgo mayor
+> sin corregir» y anunciaba como vigente lo que la subsección final de esta
+> misma entrada retracta: el carácter era un espejismo del extractor, no del
+> archivo. El cuerpo de la entrada se conserva tal cual, incluida la
+> retractación, porque el registro también documenta cómo se llegó a saber.
 
 Buscando fusiones de palabras en el texto compuesto —«nal.Ciudad»,
 «cuentenario.Hotel»— apareció algo bastante mayor que lo buscado, y que
@@ -2717,11 +2723,11 @@ elementos, es decir, la guionización nativa del motor.
 Se compuso la misma palabra de tres maneras, con el mismo motor y las mismas
 tipografías, forzando el corte:
 
-| Cómo se compuso                    | Cómo sale al copiarla |
-| ---------------------------------- | --------------------- |
-| Con guiones blandos manuales       | `Aso·cia·ción` — **dos caracteres de control** |
-| Con `hyphens:auto` del motor       | `Asociación` — **limpia** |
-| Sin cortar                         | `Asociación` — limpia |
+| Cómo se compuso              | Cómo sale al copiarla                          |
+| ---------------------------- | ---------------------------------------------- |
+| Con guiones blandos manuales | `Aso·cia·ción` — **dos caracteres de control** |
+| Con `hyphens:auto` del motor | `Asociación` — **limpia**                      |
+| Sin cortar                   | `Asociación` — limpia                          |
 
 El guión blando manual deja un U+0002 por cada guión insertado en la palabra,
 **incluidos los que no llegaron a cortar**. La guionización nativa del motor
@@ -2759,9 +2765,9 @@ que la decisión del compilador se tome sobre cifras y no sobre una advertencia.
 
 **Lo que costaría dejar la guionización al motor:**
 
-| | Publicado | Ensayo |
-| --- | --- | --- |
-| Páginas | 332 | **335** (+3) |
+|                       | Publicado            | Ensayo               |
+| --------------------- | -------------------- | -------------------- |
+| Páginas               | 332                  | **335** (+3)         |
 | Caracteres de control | 1 644 en 291 páginas | **81 en 32 páginas** |
 
 La paginación se desvía a partir de la **página 7**, de modo que arrastra el
@@ -2857,16 +2863,16 @@ por el volumen:
 
 | Página | U+0002 según pdfium | Códigos sin mapa en el archivo | Códigos leídos |
 | -----: | ------------------: | -----------------------------: | -------------: |
-| 294 | 27 | **0** | 2 049 |
-| 304 | 22 | **0** | 1 797 |
-| 293 | 19 | **0** | 1 947 |
-| 295 | 18 | **0** | 1 820 |
-| 297 | 18 | **0** | 1 792 |
-| 302 | 14 | **0** | 1 847 |
-| 260 |  8 | **0** | 2 343 |
-| 200 |  6 | **0** | 1 999 |
-|  30 |  4 | **0** | 2 094 |
-| 120 |  1 | **0** | 1 087 |
+|    294 |                  27 |                          **0** |          2 049 |
+|    304 |                  22 |                          **0** |          1 797 |
+|    293 |                  19 |                          **0** |          1 947 |
+|    295 |                  18 |                          **0** |          1 820 |
+|    297 |                  18 |                          **0** |          1 792 |
+|    302 |                  14 |                          **0** |          1 847 |
+|    260 |                   8 |                          **0** |          2 343 |
+|    200 |                   6 |                          **0** |          1 999 |
+|     30 |                   4 |                          **0** |          2 094 |
+|    120 |                   1 |                          **0** |          1 087 |
 
 **137 de los 1 644**, y los ciento treinta y siete caen sobre códigos que el
 archivo mapea correctamente. Cero sin mapa sobre **18 775 códigos leídos**; la
@@ -2960,12 +2966,12 @@ se anota con qué se comprobó cada cosa.
 **Los cuatro guiones que no son apellidos: ninguno debe tocarse.** Se miraron uno
 por uno, y el contexto los desautoriza como erratas:
 
-| Guion | Dónde vive | Por qué se queda |
-| --- | --- | --- |
-| Mayo-Julio | dentro de `…/uploads/Numero-4.-Mayo-Julio-2021_singles.pdf` | es una **dirección web**; alterarla la rompe |
-| Agosto-Septiembre | dentro de `…/uploads/Numero-5.-Agosto-Septiembre-2021.pdf` | ídem |
-| Re-Unión | divisa entrecomillada del IX Congreso, adoptada tras el sismo de 1985 | es **cita de una divisa documentada** |
-| México-Francia | «Coloquio México-Francia de Psiquiatría», tres apariciones, una en Testimonio | es el **nombre propio de un encuentro** |
+| Guion             | Dónde vive                                                                    | Por qué se queda                             |
+| ----------------- | ----------------------------------------------------------------------------- | -------------------------------------------- |
+| Mayo-Julio        | dentro de `…/uploads/Numero-4.-Mayo-Julio-2021_singles.pdf`                   | es una **dirección web**; alterarla la rompe |
+| Agosto-Septiembre | dentro de `…/uploads/Numero-5.-Agosto-Septiembre-2021.pdf`                    | ídem                                         |
+| Re-Unión          | divisa entrecomillada del IX Congreso, adoptada tras el sismo de 1985         | es **cita de una divisa documentada**        |
+| México-Francia    | «Coloquio México-Francia de Psiquiatría», tres apariciones, una en Testimonio | es el **nombre propio de un encuentro**      |
 
 Dos son direcciones y dos son nombres ajenos: corregirlos habría roto un enlace
 y renombrado un coloquio y una divisa.
@@ -3027,8 +3033,8 @@ ordinal = bool(_re.match(r'^(Capítulo|Apéndice)\s', (parts[0].get('x') or ''))
 El módulo de estilo, que es quien compone, reconocía **tres** formas de ordinal:
 
 ```js
-parts[0].x.match(/^(Capítulo|Apéndice)\s+[IVX]+\.?\s*$/)
-  || parts[0].x.match(/^(Primer|Segundo|Tercer|Cuarto)\s+Episodio\.?\s*$/)
+parts[0].x.match(/^(Capítulo|Apéndice)\s+[IVX]+\.?\s*$/) ||
+  parts[0].x.match(/^(Primer|Segundo|Tercer|Cuarto)\s+Episodio\.?\s*$/);
 ```
 
 Los dos patrones habían derivado. A los cuatro títulos de capítulo el
@@ -3036,10 +3042,10 @@ normalizador les retiraba el salto **estructural** —el que separa el ordinal d
 tema— por no reconocer «Primer Episodio» como ordinal, y el compositor, al no
 encontrar ya el salto, los componía de una pieza:
 
-| | Antes | Ahora |
-| --- | --- | --- |
+|           | Antes                                                                                                                 | Ahora                                                           |
+| --------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | Capítulos | «Primer Episodio. Fundación e identidad» en un solo renglón de 19 pt, con el punto en medio, partiéndose donde cayera | «Primer Episodio» de 19 pt · «Fundación e identidad» de 12,5 pt |
-| Apéndices | «Apéndice I» de 19 pt · «Línea del Tiempo» de 12,5 pt | igual que antes |
+| Apéndices | «Apéndice I» de 19 pt · «Línea del Tiempo» de 12,5 pt                                                                 | igual que antes                                                 |
 
 El «Segundo Episodio» era el caso más visible: se partía en «Segundo Episodio.
 Expansión» / «académica y gremial», rompiendo el nombre temático por la mitad.
@@ -3078,10 +3084,10 @@ son bajadas: siguen inmediatamente a un rótulo o a una sección y le pertenecen
 El estilo era el del ladillo —aire arriba, poco abajo— y en las once bajadas
 salía al revés de lo que pide el oficio. Medido sobre el PDF, base a base:
 
-| | Aire sobre la bajada | Aire bajo la bajada |
-| --- | --- | --- |
-| Antes | 19,7 a 24,0 pt | 16,2 a 18,8 pt |
-| Ahora | 13,7 a 18,0 pt | 20,7 a 23,9 pt |
+|       | Aire sobre la bajada | Aire bajo la bajada |
+| ----- | -------------------- | ------------------- |
+| Antes | 19,7 a 24,0 pt       | 16,2 a 18,8 pt      |
+| Ahora | 13,7 a 18,0 pt       | 20,7 a 23,9 pt      |
 
 Las once se separaban de su propio título **más** que del cuerpo que
 introducen, de modo que el ojo las leía como entradilla del texto. Los dos
@@ -3102,16 +3108,16 @@ sección, no derivada de su título**, y al acortarla en su día solo se tocó e
 bloque del título. La primera página de cada apéndice anunciaba una cosa y las
 de continuación otra.
 
-| Apéndice | Decía la 1.ª página | Decían las demás |
-| --- | --- | --- |
-| III | Criterios de transcripción y de edición | Criterios de transcripción |
-| IV | Glosario, siglas y definiciones operativas | Glosario |
-| V | Relación enlazada de expresidentes | Relación enlazada |
-| VI | Mesas Directivas, 1966-2027 | Mesas Directivas |
-| VII | Congresos y reuniones nacionales, 1967-2026 | Congresos |
-| IX | Genealogía del órgano de difusión | Órgano de difusión |
-| XI | Ruta de recuperación documental | Ruta de recuperación |
-| XII | Fuentes no consultadas y vía para consultarlas | Fuentes no consultadas |
+| Apéndice | Decía la 1.ª página                            | Decían las demás           |
+| -------- | ---------------------------------------------- | -------------------------- |
+| III      | Criterios de transcripción y de edición        | Criterios de transcripción |
+| IV       | Glosario, siglas y definiciones operativas     | Glosario                   |
+| V        | Relación enlazada de expresidentes             | Relación enlazada          |
+| VI       | Mesas Directivas, 1966-2027                    | Mesas Directivas           |
+| VII      | Congresos y reuniones nacionales, 1967-2026    | Congresos                  |
+| IX       | Genealogía del órgano de difusión              | Órgano de difusión         |
+| XI       | Ruta de recuperación documental                | Ruta de recuperación       |
+| XII      | Fuentes no consultadas y vía para consultarlas | Fuentes no consultadas     |
 
 Se unificaron las quince al título entero, en 263 bloques. **El recorte no lo
 imponía la medida:** la cornisa más larga del libro —«CUARTO EPISODIO ·
@@ -3267,3 +3273,38 @@ el hilo principal. La verificación adversarial se hizo a mano: retiró cuatro
 hallazgos aparentes de bibliografía —eran editoriales dentro de una lista de
 libros, o asientos que sí existen en nota al pie— y bajó de grado el de los
 rótulos `anchor`.
+
+## Tanda: los instrumentos dejan de mentir sobre sí mismos (31 de agosto de 2026)
+
+Cuatro correcciones de higiene sobre los instrumentos, ninguna sobre una
+página del libro; salen de los hallazgos seis, ocho, nueve y diez del barrido
+de auditoría de hoy (`informes/informe_barrido_de_auditoria.md`).
+
+- **El encabezado de la línea 2678 de este registro** decía «Hallazgo mayor
+  sin corregir» sobre los mil seiscientos cuarenta y cuatro caracteres
+  invisibles, cuando la subsección final de esa misma entrada los retracta
+  —eran del extractor, no del archivo—. Se retitula «Hallazgo mayor, después
+  retirado» y se antepone una nota que remite a la retractación; el cuerpo se
+  conserva íntegro, porque el registro también documenta cómo se llegó a
+  saber. Medido hoy: cero U+0002 en el PDF publicado.
+- **El LEEME del taller describía mal el formato de la fuente**: decía que un
+  bloque lleva fragmentos «cada uno con su texto», cuando la clave es `x`, los
+  bloques de tabla llevan `rows` en vez de `parts`, y cincuenta y ocho bloques
+  guardan su prosa en `title`, `sub` o `label`. Se reescribe la descripción
+  con las tres vías y se añade la trampa a la lista de trampas caras: un
+  extractor escrito desde la descripción anterior devuelve cero caracteres y
+  ninguna excepción. Ya pasó una vez, durante el propio barrido.
+- **La tabla de sondas del LEEME** no listaba `aire_de_la_bajada.py`, escrita
+  en la tanda de los Episodios. Se añade su fila; las once sondas del
+  directorio quedan las once en la tabla.
+- **El taller no tenía licencia propia** y heredaba la BY-NC-ND del libro, que
+  prohíbe obras derivadas de un código cuyo LEEME enseña a modificar. Se añade
+  `taller/LICENSE` (MIT, titular la Asociación Psiquiátrica Mexicana, A.C.)
+  con una nota expresa de que el contenido del libro y sus entregables siguen
+  bajo BY-NC-ND según el LICENSE de la raíz. Decisión delegada por el
+  compilador en esta tanda; revisable si la Asociación prefiere otra.
+
+**Cómo se comprobó.** Nada de esto toca la composición: `git diff` confirma
+que los únicos archivos tocados son el LEEME, este registro y el LICENSE
+nuevo. Las once sondas del directorio contra la tabla: `for f in sondas/*.py`
+ya no deja ninguna fuera.
