@@ -39,9 +39,16 @@ except ImportError:
     pdfplumber = None
 
 try:
-    import fitz  # PyMuPDF
+    # El nombre vigente es `pymupdf`; `fitz` es el alias viejo y desde la
+    # version 1.26 escupe un aviso de obsolescencia POR STDOUT, que se cuela
+    # dentro del JSON y lo vuelve ilegible para `--json`. Se importa primero
+    # el nombre nuevo y se deja el viejo como respaldo.
+    import pymupdf as fitz
 except ImportError:
-    fitz = None
+    try:
+        import fitz  # PyMuPDF < 1.26
+    except ImportError:
+        fitz = None
 
 try:
     import pikepdf
@@ -118,6 +125,7 @@ def layer_a_ficha(path, doc_info):
         "paginas": doc_info.get("paginas"),
         "titulo_pdfinfo": doc_info.get("title"),
         "autor_pdfinfo": doc_info.get("author"),
+        **({"error": doc_info["error"]} if "error" in doc_info else {}),
     }
 
 
@@ -188,6 +196,11 @@ def run_diagnostico(pdf_path: Path):
         doc_info["title"] = doc.metadata.get("title")
         doc_info["author"] = doc.metadata.get("author")
         doc.close()
+    else:
+        # Sin PyMuPDF la capa A imprimia null en paginas y titulo: parecia una
+        # medicion y era una ausencia. Se declara la falta, como ya hace la
+        # capa B con pdfplumber; un hueco dicho no engana, un null si.
+        doc_info["error"] = "PyMuPDF no instalado: pip install pymupdf"
 
     report["capas"].append(layer_a_ficha(pdf_path, doc_info))
 
