@@ -74,7 +74,7 @@ comprobar_modulo pdfplumber "pip install pdfplumber (capa B; si revienta con un 
 comprobar_modulo pikepdf   "pip install pikepdf   (capa M del diagnostico)" blanda
 
 titulo "Activos de la clase"
-for activo in apm-editorial.cls ejemplo_editorial.tex logo_hires.png logo_60anos.png; do
+for activo in apm-editorial.cls ejemplo_editorial.tex ejemplo_articulo_original.tex logo_hires.png logo_60anos.png; do
   if [[ -f "$RAIZ/$activo" ]]; then
     printf '  presente  %s\n' "$activo"
   else

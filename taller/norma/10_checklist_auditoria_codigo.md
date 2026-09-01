@@ -39,16 +39,16 @@ Nunca arregles "por sensación" — mide primero.
 ## Checks sobre archivos `.tex` de contenido
 
 | #   | Check                                                                                                            | Cómo verificar                                             |
-| --- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ----------- |
+| --- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | 1   | `\documentclass{apm-editorial}` (no reimplementa su propio preámbulo)                                            | Primera línea no-comentario del archivo                    |
 | 2   | `\APMvolume`/`\APMnum`/`\APMperiod`/`\APMyear` están fijados explícitamente                                      | `grep` cada uno                                            |
 | 3   | `\APMdates` tiene 3 fechas plausibles (recibido ≤ aceptado ≤ publicado)                                          | Revisar valores                                            |
 | 4   | El año de la licencia (©) coincide con el año del artículo                                                       | Comparar `\textcopyright\ AAAA` con `\APMvolume{}{}{AAAA}` |
 | 5   | Título, resumen y palabras clave están en el idioma del artículo                                                 | Lectura directa                                            |
-| 6   | `\APMrefsbreak` solo se usa con ≥12 referencias (FM05)                                                           | Contar `\APMref{`                                          |
+| 6   | `\APMrefsbreak`, si está, cae donde corta la columna y no a la mitad de la lista (FM05)                          | Medir en el PDF que la columna previa al corte quede llena |
 | 7   | No hay `\APMrefsbreak` duplicado                                                                                 | `grep -c APMrefsbreak`                                     |
 | 8   | Cada `\APMref` tiene su `\url{}` con DOI o URL                                                                   | Revisar cada entrada                                       |
-| 9   | Sin rutas absolutas hardcodeadas de otra sesión (`/home/claude/...`)                                             | `grep -E "\/home\/                                         | \/Users\/"` |
+| 9   | Sin rutas absolutas hardcodeadas de otra sesión (`/home/claude/...`)                                             | `grep -E "\/home\/\|\/Users\/"`                            |
 | 10  | Si el artículo no es Editorial, se confirmó primero el punto #12 del checklist del `.cls` (`\APMtype` conectado) | Manual                                                     |
 
 ## Verificación de compilación

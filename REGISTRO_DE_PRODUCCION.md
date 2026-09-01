@@ -167,3 +167,69 @@ dos PDFs vigentes sigue en verde: editorial 2 páginas, original 4, caja
 
 **Declarado sin resolver.** Lo mismo que la tanda anterior; esta solo pone
 la norma al día. La campaña queda en una solicitud de fusión en borrador.
+
+## Tanda: revisión del código del taller, con las correcciones que se dejan medir (1 de septiembre de 2026)
+
+Revisión de la clase, las tres sondas y los dos scripts, aplicando solo lo
+que es defecto comprobable, no gusto.
+
+**Un defecto de composición en la clase.** `\APMrefsbreak` cerraba el grupo
+de referencias y lo reabría sin `\sloppy\raggedright`, que `\APMrefsstart`
+sí fija: las referencias anteriores al corte iban en bandera y las
+posteriores, justificadas, en la misma lista. En el editorial, que sí usa
+el corte, la justificación forzada partía **cinco URL** a mitad de cadena
+(`https://doi.org/` en una línea y `10.1016/…` en la siguiente) y pegaba
+`treatment-resistant` en `treatmentresistant` al extraer el texto. Ahora el
+macro reabre con los mismos ajustes que `\APMrefsstart`; su comentario, que
+seguía diciendo «úsalo con ≥12 referencias, parte por la mitad», dice la
+regla medida en el artículo original. `\@twocolumnfalse`, suelto tras
+`\LoadClass[twocolumn]` con el comentario «improve column breaks», se retira:
+no hacía nada, y el original se recompone con el mismo hash sin él. La
+versión declarada en `\ProvidesClass` (v1.0, 2025) pasa a la que anuncia la
+cabecera del archivo (v2.0).
+
+**Las sondas.** `reproducible.py` creaba un directorio temporal por corrida y
+nunca lo retiraba: había 19 talleres huérfanos en `/tmp`; ahora se retira
+siempre, también al anclar o al fallar, y rechaza un `.tex` que no esté
+versionado en `taller/` en vez de fallar con un error de pdflatex.
+`diagnostico_rapm.py` pedía correr `pdffonts` «por separado» para la capa M:
+ahora lo mide, con el mismo parseo y la misma lista de prefijos de Computer
+Modern que `geometria.py` (le faltaban `CMEX`, `CMTI` y `CMTT`); su
+`papel_spec_pt` traía solo el ancho, ahora el par; y sus rutas a la norma
+apuntaban a un `references/` que no existe. Docstrings de las dos sondas de
+ancla, que aún hablaban de `*_referencia.txt`.
+
+**Los scripts.** `componer.sh` decidía el destino comparando la cadena del
+argumento con una ruta absoluta: con `taller/ejemplo_editorial.tex` relativo
+el editorial se escapaba a `taller/` en vez de `pdfs/`, y el original nunca
+llegaba a `pdfs/`. Ahora compara directorios resueltos: todo `.tex` que viva
+en `taller/` va a `taller/pdfs/`; los de `numeros/` se quedan junto a su
+fuente. Avisa si el `.tex` no existe. `comprobar_entorno.sh` no contaba el
+fixture del artículo original entre los activos.
+
+**La norma.** FM05 y el check 6 del checklist de `.tex` repetían la regla
+del conteo de referencias; dicen la regla medida. El `LEEME.md` deja de
+avisar que el comentario del `.cls` contradice la práctica.
+
+**Cómo se comprobó.** `componer.sh` sobre los dos ejemplos: dos pasadas,
+cero errores, cero overfull, linearizado. Editorial 2 páginas, 432,845
+bytes; original 4 páginas, 465,145 bytes; ambos caja única 612 × 792 pt, 0
+sin incrustar, 0 fuga de CM, anclas de geometría sin moverse. El original
+**se recompone idéntico** (hash `e538a776…`): las retiradas en la clase
+fueron neutras. El editorial cambió de hash por el corte de referencias, y
+se midió qué: compilado con la clase anterior y comparado por `pdftotext`,
+el diff cae entero en las referencias posteriores al corte; líneas con URL
+partida al final, **5 antes y 0 después**; reanclado en `22bb002dc34abb2c…`
+(2 páginas). `diagnostico_rapm.py --json` entrega JSON parseable con la capa
+M midiendo cinco Nimbus, cero sin incrustar, cero CM. `comprobar_entorno.sh`
+apto, con los cinco activos. `bash -n` y `py_compile` limpios en los cinco
+archivos.
+
+**Declarado sin resolver.** `\APMcheckabstract`, `\APMchecktitle`,
+`\fixellipsis`, `\APMrule` y `\APMcenterblock` siguen definidos y sin uso en
+ningún `.tex`; no se tocan porque son interfaz declarada, pero el checklist
+de auditoría debería decidir si se conectan o se retiran, como con
+`\APMfolio` y `\APMlogoSixty`. El comentario del `ejemplo_editorial.tex`
+sobre «split after ref 5 for optimal balance» sigue diciendo la regla vieja;
+es plantilla, no clase, y queda para la próxima vez que se toque ese
+archivo. Lo demás, igual que la tanda anterior.

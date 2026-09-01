@@ -4,7 +4,7 @@
 % Engine: pdfLaTeX (compatible with TeX Live 2023+)
 % ═══════════════════════════════════════════════════════════════
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{apm-editorial}[2025/05/01 Revista APM Editorial Class v1.0]
+\ProvidesClass{apm-editorial}[2026/09/01 Revista APM Editorial Class v2.0]
 
 % Base class
 \LoadClass[10pt,letterpaper,twocolumn,twoside]{article}
@@ -409,8 +409,6 @@
 \postdisplaypenalty=0
 \displaywidowpenalty=10000
 
-% Improve column breaks
-\@twocolumnfalse
 \interlinepenalty=0       % Allow page breaks between lines
 \interfootnotelinepenalty=10000  % Keep footnotes together
 
@@ -578,15 +576,18 @@
   \selectlanguage{english}%
 }
 
-% \APMrefsbreak — manual column break in references.
-% USE when ≥12 refs: split roughly at midpoint for balanced columns.
-% OMIT when ≤10 refs: too few refs to fill both columns; natural flow is better.
-% MECHANISM: closes \begingroup, issues \newpage (column break in twocolumn),
-%   then reopens group. This is necessary because \columnbreak is silently
-%   ignored inside \begingroup.
+% \APMrefsbreak — corte manual de columna dentro de las referencias.
+% NO se usa por conteo de referencias: se pone donde caiga el corte de
+% columna, no donde este la mitad de la lista. Medido en el articulo
+% original: partir por la mitad de 14 referencias dejo una columna casi
+% vacia y costo una pagina entera. Si las referencias no arrancan al tope
+% de una columna, se dejan fluir y flushend equilibra (LEEME.md).
+% MECANISMO: cierra el \begingroup, emite \newpage (corte de columna en
+%   twocolumn) y reabre el grupo con LOS MISMOS ajustes que \APMrefsstart,
+%   porque \columnbreak se ignora en silencio dentro de \begingroup (FM04).
 \newcommand{\APMrefsbreak}{%
   \endgroup\newpage
-  \begingroup
+  \begingroup\sloppy\raggedright
   \fontsize{7.5}{10}\selectfont
   \setlength{\parindent}{0pt}%
   \setlength{\parskip}{1.5pt}%

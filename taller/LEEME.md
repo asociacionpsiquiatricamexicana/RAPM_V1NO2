@@ -70,12 +70,15 @@ libro de la Genealogía, y la razón de este directorio.
 - Motor: **pdfLaTeX** (TeX Live 2023+). Nunca lualatex sin verificar
   `luatexbase.sty`.
 - `\pdfinfo{}` va en octal para UTF-8 (acentos rotos en los metadatos si no).
-- `\APMrefsbreak` **no** se usa por conteo de referencias, pese a lo que dice
-  el comentario del `.cls`. Parte donde caiga el corte de columna, no donde
+- `\APMrefsbreak` **no** se usa por conteo de referencias (el comentario del
+  `.cls` ya dice lo mismo). Parte donde caiga el corte de columna, no donde
   esté la mitad de la lista: en el artículo original, partir por la mitad de
   14 referencias dejó una columna casi vacía y **costó una página entera**
   (5 en vez de 4). Si las referencias no arrancan al tope de una columna,
-  deja que fluyan y que `flushend` equilibre.
+  deja que fluyan y que `flushend` equilibre. Y el macro reabre el grupo con
+  los mismos ajustes que `\APMrefsstart`: hasta el 1 de septiembre de 2026
+  olvidaba `\sloppy\raggedright`, y las referencias tras el corte salían
+  justificadas mientras las de antes iban en bandera.
 - babel-español rotula las tablas «Cuadro». La clase lo fuerza a «Tabla»
   (APA 7) enganchándose a `\captionsspanish`; un `\renewcommand{\tablename}`
   suelto no sirve, lo pisa `\selectlanguage{spanish}`.

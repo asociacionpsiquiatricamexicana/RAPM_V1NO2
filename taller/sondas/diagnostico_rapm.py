@@ -11,7 +11,7 @@ Un "OK" de este script NO equivale a un diagnóstico completo aprobado.
 No emitas veredicto "APTO PARA PRODUCCIÓN" basándote solo en esta salida.
 
 Implementa las mediciones descritas en
-references/05_workflow_produccion_y_diagnostico.md contra un PDF ya
+norma/05_workflow_produccion_y_diagnostico.md contra un PDF ya
 compilado con apm-editorial.cls.
 
 Requiere: pdfplumber, PyMuPDF (fitz), pikepdf
@@ -30,7 +30,9 @@ operativas en 05_workflow_produccion_y_diagnostico.md.
 
 import sys
 import json
+import shutil
 import argparse
+import subprocess
 from pathlib import Path
 
 try:
@@ -92,7 +94,9 @@ TOLERANCE = {
     "column_width_delta_pt": 2.0,
 }
 
-FORBIDDEN_FONT_PREFIXES = ("CMR", "CMBX", "CMMI", "CMSY", "SFRM", "SFRB")
+# La misma lista que vigila geometria.py (FM06): las dos sondas deben decir
+# lo mismo sobre que es Computer Modern. Faltaban CMEX, CMTI y CMTT.
+FORBIDDEN_FONT_PREFIXES = ("CMR", "CMBX", "CMMI", "CMSY", "CMEX", "CMTI", "CMTT", "SFRM", "SFRB")
 
 
 # ─────────────────────────────────────────────────────────────────
@@ -136,7 +140,7 @@ def layer_b_geometria(page0):
     return {
         "capa": "B. Página y geometría",
         "papel_medido_pt": (round(w, 1), round(h, 1)),
-        "papel_spec_pt": spec_w,
+        "papel_spec_pt": (spec_w, spec_h),
         "papel_ok": ok_paper,
         "nota": "Márgenes reales requieren medir bbox del contenido vs bordes de página; "
                 "usar pdfplumber page.chars/rects con filtrado por posición.",
@@ -177,13 +181,34 @@ def layer_n_wcag(colors=None):
     return {"capa": "N. WCAG AA", "colores": rows}
 
 
-def check_fonts_cli_note():
-    return {
-        "capa": "M (complemento). Fonts embebidas",
-        "nota": "Correr por separado: `pdffonts archivo.pdf` y verificar que ninguna fuente "
-                f"empiece con {FORBIDDEN_FONT_PREFIXES} (Computer Modern leak, FM06) y que "
-                "la columna 'emb' diga 'yes' para todas.",
-    }
+def layer_m_fonts_embebidas(pdf_path):
+    """Mide con pdffonts lo que antes solo se pedia correr a mano: que toda
+    tipografia este incrustada y que ninguna sea Computer Modern (FM06).
+    Mismo criterio y mismo parseo que geometria.py."""
+    result = {"capa": "M (complemento). Fonts embebidas"}
+    if shutil.which("pdffonts") is None:
+        result["error"] = "pdffonts no instalado: apt install poppler-utils"
+        return result
+    salida = subprocess.run(["pdffonts", str(pdf_path)], capture_output=True, text=True).stdout
+    fuentes, sin_incrustar, computer_modern = [], [], []
+    for linea in salida.splitlines()[2:]:
+        c = linea.split()
+        if len(c) < 5:
+            continue
+        fuentes.append(c[0])
+        # columnas desde el final: emb sub uni objeto generacion
+        if c[-5] == "no":
+            sin_incrustar.append(c[0])
+        # los nombres llegan como ABCDEF+CMSY10; el prefijo de subconjunto sobra
+        if c[0].split("+", 1)[-1].upper().startswith(FORBIDDEN_FONT_PREFIXES):
+            computer_modern.append(c[0])
+    result.update({
+        "fuentes": fuentes,
+        "sin_incrustar": sin_incrustar,
+        "computer_modern_FM06": computer_modern,
+        "ok": not sin_incrustar and not computer_modern,
+    })
+    return result
 
 
 def run_diagnostico(pdf_path: Path):
@@ -212,7 +237,7 @@ def run_diagnostico(pdf_path: Path):
         report["capas"].append({"capa": "B. Página y geometría", "error": "pdfplumber no instalado"})
 
     report["capas"].append(layer_m_fonts_metadata(pdf_path))
-    report["capas"].append(check_fonts_cli_note())
+    report["capas"].append(layer_m_fonts_embebidas(pdf_path))
     report["capas"].append(layer_n_wcag())
 
     report["nota_general"] = (
@@ -221,7 +246,7 @@ def run_diagnostico(pdf_path: Path):
         "columnas, headings, footer, running heads, referencias, colofón) requieren "
         "medición dirigida con pdfplumber.chars/rects/lines sobre coordenadas "
         "específicas del layout — implementar por artículo o extender este script "
-        "según references/05_workflow_produccion_y_diagnostico.md."
+        "según norma/05_workflow_produccion_y_diagnostico.md."
     )
     return report
 
