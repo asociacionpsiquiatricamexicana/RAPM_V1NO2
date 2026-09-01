@@ -147,3 +147,23 @@ sigue sin render funcional. Las dependencias de Python quedan **declaradas
 y verificadas** por la prueba en frío, pero su instalación sigue siendo del
 entorno, no del repositorio: en un contenedor recién levantado hay que
 instalarlas, y la prueba en frío es la que avisa.
+
+## Tanda: la norma alcanza al código (1 de septiembre de 2026)
+
+Tres notas de `taller/norma/` contradecían lo que el `.cls` y las sondas ya
+hacen, y una de ellas era una trampa activa: `04_failure_modes.md` seguía
+diciendo que la Computer Modern de `$\cdot$` «no cuenta como CM font leak»,
+justo lo contrario de lo que `geometria.py` vigila desde la tanda anterior.
+Un diagramador que la leyera daría por aceptable el defecto que la sonda
+rechaza. Se retira esa excepción (tachada, con fecha, no borrada), la fila
+FM06 gana la causa raíz real —signo de texto en modo matemático— y su
+remedio, y el check 12 de `10_checklist_auditoria_codigo.md` deja de decir
+que `\APMtype{}` «hoy NO está conectado» cuando lo está desde el 31 de
+agosto. Sin cambios al `.cls` ni a los `.tex`.
+
+**Cómo se comprobó.** No hay PDF nuevo que medir. `geometria.py` sobre los
+dos PDFs vigentes sigue en verde: editorial 2 páginas, original 4, caja
+única 612 × 792 pt, 0 sin incrustar, 0 fuga de CM, anclas sin moverse.
+
+**Declarado sin resolver.** Lo mismo que la tanda anterior; esta solo pone
+la norma al día. La campaña queda en una solicitud de fusión en borrador.
