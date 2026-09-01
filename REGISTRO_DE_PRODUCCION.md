@@ -283,3 +283,32 @@ corte: 154 líneas, cero diferencias.
 tanda siguiente. El logo del 60 aniversario sigue sin render funcional; el
 fixture del artículo largo sigue siendo de diagramación, no un manuscrito;
 las dependencias de Python siguen siendo del entorno.
+
+## Tanda: las dependencias de las sondas entran al repositorio (1 de septiembre de 2026)
+
+Tres tandas seguidas declararon lo mismo sin resolver: las dependencias de
+Python de las sondas estaban verificadas por la prueba en frío pero su
+instalación «seguía siendo del entorno». El hook de arranque instalaba TeX
+Live y nada de Python: un contenedor recién levantado compilaba y no podía
+medir. Entra `taller/sondas/requisitos.txt` con las cuatro (`pypdfium2`,
+dura, para `geometria.py` y `reproducible.py`; `pymupdf`, `pdfplumber` y
+`pikepdf` para el diagnóstico), y el hook las instala desde ahí cuando
+faltan, tras el bloque de TeX, en vez de salir en cuanto ve `pdflatex`.
+`comprobar_entorno.sh` remite al mismo archivo. La norma
+`00_prerequisitos.md` deja de pedir `import fitz`, de omitir `pypdfium2`
+y de hablar de un `assets/` que no existe; nombra `booktabs` y `caption`
+y remite a la prueba en frío y a `componer.sh`. El `LEEME.md` lo dice en
+su trampa correspondiente.
+
+**Cómo se comprobó.** `bash -n` limpio en el hook y en la prueba en frío.
+El hook por su camino idempotente, con y sin `CLAUDE_PROJECT_DIR`: «entorno
+TeX ya presente», «sondas de Python ya presentes». El camino que importa,
+el de instalación: en un entorno virtual vacío (sin `pymupdf`), el hook
+instaló las cuatro desde `requisitos.txt` en 11.5 s; dentro del entorno,
+`import pypdfium2, pymupdf, pdfplumber, pikepdf` en regla (1.28.2, 0.11.10,
+10.12.0) y `geometria.py` sobre el artículo original: 4 páginas, EN REGLA.
+`pip install --dry-run -r` limpio. `comprobar_entorno.sh`: los cuatro
+módulos presentes, entorno apto.
+
+**Declarado sin resolver.** Las capas C–L del diagnóstico, en curso. El logo
+del 60 aniversario y el fixture del artículo largo, igual que antes.

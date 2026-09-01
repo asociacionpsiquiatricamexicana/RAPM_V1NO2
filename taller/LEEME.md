@@ -95,7 +95,9 @@ libro de la Genealogía, y la razón de este directorio.
   trae la propia Nimbus. `geometria.py` ya vigila la fuga: estar incrustada
   no basta, una CM aquí es defecto de composición.
 - Las sondas piden `pypdfium2` (dura), y `pdfplumber`, `pymupdf` y `pikepdf`
-  para las capas B y M del diagnóstico. Ojo con el `cryptography` de Debian:
+  para el diagnóstico. Las cuatro están en `sondas/requisitos.txt`
+  (`pip install -r`); el hook de arranque las instala en el entorno remoto
+  cuando faltan. Ojo con el `cryptography` de Debian:
   si `import pdfplumber` revienta con un panic de pyo3, se repara con
   `pip install --ignore-installed cryptography`. Y `pymupdf` se importa por
   su nombre nuevo: el alias viejo `fitz` escupe su aviso de obsolescencia
