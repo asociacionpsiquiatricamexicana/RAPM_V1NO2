@@ -47,6 +47,31 @@ comprobar_estilo spanish.ldf      "apt install texlive-lang-spanish"
 comprobar_estilo fontawesome5.sty "apt install texlive-fonts-extra"
 comprobar_estilo hyperxmp.sty     "apt install texlive-latex-extra"
 comprobar_estilo totpages.sty     "apt install texlive-latex-extra"
+# Entraron con el material grafico del articulo largo (tablas y pies de
+# figura). El Editorial no los usaba, de modo que un entorno sin ellos
+# pasaba esta prueba y reventaba al componer un Original.
+comprobar_estilo booktabs.sty     "apt install texlive-latex-recommended"
+comprobar_estilo caption.sty      "apt install texlive-latex-recommended"
+
+comprobar_modulo() {
+  local modulo="$1" remedio="$2" dureza="$3"
+  if python3 -c "import $modulo" >/dev/null 2>&1; then
+    printf '  presente  %s\n' "$modulo"
+  elif [[ "$dureza" == dura ]]; then
+    printf '  AUSENTE   %s   →  %s\n' "$modulo" "$remedio"
+    FALLOS=$((FALLOS + 1))
+  else
+    printf '  opcional  %s ausente   →  %s\n' "$modulo" "$remedio"
+  fi
+}
+
+# Las sondas son la mitad del taller y esta prueba no las miraba: un entorno
+# podia declararse apto y no poder medir nada de lo que compilaba.
+titulo "Dependencias de las sondas (Python)"
+comprobar_modulo pypdfium2 "pip install pypdfium2" dura
+comprobar_modulo pymupdf   "pip install pymupdf   (capa A del diagnostico)" blanda
+comprobar_modulo pdfplumber "pip install pdfplumber (capa B; si revienta con un panic de pyo3, pip install --ignore-installed cryptography)" blanda
+comprobar_modulo pikepdf   "pip install pikepdf   (capa M del diagnostico)" blanda
 
 titulo "Activos de la clase"
 for activo in apm-editorial.cls ejemplo_editorial.tex logo_hires.png logo_60anos.png; do
@@ -69,7 +94,10 @@ else
         ejemplo_editorial.tex >compilacion.log 2>&1); then
     PAGINAS="$(pdfinfo "$TEMPORAL/ejemplo_editorial.pdf" 2>/dev/null \
                | awk '/^Pages:/{print $2}')"
-    printf '  correcta: ejemplo_editorial.pdf, %s página(s).\n' "${PAGINAS:-?}"
+    # Una sola pasada: totpages queda sin resolver y sobra una pagina. La
+    # cifra buena del editorial es 2, la da componer.sh con sus dos pasadas.
+    # Aqui solo se comprueba que el entorno compile, no el diagramado.
+    printf '  correcta: ejemplo_editorial.pdf, %s página(s) en una pasada.\n' "${PAGINAS:-?}"
   else
     printf '  FALLIDA. Primeros errores:\n'
     grep -m 3 -A 3 '^!' "$TEMPORAL/compilacion.log" | sed 's/^/    /'

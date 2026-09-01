@@ -1,0 +1,484 @@
+% ═══════════════════════════════════════════════════════════════
+% FIXTURE DE DIAGRAMACIÓN — Artículo original
+%
+% ESTO NO ES UN MANUSCRITO DE AUTOR. Es un archivo de prueba escrito
+% por el taller para ejercitar el diagramado de un Artículo original:
+% estructura IMRaD, cuerpo largo a dos columnas, encabezados H2,
+% flotantes a ancho de página y aparato de referencias. Los autores,
+% las cifras y los resultados son inventados y no deben citarse ni
+% reutilizarse como material editorial.
+%
+% Usa: apm-editorial.cls (debe estar en el mismo directorio)
+% Compila: bash taller/componer.sh taller/ejemplo_articulo_original.tex
+% ═══════════════════════════════════════════════════════════════
+\documentclass{apm-editorial}
+
+% ── METADATOS ────────────────────────────────────────────────
+\APMtype{Artículo original}
+\APMtitleEN[Length and structure of manuscripts submitted to a Mexican psychiatry journal: a descriptive study]{Extensión y estructura de los manuscritos recibidos\\Un estudio descriptivo del flujo editorial}
+\APMauthor{Nombre de Prueba Uno, Nombre de Prueba Dos y Nombre de Prueba Tres}
+\APMaffiliation{Archivo de prueba del taller editorial,\par
+  Revista de la Asociación Psiquiátrica Mexicana, A.C.}
+\APMorcid{https://orcid.org/0000-0000-0000-0000}
+\APMemail{taller@ejemplo.invalid}
+\APMphone{+52 55 0000 0000}
+\APMaddress{Domicilio de prueba, Ciudad de México, México}
+\APMdates{2 enero 2026}{14 marzo 2026}{30 abril 2026}
+\APMdoi{https://doi.org/10.0000/ejemplo.0000}
+\APMauthorshort{Prueba Uno et al.}
+\APMauthorpdf{Nombre de Prueba Uno, Nombre de Prueba Dos, Nombre de Prueba Tres}
+\APMkeywordspdf{Proceso editorial, Revisión por pares, Estructura IMRaD, Bibliometría, Publicación científica}
+\APMtitleshort{Extensión y estructura de los manuscritos}
+\APMvolume{6}{1}{2026}
+\APMperiod{ENERO--ABRIL}
+\APMlogo{logo_hires.png}
+
+% ── RESUMEN ──────────────────────────────────────────────────
+\APMabstract{\textbf{Introducción.} La extensión y la organización interna de los manuscritos condicionan el trabajo de dictaminación y de diagramación de una revista científica, pero rara vez se describen de manera sistemática. \textbf{Objetivo.} Caracterizar la extensión, la estructura y el aparato bibliográfico de los manuscritos recibidos por una revista de psiquiatría durante un ciclo editorial completo. \textbf{Método.} Estudio descriptivo, retrospectivo y de archivo sobre los manuscritos registrados en el sistema editorial. Se extrajeron el número de palabras del cuerpo, la presencia y el orden de las secciones IMRaD, el número de tablas y figuras, y el número y la antigüedad de las referencias. \textbf{Resultados.} El cuerpo tuvo una mediana de palabras dentro del intervalo previsto por las normas para autores, con dispersión amplia. La adhesión al orden IMRaD fue mayoritaria pero incompleta, y la sección de método concentró las omisiones. Las referencias se distribuyeron de manera asimétrica, con una cola de trabajos de más de veinte años. \textbf{Discusión.} Los datos sugieren que las normas para autores se leen de manera parcial y que la sección de método es el punto de mayor pérdida de información. \textbf{Conclusiones.} Una lista de comprobación estructurada en el momento del envío podría reducir el trabajo de dictaminación y acortar el ciclo editorial. \textit{Este texto es un archivo de prueba de diagramación; sus datos son inventados.}}
+\APMkeywords{Proceso editorial, Revisión por pares, Estructura IMRaD,
+  Bibliometría, Publicación científica}
+
+% ── COLOFÓN ──────────────────────────────────────────────────
+\APMconflict{Los autores declaran no tener conflicto de intereses.}
+\APMfunding{Este archivo de prueba no corresponde a investigación
+  financiada.}
+\APMlicense{\textcopyright\ 2026 Los Autores. Publicado bajo Creative
+  Commons Atribución-No Comercial 4.0 Internacional (CC~BY-NC~4.0).}
+
+% ═════════════════════════════════════════════════════════════
+\begin{document}
+\makeAPMeditorial
+
+% ── CUERPO ───────────────────────────────────────────────────
+
+\section*{Introducción}
+
+\dropcap{L}{a} evaluación de manuscritos es la operación más costosa en
+la vida de una revista científica. Antes de que un texto llegue a
+dictaminación, alguien debe verificar que cumple con las normas para
+autores; después del dictamen, alguien debe convertirlo en un archivo
+componible. Ambas operaciones dependen de propiedades del manuscrito
+que son medibles antes de cualquier juicio sobre su contenido: cuántas
+palabras tiene, si sus secciones aparecen en el orden esperado, cuántas
+tablas y figuras acompañan al texto y qué tan completo está el aparato
+bibliográfico. Estas propiedades se describen poco, y cuando se
+describen suele hacerse a partir de la impresión acumulada del comité
+editorial y no de un recuento.
+
+La estructura IMRaD —introducción, método, resultados y discusión— se
+consolidó como convención dominante de la literatura biomédica a lo
+largo de la segunda mitad del siglo pasado, y hoy la exigen
+prácticamente todas las normas para autores del área. Su ventaja
+declarada es que hace previsible la lectura: un dictaminador sabe dónde
+buscar el tamaño de muestra, y un lector sabe dónde buscar la
+limitación principal. Su costo, menos discutido, es que impone una
+forma única a trabajos de naturalezas distintas, y que los autores la
+adoptan de manera desigual, conservando el rótulo de las secciones pero
+no siempre su contenido esperado.
+
+En el ámbito de las revistas de psiquiatría en lengua española, el
+problema tiene un matiz adicional. Buena parte de los manuscritos
+provienen de instituciones donde la escritura científica se aprende por
+imitación de artículos publicados y no por instrucción formal, de modo
+que los defectos de estructura se heredan de una generación de autores
+a la siguiente. A esto se suma que los criterios de las revistas
+difieren entre sí en detalles menores pero visibles —la extensión
+máxima del resumen, el número máximo de referencias, la exigencia de
+título en inglés—, lo que multiplica las oportunidades de
+incumplimiento involuntario cuando un manuscrito se reenvía tras un
+rechazo.
+
+Conocer la distribución real de estas propiedades tiene consecuencias
+prácticas inmediatas. Si la mayoría de los manuscritos excede la
+extensión prevista, la norma está mal calibrada o mal comunicada. Si
+las omisiones se concentran en una sección, conviene pedir esa sección
+de manera explícita en el formulario de envío en lugar de confiarla a
+la lectura de un documento largo. Y si el aparato bibliográfico
+concentra trabajos antiguos, el problema no es de forma sino de
+actualización de la literatura consultada, y exige una intervención
+distinta.
+
+El presente trabajo describe estas propiedades en el conjunto de
+manuscritos recibidos por una revista de psiquiatría durante un ciclo
+editorial completo. No evalúa la calidad científica de los textos ni el
+acierto de los dictámenes: se limita a caracterizar lo que llega, con
+la hipótesis de trabajo de que la variabilidad es mayor de lo que
+supone el comité editorial y de que se concentra en puntos
+identificables del manuscrito.
+
+\section*{Método}
+
+\subsection*{Diseño}
+
+Estudio descriptivo, retrospectivo y de archivo. La unidad de análisis
+fue el manuscrito recibido, con independencia de su destino posterior
+—aceptación, rechazo o retiro por parte de los autores—. No hubo
+intervención sobre el flujo editorial ni contacto con los autores; el
+estudio se realizó sobre los registros ya existentes en el sistema de
+gestión de la revista.
+
+\subsection*{Participantes y criterios de selección}
+
+Se incluyeron todos los manuscritos registrados en el sistema editorial
+durante el periodo de estudio, correspondiente a un ciclo completo de
+tres números. Se consideraron elegibles los envíos de las categorías
+que exigen estructura IMRaD según las normas para autores: artículo
+original, artículo de revisión y reporte breve. Se excluyeron las
+categorías que la norma exime de esa estructura —editorial, carta al
+editor y caso clínico—, así como los envíos duplicados, los envíos
+incompletos que no alcanzaron a registrar un archivo de texto y los
+reenvíos de un manuscrito previamente registrado en el mismo periodo,
+de los cuales se conservó únicamente la primera versión.
+
+\subsection*{Variables e instrumentos}
+
+De cada manuscrito se extrajeron cuatro grupos de variables. El primero
+describe la extensión: número de palabras del cuerpo, excluyendo
+resumen, referencias, pies de tabla y pies de figura; número de
+palabras del resumen; y número de palabras del título. El recuento se
+realizó de manera automatizada sobre el texto extraído del archivo
+enviado, y se verificó manualmente en una submuestra para estimar el
+error del procedimiento.
+
+El segundo grupo describe la estructura: presencia de cada una de las
+cuatro secciones IMRaD, identificadas por sus rótulos o por sus
+sinónimos aceptados —«materiales y métodos» por «método»,
+«conclusiones» como sección separada de «discusión»—; orden de
+aparición de las secciones presentes; y presencia de subsecciones
+declaradas dentro de la sección de método.
+
+El tercer grupo describe el material gráfico: número de tablas, número
+de figuras, y presencia de pie declarado para cada una. El cuarto
+describe el aparato bibliográfico: número de referencias, proporción de
+referencias con identificador digital persistente, y año de publicación
+de cada referencia, del que se derivó la antigüedad en años respecto de
+la fecha de envío del manuscrito.
+
+\subsection*{Procedimiento}
+
+La extracción se realizó en dos fases. En la primera, un procedimiento
+automatizado leyó cada archivo, convirtió su contenido a texto plano y
+registró las variables cuantitativas. En la segunda, dos evaluadores
+independientes revisaron la asignación de secciones, que es la variable
+más sensible a errores de extracción automática porque depende del
+formato de los rótulos. Las discrepancias entre evaluadores se
+resolvieron por consenso, y cuando el consenso no se alcanzó
+intervino un tercer evaluador.
+
+\subsection*{Análisis estadístico}
+
+Las variables continuas se describen con mediana y rango
+intercuartílico, dada la asimetría esperada de las distribuciones de
+extensión y de número de referencias. Las variables categóricas se
+describen con frecuencias absolutas y relativas. La comparación de la
+extensión entre categorías de manuscrito se realizó con pruebas no
+paramétricas para muestras independientes, y la concordancia entre
+evaluadores en la asignación de secciones se estimó con un coeficiente
+de acuerdo corregido por azar. Se consideró un nivel de significación
+convencional, sin corrección por comparaciones múltiples dada la
+naturaleza descriptiva del trabajo. Los intervalos de confianza se
+reportan al noventa y cinco por ciento.
+
+\subsection*{Consideraciones éticas}
+
+El estudio se realizó sobre registros administrativos de la propia
+revista, sin datos de identificación de los autores y sin acceso al
+contenido de los dictámenes. No se solicitó consentimiento informado
+por tratarse de un análisis agregado de metadatos de proceso editorial,
+y los resultados se reportan de manera que ningún manuscrito individual
+resulte identificable.
+
+\section*{Resultados}
+
+\subsection*{Descripción general del conjunto}
+
+El conjunto analizado quedó constituido tras aplicar los criterios de
+exclusión, que retiraron una proporción menor de los registros
+iniciales, en su mayoría por corresponder a envíos incompletos. La
+distribución por categoría fue desigual: el artículo original
+representó la mayoría de los envíos elegibles, seguido por el artículo
+de revisión y, muy por detrás, por el reporte breve. Esta distribución
+es coherente con la composición de los números publicados en el mismo
+periodo.
+
+\subsection*{Extensión del cuerpo}
+
+La mediana de palabras del cuerpo se situó dentro del intervalo
+previsto por las normas para autores, pero con un rango intercuartílico
+amplio y una cola derecha pronunciada. Una proporción no despreciable
+de los manuscritos excedió el límite superior declarado en la norma, y
+una proporción menor quedó por debajo del límite inferior. Los
+manuscritos de la categoría de revisión resultaron sistemáticamente más
+extensos que los de la categoría original, con una diferencia de
+medianas apreciable, mientras que los reportes breves se ajustaron con
+mayor fidelidad a su límite, probablemente porque ese límite es más
+restrictivo y por tanto más visible.
+
+El resumen mostró un comportamiento distinto. Su extensión se concentró
+de manera estrecha alrededor del máximo permitido, con muy pocos
+manuscritos claramente por debajo. La interpretación más económica es
+que los autores tratan el límite del resumen como un objetivo y no como
+un techo, y que lo verifican explícitamente antes del envío porque el
+formulario lo solicita como campo separado.
+
+\begin{table*}[t]
+\centering
+\caption{Extensión y aparato bibliográfico por categoría de manuscrito.
+Los valores son ilustrativos y forman parte de un archivo de prueba.}
+\label{tab:extension}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Categoría} & \textbf{Manuscritos} & \textbf{Palabras del cuerpo} &
+\textbf{Referencias} & \textbf{Tablas y figuras} \\
+\midrule
+Artículo original  & 128 & 4\,180 (3\,240--5\,110) & 34 (26--45) & 4 (3--6) \\
+Artículo de revisión & 61 & 5\,940 (4\,700--7\,020) & 68 (49--91) & 3 (2--4) \\
+Reporte breve      & 24 & 1\,760 (1\,510--1\,980) & 17 (12--22) & 2 (1--3) \\
+\midrule
+\textbf{Conjunto}  & \textbf{213} & \textbf{4\,410 (3\,180--5\,720)} &
+\textbf{40 (27--61)} & \textbf{3 (2--5)} \\
+\bottomrule
+\end{tabular}
+
+\vspace{3pt}
+{\footnotesize\textit{Nota.} Los valores continuos se expresan como mediana
+(rango intercuartílico). Datos inventados con fines de prueba tipográfica.}
+\end{table*}
+
+\subsection*{Adhesión a la estructura IMRaD}
+
+La presencia de las cuatro secciones fue mayoritaria pero no universal.
+La introducción y los resultados estuvieron presentes en casi todos los
+manuscritos elegibles. La discusión faltó en una minoría, casi siempre
+por haberse fundido con las conclusiones bajo un rótulo único. La
+sección que concentró las omisiones fue el método: una proporción
+apreciable de los manuscritos la presentó de manera incompleta, con el
+rótulo presente pero sin declarar el diseño, el procedimiento de
+selección o el plan de análisis.
+
+El orden de aparición resultó más estable que la presencia. Cuando las
+cuatro secciones estuvieron presentes, aparecieron en el orden canónico
+en la práctica totalidad de los casos. Las inversiones que se
+observaron correspondieron casi siempre a manuscritos que anteponían
+una sección de antecedentes teóricos extensa, formalmente rotulada como
+introducción pero de longitud comparable a la de la discusión.
+
+Las subsecciones dentro del método mostraron la mayor variabilidad de
+todo el conjunto. Aproximadamente la mitad de los manuscritos declaró
+subsecciones explícitas; el resto presentó el método como un bloque
+continuo de prosa. Entre los que las declararon, las etiquetas más
+frecuentes fueron participantes, instrumentos y análisis estadístico,
+en ese orden, y la aparición de una subsección de consideraciones
+éticas fue considerablemente menos frecuente de lo que exige la norma.
+
+\subsection*{Concordancia entre evaluadores}
+
+El acuerdo entre los dos evaluadores independientes en la asignación de
+secciones fue alto para la introducción y los resultados, y
+sustancialmente menor para el método. La revisión de las discrepancias
+mostró que casi todas se originaban en manuscritos donde el rótulo de
+método existía pero su contenido correspondía a lo que la norma sitúa
+en la introducción, de modo que el desacuerdo no era de lectura sino de
+criterio sobre cuándo una sección cuenta como presente. Este hallazgo
+motivó la definición operativa más estricta que se usó en el análisis
+final.
+
+\subsection*{Material gráfico}
+
+El número de tablas y figuras se mantuvo en general dentro de lo
+previsto, con una mediana baja y pocos casos extremos. La proporción de
+elementos gráficos acompañados de un pie declarado fue alta para las
+tablas y notablemente menor para las figuras, donde una parte de los
+manuscritos incorporaba el texto explicativo dentro de la imagen en
+lugar de proporcionarlo como texto editable. Esta práctica es la que
+más trabajo genera en la etapa de diagramación, porque obliga a
+reconstruir el pie y, cuando la imagen tiene resolución insuficiente, a
+solicitarla de nuevo al autor.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.45\textwidth]{logo_hires.png}
+\caption{Marca de la revista, incluida aquí únicamente como imagen de
+prueba para ejercitar el flotante a ancho de página y su pie. En un
+manuscrito real este espacio correspondería a la figura del estudio.}
+\label{fig:prueba}
+\end{figure*}
+
+\subsection*{Aparato bibliográfico}
+
+El número de referencias mostró la distribución más asimétrica del
+conjunto, con una mediana moderada y una cola derecha larga atribuible
+casi por completo a los artículos de revisión. La proporción de
+referencias con identificador digital persistente fue mayoritaria pero
+lejos de ser completa, y las ausencias se concentraron en referencias a
+literatura publicada en español, a documentos institucionales y a
+capítulos de libro.
+
+La antigüedad de las referencias resultó el indicador más informativo.
+La mediana se situó en un valor razonable, pero una proporción estable
+de las referencias de cada manuscrito superó los veinte años. La
+inspección de esa cola mostró dos poblaciones distintas: por un lado,
+trabajos clásicos citados de manera deliberada como origen de un
+concepto; por otro, referencias de contexto epidemiológico que
+simplemente no se habían actualizado al preparar el envío. Sólo la
+segunda población constituye un problema editorial, y distinguirlas
+exige lectura, no recuento.
+
+\section*{Discusión}
+
+Los resultados apuntan en una dirección consistente: los autores
+cumplen con las exigencias que el sistema de envío les presenta de
+manera explícita y separada, y cumplen de manera desigual con las que
+quedan enunciadas dentro de un documento de normas. La extensión del
+resumen, que el formulario pide como campo propio, se ajusta
+estrechamente al límite. La extensión del cuerpo, que sólo aparece en
+el documento de normas, se dispersa ampliamente. La sección de método,
+que ninguna casilla del formulario verifica, es la que más se omite.
+
+Esta lectura tiene la ventaja de sugerir una intervención concreta y de
+bajo costo. Si el comportamiento sigue a la interfaz más que al
+reglamento, entonces trasladar los requisitos críticos del documento de
+normas al formulario de envío debería mejorar la adhesión sin necesidad
+de endurecer los criterios ni de alargar la dictaminación. Una lista de
+comprobación estructurada, con casillas separadas para el diseño, el
+procedimiento de selección, el plan de análisis y las consideraciones
+éticas, atacaría directamente el punto donde se concentran las
+omisiones.
+
+El hallazgo sobre la concordancia entre evaluadores merece una nota
+aparte, porque es metodológico antes que sustantivo. Que el desacuerdo
+se concentre en si una sección de método «cuenta como presente»
+significa que la variable no es tan objetiva como aparenta, y que los
+estudios que reportan adhesión a IMRaD sin declarar su definición
+operativa no son comparables entre sí. Cualquier réplica de este
+trabajo debería publicar su criterio de decisión junto con sus
+resultados.
+
+Respecto de la antigüedad de las referencias, la separación entre citas
+clásicas deliberadas y referencias desactualizadas por descuido es
+probablemente la observación de mayor valor práctico. Los indicadores
+bibliométricos que penalizan la antigüedad media tratan a ambas
+poblaciones por igual y, aplicados sin matiz, castigarían precisamente
+a los manuscritos que hacen bien su trabajo de rastrear un concepto
+hasta su origen.
+
+\subsection*{Limitaciones}
+
+El estudio tiene tres limitaciones principales. La primera es que
+describe una sola revista durante un solo ciclo editorial, de modo que
+sus valores absolutos no son extrapolables; lo que puede ser
+transferible es el patrón, no la cifra. La segunda es que la extracción
+automatizada de texto introduce un error que se estimó en una
+submuestra pero no se corrigió en el conjunto completo, y ese error es
+mayor en los archivos con maquetación compleja. La tercera es que el
+diseño retrospectivo impide distinguir si las diferencias entre
+categorías de manuscrito se deben a las normas que se les aplican o a
+las poblaciones de autores que las eligen.
+
+A esto se añade una limitación de alcance deliberada: el trabajo no
+relaciona ninguna de las propiedades descritas con el destino editorial
+del manuscrito. Esa relación es la pregunta más interesante que puede
+formularse sobre estos datos, y también la que más fácilmente produce
+conclusiones espurias si se aborda sin un modelo que controle la
+calidad científica del texto, que es precisamente la variable que este
+estudio no mide.
+
+\section*{Conclusiones}
+
+En el conjunto descrito, la extensión de los manuscritos se dispersa
+ampliamente alrededor de lo previsto por la norma, la adhesión al orden
+IMRaD es alta pero la integridad de la sección de método es baja, y el
+aparato bibliográfico concentra sus deficiencias en la actualización de
+las referencias de contexto y en la ausencia de identificadores
+persistentes para la literatura publicada en español.
+
+El patrón general sugiere que la adhesión sigue a lo que el sistema de
+envío verifica de manera explícita. Trasladar al formulario los
+requisitos que hoy sólo viven en el documento de normas —en particular
+los componentes de la sección de método— es una intervención barata,
+verificable y susceptible de evaluarse con el mismo procedimiento
+descriptivo empleado aquí, comparando un ciclo editorial posterior con
+el que este trabajo describe.
+
+% ── REFERENCIAS ──────────────────────────────────────────────
+\APMrefsstart
+
+\APMref{Altman, D. G., \& Simera, I. (2016). A history of the evolution
+  of guidelines for reporting medical research. \textit{Journal of the
+  Royal Society of Medicine, 109}(2), 67--77.
+  \url{https://doi.org/10.1177/0141076815625599}}
+
+\APMref{American Psychological Association. (2020). \textit{Publication
+  manual of the American Psychological Association} (7th ed.). American
+  Psychological Association.
+  \url{https://doi.org/10.1037/0000165-000}}
+
+\APMref{Bordage, G. (2001). Reasons reviewers reject and accept
+  manuscripts: The strengths and weaknesses in medical education
+  reports. \textit{Academic Medicine, 76}(9), 889--896.
+  \url{https://doi.org/10.1097/00001888-200109000-00010}}
+
+\APMref{Day, R. A. (1989). The origins of the scientific paper: The
+  IMRAD format. \textit{American Medical Writers Association Journal,
+  4}(2), 16--18.}
+
+\APMref{Docherty, M., \& Smith, R. (1999). The case for structuring the
+  discussion of scientific papers. \textit{BMJ, 318}(7193), 1224--1225.
+  \url{https://doi.org/10.1136/bmj.318.7193.1224}}
+
+\APMref{Falagas, M. E., Zarkali, A., Karageorgopoulos, D. E., et al.
+  (2013). The impact of article length on the number of future
+  citations. \textit{PLOS ONE, 8}(2), Art.~e49476.
+  \url{https://doi.org/10.1371/journal.pone.0049476}}
+
+\APMref{Glasziou, P., Altman, D. G., Bossuyt, P., et al. (2014).
+  Reducing waste from incomplete or unusable reports of biomedical
+  research. \textit{The Lancet, 383}(9913), 267--276.
+  \url{https://doi.org/10.1016/S0140-6736(13)62228-X}}
+
+% Sin \APMrefsbreak a propósito. La regla del .cls («úsalo con ≥12
+% referencias, parte por la mitad») supone que las referencias
+% empiezan al inicio de una columna. Aquí arrancan a media columna 1
+% de la página 4, y partir por la mitad del conteo dejó la columna 2
+% casi vacía. Con ≥12 referencias que no empiezan en el tope de una
+% columna, el flujo natural + flushend equilibra mejor.
+
+\APMref{Hopewell, S., Boutron, I., Altman, D. G., \& Ravaud, P. (2016).
+  Deficiencies in the publication and reporting of trials.
+  \textit{BMC Medicine, 14,} Art.~48.
+  \url{https://doi.org/10.1186/s12916-016-0596-4}}
+
+\APMref{International Committee of Medical Journal Editors. (2023).
+  \textit{Recommendations for the conduct, reporting, editing, and
+  publication of scholarly work in medical journals.}
+  \url{https://www.icmje.org/recommendations/}}
+
+\APMref{Kotz, D., \& Cals, J. W. L. (2013). Effective writing and
+  publishing of scientific papers, part II: Title and abstract.
+  \textit{Journal of Clinical Epidemiology, 66}(6), 585.
+  \url{https://doi.org/10.1016/j.jclinepi.2013.01.005}}
+
+\APMref{Landis, J. R., \& Koch, G. G. (1977). The measurement of
+  observer agreement for categorical data. \textit{Biometrics, 33}(1),
+  159--174. \url{https://doi.org/10.2307/2529310}}
+
+\APMref{Meneghini, R., \& Packer, A. L. (2007). Is there science beyond
+  English? \textit{EMBO Reports, 8}(2), 112--116.
+  \url{https://doi.org/10.1038/sj.embor.7400906}}
+
+\APMref{Sollaci, L. B., \& Pereira, M. G. (2004). The introduction,
+  methods, results, and discussion (IMRAD) structure: A fifty-year
+  survey. \textit{Journal of the Medical Library Association, 92}(3),
+  364--367.}
+
+\APMref{Wager, E., \& Kleinert, S. (2011). Responsible research
+  publication: International standards for authors.
+  \textit{Promoting Research Integrity in a Global Environment,}
+  309--316.}
+
+\APMrefsend
+
+% ── COLOFÓN ──────────────────────────────────────────────────
+{\hfuzz=15pt\APMcolophon}
+
+\end{document}

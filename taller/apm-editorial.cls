@@ -126,6 +126,13 @@
 % ── Float Placement ─────────────────────────────────────
 \RequirePackage{placeins}  % \FloatBarrier
 
+% ── Tablas y pies de figura/tabla ───────────────────────
+% Los necesita cualquier articulo con material grafico (Original,
+% Revision, Caso clinico). El Editorial nunca los uso, por eso
+% faltaban.
+\RequirePackage{booktabs}
+\RequirePackage{caption}
+
 % ── Icons ────────────────────────────────────────────────────
 \RequirePackage{fontawesome5}
 
@@ -361,6 +368,35 @@
   {}{0em}{}
 \titlespacing*{\section}{0pt}{4pt}{2pt}
 
+% H2 segun la spec de la cabecera de este archivo: negrita cursiva,
+% borgona, en linea propia. Estaba especificada y sin escribir: el
+% Editorial no usa \subsection, el Articulo original si.
+\titleformat{\subsection}
+  {\normalfont\fontsize{8.5}{10.5}\selectfont\bfseries\itshape\color{burg}}
+  {}{0em}{}
+\titlespacing*{\subsection}{0pt}{4pt}{1pt}
+
+% ── Pies de tabla y figura ───────────────────────────────────
+% Misma paleta y misma familia que el resto del aparato menor
+% (comparese con \APMcolophon y \APMrefsstart).
+\captionsetup{
+  font={sf,footnotesize,color=g40},
+  labelfont={bf,color=burg},
+  labelsep=period,
+  justification=justified,
+  singlelinecheck=false,
+  skip=4pt,
+}
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+% babel-espanol rotula las tablas «Cuadro»; APA 7 en espanol pide
+% «Tabla». Hay que engancharlo a \captionsspanish: un \renewcommand
+% suelto lo pisa \selectlanguage{spanish} al abrir el documento.
+\addto\captionsspanish{%
+  \renewcommand{\tablename}{Tabla}%
+  \renewcommand{\figurename}{Figura}%
+}
+
 % ═══════════════════════════════════════════════════════════════
 % PARAGRAPH DEFAULTS
 % ═══════════════════════════════════════════════════════════════
@@ -482,22 +518,27 @@
 \renewcommand{\footrulewidth}{0.5pt}
 \renewcommand{\footrule}{\color{burg}\hrule width\headwidth height\footrulewidth\vskip-\footrulewidth}
 
+% El separador de estas lineas era $\cdot$, en modo matematico. mathptmx
+% remapea casi todo a ztmcm, pero el simbolo vive en codificacion OMS y caia
+% a cmsy10: metia Computer Modern en un diseno Times/Nimbus (FM06) en TODOS
+% los PDFs, cabecera, pie y colofon. \textperiodcentered es el mismo glifo en
+% modo texto, lo trae la propia Nimbus y no arrastra nada.
 % Even pages (left side): Author surname
 \fancyhead[LE]{\fontsize{7}{9}\selectfont\textcolor{g55}{\@apmauthorshort\ (\@apmyear)}}
 % Odd pages (right side): Abbreviated title
 \fancyhead[RO]{\fontsize{7}{9}\selectfont\textcolor{g55}{\@apmtitleshort}}
 % Both sides: journal + vol info on opposite side
 \fancyhead[RE]{\fontsize{7}{9}\selectfont\textcolor{g55}{%
-  VOL.~\@apmvol\enspace$\cdot$\enspace NO.~\@apmnum}}
+  VOL.~\@apmvol\enspace\textperiodcentered\enspace NO.~\@apmnum}}
 \fancyhead[LO]{\fontsize{7}{9}\selectfont\textcolor{g55}{%
-  VOL.~\@apmvol\enspace$\cdot$\enspace NO.~\@apmnum}}
+  VOL.~\@apmvol\enspace\textperiodcentered\enspace NO.~\@apmnum}}
 \fancyfoot[L]{\fontsize{7}{9}\selectfont\textcolor{g55}{%
-  VOL.~\@apmvol\enspace$\cdot$\enspace NO.~\@apmnum\enspace$\cdot$\enspace
+  VOL.~\@apmvol\enspace\textperiodcentered\enspace NO.~\@apmnum\enspace\textperiodcentered\enspace
   \@apmperiod\ \@apmyear}}
 \fancyfoot[C]{\fontsize{7}{9}\selectfont\textcolor{g55}{%
   P\'agina \thepage\ de \ref{TotPages}}}
 \fancyfoot[R]{\fontsize{7}{9}\selectfont\textcolor{g55}{%
-  CC~BY-NC~4.0\enspace$\cdot$\enspace Open Access\enspace$\cdot$\enspace e-ISSN \@apmissn}}
+  CC~BY-NC~4.0\enspace\textperiodcentered\enspace Open Access\enspace\textperiodcentered\enspace e-ISSN \@apmissn}}
 
 \fancypagestyle{firstpage}{%
   \fancyhf{}%
@@ -506,12 +547,12 @@
   \renewcommand{\footrulewidth}{0.5pt}%
   \renewcommand{\footrule}{\color{burg}\hrule width\headwidth height\footrulewidth\vskip-\footrulewidth}%
   \fancyfoot[L]{\fontsize{7}{9}\selectfont\textcolor{g55}{%
-    VOL.~\@apmvol\enspace$\cdot$\enspace NO.~\@apmnum\enspace$\cdot$\enspace
+    VOL.~\@apmvol\enspace\textperiodcentered\enspace NO.~\@apmnum\enspace\textperiodcentered\enspace
     \@apmperiod\ \@apmyear}}%
   \fancyfoot[C]{\fontsize{7}{9}\selectfont\textcolor{g55}{%
     P\'agina \thepage\ de \ref{TotPages}}}%
   \fancyfoot[R]{\fontsize{7}{9}\selectfont\textcolor{g55}{%
-    CC~BY-NC~4.0\enspace$\cdot$\enspace Open Access\enspace$\cdot$\enspace e-ISSN \@apmissn}}%
+    CC~BY-NC~4.0\enspace\textperiodcentered\enspace Open Access\enspace\textperiodcentered\enspace e-ISSN \@apmissn}}%
 }
 
 % ═══════════════════════════════════════════════════════════════
@@ -606,14 +647,14 @@
     {\sffamily\fontsize{7.5}{10}\selectfont\textcolor{g55}{\@apmaffiliation}}\par
     \vspace{1.5pt}
     {\sffamily\fontsize{7}{9.5}\selectfont\color{g55}
-      \@apmemail\enspace$\cdot$\enspace\@apmphone\par
+      \@apmemail\enspace\textperiodcentered\enspace\@apmphone\par
       \vspace{0.5pt}
       ORCID:\enspace\@apmorcid\par
       \vspace{0.5pt}
       \@apmaddress\par
       \vspace{2pt}
-      Recibido: \@apmdaterecv\enspace$\cdot$\enspace
-      Aceptado: \@apmdateaccp\enspace$\cdot$\enspace
+      Recibido: \@apmdaterecv\enspace\textperiodcentered\enspace
+      Aceptado: \@apmdateaccp\enspace\textperiodcentered\enspace
       Publicado: \@apmdatepub\par
       \vspace{0.5pt}
       \@apmpeerreview\par

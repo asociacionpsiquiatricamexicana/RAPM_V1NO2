@@ -7,12 +7,16 @@ repositorio, el repositorio no guarda el sistema, guarda un recuerdo. Copia
 SOLO los archivos rastreados por git a un directorio limpio, compila alli y
 compara paginas y texto contra el ancla (reproducible_referencia.txt).
 
-Uso: python3 sondas/reproducible.py [--anclar]
+Uso: python3 sondas/reproducible.py [ejemplo.tex] [--anclar]
+     (por omision, ejemplo_editorial.tex)
 """
 import hashlib, os, shutil, subprocess, sys, tempfile
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 TALLER = os.path.join(AQUI, os.pardir)
+args = [a for a in sys.argv[1:] if not a.startswith('--')]
+TEX = os.path.basename(args[0]) if args else 'ejemplo_editorial.tex'
+BASE = TEX[:-4]
 seguidos = subprocess.run(['git', '-C', TALLER, 'ls-files'], capture_output=True, text=True).stdout.split()
 tmp = tempfile.mkdtemp()
 for rel in seguidos:
@@ -22,20 +26,22 @@ for rel in seguidos:
     shutil.copy2(src, dst)
 print(f'taller versionado: {len(seguidos)} archivos · compilando en limpio...')
 for _ in range(2):
-    r = subprocess.run(['pdflatex', '-interaction=nonstopmode', '-halt-on-error', 'ejemplo_editorial.tex'],
-                       cwd=tmp, capture_output=True, text=True)
+    r = subprocess.run(['pdflatex', '-interaction=nonstopmode', '-halt-on-error', TEX],
+                       # pdflatex emite bytes latin-1 en sus avisos (nombres
+                       # con acento); sin errors= la captura estricta revienta.
+                       cwd=tmp, capture_output=True, text=True, errors='replace')
 if r.returncode != 0:
     raise SystemExit('NO COMPILA desde lo versionado:\n' + r.stdout[-800:])
-pdf = os.path.join(tmp, 'ejemplo_editorial.pdf')
+pdf = os.path.join(tmp, BASE + '.pdf')
 texto = subprocess.run(['pdftotext', pdf, '-'], capture_output=True).stdout
 h = hashlib.sha256(texto).hexdigest()
 import pypdfium2 as pdfium
 paginas = len(pdfium.PdfDocument(pdf))
 print(f'paginas: {paginas}\nhash del texto: {h}')
-REF = os.path.join(AQUI, 'reproducible_referencia.txt')
+REF = os.path.join(AQUI, 'reproducible_' + BASE + '.txt')
 if '--anclar' in sys.argv:
     open(REF, 'w', encoding='utf-8').write(f'{h}\n{paginas}\n')
-    print('anclado en reproducible_referencia.txt'); sys.exit(0)
+    print('anclado en ' + os.path.basename(REF)); sys.exit(0)
 if not os.path.exists(REF):
     raise SystemExit('sin ancla: corre con --anclar la primera vez y dilo en el registro')
 eh, ep = open(REF, encoding='utf-8').read().split()
