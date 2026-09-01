@@ -300,7 +300,7 @@
 \newcommand{\@apmyear}{}
 \newcommand{\@apmperiod}{}
 \newcommand{\@apmfolio}{}
-\newcommand{\@apmabstract}{}
+\newcommand*{\@apmabstract}{}% no-\long: comparable con \empty via \ifx
 \newcommand{\@apmkeywords}{}
 \newcommand{\@apmlogo}{logo_hires.png}
 \newcommand{\@apmconflict}{}
@@ -315,7 +315,7 @@
 \newcommand{\@apmtitleshort}{}
 \newcommand{\@apmauthorpdf}{}
 \newcommand{\@apmkeywordspdf}{}
-\newcommand{\@apmtype}{EDITORIAL}
+\newcommand{\@apmtype}{Editorial}% valor por omision, coherente con el rotulo anterior; APMtype{} lo sobreescribe
 \newcommand{\@apmpeerreview}{Art\'iculo revisado por pares (doble ciego)}
 
 % ═══════════════════════════════════════════════════════════════
@@ -336,7 +336,7 @@
 \newcommand{\APMvolume}[3]{\renewcommand{\@apmvol}{#1}\renewcommand{\@apmnum}{#2}\renewcommand{\@apmyear}{#3}}
 \newcommand{\APMperiod}[1]{\renewcommand{\@apmperiod}{#1}}
 \newcommand{\APMfolio}[1]{\renewcommand{\@apmfolio}{#1}}
-\newcommand{\APMabstract}[1]{\renewcommand{\@apmabstract}{#1}}
+\newcommand{\APMabstract}[1]{\renewcommand*{\@apmabstract}{#1}}% * = no-\long
 \newcommand{\APMkeywords}[1]{\renewcommand{\@apmkeywords}{#1}}
 \newcommand{\APMlogo}[1]{\renewcommand{\@apmlogo}{#1}}
 \newcommand{\APMlogoSixty}[1]{\renewcommand{\@apmlogosixty}{#1}}
@@ -589,9 +589,10 @@
   \par\vspace{-8pt}
   % ── Decorative rule ──
   {\color{burg}\rule{\textwidth}{0.5pt}}\par\vspace{6pt}
-  % ── EDITORIAL label (centered, scoped) ──
+  % ── ARTICLE TYPE label (centered, scoped) — conectado a \@apmtype,
+  % que \APMtype{} fija. Antes decia "Editorial" sin condicion.
   {\centering\fontfamily{ptm}\fontsize{12}{15}\selectfont\bfseries\color{g40}%
-    Editorial\par}%
+    \@apmtype\par}%
   \vspace{5pt}
   % ── TITLE (centered) ──
   {\centering\fontfamily{ptm}\fontsize{14}{18}\selectfont\bfseries\color{burg}%
@@ -619,7 +620,10 @@
     }
   \par}%
   \vspace{2pt}
-  % ── ABSTRACT BOX ──
+  % ── ABSTRACT BOX — condicional. La norma exime de resumen a Editorial y
+  % Carta al Editor (01_identidad_tipos_articulo.md); antes se imprimia
+  % siempre, con la caja vacia si el autor no llamaba \APMabstract{}.
+  \ifx\@apmabstract\empty\else
   \begin{mdframed}[
     backgroundcolor=cream, linecolor=creamborder, linewidth=0.4pt,
     roundcorner=3pt,
@@ -634,6 +638,7 @@
       \textbf{Palabras clave:} \@apmkeywords}}
   \end{mdframed}%
   \vspace{6pt}
+  \fi
 }}}% closes: mdframed-content, \parbox, \savebox
 
 % ═══════════════════════════════════════════════════════════════
@@ -648,7 +653,7 @@
     pdfborder={0 0 0},
     pdfauthor={\@apmauthorpdf},
     pdftitle={\ifx\@apmtitleMeta\empty\@apmtitleEN\else\@apmtitleMeta\fi},
-    pdfsubject={Editorial -- Revista APM Vol. \@apmvol\ No. \@apmnum, \@apmperiod\ \@apmyear},
+    pdfsubject={\@apmtype\ -- Revista APM Vol. \@apmvol\ No. \@apmnum, \@apmperiod\ \@apmyear},
     pdfkeywords={\@apmkeywordspdf},
     pdflang={es-MX},
     pdfcreator={LaTeX with apm-editorial.cls},

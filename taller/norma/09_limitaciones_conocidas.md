@@ -2,18 +2,17 @@
 
 Este documento existe porque el material fuente de este skill contenía specs contradictorias y afirmaciones no verificadas contra el código real. Cada punto de abajo fue confirmado leyendo `apm-editorial.cls` directamente (no inferido de un prompt). Actualízalo cada vez que encuentres una discrepancia nueva entre lo que dice un documento y lo que hace el código.
 
-## 1. `\APMtype{}` está desconectado del render (crítico)
+## 1. `\APMtype{}` ya está conectado al render (corregido el 31 de agosto de 2026)
 
-El `.cls` define:
+**Este hallazgo describía un defecto real, ya reparado en `taller/apm-editorial.cls`.** El `.cls` define:
 ```latex
-\newcommand{\@apmtype}{EDITORIAL}
 \newcommand{\APMtype}[1]{\renewcommand{\@apmtype}{#1}}
 ```
-pero el header (`\@buildheader`) imprime el texto literal `Editorial\par` — nunca referencia `\@apmtype`. Esto significa que **aunque el usuario del `.tex` llame `\APMtype{Artículo original}`, el PDF seguirá diciendo "Editorial"**.
+y ahora el header y `\pdfinfo{}`/`\hypersetup{}` (`pdfsubject`) referencian `\@apmtype` en vez del texto literal `Editorial\par` que llevaban antes. Verificado compilando con `\APMtype{Artículo original}`: el rótulo del encabezado y el `pdfsubject` del PDF dicen «Artículo original», no «Editorial». El valor por omisión —cuando el `.tex` no llama `\APMtype{}`— sigue siendo `Editorial`, para no alterar el comportamiento del ejemplo existente (`reproducible.py` lo confirma: mismo hash de texto).
 
-Consecuencia práctica: el sistema nunca ha producido, ni puede producir hoy, un artículo etiquetado como Original/Revisión/Reporte breve/Caso clínico/Carta al Editor — solo Editoriales, sin importar lo que pida el `.tex`.
+De paso se corrigió un defecto contiguo: la caja de RESUMEN se imprimía siempre, vacía si el autor no llamaba `\APMabstract{}` — relevante porque la norma exime de resumen a Editorial y Carta al Editor. Ahora la caja solo aparece cuando `\@apmabstract` no está vacío. La comparación de vacío por `\ifx` con `\empty` exigió además cambiar `\newcommand`/`\renewcommand` a sus variantes con asterisco en la definición de `\@apmabstract`: las no-asteriscadas producen macros `\long`, y un macro `\long` nunca es `\ifx`-igual a `\empty` aunque su contenido esté vacío — ese fue el primer intento y falló en silencio (la caja seguía imprimiéndose) hasta diagnosticarlo.
 
-**Antes de compilar un artículo que no sea Editorial:** conecta `\@apmtype` al header (cambiar `Editorial\par` por `\@apmtype\par` con el casing correcto) y pruébalo con el diagnóstico completo. Trátalo como desarrollo nuevo, avísale al usuario, no lo presentes como "usar el sistema existente".
+**Lo que sigue sin probar** (el punto 2 de abajo, sin cambios): que el layout de dos columnas + IMRaD funcione para cuerpos de 3,000–6,000 palabras con tablas y figuras. Conectar el rótulo no valida el diagramado de un Artículo original real; eso exige un manuscrito de prueba de esa extensión.
 
 ## 2. No existe clase probada para artículos de investigación (Original/Revisión/etc.)
 
