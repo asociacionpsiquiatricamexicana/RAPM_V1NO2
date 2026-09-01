@@ -233,3 +233,53 @@ de auditoría debería decidir si se conectan o se retiran, como con
 sobre «split after ref 5 for optimal balance» sigue diciendo la regla vieja;
 es plantilla, no clase, y queda para la próxima vez que se toque ese
 archivo. Lo demás, igual que la tanda anterior.
+
+## Tanda: lo que la revisión dejó dicho, resuelto (1 de septiembre de 2026)
+
+Cierra los dos puntos que la tanda anterior declaró sin resolver, y al
+tocar la plantilla aparece un corte que no cortaba nada.
+
+**Los cinco macros sin uso.** El checklist de código decide, como decidió
+con `\APMfolio` y `\APMlogoSixty`: se documentan como interfaz no
+conectada y se dejan en el `.cls`, porque retirarlos es cambio de
+especificación, no corrección. Entra el check 21 en
+`10_checklist_auditoria_codigo.md` y el §3c en
+`09_limitaciones_conocidas.md`, que separa las dos clases: `\APMcheckabstract`
+y `\APMchecktitle` son «comprobaciones» que no comprueban nada (un
+`\newcount` puesto en cero y un cuerpo vacío: quien las llame esperando el
+aviso de resumen o título largo no lo recibirá, el mismo engaño de una
+sonda que dice «EN REGLA» sin medir), y `\fixellipsis`, `\APMrule` y
+`\APMcenterblock` funcionan pero ningún diseño medido los usa. `grep` en
+`taller/*.tex`: cero ocurrencias de los cinco.
+
+**La plantilla del editorial.** Su cabecera decía «Compile: pdflatex
+editorial-neuromod.tex», un archivo que no existe; la nota del folio
+apuntaba a `references/`, que tampoco; y `\APMlogoSixty{logo_60anos.png}`
+seguía llamándose en claro, enseñando la práctica que la nota de al lado
+prohíbe para `\APMfolio`. Va comentado igual. Y el comentario «split after
+ref 5 for optimal column balance», al medirse, resultó peor que viejo:
+en la página 2 las referencias arrancan a media columna (REFERENCIAS a
+175 pt del tope, tras el cuerpo) y el corte visual cae tras la **sexta**
+entrada, no tras la quinta donde estaba `\APMrefsbreak`, porque `flushend`
+reequilibra la última página por su cuenta. Compilado sin el corte: las
+mismas 154 líneas en las mismas coordenadas y el mismo hash de texto. El
+corte no hacía nada, y la regla del `LEEME.md` dice que ahí no va. Se
+retira de la plantilla, con la medición en el comentario. El `LEEME.md`
+llamaba «texto corto sin resumen» a un ejemplo que trae resumen; dice ahora
+que la norma no lo exige y que la caja aparece solo si `\APMabstract{}`
+trae texto. En el checklist del `.cls`, las filas 15 y 17 llevaban una
+barra sin escapar dentro de un `grep -E`, que partía la tabla en una cuarta
+columna vacía; escapadas, y fuera el separador sobrante.
+
+**Cómo se comprobó.** `reproducible.py` sobre el editorial con la plantilla
+nueva: 2 páginas, hash `22bb002dc34abb2c…`, **se recompone igual**; el ancla
+no se mueve. `componer.sh`: dos pasadas, cero errores, cero overfull,
+linearizado, 2 páginas, caja única 612 × 792 pt, 0 sin incrustar, 0 fuga de
+CM, 432,845 bytes (los mismos de la tanda anterior). El artículo original no
+se tocó. Comparación línea por línea con `pymupdf` del PDF con corte y sin
+corte: 154 líneas, cero diferencias.
+
+**Declarado sin resolver.** Las capas C–L del diagnóstico, en curso en la
+tanda siguiente. El logo del 60 aniversario sigue sin render funcional; el
+fixture del artículo largo sigue siendo de diagramación, no un manuscrito;
+las dependencias de Python siguen siendo del entorno.

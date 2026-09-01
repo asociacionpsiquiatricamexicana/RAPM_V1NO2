@@ -1,7 +1,12 @@
 % ═══════════════════════════════════════════════════════════════
-% Neuromodulation Editorial — Content File
-% Uses: apm-editorial.cls (must be in same directory)
-% Compile: pdflatex editorial-neuromod.tex (×2)
+% PLANTILLA — Texto corto (Editorial, Carta al Editor)
+%
+% Contenido: el editorial de Aldana Lopez, Vol. 5, No. 2, 2025. Un
+% articulo nuevo parte de este archivo, nunca de cero (LEEME.md). El
+% texto de los autores no se toca; los comentarios son del taller.
+%
+% Usa: apm-editorial.cls (debe estar en el mismo directorio)
+% Compila: bash taller/componer.sh taller/ejemplo_editorial.tex
 % ═══════════════════════════════════════════════════════════════
 \documentclass{apm-editorial}
 
@@ -23,11 +28,13 @@
 \APMtitleshort{Neuromodulaci\'on en psiquiatr\'ia}
 % \APMfolio{...}  <- COMANDO MUERTO: el setter existe en el .cls pero el valor
 %                    nunca se renderiza (el Folio fue eliminado del diseno).
-%                    Ver references/09_limitaciones_conocidas.md. No lo uses.
+%                    Ver norma/09_limitaciones_conocidas.md, 3a. No lo uses.
 \APMvolume{5}{2}{2025}
 \APMperiod{MAYO--AGOSTO}
 \APMlogo{logo_hires.png}
-\APMlogoSixty{logo_60anos.png}
+% \APMlogoSixty{logo_60anos.png}  <- COMANDO MUERTO, mismo caso: el logo del
+%                    60 aniversario no tiene codigo de render (norma/09, 3b).
+%                    Comentado el 1 de septiembre de 2026; el PDF no cambia.
 
 % ── ABSTRACT ─────────────────────────────────────────────────
 \APMabstract{Este editorial hace un llamado a la integraci\'on inmediata de la neuromodulaci\'on en la educaci\'on y la pr\'actica psiqui\'atrica. Insta a los profesionales e instituciones de M\'exico y Am\'erica Latina a actualizar sus est\'andares, abordar las lagunas \'eticas y regulatorias, y asegurar una implementaci\'on responsable y generalizada que mantenga la integridad moral y cient\'ifica de la psiquiatr\'ia. Los formuladores de pol\'iticas deben desarrollar gu\'ias regulatorias estandarizadas, fomentar alianzas institucionales con organizaciones globales de neuromodulaci\'on y exigir programas de capacitaci\'on certificada para preparar a los cl\'inicos ante los avances emergentes. El establecimiento de redes de neuromodulaci\'on entre hospitales y cl\'inicas facilitar\'a el intercambio r\'apido de experiencias pr\'acticas y apoyar\'a la resoluci\'on colaborativa de problemas, acelerando as\'i la adopci\'on y mejorando los resultados cl\'inicos.}
@@ -123,9 +130,14 @@ potencial de manera responsable. Es un desaf\'io formidable, pero
 tambi\'en una oportunidad extraordinaria para transformar la vida de
 nuestros pacientes y revitalizar nuestra disciplina.
 
-% ── REFERENCES ───────────────────────────────────────────────
-% Split after ref 5 for optimal column balance on page 2.
-% Use \APMrefsbreak where the column should break.
+% ── REFERENCIAS ──────────────────────────────────────────────
+% Sin \APMrefsbreak. Aqui las referencias arrancan a media columna (a
+% 175 pt del tope de la pagina 2, tras el cuerpo) y flushend equilibra la
+% ultima pagina por su cuenta: hasta el 1 de septiembre de 2026 habia un
+% corte tras la quinta entrada y, medido, no hacia nada (sin el: las
+% mismas 154 lineas en las mismas coordenadas y el mismo hash de texto).
+% El corte va solo donde caiga el corte de columna, cuando la lista
+% arranca al tope de una columna (FM05, LEEME.md).
 
 \APMrefsstart
 
@@ -156,8 +168,6 @@ nuestros pacientes y revitalizar nuestra disciplina.
   use of transcranial direct current stimulation in neurological and
   psychiatric disorders. \textit{Int.~J.~Neuropsychopharmacol., 24}(4),
   256--313. \url{https://doi.org/10.1093/ijnp/pyaa051}}
-
-\APMrefsbreak  % ← column break here for balanced page 2
 
 \APMref{Hern\'andez, R. C., Espinosa, M. O., Sampieri-Cabrera, R., \&
   Lara, O. R. A. (2025). Technical report: Efficacy and safety of

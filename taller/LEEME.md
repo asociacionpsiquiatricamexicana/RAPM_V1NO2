@@ -12,10 +12,12 @@ libro de la Genealogía, y la razón de este directorio.
 - **`apm-editorial.cls`** — la clase LaTeX. **El código es la especificación**:
   cuando un documento diga otra cosa, gana el `.cls`. Rotula los seis tipos de
   artículo vía `\APMtype{}`, y tiene dos disposiciones de cuerpo medidas: el
-  texto corto sin resumen y el artículo largo con IMRaD, tabla y figura (véase
+  texto corto y el artículo largo con IMRaD, tabla y figura (véase
   `norma/09_limitaciones_conocidas.md`).
-- **`ejemplo_editorial.tex`** — la plantilla de un texto corto sin resumen
-  (Editorial, Carta al Editor). Un artículo nuevo parte de aquí, nunca de cero.
+- **`ejemplo_editorial.tex`** — la plantilla de un texto corto (Editorial,
+  Carta al Editor; la norma no les exige resumen, y la caja solo se imprime
+  si `\APMabstract{}` trae texto: este ejemplo lo trae). Un artículo nuevo
+  parte de aquí, nunca de cero.
 - **`ejemplo_articulo_original.tex`** — la plantilla de un artículo largo con
   estructura IMRaD, resumen, subsecciones, tabla y figura a ancho de página.
   Es un fixture de diagramación: los autores, las cifras y los resultados son

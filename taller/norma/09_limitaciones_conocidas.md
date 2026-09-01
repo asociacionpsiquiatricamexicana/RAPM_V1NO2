@@ -5,9 +5,11 @@ Este documento existe porque el material fuente de este skill contenía specs co
 ## 1. `\APMtype{}` ya está conectado al render (corregido el 31 de agosto de 2026)
 
 **Este hallazgo describía un defecto real, ya reparado en `taller/apm-editorial.cls`.** El `.cls` define:
+
 ```latex
 \newcommand{\APMtype}[1]{\renewcommand{\@apmtype}{#1}}
 ```
+
 y ahora el header y `\pdfinfo{}`/`\hypersetup{}` (`pdfsubject`) referencian `\@apmtype` en vez del texto literal `Editorial\par` que llevaban antes. Verificado compilando con `\APMtype{Artículo original}`: el rótulo del encabezado y el `pdfsubject` del PDF dicen «Artículo original», no «Editorial». El valor por omisión —cuando el `.tex` no llama `\APMtype{}`— sigue siendo `Editorial`, para no alterar el comportamiento del ejemplo existente (`reproducible.py` lo confirma: mismo hash de texto).
 
 De paso se corrigió un defecto contiguo: la caja de RESUMEN se imprimía siempre, vacía si el autor no llamaba `\APMabstract{}` — relevante porque la norma exime de resumen a Editorial y Carta al Editor. Ahora la caja solo aparece cuando `\@apmabstract` no está vacío. La comparación de vacío por `\ifx` con `\empty` exigió además cambiar `\newcommand`/`\renewcommand` a sus variantes con asterisco en la definición de `\@apmabstract`: las no-asteriscadas producen macros `\long`, y un macro `\long` nunca es `\ifx`-igual a `\empty` aunque su contenido esté vacío — ese fue el primer intento y falló en silencio (la caja seguía imprimiéndose) hasta diagnosticarlo.
@@ -36,17 +38,28 @@ Exactamente el mismo patrón: el `.cls` define `\@apmlogosixty` (línea ~310) y 
 
 Consecuencia: `assets/logo_60anos.png` se conserva en el paquete como archivo de marca disponible, pero **no existe hoy un mecanismo funcional para colocarlo en el PDF**. Si el comité pide una pieza conmemorativa con ese logo, hay que escribir el código de render primero — no basta con llamar `\APMlogoSixty{logo_60anos.png}`.
 
+Desde el 1 de septiembre de 2026 la llamada `\APMlogoSixty{}` de `taller/ejemplo_editorial.tex` está **comentada**, como la de `\APMfolio{}`, por la misma razón: la plantilla no debe enseñar una llamada sin efecto. El PDF no cambia (`reproducible.py`, mismo hash).
+
+### 3c. Cinco macros definidos y sin uso: `\APMcheckabstract`, `\APMchecktitle`, `\fixellipsis`, `\APMrule`, `\APMcenterblock`
+
+Hallados en la revisión del código del 1 de septiembre de 2026 (`REGISTRO_DE_PRODUCCION.md`). Ningún `.tex` del taller los llama (`grep` en `taller/*.tex`: cero ocurrencias). Son de dos clases distintas:
+
+- **Dos «comprobaciones» que no comprueban nada.** `\APMcheckabstract{#1}` ejecuta un `\newcount\APM@wc` y lo pone en cero; su propio comentario dice «word count is approximate — manual verification recommended». `\APMchecktitle{#1}` tiene el cuerpo vacío: «compile-time check not possible». Llamarlos no produce aviso, error ni conteo. Un diagramador que los use esperando el aviso de resumen largo (más de 250 palabras) o de título largo (más de 15 palabras) no lo recibirá: es el mismo defecto que las sondas que decían «EN REGLA» sin medir, y una comprobación que no comprueba engaña más que ninguna. Esos conteos se hacen sobre el texto extraído del PDF, fuera de la compilación.
+- **Tres ayudas de composición sin ocurrencia.** `\fixellipsis` (puntos suspensivos con 0.1 em de aire a cada lado; el paquete `ellipsis`, que la clase ya carga, corrige el espaciado de `\dots` por su cuenta), `\APMrule[ancho]` (regla borgoña de 0.5 pt con 3 pt de aire arriba y abajo) y `\APMcenterblock[ancho]{texto}` (minipágina centrada al 85 % del ancho de texto). Funcionan, pero no forman parte de la disposición medida de ninguno de los dos ejemplos.
+
+**Decisión (1 de septiembre de 2026):** se documentan como interfaz no conectada y se dejan en el `.cls`, igual que `\APMfolio` (§3a) y `\APMlogoSixty` (§3b). Retirarlos es cambio de especificación (`CLAUDE.md`), no corrección, y corresponde al comité editorial. Mientras tanto no se llaman desde un `.tex` esperando efecto, y el check 21 de `10_checklist_auditoria_codigo.md` lo vigila.
+
 ## 4. Historial de specs contradictorias (ya resuelto, documentado por trazabilidad)
 
 El material original incluía al menos 4 versiones de la especificación visual, algunas incompatibles entre sí:
 
-| Documento | Color primario | Papel | Notas |
-|---|---|---|---|
-| `PROMPT_v3_FINAL_LaTeX_journal_PDF.md` | (genérico, sin marca) | a4paper | Plantilla genérica pre-RAPM, benchmarks contra AJP/BJP/Lancet Psychiatry — nunca fue RAPM-específico |
-| `PROMPT_CORRECTION_full_spec_compliance.md` | Rojo APM #C41E3A | — | Incluye íconos CC, abstract bilingüe obligatorio, running heads even/odd — descartado |
-| `PROMPT_CORRECTION_v4_definitivo.md` | Borgoña #8B1A2B (ya correcto) | — | Pero con Folio visible y layout de header distinto (VOL-line arriba, dos logos enmarcados, footer con nombres de Editor) — layout descartado |
-| `RAPM_SISTEMA_EDITORIAL_v2.md` | Borgoña #8B1A2B | letterpaper | Casi correcto pero desactualizado: 39 paquetes (el `.cls` real tiene 45), 583 líneas (el real tiene 665), 12 capas de diagnóstico (el proceso real usa 14, A–N) |
-| **`apm-editorial.cls` (código real)** | **Borgoña #8B1A2B** | **letterpaper** | **Ground truth — todo este skill está alineado a esto** |
+| Documento                                   | Color primario                | Papel           | Notas                                                                                                                                                           |
+| ------------------------------------------- | ----------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PROMPT_v3_FINAL_LaTeX_journal_PDF.md`      | (genérico, sin marca)         | a4paper         | Plantilla genérica pre-RAPM, benchmarks contra AJP/BJP/Lancet Psychiatry — nunca fue RAPM-específico                                                            |
+| `PROMPT_CORRECTION_full_spec_compliance.md` | Rojo APM #C41E3A              | —               | Incluye íconos CC, abstract bilingüe obligatorio, running heads even/odd — descartado                                                                           |
+| `PROMPT_CORRECTION_v4_definitivo.md`        | Borgoña #8B1A2B (ya correcto) | —               | Pero con Folio visible y layout de header distinto (VOL-line arriba, dos logos enmarcados, footer con nombres de Editor) — layout descartado                    |
+| `RAPM_SISTEMA_EDITORIAL_v2.md`              | Borgoña #8B1A2B               | letterpaper     | Casi correcto pero desactualizado: 39 paquetes (el `.cls` real tiene 45), 583 líneas (el real tiene 665), 12 capas de diagnóstico (el proceso real usa 14, A–N) |
+| **`apm-editorial.cls` (código real)**       | **Borgoña #8B1A2B**           | **letterpaper** | **Ground truth — todo este skill está alineado a esto**                                                                                                         |
 
 Si en el futuro aparece un documento nuevo de sesiones anteriores que contradiga lo que hace el `.cls`, repite este proceso: verifica contra el código antes de creer al prompt.
 
