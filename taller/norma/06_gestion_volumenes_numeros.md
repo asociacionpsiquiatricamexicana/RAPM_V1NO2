@@ -16,20 +16,64 @@ No. 3 = Septiembre–Diciembre
 
 Mantener una tabla así por cada número en preparación, antes de compilar cualquier artículo individual — evita colisiones de ART# y permite ver de un vistazo qué falta.
 
-| ART# | Título | Tipo | Autor(es) | Estado | Recibido | Aceptado | Publicado | Carpeta |
-|---|---|---|---|---|---|---|---|---|
-| 1 | Neuromodulación en psiquiatría... | Editorial | Aldana López | ✓ Compilado, diagnóstico 100% | 11-mar-2025 | 27-abr-2025 | 30-abr-2025 | VOL5_NO2_ART1_NEUROMODULACION/ |
-| 2 | ... | ... | ... | En dictamen | | | | |
+| ART# | Título                            | Tipo      | Autor(es)    | Estado                        | Recibido    | Aceptado    | Publicado   | Carpeta                        |
+| ---- | --------------------------------- | --------- | ------------ | ----------------------------- | ----------- | ----------- | ----------- | ------------------------------ |
+| 1    | Neuromodulación en psiquiatría... | Editorial | Aldana López | ✓ Compilado, diagnóstico 100% | 11-mar-2025 | 27-abr-2025 | 30-abr-2025 | VOL5_NO2_ART1_NEUROMODULACION/ |
+| 2    | ...                               | ...       | ...          | En dictamen                   |             |             |             |                                |
 
 Estados sugeridos: `Recibido` → `En dictamen` → `Aceptado (pendiente diagramaje)` → `Diagramado (pendiente diagnóstico)` → `✓ Compilado, diagnóstico 100%` → `Publicado`.
 
-## Paginación continua dentro del número
+## Paginación del número — decisión tomada (2 de septiembre de 2026)
 
-Cada número lleva paginación continua entre artículos (el ART1 empieza en la página 1 del número, el ART2 continúa donde terminó el ART1, etc.). Esto significa que el `\thepage`/`LastPage` de cada `.tex` individual **no** es la paginación final del número — al armar el número completo hay que:
+Este documento dejaba dos modelos abiertos ("confirmar con el editor cuál
+aplica"). Con `taller/armar_numero.py` ya construido, quedó decidido por la
+vía más simple y más verificable: **cada artículo se sigue publicando también
+como PDF independiente**, y el PDF del número **no recompone ni re-pagina**
+cada artículo — es una **concatenación**: portada + tabla de contenido +
+cada artículo camera-ready tal cual salió de `componer.sh`, en el orden de
+su ART#. El "Página X de Y" que imprime cada artículo queda **relativo a sí
+mismo**, no al número.
 
-1. Compilar cada artículo por separado para diagnóstico individual (con su propia numeración 1..N).
-2. Al ensamblar el número, recompilar en secuencia o usar `\setcounter{page}{N}` al inicio de cada artículo según dónde caiga en la secuencia del número.
-3. Actualizar el footer "Página X de Y" para que Y sea el total de páginas del NÚMERO, no del artículo individual, si la revista publica el número como PDF único. Si cada artículo se publica como PDF independiente (como en `VOL5_NO2_ART1_NEUROMODULACION/`), "Página X de Y" es relativo al artículo — confirmar con el editor cuál de los dos modelos aplica antes de asumir.
+Por qué esta vía y no recomponer con `\setcounter{page}{N}`: recomponer
+exigiría reunir todos los `.tex` del número en un solo documento LaTeX antes
+de compilar, lo que rompe la garantía de que cada artículo se compila y se
+mide de forma independiente (la sonda de un artículo dejaría de corresponder
+al PDF que de verdad se publica). La concatenación conserva esa garantía: lo
+que `geometria.py` midió sobre `ACOMPANAMIENTO_APM_VOL6_NO3_2026.pdf` es
+exactamente lo que termina dentro de `REVISTA_VOL6_NO3.pdf`.
+
+La tabla de contenido del número sí lleva una página inicial correcta por
+artículo — se mide, nunca se asume: `armar_numero.py` compila primero
+portada+contenido con las páginas en un valor de relleno, mide cuántas
+páginas ocupa esa portada+contenido, y con esa cifra ya real calcula la
+página inicial de cada artículo (portada+contenido + páginas acumuladas de
+los artículos anteriores) antes de recompilar la versión final.
+
+## Cómo entra un artículo — `taller/recibir_articulo.py`
+
+Desde el 2 de septiembre de 2026, un artículo no se diagrama a mano: se
+recibe el manuscrito del autor en Word (`.docx`) y `recibir_articulo.py` lo
+convierte al `.tex` camera-ready, lo compila con `componer.sh` y lo mide con
+`geometria.py`. Ver `taller/LEEME.md` para el contrato completo (heurística
+de `\APMtype`, qué campos quedan `[PENDIENTE: ...]` cuando el manuscrito no
+los trae, y las cuatro correcciones que la propia verificación encontró:
+orden del escapado LaTeX, `\APMtitleEN[]` con corchete vacío, ancho de
+columna de tabla, y pie de tabla/figura duplicado).
+
+Sin `--numero`, la carpeta de destino se calcula de la fecha de hoy con la
+tabla de arriba (Vol=Año-2020, período por mes) — el flujo normal desde
+Cowork no exige que nadie calcule a mano en qué número cae un artículo
+recibido hoy.
+
+## Cómo se arma el número completo — `taller/armar_numero.py`
+
+Toma todos los artículos ya compilados de `numeros/<NUMERO>/` (los que
+tengan su PDF `*_APM_<NUMERO>_*.pdf`; una carpeta sin PDF se salta con
+aviso, no truena) y produce `numeros/<NUMERO>/REVISTA_<NUMERO>.pdf`: portada
+(con la imagen que se le dé, o `logo_hires.png` de respaldo) + tabla de
+contenido con página inicial medida + cada artículo, concatenados con
+`pikepdf`. El tope de 600 KB de `geometria.py` es por artículo individual;
+sobre el PDF del número completo es solo un aviso, no una falla.
 
 ## Asignación de DOI y folio
 

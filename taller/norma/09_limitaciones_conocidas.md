@@ -14,13 +14,17 @@ y ahora el header y `\pdfinfo{}`/`\hypersetup{}` (`pdfsubject`) referencian `\@a
 
 De paso se corrigió un defecto contiguo: la caja de RESUMEN se imprimía siempre, vacía si el autor no llamaba `\APMabstract{}` — relevante porque la norma exime de resumen a Editorial y Carta al Editor. Ahora la caja solo aparece cuando `\@apmabstract` no está vacío. La comparación de vacío por `\ifx` con `\empty` exigió además cambiar `\newcommand`/`\renewcommand` a sus variantes con asterisco en la definición de `\@apmabstract`: las no-asteriscadas producen macros `\long`, y un macro `\long` nunca es `\ifx`-igual a `\empty` aunque su contenido esté vacío — ese fue el primer intento y falló en silencio (la caja seguía imprimiéndose) hasta diagnosticarlo.
 
-**Lo que sigue sin probar** (el punto 2 de abajo, sin cambios): que el layout de dos columnas + IMRaD funcione para cuerpos de 3,000–6,000 palabras con tablas y figuras. Conectar el rótulo no valida el diagramado de un Artículo original real; eso exige un manuscrito de prueba de esa extensión.
+**Lo que seguía sin probar en esta fecha** (el punto 2 de abajo, resuelto el 1 de septiembre de 2026 — ver esa entrada): que el layout de dos columnas + IMRaD funcionara para cuerpos con tablas y figuras. Conectar el rótulo no validaba por sí solo el diagramado de un Artículo original real; eso exigió un manuscrito de prueba de esa extensión, que es justo lo que resolvió la tanda de PR #9.
 
-## 2. No existe clase probada para artículos de investigación (Original/Revisión/etc.)
+## 2. Layout IMRaD de Artículo original — probado (resuelto el 1 de septiembre de 2026)
 
-`suicide_jalisco.tex` es el único intento de artículo no-Editorial en el material, y **no usa `apm-editorial.cls`** — declara su propio `\documentclass[10pt,letterpaper,twocolumn,twoside]{article}` y reimplementa colores, geometría (2.0/2.0/2.5/2.0cm, distinta a los 1.8/1.8/2.0/1.8cm de la clase) y paquetes desde cero. Es decir: es un fork paralelo, no una prueba de la clase compartida.
+**Este hallazgo describía un hueco real, ya cerrado.** Hasta esta fecha, `suicide_jalisco.tex` era el único intento de artículo no-Editorial en el material, y **no usaba `apm-editorial.cls`** — declaraba su propio `\documentclass[10pt,letterpaper,twocolumn,twoside]{article}` y reimplementaba colores, geometría (2.0/2.0/2.5/2.0cm, distinta a los 1.8/1.8/2.0/1.8cm de la clase) y paquetes desde cero: un fork paralelo, no una prueba de la clase compartida.
 
-Si el usuario pide compilar un Artículo original con `apm-editorial.cls`, el camino correcto es migrar la lógica IMRaD a la clase compartida (extender `\@apmtype`, verificar que el layout de dos columnas + secciones H1/H2 funcione para cuerpos de 3,000–6,000 palabras con tablas/figuras, cosa que nunca se ha probado), no reutilizar `suicide_jalisco.tex` tal cual.
+Entró `taller/ejemplo_articulo_original.tex` (PR #9): fixture de diagramación con resumen, IMRaD completo (Introducción/Método con subsecciones/Resultados/Discusión/Conclusiones), tabla y figura a ancho de página, y ~20 referencias. Compila camera-ready con `apm-editorial.cls` sin fork — la clase ganó `booktabs`, `caption`, formato de `\subsection*` (estaba especificado en la cabecera del propio `.cls` y sin escribir) y el forzado de «Tabla»/«Figura» vía `\captionsspanish` (babel-español rotula «Cuadro» por omisión). De paso apareció y se corrigió una fuga real de Computer Modern (FM06: un separador en modo matemático se colaba como CM dentro de un diseño Times/Nimbus en los dos ejemplos, sin que `geometria.py` la viera — la sonda solo miraba si la tipografía estaba incrustada, no si era la correcta).
+
+Desde el 2 de septiembre de 2026, este layout ya no depende de que alguien lo escriba a mano: `taller/recibir_articulo.py` lo genera automáticamente desde el manuscrito `.docx` del autor (ver `06_gestion_volumenes_numeros.md`). `suicide_jalisco.tex` sigue sin usarse — no reutilizarlo sin antes migrarlo a `apm-editorial.cls` (§`01_identidad_tipos_articulo.md`, nota 3).
+
+**Lo que sigue sin probar:** un manuscrito de más de dos tablas/figuras, o con tablas dentro de tablas, o tipos aparte de Artículo original/Carta al Editor pasando por el receptor automático (el diagnóstico de geometría corre sobre cada artículo real, nunca se asume).
 
 ## 3. Código muerto: `\APMfolio{}` y `\APMlogoSixty{}`
 
