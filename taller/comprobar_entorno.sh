@@ -74,10 +74,13 @@ REQ="pip install -r taller/sondas/requisitos.txt"
 comprobar_modulo pypdfium2 "$REQ" dura
 comprobar_modulo pymupdf   "$REQ   (diagnostico, capa A)" blanda
 comprobar_modulo pdfplumber "$REQ   (diagnostico, capa B; si revienta con un panic de pyo3, pip install --ignore-installed cryptography)" blanda
-comprobar_modulo pikepdf   "$REQ   (diagnostico, capa M)" blanda
+comprobar_modulo pikepdf   "$REQ   (diagnostico, capa M; tambien la usa armar_numero.py para ensamblar el numero)" blanda
+# recibir_articulo.py: lee el manuscrito .docx del autor. Sin este modulo,
+# el entorno compila pero no puede recibir un manuscrito nuevo.
+comprobar_modulo docx      "$REQ   (recibir_articulo.py)" dura
 
 titulo "Activos de la clase"
-for activo in apm-editorial.cls ejemplo_editorial.tex ejemplo_articulo_original.tex logo_hires.png logo_60anos.png; do
+for activo in apm-editorial.cls ejemplo_editorial.tex ejemplo_articulo_original.tex logo_hires.png logo_60anos.png recibir_articulo.py armar_numero.py; do
   if [[ -f "$RAIZ/$activo" ]]; then
     printf '  presente  %s\n' "$activo"
   else

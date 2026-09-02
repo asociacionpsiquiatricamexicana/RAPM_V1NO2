@@ -1,7 +1,8 @@
 #!/bin/bash
 # Deja el taller editorial listo desde el primer turno: TeX Live con español y
 # fontawesome5, qpdf y poppler-utils, y las dependencias de Python de las
-# sondas (taller/sondas/requisitos.txt). Idempotente; solo en el entorno remoto.
+# sondas y del receptor de manuscritos (taller/sondas/requisitos.txt).
+# Idempotente; solo en el entorno remoto.
 set -euo pipefail
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then exit 0; fi
 RAIZ="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
@@ -19,13 +20,14 @@ else
   echo "taller revista: TeX listo"
 fi
 
-# Las sondas son la mitad del taller y este hook no las instalaba: un
-# contenedor recien levantado compilaba y no podia medir nada. Se instalan
+# Las sondas y el receptor de manuscritos (recibir_articulo.py) son la mitad
+# del taller y este hook no las instalaba: un contenedor recien levantado
+# compilaba y no podia medir nada ni recibir un articulo nuevo. Se instalan
 # desde lo versionado, no de memoria.
-if python3 -c "import pypdfium2, pymupdf, pdfplumber, pikepdf" >/dev/null 2>&1; then
+if python3 -c "import pypdfium2, pymupdf, pdfplumber, pikepdf, docx" >/dev/null 2>&1; then
   echo "taller revista: sondas de Python ya presentes"
 else
-  echo "taller revista: instalando las dependencias de las sondas"
+  echo "taller revista: instalando las dependencias de las sondas y del receptor"
   python3 -m pip install -q -r "$RAIZ/taller/sondas/requisitos.txt"
-  echo "taller revista: sondas listas"
+  echo "taller revista: sondas y receptor listos"
 fi

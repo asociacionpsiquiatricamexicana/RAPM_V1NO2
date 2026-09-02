@@ -15,3 +15,7 @@ pypdfium2>=4
 pymupdf>=1.24
 pdfplumber>=0.11
 pikepdf>=8
+
+# recibir_articulo.py: lee el manuscrito .docx del autor (texto, tablas,
+# imagenes incrustadas, en orden de documento) para generar el .tex camera-ready.
+python-docx>=1.2

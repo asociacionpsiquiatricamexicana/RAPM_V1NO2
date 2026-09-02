@@ -43,6 +43,77 @@ libro de la Genealogía, y la razón de este directorio.
   24 modos de fallo, APA 7, preferencias del editor). Datada al 28 de agosto
   de 2026: describe el sistema tal como era antes de este taller; ante
   divergencia, gana el `.cls` y gana la medición.
+- **`recibir_articulo.py`** — recibe el manuscrito `.docx` del autor y
+  produce el `.tex` camera-ready, compilado y medido. Nadie escribe LaTeX a
+  mano. Ver la sección propia más abajo.
+- **`armar_numero.py`** — toma todos los artículos ya compilados de un
+  número y produce el PDF del número completo: portada, tabla de contenido y
+  cada artículo, concatenados. Ver la sección propia más abajo.
+- **`manuscrito_desde_md.py`** — el puente para cuando el material no llegó
+  en Word: un Markdown reconstruido (desde un PDF, fotos de hojas, un
+  dictado ya transcrito o datos sueltos) se convierte en el `.docx` que
+  `recibir_articulo.py` sabe leer. El `.md` queda como fuente auditable de
+  la reconstrucción — el repositorio exige poder regenerar lo entregado, y
+  «lo dijo la conversación» no es una fuente. Dos zonas donde cada renglón
+  es una unidad y no se unen entre sí: el bloque de cabecera (autor,
+  afiliación, correo, ORCID son campos distintos) y la lista de
+  referencias; en el cuerpo sí se unen, para que la prosa fluya.
+
+## De un `.docx` al número completo
+
+Esto es lo que hace posible que producir un número no exija que nadie
+escriba una línea de LaTeX ni sepa qué es `apm-editorial.cls`: se anexa el
+manuscrito del autor en Word y, opcionalmente, una imagen de portada, y el
+resto es automático.
+
+```
+python3 taller/recibir_articulo.py MANUSCRITO.docx
+    [--tipo "Artículo original"]   # fuerza \APMtype; por omisión, heurística
+    [--numero VOL6_NO3]            # carpeta destino; por omisión, la de HOY
+    [--raiz numeros/]              # por omisión numeros/ desde la raíz del repo
+    [--art N]                      # ART# a usar; por omisión, el siguiente libre
+
+python3 taller/armar_numero.py NUMERO
+    [--raiz numeros/]
+    [--portada RUTA_IMAGEN]        # por omisión, logo_hires.png
+```
+
+`recibir_articulo.py` extrae del `.docx`, en el orden real del documento
+(no por separado — texto, tablas e imágenes intercalados se pierden si se
+iteran aparte): título, autores, afiliación, ORCID/correo/teléfono,
+resumen, palabras clave, cuerpo (encabezados de Word → `\section*`/
+`\subsection*`), tablas (→ `booktabs`, `table`/`table*` según ancho),
+figuras incrustadas (→ `figure`/`figure*`), y referencias (envueltas
+literales en `\APMref{}` — **nunca reformateadas ni reordenadas**: no es
+tarea del receptor corregir APA 7, solo diagramar lo que el autor entregó).
+La heurística de `\APMtype` y qué se hizo con cada campo quedan declarados
+en `reporte_tecnico.md`, junto al `.tex` y al PDF. Un dato editorial que el
+manuscrito no trae (fechas de aceptación/publicación, DOI, ORCID,
+conflicto de intereses, financiamiento) se deja como
+`[PENDIENTE: ...]`, nunca inventado — ver `norma/01_identidad_tipos_articulo.md`
+para la heurística completa de `\APMtype`.
+
+Si el manuscrito no tiene NINGÚN encabezado de sección y su cuerpo es
+demasiado corto para distinguirlo de una línea de afiliación, el script se
+niega a producir un PDF con el cuerpo en blanco: falla con un mensaje que
+pide un encabezado o un párrafo más largo, en vez de fabricar un artículo
+que parece terminado y no lo está.
+
+`armar_numero.py` **no recompone ni re-pagina** cada artículo (decisión en
+`norma/06_gestion_volumenes_numeros.md`): es una concatenación con
+`pikepdf` de portada+contenido (generada aparte, con la misma paleta y
+geometría que `apm-editorial.cls`, medida — nunca asumida — para calcular
+la página inicial real de cada artículo) más cada PDF camera-ready tal
+cual. El tope de 600 KB de `geometria.py` es por artículo individual; sobre
+el número completo es solo un aviso.
+
+- **`prueba_intake/`** — el fixture de regresión de `recibir_articulo.py`:
+  `generar_manuscrito_prueba.py` construye con `python-docx` un manuscrito
+  sintético (IMRaD completo, tabla, figura, ~10 referencias) y lo escribe
+  como `manuscrito_prueba.docx`, que queda commiteado — igual que
+  `ejemplo_articulo_original.tex` es el fixture del `.cls`, este es el
+  fixture del receptor. Datos inventados, rotulados como tales en el propio
+  `.docx`: no reutilizar como material editorial.
 
 ## Cómo se trabaja (las lecciones del libro, aplicadas aquí)
 
@@ -102,3 +173,28 @@ libro de la Genealogía, y la razón de este directorio.
   `pip install --ignore-installed cryptography`. Y `pymupdf` se importa por
   su nombre nuevo: el alias viejo `fitz` escupe su aviso de obsolescencia
   por **stdout** y corrompe el JSON del diagnóstico.
+- **`recibir_articulo.py` necesita `python-docx`** (`sondas/requisitos.txt`,
+  el hook la instala igual que las de las sondas).
+- Sin ningún encabezado de sección "Resumen" ni ningún otro, el barrido de
+  metadatos de contacto (afiliación/ORCID/correo/teléfono) no tenía dónde
+  parar y se comía el manuscrito entero — el cuerpo quedaba vacío,
+  disfrazado de `\APMaffiliation{}`. Corregido con dos topes: cualquier
+  encabezado (no solo "Resumen") cierra el bloque de contacto, y sin
+  ningún encabezado, un párrafo que "parece cuerpo" (largo, o con dos o
+  más oraciones) o el cupo de líneas de afiliación lo cierra igual. Si aun
+  así el cuerpo queda vacío, el script se niega a producir el PDF (arriba).
+- El escapado de LaTeX debe sustituir `\` por una marca temporal antes de
+  escapar `{`/`}`, no por `\textbackslash{}` directamente: si no, las
+  llaves recién insertadas se vuelven a escapar y `\textbf{}` sale como
+  `\textbackslash\{\}`.
+- `\APMtitleEN[]{...}` con el corchete opcional **vacío** deja `pdftitle`
+  en blanco pese al fallback documentado en el `.cls`
+  (`\ifx\@apmtitleMeta\empty\@apmtitleEN\else...`) — verificado compilando
+  un `.tex` mínimo. `recibir_articulo.py` no depende de ese fallback:
+  siempre rellena el corchete con una versión plana del título.
+- El ancho de columna de una tabla debe restar `\tabcolsep` (6pt) de cada
+  lado de cada columna antes de dividir el ancho disponible, o produce
+  Overfull en cualquier tabla de 4+ columnas.
+- `\caption{}` ya antepone «Tabla N:»/«Figura N:» (vía `captionsspanish`):
+  si el párrafo-pie del `.docx` también empieza con «Tabla 1.», hay que
+  retirar ese rótulo antes de pasarlo a `\caption{}`, o sale duplicado.

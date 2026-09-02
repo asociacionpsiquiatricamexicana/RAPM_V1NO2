@@ -312,3 +312,164 @@ módulos presentes, entorno apto.
 
 **Declarado sin resolver.** Las capas C–L del diagnóstico, en curso. El logo
 del 60 aniversario y el fixture del artículo largo, igual que antes.
+
+## Tanda: de un `.docx` al número completo, sin escribir LaTeX a mano (2 de septiembre de 2026)
+
+Hasta esta tanda, producir un número exigía que alguien supiera
+`apm-editorial.cls`: escribir el `.tex` a mano, correr `componer.sh`,
+archivar bajo la convención de `numeros/`. Pedido explícito: que desde
+Cowork baste con anexar el manuscrito del autor en Word —y, si acaso, una
+imagen de portada— para obtener de vuelta el artículo camera-ready y el
+número completo. Entran dos scripts nuevos, cada uno con su fixture de
+regresión.
+
+**`taller/recibir_articulo.py`.** Recorre el `.docx` en el orden real del
+documento (iterar párrafos y tablas por separado pierde el intercalado) y
+extrae título, autores, afiliación, ORCID/correo/teléfono, resumen,
+palabras clave, cuerpo (encabezados de Word → `\section*`/`\subsection*`),
+tablas (`booktabs`), figuras incrustadas y referencias — estas últimas
+envueltas literales en `\APMref{}`, nunca reformateadas: no es tarea del
+receptor corregir APA 7. Decide `\APMtype` con una heurística de 6 reglas
+(documentada en `norma/01_identidad_tipos_articulo.md`) y nunca inventa un
+dato que el manuscrito no trae: lo deja `[PENDIENTE: ...]` y lo declara en
+`reporte_tecnico.md`. `taller/sondas/requisitos.txt` gana `python-docx`.
+
+**`taller/armar_numero.py`.** Concatena con `pikepdf` los artículos ya
+compilados de un número (leyendo Vol./No./Tipo/Título/Autor de los propios
+metadatos PDF que `apm-editorial.cls` ya escribe, no reparseando el `.tex`)
+tras una portada + tabla de contenido generada aparte, con la misma paleta
+y geometría que la clase. Decisión que estaba abierta desde
+`06_gestion_volumenes_numeros.md` ("confirmar con el editor"): **no
+recompone ni re-pagina** cada artículo, es una concatenación — "Página X de
+Y" queda relativo a cada artículo. La página inicial de cada uno en la
+tabla de contenido se mide (compila portada+contenido, cuenta sus páginas
+reales, calcula desde ahí), nunca se asume.
+
+**Cuatro defectos reales, encontrados y corregidos durante la propia
+verificación** (no son limitaciones pendientes, son evidencia de que medir
+sobre el PDF construido sigue encontrando lo que la lectura del código no
+ve):
+
+1. `escapar_latex()` sustituía `\` por `\textbackslash{}` **antes** de
+   escapar `{`/`}`, así que esas llaves recién insertadas volvían a pasar
+   por el escapado: `\textbf{}` salía como `\textbackslash\{\}`. Corregido
+   con una marca temporal que se resuelve al final.
+2. `\APMtitleEN[]{...}` con el corchete opcional **vacío** deja `pdftitle`
+   en blanco pese al fallback que el `.cls` documenta
+   (`\ifx\@apmtitleMeta\empty\@apmtitleEN\else...`) — verificado
+   compilando un `.tex` mínimo aislado. El generador ya no depende de ese
+   fallback: siempre rellena el corchete con una versión plana del título.
+3. El ancho de columna de una tabla no restaba `\tabcolsep` (6 pt) de cada
+   lado de cada columna, y produjo un Overfull de 19.83 pt en la tabla de
+   4 columnas del fixture.
+4. `\caption{}` ya antepone «Tabla N:»/«Figura N:» vía `captionsspanish`;
+   el párrafo-pie del `.docx` a veces también trae su propio «Tabla 1.»,
+   y salía duplicado («Tabla 1. Tabla 1. …»). Se retira ese rótulo inicial
+   del pie antes de pasarlo a `\caption{}` — el resto del pie, tal como lo
+   escribió el autor, no se toca.
+
+**Un quinto defecto, encontrado después de que ambos scripts se dieron por
+verificados, al correr el flujo completo de punta a punta con un segundo
+artículo real** (no un caso que los agentes que construyeron cada script
+hubieran ejercitado): un manuscrito sin **ningún** encabezado de sección
+—una Carta al Editor de un solo párrafo, sin «Introducción» ni nada— hacía
+que el barrido de metadatos de contacto (afiliación/ORCID/correo/teléfono)
+se comiera el documento entero, porque no tenía dónde parar sin un heading
+«Resumen». El cuerpo quedaba vacío y el párrafo del autor terminaba dentro
+de `\APMaffiliation{}`, disfrazado de dato de filiación. El PDF compilaba
+limpio — `componer.sh` y `geometria.py` no tienen manera de saber que a un
+artículo le falta su cuerpo — así que nadie lo habría visto sin abrir el
+`.tex` o el PDF y leerlo. Corregido con dos topes: cualquier encabezado (no
+solo «Resumen») cierra el bloque de contacto; sin ningún encabezado, un
+párrafo que «parece cuerpo» (más de 280 caracteres, o dos o más oraciones)
+o el cupo de líneas de afiliación lo cierra igual. Y una última red: si aun
+así el cuerpo queda vacío, el script se niega a producir el PDF — falla con
+un mensaje claro en vez de entregar un artículo que parece terminado y no
+lo está.
+
+**Cómo se comprobó.** Cada script trajo su propio fixture sintético
+(`taller/prueba_intake/manuscrito_prueba.docx`, generado y commiteado por
+`generar_manuscrito_prueba.py`) y su propia verificación: `componer.sh`
+sobre el `.tex` generado — cero errores, cero overfull; `geometria.py` — 0
+sin incrustar, 0 fuga de Computer Modern, caja única; `pdftotext` contra el
+`.docx` origen, fragmento por fragmento, confirmando que el texto del autor
+no cambió ni una palabra; `pdfinfo` confirmando que Author/Keywords con
+acentos se leen legibles, sin secuencias octales crudas. `armar_numero.py`
+se probó con copias de los dos PDF de ejemplo del taller como artículos de
+prueba: 2+2 artículos → 8 páginas exactas (medidas, no asumidas); un solo
+artículo; una carpeta sin ningún PDF compilado (falla con mensaje claro,
+sin traza); una carpeta con un artículo compilado y otro no (sigue con el
+que sí tiene, avisando del que falta).
+
+Verificación de integración propia, tras el trabajo de los dos scripts:
+generé un segundo manuscrito sin encabezados y corrí la cadena completa
+(`recibir_articulo.py` → `armar_numero.py` → render a PNG de las 5 páginas
+resultantes) — así apareció el quinto defecto de arriba. Corregido, se
+volvió a correr la cadena completa: portada con la imagen dada, tabla de
+contenido con «Página 3» y «Página 5» correctas (medidas contra las
+páginas reales de cada artículo), Artículo original de 2 páginas con tabla
+y figura, Carta al Editor de 1 página con su cuerpo real —ya no vacío— y
+sus placeholders `[PENDIENTE: ...]` donde el manuscrito no traía el dato.
+Los dos fixtures del `.cls` (`ejemplo_editorial.tex`,
+`ejemplo_articulo_original.tex`) no se tocaron y siguen dando su hash de
+`reproducible.py`.
+
+**La entrada deja de ser «un Word».** Regla añadida por el editor adjunto
+durante esta misma tanda: el material real no llega siempre como un `.docx`
+limpio — llega como PDF, como fotos o escaneos de hojas, como un dictado ya
+transcrito, o como varias piezas sueltas a la vez. Entra
+`taller/manuscrito_desde_md.py`, el puente: un Markdown reconstruido se
+convierte en el `.docx` que el receptor ya sabe leer, y el `.md` queda junto
+al material como fuente auditable de la reconstrucción (el repositorio exige
+poder regenerar lo entregado; «lo dijo la conversación» no es una fuente).
+La skill `.claude/skills/produccion-numero-rapm/` lleva el criterio: deducir
+lo que el material sostenga, **preguntar de una sola vez** lo que de verdad
+bloquee la composición, no detenerse por lo que el pipeline ya sabe dejar
+`[PENDIENTE: ...]`, y no inventar nunca. Transcribir desde una foto es
+copiar, no editar: si algo parece una errata o un dato imposible, se señala,
+no se corrige en silencio. Y se declara qué puede leer de verdad este
+entorno: PDF con texto (`pdftotext`/`pdfplumber`/`pymupdf`), PDF escaneado
+(`pdftoppm` a PNG y lectura con visión), imágenes con visión — pero **no
+audio**: no hay whisper ni ffmpeg, y un dictado tiene que llegar ya
+transcrito. Prometer transcripción de audio sería vender lo que no hay.
+
+**Dos defectos del puente, encontrados al probarlo de punta a punta.** El
+primer Markdown de prueba salió con el bloque de autoría fundido en una sola
+línea —`\APMauthor` se comió la afiliación, el correo y el ORCID, que
+quedaron en `[PENDIENTE]`— y con las dos referencias fusionadas en una sola
+`\APMref`. Misma causa: unir renglones contiguos, que es lo correcto para la
+prosa del cuerpo y es exactamente lo contrario de lo que necesitan la
+cabecera y la lista de referencias, donde cada renglón es un campo o una
+entrada. Corregido distinguiendo las tres zonas. Verificado: los cuatro
+campos de cabecera separados y correctos, las dos referencias como dos
+entradas.
+
+**Cómo se comprobó el puente.** Markdown reconstruido (con cabecera de
+cuatro campos, resumen, IMRaD con subsecciones, una tabla de 4 columnas en
+tuberías, una figura por `![]()` y dos referencias) →
+`manuscrito_desde_md.py` → `recibir_articulo.py`: compila camera-ready, 2
+páginas, caja única, 0 tipografías sin incrustar, 0 fuga de Computer Modern,
+GEOMETRIA EN REGLA. Revisado a ojo el PDF renderizado: la tabla sale con
+`booktabs` y su pie «Tabla 1.» sin duplicar, la figura con el suyo, las
+negritas y cursivas del Markdown llegan como `\textbf`/`\textit`. Los
+comandos de lectura de PDF que la skill documenta se corrieron de verdad
+antes de documentarlos (`pdftotext` sobre un PDF del taller; `pdftoppm -png
+-r 150` produciendo el PNG de la ruta de escaneado).
+
+**Declarado sin resolver.** El manuscrito sin ningún encabezado y con un
+cuerpo de menos de 280 caracteres en una sola oración sigue perdiéndose
+dentro de `\APMaffiliation{}` en vez de disparar el rechazo — un caso muy
+por debajo de la extensión mínima de cualquier tipo de artículo de
+`norma/01_identidad_tipos_articulo.md` (Carta al Editor, el más corto, son
+~500 palabras), así que no se ha visto en un manuscrito real, pero queda
+como límite conocido de la heurística. La regex de DOI corre sobre todo el
+texto del documento sin distinguir si el primer DOI que encuentra es el
+del propio artículo o uno que aparece dentro de una referencia bibliográfica
+— el editor debe verificar `\APMdoi{}` antes de publicar cuando vino de
+detección automática (declarado en `reporte_tecnico.md`). La tabla de
+contenido no se probó con más de dos artículos ni con títulos de varias
+líneas. `pikepdf` avisa por stderr en cada corrida de `armar_numero.py`
+que no preserva destinos con nombre al fusionar páginas — benigno aquí
+porque los PDFs de `apm-editorial.cls` no los usan, pero queda sin
+silenciar. Las capas C–L del diagnóstico y el logo del 60 aniversario,
+igual que antes.
