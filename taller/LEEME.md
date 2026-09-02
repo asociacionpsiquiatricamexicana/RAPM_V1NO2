@@ -12,10 +12,12 @@ libro de la Genealogía, y la razón de este directorio.
 - **`apm-editorial.cls`** — la clase LaTeX. **El código es la especificación**:
   cuando un documento diga otra cosa, gana el `.cls`. Rotula los seis tipos de
   artículo vía `\APMtype{}`, y tiene dos disposiciones de cuerpo medidas: el
-  texto corto sin resumen y el artículo largo con IMRaD, tabla y figura (véase
+  texto corto y el artículo largo con IMRaD, tabla y figura (véase
   `norma/09_limitaciones_conocidas.md`).
-- **`ejemplo_editorial.tex`** — la plantilla de un texto corto sin resumen
-  (Editorial, Carta al Editor). Un artículo nuevo parte de aquí, nunca de cero.
+- **`ejemplo_editorial.tex`** — la plantilla de un texto corto (Editorial,
+  Carta al Editor; la norma no les exige resumen, y la caja solo se imprime
+  si `\APMabstract{}` trae texto: este ejemplo lo trae). Un artículo nuevo
+  parte de aquí, nunca de cero.
 - **`ejemplo_articulo_original.tex`** — la plantilla de un artículo largo con
   estructura IMRaD, resumen, subsecciones, tabla y figura a ancho de página.
   Es un fixture de diagramación: los autores, las cifras y los resultados son
@@ -70,12 +72,15 @@ libro de la Genealogía, y la razón de este directorio.
 - Motor: **pdfLaTeX** (TeX Live 2023+). Nunca lualatex sin verificar
   `luatexbase.sty`.
 - `\pdfinfo{}` va en octal para UTF-8 (acentos rotos en los metadatos si no).
-- `\APMrefsbreak` **no** se usa por conteo de referencias, pese a lo que dice
-  el comentario del `.cls`. Parte donde caiga el corte de columna, no donde
+- `\APMrefsbreak` **no** se usa por conteo de referencias (el comentario del
+  `.cls` ya dice lo mismo). Parte donde caiga el corte de columna, no donde
   esté la mitad de la lista: en el artículo original, partir por la mitad de
   14 referencias dejó una columna casi vacía y **costó una página entera**
   (5 en vez de 4). Si las referencias no arrancan al tope de una columna,
-  deja que fluyan y que `flushend` equilibre.
+  deja que fluyan y que `flushend` equilibre. Y el macro reabre el grupo con
+  los mismos ajustes que `\APMrefsstart`: hasta el 1 de septiembre de 2026
+  olvidaba `\sloppy\raggedright`, y las referencias tras el corte salían
+  justificadas mientras las de antes iban en bandera.
 - babel-español rotula las tablas «Cuadro». La clase lo fuerza a «Tabla»
   (APA 7) enganchándose a `\captionsspanish`; un `\renewcommand{\tablename}`
   suelto no sirve, lo pisa `\selectlanguage{spanish}`.
@@ -90,7 +95,9 @@ libro de la Genealogía, y la razón de este directorio.
   trae la propia Nimbus. `geometria.py` ya vigila la fuga: estar incrustada
   no basta, una CM aquí es defecto de composición.
 - Las sondas piden `pypdfium2` (dura), y `pdfplumber`, `pymupdf` y `pikepdf`
-  para las capas B y M del diagnóstico. Ojo con el `cryptography` de Debian:
+  para el diagnóstico. Las cuatro están en `sondas/requisitos.txt`
+  (`pip install -r`); el hook de arranque las instala en el entorno remoto
+  cuando faltan. Ojo con el `cryptography` de Debian:
   si `import pdfplumber` revienta con un panic de pyo3, se repara con
   `pip install --ignore-installed cryptography`. Y `pymupdf` se importa por
   su nombre nuevo: el alias viejo `fitz` escupe su aviso de obsolescencia

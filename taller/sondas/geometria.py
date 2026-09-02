@@ -4,8 +4,8 @@
 
 Leccion del libro de la Genealogia: toda afirmacion sobre el PDF viene de una
 medicion, nunca de inspeccion visual ni de memoria. Esta sonda responde cuatro
-preguntas concretas y compara contra su ancla (geometria_referencia.txt) si
-existe; el ancla solo se mueve con razon declarada en el registro.
+preguntas concretas y compara contra su ancla (geometria_<base>.txt, una por
+documento) si existe; el ancla solo se mueve con razon declarada en el registro.
 
 Uso: python3 sondas/geometria.py [ruta.pdf]   (por omision, el ejemplo compilado)
 """

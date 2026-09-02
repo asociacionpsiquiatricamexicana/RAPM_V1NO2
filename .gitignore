@@ -8,3 +8,4 @@ taller/*.pdf
 
 # el libro vive en su propia rama; su arbol puede quedar suelto en el directorio compartido
 genealogia/
+__pycache__/

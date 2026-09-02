@@ -1,0 +1,17 @@
+# Dependencias de Python de las sondas del taller (taller/sondas/).
+#
+#   python3 -m pip install -r taller/sondas/requisitos.txt
+#
+# El hook de arranque (.claude/hooks/session-start.sh) las instala en el
+# entorno remoto cuando faltan; comprobar_entorno.sh verifica que esten.
+# Hasta el 1 de septiembre de 2026 solo vivian en la memoria de quien
+# levantaba el contenedor, y el registro lo declaraba sin resolver.
+
+# geometria.py y reproducible.py: dependencia dura.
+pypdfium2>=4
+
+# diagnostico_rapm.py, capas A-N. Se importa como `pymupdf`: el alias viejo
+# `fitz` avisa por stdout desde la 1.26 y corrompe el JSON (LEEME.md).
+pymupdf>=1.24
+pdfplumber>=0.11
+pikepdf>=8

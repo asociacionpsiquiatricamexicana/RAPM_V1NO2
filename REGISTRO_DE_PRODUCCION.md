@@ -167,3 +167,148 @@ dos PDFs vigentes sigue en verde: editorial 2 páginas, original 4, caja
 
 **Declarado sin resolver.** Lo mismo que la tanda anterior; esta solo pone
 la norma al día. La campaña queda en una solicitud de fusión en borrador.
+
+## Tanda: revisión del código del taller, con las correcciones que se dejan medir (1 de septiembre de 2026)
+
+Revisión de la clase, las tres sondas y los dos scripts, aplicando solo lo
+que es defecto comprobable, no gusto.
+
+**Un defecto de composición en la clase.** `\APMrefsbreak` cerraba el grupo
+de referencias y lo reabría sin `\sloppy\raggedright`, que `\APMrefsstart`
+sí fija: las referencias anteriores al corte iban en bandera y las
+posteriores, justificadas, en la misma lista. En el editorial, que sí usa
+el corte, la justificación forzada partía **cinco URL** a mitad de cadena
+(`https://doi.org/` en una línea y `10.1016/…` en la siguiente) y pegaba
+`treatment-resistant` en `treatmentresistant` al extraer el texto. Ahora el
+macro reabre con los mismos ajustes que `\APMrefsstart`; su comentario, que
+seguía diciendo «úsalo con ≥12 referencias, parte por la mitad», dice la
+regla medida en el artículo original. `\@twocolumnfalse`, suelto tras
+`\LoadClass[twocolumn]` con el comentario «improve column breaks», se retira:
+no hacía nada, y el original se recompone con el mismo hash sin él. La
+versión declarada en `\ProvidesClass` (v1.0, 2025) pasa a la que anuncia la
+cabecera del archivo (v2.0).
+
+**Las sondas.** `reproducible.py` creaba un directorio temporal por corrida y
+nunca lo retiraba: había 19 talleres huérfanos en `/tmp`; ahora se retira
+siempre, también al anclar o al fallar, y rechaza un `.tex` que no esté
+versionado en `taller/` en vez de fallar con un error de pdflatex.
+`diagnostico_rapm.py` pedía correr `pdffonts` «por separado» para la capa M:
+ahora lo mide, con el mismo parseo y la misma lista de prefijos de Computer
+Modern que `geometria.py` (le faltaban `CMEX`, `CMTI` y `CMTT`); su
+`papel_spec_pt` traía solo el ancho, ahora el par; y sus rutas a la norma
+apuntaban a un `references/` que no existe. Docstrings de las dos sondas de
+ancla, que aún hablaban de `*_referencia.txt`.
+
+**Los scripts.** `componer.sh` decidía el destino comparando la cadena del
+argumento con una ruta absoluta: con `taller/ejemplo_editorial.tex` relativo
+el editorial se escapaba a `taller/` en vez de `pdfs/`, y el original nunca
+llegaba a `pdfs/`. Ahora compara directorios resueltos: todo `.tex` que viva
+en `taller/` va a `taller/pdfs/`; los de `numeros/` se quedan junto a su
+fuente. Avisa si el `.tex` no existe. `comprobar_entorno.sh` no contaba el
+fixture del artículo original entre los activos.
+
+**La norma.** FM05 y el check 6 del checklist de `.tex` repetían la regla
+del conteo de referencias; dicen la regla medida. El `LEEME.md` deja de
+avisar que el comentario del `.cls` contradice la práctica.
+
+**Cómo se comprobó.** `componer.sh` sobre los dos ejemplos: dos pasadas,
+cero errores, cero overfull, linearizado. Editorial 2 páginas, 432,845
+bytes; original 4 páginas, 465,145 bytes; ambos caja única 612 × 792 pt, 0
+sin incrustar, 0 fuga de CM, anclas de geometría sin moverse. El original
+**se recompone idéntico** (hash `e538a776…`): las retiradas en la clase
+fueron neutras. El editorial cambió de hash por el corte de referencias, y
+se midió qué: compilado con la clase anterior y comparado por `pdftotext`,
+el diff cae entero en las referencias posteriores al corte; líneas con URL
+partida al final, **5 antes y 0 después**; reanclado en `22bb002dc34abb2c…`
+(2 páginas). `diagnostico_rapm.py --json` entrega JSON parseable con la capa
+M midiendo cinco Nimbus, cero sin incrustar, cero CM. `comprobar_entorno.sh`
+apto, con los cinco activos. `bash -n` y `py_compile` limpios en los cinco
+archivos.
+
+**Declarado sin resolver.** `\APMcheckabstract`, `\APMchecktitle`,
+`\fixellipsis`, `\APMrule` y `\APMcenterblock` siguen definidos y sin uso en
+ningún `.tex`; no se tocan porque son interfaz declarada, pero el checklist
+de auditoría debería decidir si se conectan o se retiran, como con
+`\APMfolio` y `\APMlogoSixty`. El comentario del `ejemplo_editorial.tex`
+sobre «split after ref 5 for optimal balance» sigue diciendo la regla vieja;
+es plantilla, no clase, y queda para la próxima vez que se toque ese
+archivo. Lo demás, igual que la tanda anterior.
+
+## Tanda: lo que la revisión dejó dicho, resuelto (1 de septiembre de 2026)
+
+Cierra los dos puntos que la tanda anterior declaró sin resolver, y al
+tocar la plantilla aparece un corte que no cortaba nada.
+
+**Los cinco macros sin uso.** El checklist de código decide, como decidió
+con `\APMfolio` y `\APMlogoSixty`: se documentan como interfaz no
+conectada y se dejan en el `.cls`, porque retirarlos es cambio de
+especificación, no corrección. Entra el check 21 en
+`10_checklist_auditoria_codigo.md` y el §3c en
+`09_limitaciones_conocidas.md`, que separa las dos clases: `\APMcheckabstract`
+y `\APMchecktitle` son «comprobaciones» que no comprueban nada (un
+`\newcount` puesto en cero y un cuerpo vacío: quien las llame esperando el
+aviso de resumen o título largo no lo recibirá, el mismo engaño de una
+sonda que dice «EN REGLA» sin medir), y `\fixellipsis`, `\APMrule` y
+`\APMcenterblock` funcionan pero ningún diseño medido los usa. `grep` en
+`taller/*.tex`: cero ocurrencias de los cinco.
+
+**La plantilla del editorial.** Su cabecera decía «Compile: pdflatex
+editorial-neuromod.tex», un archivo que no existe; la nota del folio
+apuntaba a `references/`, que tampoco; y `\APMlogoSixty{logo_60anos.png}`
+seguía llamándose en claro, enseñando la práctica que la nota de al lado
+prohíbe para `\APMfolio`. Va comentado igual. Y el comentario «split after
+ref 5 for optimal column balance», al medirse, resultó peor que viejo:
+en la página 2 las referencias arrancan a media columna (REFERENCIAS a
+175 pt del tope, tras el cuerpo) y el corte visual cae tras la **sexta**
+entrada, no tras la quinta donde estaba `\APMrefsbreak`, porque `flushend`
+reequilibra la última página por su cuenta. Compilado sin el corte: las
+mismas 154 líneas en las mismas coordenadas y el mismo hash de texto. El
+corte no hacía nada, y la regla del `LEEME.md` dice que ahí no va. Se
+retira de la plantilla, con la medición en el comentario. El `LEEME.md`
+llamaba «texto corto sin resumen» a un ejemplo que trae resumen; dice ahora
+que la norma no lo exige y que la caja aparece solo si `\APMabstract{}`
+trae texto. En el checklist del `.cls`, las filas 15 y 17 llevaban una
+barra sin escapar dentro de un `grep -E`, que partía la tabla en una cuarta
+columna vacía; escapadas, y fuera el separador sobrante.
+
+**Cómo se comprobó.** `reproducible.py` sobre el editorial con la plantilla
+nueva: 2 páginas, hash `22bb002dc34abb2c…`, **se recompone igual**; el ancla
+no se mueve. `componer.sh`: dos pasadas, cero errores, cero overfull,
+linearizado, 2 páginas, caja única 612 × 792 pt, 0 sin incrustar, 0 fuga de
+CM, 432,845 bytes (los mismos de la tanda anterior). El artículo original no
+se tocó. Comparación línea por línea con `pymupdf` del PDF con corte y sin
+corte: 154 líneas, cero diferencias.
+
+**Declarado sin resolver.** Las capas C–L del diagnóstico, en curso en la
+tanda siguiente. El logo del 60 aniversario sigue sin render funcional; el
+fixture del artículo largo sigue siendo de diagramación, no un manuscrito;
+las dependencias de Python siguen siendo del entorno.
+
+## Tanda: las dependencias de las sondas entran al repositorio (1 de septiembre de 2026)
+
+Tres tandas seguidas declararon lo mismo sin resolver: las dependencias de
+Python de las sondas estaban verificadas por la prueba en frío pero su
+instalación «seguía siendo del entorno». El hook de arranque instalaba TeX
+Live y nada de Python: un contenedor recién levantado compilaba y no podía
+medir. Entra `taller/sondas/requisitos.txt` con las cuatro (`pypdfium2`,
+dura, para `geometria.py` y `reproducible.py`; `pymupdf`, `pdfplumber` y
+`pikepdf` para el diagnóstico), y el hook las instala desde ahí cuando
+faltan, tras el bloque de TeX, en vez de salir en cuanto ve `pdflatex`.
+`comprobar_entorno.sh` remite al mismo archivo. La norma
+`00_prerequisitos.md` deja de pedir `import fitz`, de omitir `pypdfium2`
+y de hablar de un `assets/` que no existe; nombra `booktabs` y `caption`
+y remite a la prueba en frío y a `componer.sh`. El `LEEME.md` lo dice en
+su trampa correspondiente.
+
+**Cómo se comprobó.** `bash -n` limpio en el hook y en la prueba en frío.
+El hook por su camino idempotente, con y sin `CLAUDE_PROJECT_DIR`: «entorno
+TeX ya presente», «sondas de Python ya presentes». El camino que importa,
+el de instalación: en un entorno virtual vacío (sin `pymupdf`), el hook
+instaló las cuatro desde `requisitos.txt` en 11.5 s; dentro del entorno,
+`import pypdfium2, pymupdf, pdfplumber, pikepdf` en regla (1.28.2, 0.11.10,
+10.12.0) y `geometria.py` sobre el artículo original: 4 páginas, EN REGLA.
+`pip install --dry-run -r` limpio. `comprobar_entorno.sh`: los cuatro
+módulos presentes, entorno apto.
+
+**Declarado sin resolver.** Las capas C–L del diagnóstico, en curso. El logo
+del 60 aniversario y el fixture del artículo largo, igual que antes.

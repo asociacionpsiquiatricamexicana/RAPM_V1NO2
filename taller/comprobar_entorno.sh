@@ -66,15 +66,18 @@ comprobar_modulo() {
 }
 
 # Las sondas son la mitad del taller y esta prueba no las miraba: un entorno
-# podia declararse apto y no poder medir nada de lo que compilaba.
-titulo "Dependencias de las sondas (Python)"
-comprobar_modulo pypdfium2 "pip install pypdfium2" dura
-comprobar_modulo pymupdf   "pip install pymupdf   (capa A del diagnostico)" blanda
-comprobar_modulo pdfplumber "pip install pdfplumber (capa B; si revienta con un panic de pyo3, pip install --ignore-installed cryptography)" blanda
-comprobar_modulo pikepdf   "pip install pikepdf   (capa M del diagnostico)" blanda
+# podia declararse apto y no poder medir nada de lo que compilaba. Las
+# cuatro estan declaradas en sondas/requisitos.txt, que el hook de arranque
+# instala en el entorno remoto.
+titulo "Dependencias de las sondas (Python, sondas/requisitos.txt)"
+REQ="pip install -r taller/sondas/requisitos.txt"
+comprobar_modulo pypdfium2 "$REQ" dura
+comprobar_modulo pymupdf   "$REQ   (diagnostico, capa A)" blanda
+comprobar_modulo pdfplumber "$REQ   (diagnostico, capa B; si revienta con un panic de pyo3, pip install --ignore-installed cryptography)" blanda
+comprobar_modulo pikepdf   "$REQ   (diagnostico, capa M)" blanda
 
 titulo "Activos de la clase"
-for activo in apm-editorial.cls ejemplo_editorial.tex logo_hires.png logo_60anos.png; do
+for activo in apm-editorial.cls ejemplo_editorial.tex ejemplo_articulo_original.tex logo_hires.png logo_60anos.png; do
   if [[ -f "$RAIZ/$activo" ]]; then
     printf '  presente  %s\n' "$activo"
   else
