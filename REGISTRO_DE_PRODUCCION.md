@@ -473,3 +473,49 @@ que no preserva destinos con nombre al fusionar páginas — benigno aquí
 porque los PDFs de `apm-editorial.cls` no los usan, pero queda sin
 silenciar. Las capas C–L del diagnóstico y el logo del 60 aniversario,
 igual que antes.
+
+## Tanda: el folio del índice y la portada vertical (9 de septiembre de 2026)
+
+Dos defectos de diagramado en el PDF del número, los dos en
+`taller/armar_numero.py`, los dos invisibles para la verificación de la
+tanda anterior.
+
+**El folio del índice caía en el renglón equivocado.** Cada entrada se
+armaba como un solo párrafo con `\hfill` entre el título y «Página N».
+`\hfill` empuja al folio hasta el final de la línea *en curso*: cuando el
+título ocupa más de un renglón, esa línea es la **última**, así que el folio
+salía pegado a la palabra que quedó colgando, a media entrada, en vez de
+anclado al título. El título tampoco tenía columna propia y corría por
+debajo de donde debía ir el folio. Se sustituyó por dos minipáginas
+contiguas en `[t]`, que alinean sus primeras líneas base: el folio queda a
+la altura del primer renglón por largo que sea el título, y el título
+envuelve dentro de su columna del 86 %.
+
+Por qué no lo vio la tanda anterior: se verificó con dos artículos de título
+corto, que caben en un renglón — justo el caso que sí funcionaba. La norma
+admite títulos de hasta 15 palabras (`norma/01_identidad_tipos_articulo.md`),
+de modo que casi cualquier Artículo original real caía en el caso roto. Es
+la misma lección de siempre: el fixture que solo ejercita el camino fácil
+aprueba un defecto real.
+
+**Una portada vertical se salía de la página.** La imagen se pedía con
+`width=\textwidth,keepaspectratio` y sin tope de altura, así que una imagen
+más alta que ancha —el formato natural de una portada de revista— se
+escalaba al ancho del texto y desbordaba hacia abajo. Se añadió
+`height=0.62\textheight`: con las dos cotas presentes, `keepaspectratio`
+encaja la imagen dentro de ambas, sin deformarla en ningún caso.
+
+**Cómo se comprobó.** Número de prueba rehecho con los dos artículos (uno de
+título largo, otro corto) y las tres rutas de portada — vertical (600×1400),
+apaisada (1600×900) y sin `--portada` (respaldo con el logo): las tres dan
+**5 páginas, esperadas y medidas**, con `geometria.py` en caja única, 0
+tipografías sin incrustar y 0 fuga de Computer Modern (el aviso de 600 KB
+sigue siendo el esperado, que no aplica al número completo). Renderizado a
+PNG y revisado a ojo, que es donde vive este tipo de defecto: «Página 3» a la
+altura del primer renglón del título de dos líneas, «Página 5» donde ya
+estaba, la portada vertical completa dentro de su página y la apaisada sin
+cambio respecto de antes.
+
+**Declarado sin resolver.** El índice sigue sin probarse con más de dos
+artículos ni con listas de autores tan largas que envuelvan. Lo demás de la
+tanda anterior, igual que antes.
