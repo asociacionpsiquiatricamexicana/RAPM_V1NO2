@@ -202,7 +202,12 @@ def generar_tex_portada(numero_legible, vol, no, periodo, anio, ruta_imagen_port
     partes.append(r"\vspace{2.2cm}")
     if ruta_imagen_portada:
         ruta_tex = ruta_imagen_portada.replace("\\", "/")
-        partes.append(r"\includegraphics[width=\textwidth,keepaspectratio]{%s}" % ruta_tex)
+        # Con ancho Y alto acotados, keepaspectratio encaja la imagen dentro
+        # de ambas cotas: una portada vertical se ajusta por el alto y una
+        # apaisada por el ancho. Solo con el ancho, una vertical se desbordaba.
+        partes.append(
+            r"\includegraphics[width=\textwidth,height=0.62\textheight,keepaspectratio]{%s}" % ruta_tex
+        )
     partes.append(r"\vfill")
     partes.append(
         r"{\small\color{g55} e-ISSN 3061-7979 \textperiodcentered\ CC BY-NC 4.0}\par"
@@ -220,8 +225,17 @@ def generar_tex_portada(numero_legible, vol, no, periodo, anio, ruta_imagen_port
     partes.append(r"\vspace{8pt}")
     for e in entradas_contenido:
         partes.append(r"\noindent{\small\color{burg}\bfseries %s}\par" % e["tipo"])
+        # El folio va en su propia caja, alineada por arriba con la del
+        # titulo: \hfill lo empujaba al final de la linea EN CURSO, que en un
+        # titulo de mas de un renglon es la ULTIMA, no la primera. Con las dos
+        # minipaginas en [t] coinciden las primeras lineas base, y el titulo
+        # envuelve dentro de su propia columna sin correr bajo el folio.
         partes.append(
-            r"\noindent{\bfseries\color{g40}\large %s} \hfill {\bfseries\color{g40} P\'agina %s}\par"
+            r"\noindent\begin{minipage}[t]{0.86\textwidth}"
+            r"{\bfseries\color{g40}\large %s}"
+            r"\end{minipage}\hfill\begin{minipage}[t]{0.12\textwidth}"
+            r"\raggedleft{\bfseries\color{g40} P\'agina %s}"
+            r"\end{minipage}\par"
             % (e["titulo"], e["pagina"])
         )
         partes.append(r"\noindent{\color{g55} %s}\par" % e["autor"])
